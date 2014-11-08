@@ -16,5 +16,9 @@
 	
 	// render vrati data pro vypis nebo display je vypise
 	// v poli jsou data pro vlozeni do sablony
-	echo $template->render(array('obsah' => 'Text do obsahu', 'nadpis1' => 'Nadpis 1'));
+	$template_params = array();
+	$template_params["obsah"] = "<p>Obsah</p>";
+	$template_params["nadpis1"] = "Nadpis 1";
+
+	echo $template->render($template_params);
 ?>
