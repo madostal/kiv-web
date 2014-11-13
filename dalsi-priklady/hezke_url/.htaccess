@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteBase /
+
+
+
+# Rewrite www.domain.com -> domain.com -- used with SEO Strict URLs plugin
+#RewriteCond %{HTTP_HOST} .
+#RewriteCond %{HTTP_HOST} !^example-domain-please-change\.com [NC]
+#RewriteRule (.*) http://example-domain-please-change.com/$1 [R=301,L]
+#
+# or for the opposite domain.com -> www.domain.com use the following
+# DO NOT USE BOTH
+#
+#RewriteCond %{HTTP_HOST} .
+#RewriteCond %{HTTP_HOST} !^www\.example-domain-please-change\.com [NC]
+#RewriteRule (.*) http://www.example-domain-please-change.com/$1 [R=301,L]
+
+
+# The Friendly URLs part - tohle je nejdulezitejsi
+# pokud dany adresar nebo soubor neexistuje, tak se provede presmerovani na index.php a do parametru q se vlozi pozadavek
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
