@@ -34,6 +34,10 @@ class predmety extends db
 		$table_name = TABLE_PREDMETY;
 		$select_columns_string = "*"; 
 		$where_array = array();
+		
+		// vybere predmet s ID 5
+		$where_array[] = array("column" => "id", "value" => 5, "symbol" => "=");
+		
 		$limit_string = "";
 		$order_by_array = array();
 	

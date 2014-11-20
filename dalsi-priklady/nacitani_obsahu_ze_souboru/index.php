@@ -22,6 +22,6 @@
 		$obsah = file_get_contents($nazev_souboru);
 	}
 	
-	// obsah vypisu nebo poslu do Twigu
+	// obsah vypisu nebo poslu do Twigu, pouye pro html kód. Php se mi nezpracuje. Pro z pracovani musim pouzit phpWrapper
 	echo $obsah;
 ?>
