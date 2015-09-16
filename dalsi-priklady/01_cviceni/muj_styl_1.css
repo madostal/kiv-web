@@ -1,0 +1,35 @@
+body {
+    background-color: floralwhite   
+}
+
+h1 {
+    color: blueviolet;
+}
+
+h2 {
+    color: cadetblue;
+}
+
+div {
+    border: 1px solid black;
+    background-color: lightgray;
+}
+
+div div {
+    background-color: darkslategray;
+    color: white;
+    margin-left: 20px;
+}
+
+p {
+    border: 1px solid black; 
+    background-color: beige;
+}
+
+a {
+    color:red;   
+}
+
+span {
+    color:darkblue;
+}
