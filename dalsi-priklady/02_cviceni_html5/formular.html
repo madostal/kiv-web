@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulář</title>
+    </head>
+    <body>
+        <h1>Formulář</h1>
+        
+        <form action="http://localhost/++Brackets-kiv-web/02-prikladHTML5/ukazka.php" method="get" target="_blank" accept-charset="UTF-8" autocomplete="on" name="osobni_info">
+            <fieldset>
+                <legend>Registrační formulář</legend>
+
+                <fieldset>
+                    <legend>Osobní informace</legend>
+                    <br>
+                    Jméno*:
+                    <input type="text" name="jmeno" value="Jméno" tabindex="3" required><br>
+                    <br>
+                    Příjmení*:
+                    <input type="text" name="prijmeni" tabindex="1" autofocus required><br>
+                    <br>
+                    e-mail*:
+                    <input type="email" name="email" tabindex="4" required><br>
+                    <br>
+                    Heslo*:
+                    <input type="password" name="heslo" tabindex="2" required><br>
+                    <br>
+                    Pohlaví:<br>
+                        <input type="radio" name="pohlavi" value="muz" checked>Muž<br>
+                        <input type="radio" name="pohlavi" value="zena">Žena<br>
+                    <br>
+                    Věk: <input type="range" id="a" name="vek" value="25" min="12" max="90" oninput="x.value=parseInt(a.value);"> = <output name="x" for="a">25</output><br>
+                    <br>
+                    Datum narození:<br>
+                    <input type="date" name="narozeni"><br>
+                    <br>
+                    Nahrát soubor:<br>
+                    <input type="file" name="soubor" multiple><br>
+                    <br>
+                    * Musí být zadáno.
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Doplňující údaje</legend>
+                    <br>
+                    Kuřák:<br>
+                        <input type="radio" name="kurak" value="ano">Ano<br>
+                        <input type="radio" name="kurak" value="ne" checked>Ne<br>
+                    <br>
+                    Oblíbená barva: <input type="color" name="barva" value="#A0B000"><br>                    
+                    <br>
+                    Typ automobilu:
+                    <select name="auto">
+                      <optgroup label="Švédská auta">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                      </optgroup>
+                      <optgroup label="Německá auta">
+                        <option value="mercedes" selected>Mercedes</option>
+                        <option value="audi">Audi</option>
+                      </optgroup>
+                    </select><br>
+                    <br>
+                    Domácí zvíře (s CTRL zvolte více):<br>
+                    <select name="zvire[]" size="3" multiple>
+                        <option value="pes">Pes</option>
+                        <option value="kocka">Kočka</option>
+                        <option value="rybicka">Rybička</option>
+                        <option value="kralik">Králík</option>
+                    </select><br>
+                    <br>
+                    Dopňující informace:<br>
+                    <textarea name="ostatni" rows="4" cols="30">Informace..</textarea>
+                    <br><br>
+                    Oblíbený prohlížeč:<br>
+                    <input list="prohlizec">
+                      <datalist id="prohlizec">
+                          <option value="Internet Explorer 6">IE6</option>
+                          <option value="Internet Explorer 7">IE7</option>
+                          <option value="Internet Explorer 8">IE8</option>
+                          <option value="Internet Explorer 9">IE9</option>
+                          <option value="Firefox 10">F10</option>
+                          <option value="Firefox 40">F40</option>
+                          <option value="Chrome 7">CH7</option>
+                          <option value="Chrome 35">CH35</option>
+                          <option value="Opera">O</option>
+                          <option value="Safari">S</option>
+                      </datalist>
+                    <br><br>
+                    Zabezpečení:<br>
+                    <keygen name="security"><br>
+                    <br>
+                    Přibližná výška:
+                    <input type="number" name="vyska" value="170" min="120" max="250" size="3" step="10" >
+                      
+                    <br><br>
+                </fieldset>
+                <br>
+                <input type="submit" value="Odeslat">                
+                <input type="reset" value="Smazat">
+                <button type="button" onclick="alert('Hello World!')">Hello World!</button>
+            </fieldset>  
+            
+        </form>
+        
+        <a href="http://www.w3schools.com/html/html_forms.asp" target="_blank">Tutoriál</a><br>
+        Parametry atributu TYPE elementu INPUT: button, checkbox, color, date , datetime , datetime-local , email , file, hidden, image, month , number , password, radio, range , reset, search, submit, tel, text, time , url, week.
+        
+    </body>
+</html>

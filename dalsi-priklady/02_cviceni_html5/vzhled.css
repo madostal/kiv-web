@@ -1,0 +1,98 @@
+body {
+    background: linear-gradient(red,orange,yellow,blue,green,brown);
+}
+
+#obal {
+    background-color: rgba(255,255,255,0.5);
+    width: 600px;
+    margin: 0px auto;
+    
+}
+
+header {
+    font-size: xx-large;
+    text-align: center;
+    color: darkblue;
+    padding: 10px 0px;
+
+}
+
+nav {
+    background-color: brown;
+    padding: 15px;
+}
+
+nav a{
+    margin: 0px 5px;
+    padding: 5px 20px;
+    border: 1px solid blue;
+    background-color: lightblue;
+    color: brown;
+    text-decoration: none;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+
+nav a:hover{
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+}
+
+#chyby {
+    margin: 20px;
+    border: 2px solid darkred;
+    padding: 30px;
+    font-weight: bold;
+    color: darkred;
+    border-radius: 20px;
+}
+
+article {
+    margin: 20px;
+    width: 450px;
+    position: relative;
+}
+
+#pravy_panel{
+    width: 100px;
+    position: absolute;
+    top:0px;
+    left: 460px;
+    height: 98%;
+    border: 2px solid darkgreen;
+    border-radius: 5px;
+}
+
+#pravy_panel div{
+    text-align: justify;
+    padding: 10px;
+    font-size: small;
+}
+
+#pravy_panel h3{
+    margin: 0px;
+    text-decoration: underline;
+}
+
+fieldset {
+    border-radius: 15px;
+    border-color: blue;
+}
+
+fieldset legend {
+    font-size: large;
+    padding: 3px 10px;
+    background-color: blue;
+    color: white;
+}
+
+.form_popisek{
+    font-weight: bold;
+}
+
+footer{
+    width: 600px;
+    margin: 0px auto;
+    text-align: right;
+}
