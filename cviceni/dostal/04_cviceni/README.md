@@ -6,6 +6,8 @@
 2. Úkol - zkuste si include druhého souboru
 3. Úkol - include druhého souboru dle parametru v URL, pozor na kontrolu vstupů. Řešení konzultujte se cvičícím. V tomto druhém souboru
  zkuste přistoupit k proměnné z prvního souboru (index.php).
+4. Úkol - v Php skriptu načtěte hodnoty ze souboru ```zvirata.txt``` a vypište je nejdříve přímo do html
+    a následně jako možnosti do selectu. Výsledek porovnejte se vzorem v souboru ```formular.php```.
 
 ## Zdroje:
 - [Php 5 na W3schools](http://www.w3schools.com/php/default.asp)
