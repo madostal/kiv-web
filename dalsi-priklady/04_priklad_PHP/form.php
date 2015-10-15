@@ -30,7 +30,7 @@
                     <br>
                     
                     Nahrát soubor:<br>
-                    <input type="file" name="soubor" multiple><br>
+                    <input type="file" name="soubor[]" multiple><br>
                     
                     Oblíbené zvíře (s CTRL zvolte více):<br>
                     <select name="zvire[]" size="5" multiple>
