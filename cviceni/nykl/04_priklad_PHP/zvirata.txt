@@ -7,3 +7,4 @@ velbloud
 ryba
 pták
 nosorožec
+had
