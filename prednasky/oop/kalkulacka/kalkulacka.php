@@ -9,12 +9,12 @@
     }
 
     $a = 1;
-    $b = 2;
+    $b = 3;
 
     $kalkulacka = new kalkulacka();
-    $c = $kalkulacka->secti(1, 2);
+    $c = $kalkulacka->secti($a, $b);
 
-    echo "Kolik je $a + $b?";
-    echo "Výsledek je: $c";
+    echo "Kolik je $a + $b? ";
+    echo "Výsledek je: <b>$c</b>";
 
 ?>
