@@ -10,12 +10,12 @@ Přednášky
   * OOP
 
 
-### Přednáška 6 - Php 3. část
+### Přednáška 6 - Php 3. část [4.11.]
   * MVC
   * Šablony
   
   
-### Přednáška 7 - Php 4. část
+### Přednáška 7 - Php 4. část [18.11.]
 
 
 ### Přednáška 8 - Apache
