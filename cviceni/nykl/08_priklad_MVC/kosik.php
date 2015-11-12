@@ -3,7 +3,7 @@
 // ziskani textu
 $nadpis = "Výběr zboží";
 $b = "<br>"; // pomocne odradkovani
-$text = "<a href='index.php?web=kosik'>Odkaz na úvodní stránku</a>".$b;
+$text = "<a href='index.php'>Odkaz na úvodní stránku</a>".$b;
 
 //// prace s kosikem uzivatele
 // pripojeni nahradni DB

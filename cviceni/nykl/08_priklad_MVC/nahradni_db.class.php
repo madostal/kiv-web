@@ -40,7 +40,7 @@ class Nahradni_DB{
     public function obsahKosiku($uzivatel){
         if(isset($_SESSION["kosik"][$uzivatel])){
             foreach($_SESSION["kosik"][$uzivatel] as $produkt => $pocet){
-                echo "q:".$produkt."-".$pocet."-".$uzivatel;
+                //echo "q:".$produkt."-".$pocet."-".$uzivatel;
                 $this->produkty[$produkt]["ks"] = $pocet;
                 $this->produkty[$produkt]["id"] = $produkt;
                 $obsah[] = $this->produkty[$produkt];
