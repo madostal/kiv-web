@@ -24,5 +24,5 @@
 :+1:
 
 ### Poznámky
-* Příhlad můžete stáhnout v ZIP archivu.
+* Příklad můžete stáhnout v ZIP archivu.
 * ZIP archiv s řešením vyžaduje heslo :dog:
