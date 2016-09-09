@@ -19,7 +19,9 @@
 ### 2. Úkol - jQuery:
 * Kde to lze, tak využijte jQuery namísto JavaScritpu - usnadní vám práci. Části kódu lze přejmout z prvního úkolu.
 * Přidejte do hlavičky stránky externí skript jQuery, např. takto:
+```
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+```
 * Do hlavičky stránky přidejte jQuery kód, který po načtení stránky změní hlavní nadpis stránky na “Stránka s jQuery”. Pozn.: jQuery kód pro toto cvičení pište vždy do záhlaví stránky, včetně přiřazení reakcí na události jednotlivým elementům po načtení stránky.
 * Očíslujte odkazy, které mají v atributu HREF hodnotu “http://kiv.zcu.cz” a současně nemají třídu “ma-titulek”  (pozn.: odkazy se správnou hodnotou HREF získejte přímo selektorem a z nich odfiltrujte .not() ty, které mají třídu “ma-titulek”. Pro číslování použijte .each(ind,elem) ).
 * Vytvořte funkci, která sečte hodnoty ze vstupních polí s id=“vstup-1” a id=“vstup-2” a výsledek zobrazí v elementu s id=”vysledek”. Funkci po načtení stránky přiřaďte příslušnému tlačítku.
