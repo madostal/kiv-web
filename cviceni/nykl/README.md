@@ -1,5 +1,10 @@
-KIV/WEB, Michal Nykl - materiály pro cvièení 
-=============
+# KIV/WEB - materiály pro cvièení 
 
-* Složky obsahují jednotlivé soubory k pøíkladùm a obvykle i .zip soubor s celým pøíkladem (snazší stažení).
-* Web s odkazy na prezentace: http://home.zcu.cz/~nyklm/kiv-web-aktual.php
+* Složky obsahují úkoly a pøíklady pro cvièení z pøedmìtu KIV/WEB
+* Pro snazší stažení lze využít .zip archivy s celými pøíklady.
+* Web s odkazem na prezentace: http://home.zcu.cz/~nyklm/kiv-web-aktual.php
+
+
+
+Michal Nykl, Záøí 2016,
+Západoèeská univerzita v Plzni, Katedra informatiky a výpoèetní techniky.

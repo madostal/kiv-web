@@ -22,3 +22,7 @@
 * Ve zbylém čase si prohlédněte soubory CSS, JS a PHP a pomozte kolegům dokončit cvičení.
 * Pozn.: pokud v JS souboru uděláte chybu, tak se můžete podívat na chybový výpis v konzoli prohlížeče.
 :+1:
+
+### Poznámky
+* Příhlad můžete stáhnout v ZIP archivu.
+* ZIP archiv s řešením vyžaduje heslo :dog:
