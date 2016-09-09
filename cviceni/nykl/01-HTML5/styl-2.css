@@ -1,0 +1,48 @@
+body {
+    background-color: lightgray;   
+}
+
+div {
+    border: 1px solid blue;
+    background-color: antiquewhite;
+}
+
+span {
+    background-color: yellow;
+}
+
+p {
+    background-color: burlywood;
+}
+
+div div {
+    border: 1px dashed darkred;
+}
+
+/* doplneny vzhled */
+
+* {
+    box-sizing: border-box;
+}
+
+div {
+    margin: 5px;      
+}
+
+#prvni-div, #druhy-div {
+    display: inline-block;
+    overflow: hidden;
+}
+
+#prvni-div {
+    float: left;
+    width: 30%;    
+}
+
+#druhy-div {
+    width: 60%;
+}
+
+img{
+    width: 100%;
+}
