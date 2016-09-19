@@ -2,15 +2,15 @@ Přednášky
 =============
 
 ### Přednáška 1 - úvod do HTML
-  * první webová stránka
+  * [úvod do HTML](https://github.com/madostal/kiv-web/tree/master/prednasky/uvod_html)
   * doporučuji tutoriál na [W3schools - HTML5](http://www.w3schools.com/html/default.asp)
 
 ### Přednáška 2 - CSS
-  * úvod do CSS
+  * [úvod do CSS](https://github.com/madostal/kiv-web/tree/master/prednasky/uvod_css)
 
 ### Přednáška 3 - CSS
   * CSS 3
-  * Bootstrap
+  * [Bootstrap](http://getbootstrap.com/)
   * Preprocesory [SASS](http://sass-lang.com/guide) a [LESS](http://lesscss.org/)
 
 ### Přednáška 4 - Php 1. část
