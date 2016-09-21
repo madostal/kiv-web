@@ -38,3 +38,14 @@ Přednášky
 
 ## Minulé přednášky
 
+
+Studijní materiály
+=============
+
+W3 Schools
+
+  * [W3schools - HTML 5](http://www.w3schools.com/html/default.asp)
+  * [W3schools - CSS](http://www.w3schools.com/css/default.asp)
+  * [W3schools - Bootstrap](http://www.w3schools.com/bootstrap/default.asp)
+  * [W3schools - PHP](http://www.w3schools.com/php/default.asp)
+
