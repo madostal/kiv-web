@@ -21,6 +21,7 @@
 * Na konec stránky připojte soubor s JavaScriptem (zmena-nadpisu.js) - zaznamenáte změnu chování stránky (změní se obsah prvního H2 nadpisu).
 * Ve zbylém čase si prohlédněte soubory CSS, JS a PHP a pomozte kolegům dokončit cvičení.
 * Pozn.: pokud v JS souboru uděláte chybu, tak se můžete podívat na chybový výpis v konzoli prohlížeče.
+
 :+1:
 
 ### Poznámky
