@@ -4,7 +4,7 @@
 
 * Vytvořte česky psanou stránku s kódováním UTF-8. 
 * Vyplňte hlavičku stránky (tj. název stránky, popis, klíčová slova, autora) libovolnými daty.
-* Připojte soubor s kaskádovým stylem (styl-1.css) - měly byste zaznamenat změnu pozadí stránky.
+* Připojte soubor s kaskádovým stylem (styl-1.css) - zaznamenáte změnu pozadí stránky.
 * Vložte do stránky hlavní nadpis (H1).
 * Vložte do stránky dva oddíly (DIV) a do každého dejte nadpis druhé úrovně (H2). Dejte oddílům atribut id s “prvni-div” a “druhy-div”.
 * Do prvního oddílu vložte libovolný text (alespoň pět “vět”), využijte libovolné LoremIpsum.
@@ -18,9 +18,10 @@
 * Prohlédněte si vytvořený web.
 * Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování (pozn.: “lang” [http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) )
 * Pomocí prohlížeče “prozkoumejte” libovolný prvek na stránce a prohlédněte si zobrazený DOM (Document Object Model) webu.
-* Na konec stránky připojte soubor s JavaScriptem (zmena-nadpisu.js) - měli byste zaznamenat změnu chování stránky (změní se obsah prvního H2 nadpisu).
+* Na konec stránky připojte soubor s JavaScriptem (zmena-nadpisu.js) - zaznamenáte změnu chování stránky (změní se obsah prvního H2 nadpisu).
 * Ve zbylém čase si prohlédněte soubory CSS, JS a PHP a pomozte kolegům dokončit cvičení.
 * Pozn.: pokud v JS souboru uděláte chybu, tak se můžete podívat na chybový výpis v konzoli prohlížeče.
+
 :+1:
 
 ### Poznámky
