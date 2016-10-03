@@ -1,0 +1,13 @@
+/* pouziti promenne */
+body {
+  background-color: #3399ff;
+}
+#header {
+  color: #green;
+}
+#header .navigation {
+  font-size: 38px;
+}
+#header .logo {
+  width: 300px;
+}

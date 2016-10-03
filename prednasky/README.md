@@ -15,7 +15,10 @@ Přednášky
 ### Přednáška 3 - CSS
   * CSS 3
   * [Bootstrap](http://getbootstrap.com/)
-  * Preprocesory [SASS](http://sass-lang.com/guide) a [LESS](http://lesscss.org/)
+    * bootstrap - základní ukázka použití
+  * [LESS](http://lesscss.org/) - doporučuji (využívá Node.JS)
+    * less_preprocesor - základní ukázka
+  * Preprocesory [SASS](http://sass-lang.com/guide) - nedoporučuji (využívá Ruby)
 
 ### Přednáška 4 - Php 1. část
   * základní sada příkladů pro [úvod do PHP](https://github.com/madostal/kiv-web/tree/master/prednasky/uvod_php)
