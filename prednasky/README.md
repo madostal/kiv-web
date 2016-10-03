@@ -7,6 +7,10 @@ Přednášky
 
 ### Přednáška 2 - CSS
   * [úvod do CSS](https://github.com/madostal/kiv-web/tree/master/prednasky/uvod_css)
+  * doporučuji tutoriál na [W3schools - CSS](http://www.w3schools.com/css/default.asp)
+  * Git
+    * [tutoriál na Githubu](https://guides.github.com/activities/hello-world/)
+    * [interaktivní tréning](https://try.github.io/levels/1/challenges/1)
 
 ### Přednáška 3 - CSS
   * CSS 3
@@ -34,9 +38,6 @@ Přednášky
 
 ### Přednáška 8 - Webový server
 
-
-
-## Minulé přednášky
 
 
 Studijní materiály
