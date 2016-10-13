@@ -32,6 +32,7 @@
   * Zařízení s šířkou obrazovky alespoň 500px (tablet).
     * Nastavte správně šířky pro sloupce col-1 až col-12.
     * Barva pozadí stránky - bílá.
+    * Pozn.: prohlížeč Opera umožňuje mít nejmenší šířku okna 512px, tj. neuvidíte změnu. Pokud ho používáte, tak "pro tablet" použijte hodnotu 756px a "pro PC" hodnotu 1000px.
   * Zařízení s šířkou obrazovky alespoň 756px (PC).
     * Barva pozadí stránky - oranžová.
     * Všem sloupcům nastavte, aby při najetí myši zobrazily svůj rámeček - bílý, tečkovaný, 1px. Na obr. responzivni-PC.png byla myš v oblasti menu.
