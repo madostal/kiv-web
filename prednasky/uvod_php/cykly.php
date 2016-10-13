@@ -21,4 +21,21 @@
     }
 
 
+    // while - s podmínkou na začátku
+    echo "<h2>Cyklus while</h2>";
+    $x = 1;
+
+    while($x <= 5) {
+        echo "X: $x <br>";
+        $x++;
+    }
+
+    // do-while - s podmínkou na konci
+    echo "<h2>Cyklus do-while</h2>";
+    $x = 1;
+
+    do {
+        echo "The number is: $x <br>";
+        $x++;
+    } while ($x <= 5);
 ?>
