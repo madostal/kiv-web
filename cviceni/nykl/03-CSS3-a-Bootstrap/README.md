@@ -1,7 +1,7 @@
 # 3. cvičení KIV/WEB - CSS 3, responzivní design, Bootstrap.
 
 
-## 0. úkol (1/2) - práce s prezentací
+## 0. úkol - práce s prezentací
 
 * Pokročilé selektory CSS
   * Doporučuji navštívit odkazy Pseudo-třídy a Další možné selektory (sl.3).
