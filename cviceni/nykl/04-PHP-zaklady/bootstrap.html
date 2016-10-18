@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap - Grid System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- dodatečný styl -->
+    <style>
+        div {
+            text-align: justify;
+        }
+        /* cast tlacitek */
+        .tlacitka div {
+            border: 5px outset gray;
+            padding: 20px;
+            text-align: center;
+            background-color: darkblue;
+            color: white;
+        }
+        .tlacitka div:hover {
+            border: 5px inset gray;
+            background-color: blue;
+        }
+        /* cast obsahu */
+        .obsah div {
+            border: 1px solid black;
+            padding: 5px;
+            background-color: rgb(253, 255, 171);
+        }
+        .obsah div:first-child {
+            background-color: rgb(255, 227, 171);
+        }
+        .obsah div:last-child {
+            background-color: rgb(230, 255, 246);
+        }
+        /* cast zapati */
+        .zapati {
+            background-color: dimgray;
+            color: white;
+            padding: 5px;
+        }
+        .zapati div {
+            border: 1px solid white;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Zahlavi - tlacitka -->
+        <div class="tlacitka">
+            <div class="">
+                První
+            </div>
+            <div class="">
+                Druhý
+            </div>
+            <div class="">
+                Třetí
+            </div>
+            <div class="">
+                Čtvrtý
+            </div>
+            <div class="">
+                Pátý
+            </div>
+            <div class="">
+                Šestý
+            </div>
+        </div>
+        <!-- Obsah -->
+        <div class="obsah">
+            <div class="">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce consectetuer risus a nunc. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Nulla est. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Duis viverra diam non justo. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In rutrum. Fusce consectetuer risus a nunc. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Morbi scelerisque luctus velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Integer imperdiet lectus quis justo. Praesent dapibus. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Quisque tincidunt scelerisque libero.<br>
+                Nullam sit amet magna in magna gravida vehicula. Donec quis nibh at felis congue commodo. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus quam ultricies odio, vitae placerat pede sem sit amet enim. Nullam eget nisl. Morbi scelerisque luctus velit. Nunc tincidunt ante vitae massa. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Duis condimentum augue id magna semper rutrum. Donec vitae arcu. In enim a arcu imperdiet malesuada. Mauris dictum facilisis augue.<br>
+                Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Fusce consectetuer risus a nunc. Integer pellentesque quam vel velit. Donec quis nibh at felis congue commodo. Pellentesque ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Vestibulum fermentum tortor id mi. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </div>
+            <div class="">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce consectetuer risus a nunc. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Nulla est. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Duis viverra diam non justo. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In rutrum. Fusce consectetuer risus a nunc. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Morbi scelerisque luctus velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Integer imperdiet lectus quis justo. Praesent dapibus. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Quisque tincidunt scelerisque libero.<br>
+                Nullam sit amet magna in magna gravida vehicula. Donec quis nibh at felis congue commodo. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus quam ultricies odio, vitae placerat pede sem sit amet enim. Nullam eget nisl. Morbi scelerisque luctus velit. Nunc tincidunt ante vitae massa. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Duis condimentum augue id magna semper rutrum. Donec vitae arcu. In enim a arcu imperdiet malesuada. Mauris dictum facilisis augue.<br>
+                Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Fusce consectetuer risus a nunc. Integer pellentesque quam vel velit. Donec quis nibh at felis congue commodo. Pellentesque ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Vestibulum fermentum tortor id mi. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </div>
+            <div class="">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Fusce consectetuer risus a nunc. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Nulla est. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Duis viverra diam non justo. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In rutrum. Fusce consectetuer risus a nunc. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Morbi scelerisque luctus velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Integer imperdiet lectus quis justo. Praesent dapibus. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Quisque tincidunt scelerisque libero.
+                Nullam sit amet magna in magna gravida vehicula. Donec quis nibh at felis congue commodo. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus quam ultricies odio, vitae placerat pede sem sit amet enim. Nullam eget nisl. Morbi scelerisque luctus velit. Nunc tincidunt ante vitae massa. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Duis condimentum augue id magna semper rutrum. Donec vitae arcu. In enim a arcu imperdiet malesuada. Mauris dictum facilisis augue.
+                Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Fusce consectetuer risus a nunc. Integer pellentesque quam vel velit. Donec quis nibh at felis congue commodo. Pellentesque ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Vestibulum fermentum tortor id mi. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </div>
+        </div>
+        <!-- Zapati -->
+        <div class="zapati">
+            <div class="">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ligula pede, sagittis quis.
+            </div>
+            <div class="">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ligula pede, sagittis quis.
+            </div>
+            <div class="">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ligula pede, sagittis quis.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
