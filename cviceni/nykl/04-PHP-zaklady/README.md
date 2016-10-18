@@ -25,6 +25,8 @@
   
 ## 2. úkol - základ PHP
 
+### 1.část
+
 * Prohlédněte si prezentaci k tomuto cvičení.
 * Vytvořte nový soubor s názvem funkce.php a načtěte ho v souboru form.php.
 * V souboru form.php doplňte formuláři odesílání metodou POST na soubor vystup.php.
@@ -34,11 +36,13 @@
 * V souboru funkce.php vytvořte funkci pro uložení tabulky do HTML souboru. Soubor bude mít název “rok-mesic-den_hodina-minuty-sekundy.html” a bude ukládán do adresáře “vystup”. Kontrolujte také existenci adresáře "vystup" a pokud neexistuje, tak ho vytvořte. (Pomoc: použijte funkci datumu date("Y-m-d_H-i-s") ).
   * Danou funkcionalitu přidejte do souboru vystup.php tak, aby při neprázdném vstupu uložila tento vstup do souboru ve formě HTML tabulky (tj. vždy, když jsou odeslána data z formuláře).
 
+### 2.část
 
 * V souboru funkce.php vytvořte 3 funkce, který vypíší odlišné pozdravy (např. funkce a, c, n, které vypíší "ahoj", "čau", "nazdar").
 * V souboru form.php vytvořte nový selekt box s názvem "pozdrav", který bude umožňovat volbu názvu daných funkcí (tj. např. a, c, n).
 * V souboru vystup.php nebo funkce.php doplňte funkcionalitu, která na základě vstupu ze selekt boxu zavolá odpovídající funkci ze souboru funkce.php.
 
+### 3.část
 
 * Zkuste si vytvořit a vypsat asociativní (multi-typové) pole.
 
