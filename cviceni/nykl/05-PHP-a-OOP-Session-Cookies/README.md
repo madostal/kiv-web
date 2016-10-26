@@ -31,7 +31,7 @@
   * Vytvořte funkci, která vypíše informace o automobilu tak, že za každé kolo vytvoří jeden čtverec (např. 50x50px) se zvolenou barvou pozadí.
 * Zakomponujte předchozí třídu do souboru nakup-auta.php tak, aby se do cookies uložily informace z formuláře, popř. aby se smazaly.
   * Odpovídající informace také vypište pod "Vybraný automobil" (využijte dříve vytvořenou funkci).
-* Otestujte funkčnost
+* Otestujte funkčnost.
   * Informace by měly zůstat uchovány i po zavření a znovu spuštění prohlížeče. (pozn.: to, že se zobrazí pouze přihlášenému uživateli, už bylo zprovozněno v 1. úkolu).
   
 
