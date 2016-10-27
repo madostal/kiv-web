@@ -6,7 +6,7 @@
 ## 1. úkol - správa přihlášení uživatele
 
 * Cílem je vytvořit funkční přihlašování uživatele na web.
-* Vytvořte třídu pro ukládání, načítání a mazání session.
+* Vytvořte třídu pro inicializaci, ukládání, načítání a mazání session.
 * Vytvořte třídu umožňující přihlášení uživatele, tj.:
   * Budete potřebovat metodu pro zahájení session (např. v konstruktoru), metodu pro přihlášení uživatele, metodu pro kontrolu přihlášení uživatele a metodu pro odhlášení uživatele.
   * Při přihlášení uživatele uložte i datum a čas jeho přihlášení.
