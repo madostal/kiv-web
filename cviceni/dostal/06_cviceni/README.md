@@ -1,5 +1,7 @@
 # Php - 3. část - procvičení PDO, šablony, MVC
 
+Tutorial: php-mvc-cviceni
+
 ## Úkoly
 
 1) Navrhněte si databázi pro Vaší semestrální práci. Můžete využít např. MySql workbench. Po instalaci nástroje si vždy nejdříve zkuste uložit prázdný 

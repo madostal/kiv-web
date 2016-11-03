@@ -17,3 +17,5 @@ Jako databázi použijte buď školní databázi db1_vyuka ze serveru students.k
   * b) K databázi se připojte s využitím PDO, načtěte si všechny záznamy z tabulky predmety a data vypište např. s ```print_r```. 
   * c) Výpis předmětů ostylujte s využitím bootstrapu a vypište do přehledné tabulky s ```class = "table table-striped table-bordered"```.
        K tomuto účelu použijte funkci ```foreach```.
+  * d) Aplikaci můžete rozšířit o přihlašování uživatelů a o operace CRUD nad touto tabulkou pro přihlášené uživatele. 
+        Řešení ve složce ukol_2 není kompletní, ale je pouze výsledkem tutoriálu realizovaného na cvičení.
