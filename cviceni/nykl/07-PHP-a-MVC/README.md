@@ -8,7 +8,8 @@
 
 * Chceme vytvořit aplikaci s MVC architekturou, která bude vypisovat pohádky a umožňovat správu uživatelů (ideálně 1. varianta MVC z prezentace, viz php-a-mvc-priklad-var1_*.png).
   * příklad zobrazení webu viz mvc_uvod.png a mvc_sprava.png.
-  ![Příklad MVC v PHP](/php-a-mvc-priklad-var1_2.png)
+  
+  ![Příklad MVC v PHP](php-a-mvc-priklad-var1_2.png)
   
 * Vrstva Controllers (ovladačů) - bude obsahovat 3 soubory (con-index.php, con-uvod.class.php, con-sprava-uzivatelu.class.php).
   * "Rozcestník" - jediný vstupní bod do aplikace (con-index.php).
