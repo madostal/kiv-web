@@ -50,7 +50,7 @@ Plán:
 - vyzkoušet jednotlivé techniky a připravit kus SP 
 
 
-### 3. Konzultace - listopad (možná Po 14.11. 17h - 19h)
+### 3. Konzultace - listopad (Po 14.11. 17h - 19h)
 
 Plán:
 - vývoj v Php a řešení dotazů
@@ -60,10 +60,16 @@ Plán:
 
 
 
-### 4. Konzultace - prosinec (možná Po 12.12. 17 - 19h)
+### 4. Konzultace - prosinec (Pá 9.12. 15h - 17h)
 
 Plán:
 - odevzdávání SP za bonusové body (10) - silně doporučuji
+
+
+### Volitelná konzultace - prosinec (Po 12.12. 16 - 18h)
+
+- tato konzultace se uskuteční pouze v případě zájmu min. 3 studentů, kteří svůj zájem
+předem potvrdí emailem.
 
 
 ### Další materiály
