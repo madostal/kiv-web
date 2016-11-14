@@ -1,0 +1,22 @@
+RewriteEngine on
+
+# Pokud chci presmerovavat:
+# RewriteRule co_presmerovat /kam_presmerovat [L,QSA] 
+
+# pokud chci z adresy bez www. udelat adresu s www.
+# RewriteCond %{HTTP_HOST} ^pocitejme\.cz [nc]
+# RewriteRule (.*) http://www.pocitejme.cz/$1 [R=301,L]
+
+# vstupni soubor v danem adresari, pokud zadny jiny neni zvolen
+# defaultne jsou to index.php a index.html
+# DirectoryIndex con-index.php
+
+# hezke URL adresy (var.1), vyzaduje zpracování v php
+# RewriteRule ^(.*)/$ /con-index.php [L,QSA] 
+
+# hezke URL adresy (var.2), zdroj: http://www.samuraj-cz.com/clanek/pekne-adresy-aneb-cool-uri-aneb-apache-mod-rewrite/
+# RewriteRule ^clanky/strana([0-9]*)/?$ /clanky.php?page=$1 [L,QSA]
+
+# vlastni chybove stranky
+# ErrorDocument 403 /errorPage.php
+# ErrorDocument 404 /errorPage.php
