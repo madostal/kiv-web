@@ -1,4 +1,4 @@
-# 6. cvičení KIV/WEB - PHP a MVC.
+# 7. cvičení KIV/WEB - PHP a MVC.
 
 * Projděte si prezentaci k tomuto cvičení.
 * Může se hodit - [tutoriál SQL](http://www.w3schools.com/sql/default.asp).
