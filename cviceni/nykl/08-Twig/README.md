@@ -29,13 +29,9 @@
 * Vaším cílem je práce se šablonami, tj. budete měnit pouze soubor index.php a šablony. Zbytek aplikace ponechte pokud možno bezezměny.
 * Zprovozněte aplikaci a prohlédněte si aktuální šablonu ve třídě sablona.class.php. 
 * Hlavní cíle:
-  * vytvořit obdobnou šablonu s využitím Twigu.
-  * vytvořit obdobnou šablonu s využitím wrapperu.
+  * Vytvořit obdobnou šablonu s využitím Twigu.
+  * Vytvořit obdobnou šablonu s využitím wrapperu.
   
-
-### 2.2 úkol - vytvoření šablony s využitím PHP Wrapperu
-
-Bude doplněno (snad).
 
 ### 2.1 úkol - vytvoření šablony s využitím Twigu
 
@@ -66,7 +62,11 @@ Bude doplněno (snad).
   * Vytvořte makro pro vypsání INPUT elementů a zakomponujte ho do stránky (nezapomeňte na import).
   * Vytvořte makro pro vypsání řádek s produkty (obchod i košík) a zakomponujte ho do stránky.
     * Použíte funkci Cycle pro odlišení sudých a lichých řádků tabulek (např. barvou pozadí).
-  
+
+
+### 2.2 úkol - vytvoření šablony s využitím PHP Wrapperu
+
+Bude doplněno (snad).
 
 
 :+1:
@@ -76,4 +76,4 @@ Bude doplněno (snad).
 
 * V praxi by nejspíš nebyla takto jednoduchá šablona tolik členěna.
 * Příklad můžete stáhnout v ZIP archivu.
-* ZIP archiv s řešením vyžaduje heslo :camel:
+* ZIP archiv s řešením vyžaduje heslo :rabbit:
