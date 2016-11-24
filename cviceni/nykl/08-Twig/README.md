@@ -1,5 +1,3 @@
-* Bude dopracováno.
-
 # 8. cvičení KIV/WEB - Šablonovací systém Twig
 
 * Projděte si prezentaci k tomuto cvičení.
@@ -30,7 +28,7 @@
 * Zprovozněte aplikaci a prohlédněte si aktuální PHP šablonu ve třídě sablona.class.php. 
 * Hlavní cíle:
   * Vytvořit obdobnou šablonu s využitím Twigu.
-  * Vytvořit obdobnou šablonu s využitím wrapperu.
+  * Prohlédnout si PHP šablonu, která je zobrazována s využitím wrapperu.
   
 
 ### 2.1 úkol - vytvoření šablony s využitím Twigu
@@ -56,17 +54,26 @@
     * Pokud existuje uživatel i koš, tak vypište produkty v košíku.
     * Pozn.: Pokud neexistuje uživatel, tak nevypisujte nic (tj. měl by ze stránky zmizet text "Obsah stránky").
     * Ověřte, že funguje vkládání produktů do košíku a jejich mazání z košíku.
-
+  
 
 * Vyzkoušejte si následující, ideálně přesunem daného kódu do nového souboru (např. makra.twig):
   * Vytvořte makro pro vypsání INPUT elementů a zakomponujte ho do stránky (nezapomeňte na import).
-  * Vytvořte makro pro vypsání řádek s produkty (obchod i košík) a zakomponujte ho do stránky.
-    * Použijte funkci Cycle pro odlišení sudých a lichých řádků tabulek (např. barvou pozadí).
+  * Vytvořte makro pro vypsání formuláře s řádkem obsahujícím produkt a zakomponujte ho do stránky jak pro výpis produktů v obchodě, tak i v košíku.
+    * Toto je složitější, protože v řádku je používáno makro pro výpis INPUT elementů, tj. budete muset v souboru s makry importovat tentýž soubor.
+    * Do makra si předejte informaci, zda se jedná o výpis produktů v obchodě či v košíku.
+    * Použijte funkci Cycle pro odlišení sudých a lichých řádků tabulek (např. barvou pozadí). Pozn.: funkce nejspíš nebude v samotném makru.
+    * Lze řešit různě.
 
 
-### 2.2 úkol - vytvoření šablony s využitím PHP Wrapperu
+### 2.2 úkol - příklad na využití Wrapperu
 
-* Zkuste sami, viz [Příklad s PHP Wrapperem](https://github.com/madostal/kiv-web/tree/master/dalsi-priklady/php_wrapper).
+* Mini tutoriál: [Příklad s PHP Wrapperem](https://github.com/madostal/kiv-web/tree/master/dalsi-priklady/php_wrapper).
+  * Wrapper je implementací návrhového vzoru Adaptér.
+* Prohlédněte si soubor wrapper.class.php, který zajišťuje správné načtení šablony.
+* Prohlédněte si soubor sablony/sablona.wrap.php
+  * Jedná se o téměř totožnou PHP šablonu s šablonou sablony/sablona.class.php, pouze zde není objekt ani funkce pro vypsání, ale HTML se přímo vypisuje do výstupu.
+  * Data jsou do šablony předána využitím globální proměnné.
+  * Díky wrapperu je ale šablona vypsána až v souboru index.php.
 
 
 :+1:
