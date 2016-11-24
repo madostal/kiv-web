@@ -81,6 +81,6 @@
 
 ### Poznámky
 
-* V praxi by nejspíš nebyla takto jednoduchá Twig šablona tolik členěna.
+* V praxi by nejspíš nebyla takto jednoduchá Twig šablona tolik členěna. Naopak by nejspíš existovala jedna šablona pro úvod a druhá šablona pro obchod.
 * Příklad můžete stáhnout v ZIP archivu.
 * ZIP archiv s řešením vyžaduje heslo :rabbit:

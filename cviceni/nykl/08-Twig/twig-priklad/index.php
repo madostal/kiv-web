@@ -63,9 +63,9 @@ Sablona::zobraz($data); // funkce pro vykresleni sablony
 ///////////////////////////////////////////////////////
 
 /////////// vytvoreni vzhledu - TWIG sablona  ////////////////////
-
+/*
 // nacist twig - kopie z dokumentace
-/*require_once 'twig-master/lib/Twig/Autoloader.php';
+require_once 'twig-master/lib/Twig/Autoloader.php';
 Twig_Autoloader::register();
 
 // cesta k adresari se sablonama - od index.php
