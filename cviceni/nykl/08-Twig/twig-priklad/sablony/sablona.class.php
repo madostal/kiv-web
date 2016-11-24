@@ -7,6 +7,8 @@ class Sablona{
     *   @param array $data Data pro vypsani v sablone.
     */
     public static function zobraz($data){
+        // nasledujici kod berte pouze jako ilustraci
+        // v praxi by nejspis existovaly 2 sablony (uvod a obchod).
 ?>
 <!doctype html>
 <html lang="cs">
@@ -15,7 +17,7 @@ class Sablona{
         <title><?php echo $data["nadpis"]; ?></title>
         <style>
             body { background-color:lightblue; }
-            #obal { background-color:white; width:500px; margin:0 auto; padding:20px; }
+            #obal { background-color:white; width:600px; margin:0 auto; padding:20px; }
             h1 { background-color: blue; color: white; text-align: center; }
             #vypis { border: 1px solid darkred; text-align: center; }
             .text { text-align: justify; }
