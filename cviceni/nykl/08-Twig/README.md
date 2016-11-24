@@ -66,7 +66,7 @@
 
 ### 2.2 úkol - vytvoření šablony s využitím PHP Wrapperu
 
-Zkuste sami
+* Zkuste sami, viz [Příklad s PHP Wrapperem](https://github.com/madostal/kiv-web/tree/master/dalsi-priklady/php_wrapper).
 
 
 :+1:
