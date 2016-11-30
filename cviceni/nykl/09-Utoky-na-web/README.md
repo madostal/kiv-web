@@ -17,7 +17,7 @@
 * Pozn.: příliš se nezaobírejte strukturou aplikace. Jde spíše o ukázku nevhodné implementace webu, ale pro naše účely je dostatečná.
 
 
-## 1. úkol - XSS útok a jeho ošetření
+## 1. úkol - Cross-Site Scripting (XSS) útok a jeho ošetření
 
 * Využijte vstupní prvky Návštěvní knihy a podsuňte webu XSS útokem svou reklamu.
   * Pozn.: při vypracovávání budete nejspíš potřebovat průběžně mazat nepovedené pokusy z databáze.
