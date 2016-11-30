@@ -55,6 +55,7 @@
   * Používat předpřipravené dotazy.
   * Používat převody HTML tagů na speciální znaky.
   * Používat v SQL dotazech tzv. backticks, např.: SELECT * FROM `username_uzivatele` WHERE `iduzivatel`=...
+    * Jedná se o [symbol zpětného apostrofu](https://en.wiktionary.org/wiki/backtick) (Readme na GitHubu je ale nezobrazuje).
     * Umožňuje nejspíš pouze MySQL.
 
 
