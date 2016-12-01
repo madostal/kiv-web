@@ -52,6 +52,7 @@ class Databaze{
         $vystup = $this->db->prepare($dotaz);
         $jm = htmlspecialchars($jm);
         $vystup->execute(array($jm, $log, $pas, $mail));*/
+        
     }
     
     public function vratPrispevky(){
