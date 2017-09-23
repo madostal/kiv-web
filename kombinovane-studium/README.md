@@ -4,7 +4,7 @@ KIV/WEB - kombinované studium
 ## Plán hromadných konzultací
 
 - konzultace jsou nepovinné
-- hromadné konzultace cca 1x za 3 týdny v případě zájmu
+- hromadné konzultace cca 1x za 4 týdny v případě zájmu
 - sraz většinou na chodbě KIV	
 - materiály ke studiu: 
   - přednášky - viz. CW 
@@ -12,7 +12,7 @@ KIV/WEB - kombinované studium
   - tutoriály [W3schools](http://www.w3schools.com/)
   
 
-### 1. Konzultace - září - 26.9.2016
+### 1. Konzultace - září - 25.9.2017 od 16:40 (UC 329)
 
 Plán:
 
@@ -39,7 +39,7 @@ Plán:
 	
 - na konzultaci si můžete donést vlastní notebook, kde budete programovat v Php
 
-### 2. Konzultace - říjen - So 15.10. 8:00 - 9:45 (KIV)
+### 2. Konzultace - říjen - bude upřesněn (KIV)
 
 Plán:
 - úvod do Php včetně úvodu do MVC, 
@@ -50,7 +50,7 @@ Plán:
 - vyzkoušet jednotlivé techniky a připravit kus SP 
 
 
-### 3. Konzultace - listopad (Po 14.11. 17h - 19h)
+### 3. Konzultace - listopad - bude upřesněn
 
 Plán:
 - vývoj v Php a řešení dotazů
@@ -60,13 +60,13 @@ Plán:
 
 
 
-### 4. Konzultace - prosinec (Pá 9.12. 15h - 17h)
+### 4. Konzultace - prosinec - bude upřesněn
 
 Plán:
 - odevzdávání SP za bonusové body (10) - silně doporučuji
 
 
-### Volitelná konzultace - prosinec (Po 12.12. 16 - 18h)
+### Volitelná konzultace - prosinec - bude upřesněn
 
 - tato konzultace se uskuteční pouze v případě zájmu min. 3 studentů, kteří svůj zájem
 předem potvrdí emailem.
