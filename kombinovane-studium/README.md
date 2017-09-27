@@ -12,7 +12,7 @@ KIV/WEB - kombinované studium
   - tutoriály [W3schools](http://www.w3schools.com/)
   
 
-### 1. Konzultace - září - 25.9.2017 od 16:40 (UC 329)
+### 1. Konzultace - září - Po 25.9.2017 od 16:40 (UC 329)
 
 Plán:
 
@@ -39,7 +39,7 @@ Plán:
 	
 - na konzultaci si můžete donést vlastní notebook, kde budete programovat v Php
 
-### 2. Konzultace - říjen - bude upřesněn (KIV)
+### 2. Konzultace - říjen - Po 16.10.2017 od 16:40 (UC 329)
 
 Plán:
 - úvod do Php včetně úvodu do MVC, 
@@ -63,7 +63,7 @@ Plán:
 ### 4. Konzultace - prosinec - bude upřesněn
 
 Plán:
-- odevzdávání SP za bonusové body (10) - silně doporučuji
+- odevzdávání SP za bonusové body - silně doporučuji
 
 
 ### Volitelná konzultace - prosinec - bude upřesněn
