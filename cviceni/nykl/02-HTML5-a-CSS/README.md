@@ -7,12 +7,12 @@
 * Vytvořte formulář s následujícími vstupy:
   * Příslušné typy INPUT elementu
     * Login (name=login), E-mail (name=mail), Heslo (name=heslo) - musí být zadáno.
-    * Pohlaví (Žena/Muž) (name=pohlavi).
-    * Datum narození (name=narozeni).
+    * Pohlaví (Žena/Muž) (name=pohlavi) - využijte typ "radio" a názvy vložte do LABEL.
+    * Datum narození (name=narozeni) - pozn.: kalendář zobrazí jen některé prohlížeče, např. Chrome.
     * Oblíbená barva (name=barva).
     * Nahrání fotografie (name=foto) - lze zvolit více souborů, ale pouze obrázky (accept="image/*").
     * Výška v cm (name=vyska) - využijte typ "number" (min=50, max=250, step=10, value=170).
-    * Počet dětí (name=deti) - využijte typ "range", nastavte min/max a výsledek nechte zobrazit v OUTPUT.
+    * Počet dětí (name=deti) - využijte typ "range", nastavte min/max a výsledek nechte zobrazit v [OUTPUT](https://www.w3schools.com/tags/tag_output.asp).
   * Příslušné typy SELECT elementu
     * Auto (name=auto) - využijte OPTGROUP a auta rozdělte na Švédská (Volvo, Saab) a Německá (Mercedes, Audi). Defaultně bude vybrán Mercedes. Zvolit lze pouze jedno auto.
     * Domácí zvíře (name=zvire[]) - vyplňte 5 libovolných zvířat, viditelné nechte 3 položky seznamu a uživateli nechte možnost zvolit více zvířat.
@@ -22,10 +22,10 @@
   * TEXTAREA element
     * O mě (name=ome) - textová oblast přes 4 řádky a 30 sloupců.
   * Doplňte tlačítka (INPUT) pro smazání a odeslání formuláře.
-  * Doplňte tlačítko (BUTTON) pro vypsání alertu s textem "Hello Word" (JS: onclick=alert("Hello Word") ).
+  * Doplňte tlačítko (BUTTON) pro vypsání alertu s textem "Hello Word" (JS: onclick="alert('Hello Word')" ).
 * Do vlastní složky na Students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php.
   * Alternativně lze využití: http://students.kiv.zcu.cz/~nyklm/+studenti-kiv-web/02-formular-zobrazeni.php .
-  * Pozn.: raději využijte alternativu a vlastní soubor si zkuste, pokud Vám zbyde čas.
+  * Pozn.: raději jako alternativu využijte předchozí URL a vlastní soubor si zkuste, pokud Vám zbyde čas.
 * Do hlavičky formuláře doplňte metodu odeslání (method, get/post), URL adresu souboru formular-zobrazeni.php (action) a informaci, že se má výsledek zobrazit na nové záložce/stránce (target="blank").
 * Odešlete formulář s GET a s POST a všimněte si změny URL adresy v případě GET.
 * Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování (pozn.: “lang” [http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ).
@@ -41,7 +41,7 @@
 * Pozadí celé stránky nastavte libovolný přeliv barev (např.: linear-gradient(red,orange,yellow,green,blue,brown); ).
 * Celý obsah stránky je v elementu s id="obal". 
   * přiřaďte tomuto elementu šířku 600px. 
-  * zarovnejte ho na střed stránky (vnější odsazení margin:10px auto;)
+  * zarovnejte ho na střed stránky s horním a dolním odsazením 10px (vnější odsazení - margin:10px auto;)
   * a nastavte mu bílé pozadí s 50% průhledností (rgba(255,255,255,0.5)).
 * Hlavičce stránky nastavte velikost písma xx-large, zarovnání na střed, barvu písma darkred a vnitřní horní i dolní odsazení na 10px (padding).
 * Navigaci nastavte:
@@ -62,7 +62,7 @@
   * tmavě červené písmo i rámeček (tloušťka 2px).
   * zaoblené rohy rámečku (border-radius: 20px;).
   * vnitřní i vnější odsazení 20px.
-* Hlavní nadpis zarovnejte na střed stránky.
+* Text hlavního nadpisu zarovnejte na střed stránky.
 * Novinkám (id=novinky) nastavte:
   * šířku 110px.
   * boční vnější i vnitřní odsazení 10px.
