@@ -1,6 +1,11 @@
+<doctype>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
 <?php
 
-    echo "Ahoj";
+    echo "Hello world!";
 
     echo "<h1>Cykly</h1>";
 
@@ -12,6 +17,14 @@
     }
 
     // foreach
-    echo "<h2>TODO Foreach</h2>";
+    echo "<h2>Foreach</h2>";
+
+    $pole = array("pneumatika", "výfuk", "čelní sklo");
+
+    foreach ($pole as $item) {
+        echo $item."<br/>";
+    }
 
 ?>
+</body>
+</html>
