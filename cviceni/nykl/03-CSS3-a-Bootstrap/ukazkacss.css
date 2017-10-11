@@ -17,11 +17,11 @@
         display: inline-block; padding: 5px;
     }
     /* výběr/oznaceni textu - neni aplikovano na potomky */
-    #selectory::-moz-selection { /* specialne pro FireFox, ale prilis nefunguje */
-        background-color: yellowgreen;
+    #selektory::-moz-selection { /* specialne pro FireFox */
+        background: yellowgreen;
     }
-    #selektory::selection { /* obecne - v ID/Edge funguje */
-        background-color: yellowgreen;
+    #selektory::selection { /* obecne - v IE/Edge funguje */
+        background: yellowgreen;
     }
     
     
