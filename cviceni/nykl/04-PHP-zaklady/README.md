@@ -40,11 +40,12 @@
 
 * V souboru funkce.php vytvořte 3 funkce, které vypíší odlišné pozdravy (např. funkce a, c, n, které vypíší "ahoj", "čau", "nazdar").
 * V souboru form.php vytvořte nový selekt box s názvem "pozdrav", který bude umožňovat volbu názvu daných funkcí (tj. např. a, c, n).
-* V souboru vystup.php nebo funkce.php doplňte funkcionalitu, která na základě vstupu ze selekt boxu zavolá odpovídající funkci s pozdravem ze souboru funkce.php.
+* V souboru vystup.php nebo funkce.php doplňte funkcionalitu, která na základě vstupu ze selekt boxu zavolá odpovídající funkci s pozdravem ze souboru funkce.php. Využijte volání funkce uložené v proměnné. Pozor: toto v praxi nikdy nedělejte (web je pak velmi snadno napadnutelný hackery), zde jde pouze o ukázkový příklad.
 
 ### 3. část
 
 * Zkuste si vytvořit a vypsat asociativní (multi-typové) pole.
+* Zkuste si, co uznáte za vhodné.
 
 
 :+1:
