@@ -50,7 +50,7 @@ Plán:
 - vyzkoušet jednotlivé techniky a připravit kus SP 
 
 
-### 3. Konzultace - listopad - bude upřesněn
+### 3. Konzultace - listopad - Pá 24.11.2017 10:15 - 12:50 (UC 329)
 
 Plán:
 - vývoj v Php a řešení dotazů
