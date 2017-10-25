@@ -1,4 +1,4 @@
-# 5. cvičení KIV/WEB - PHP a OOP, session, cookies.
+# 5. cvičení KIV/WEB - PHP a OOP, Session a Cookies.
 
 * Nejprve si projděte prezentaci k tomuto cvičení.
 
