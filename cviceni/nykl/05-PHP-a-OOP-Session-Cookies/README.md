@@ -1,4 +1,4 @@
-# 5. cvičení KIV/WEB - PHP a OOP, session, cookies.
+# 5. cvičení KIV/WEB - PHP a OOP, Session a Cookies.
 
 * Nejprve si projděte prezentaci k tomuto cvičení.
 
@@ -6,10 +6,11 @@
 ## 1. úkol - správa přihlášení uživatele
 
 * Cílem je vytvořit funkční přihlašování uživatele na web.
-* Vytvořte třídu pro inicializaci, ukládání, načítání a mazání session.
+* Vytvořte třídu pro ukládání, načítání a mazání session.
+  * Session můžete zahájit např. v konstruktoru.
 * Vytvořte třídu umožňující přihlášení uživatele, tj.:
-  * Budete potřebovat metodu pro zahájení session (např. v konstruktoru), metodu pro přihlášení uživatele, metodu pro kontrolu přihlášení uživatele a metodu pro odhlášení uživatele.
-  * Při přihlášení uživatele uložte i datum a čas jeho přihlášení.
+  * Budete potřebovat metodu pro přihlášení uživatele, metodu pro kontrolu přihlášení uživatele a metodu pro odhlášení uživatele.
+  * Při přihlášení uživatele uložte i datum a čas jeho přihlášení, date("H:i:s, d.m.Y").
 * Zakomponujte víše zmíněné do souboru login.php tak, aby přihlášení fungovalo.
   * Pozn.1: přihlášení zde nevyužívá heslo, tj. uživatel se přihlašuje pouze svým jménem.
   * Pozn.2: po přihlášení nebude rozlišováno, kdo se přihlásil (informace pro 2. úkol).
@@ -33,9 +34,7 @@
   * Odpovídající informace také vypište pod "Vybraný automobil" (využijte dříve vytvořenou funkci).
 * Otestujte funkčnost.
   * Informace by měly zůstat uchovány i po zavření a znovu spuštění prohlížeče. (pozn.: to, že se zobrazí pouze přihlášenému uživateli, už bylo zprovozněno v 1. úkolu).
-  
-
-* Prohlédněte si přiložené řešení příkladu (možná Vám rozšíří obzor). Pozn.: pokud myslíte, že jste něco vyřešil/a lépe, tak se mi přihlaste - rád uvidím lepší řešení.
+* Dobrovolně si prohlédněte přiložené řešení příkladu. Pozn.: pokud myslíte, že jste něco vyřešil/a lépe, tak se mi přihlaste - rád uvidím lepší řešení.
 
 
 :+1:
