@@ -24,11 +24,18 @@
 
 * Práce s adresářem "twig-priklad".
   * Do adresáře "twig-master" nakopírujte soubory Twigu, viz předchozí příklad.
-* Vaším cílem je práce se šablonami, tj. budete měnit pouze soubor index.php (aby místo aktuální třídy s šablonou v PHP využíval Vaší šablonu v Twigu) a vytvářet šablony. Zbytek aplikace ponechte pokud možno beze změny.
+* Vaším cílem je práce se šablonami, tj. budete měnit pouze soubor index.php (aby místo aktuální třídy s šablonou v PHP využíval Vaši šablonu v Twigu) a vytvářet šablony. Zbytek aplikace ponechte pokud možno beze změny.
 * Zprovozněte aplikaci a prohlédněte si aktuální PHP šablonu ve třídě sablona.class.php. 
 * Hlavní cíle:
   * Vytvořit obdobnou šablonu s využitím Twigu.
   * Prohlédnout si PHP šablonu, která je zobrazována s využitím wrapperu.
+* __Data vstupující do šablony__:
+  * v index.php jako pole _$data_, ale ve Twig šabloně už přímo jen klíče z tohoto pole (tj. v php _$data['uzivatel']_, ale v sablone jen _uzivatel_);
+  * obsah _$data_ obecně:
+    * __nadpis__, __text__ a __prihlaseni__ - textové řetězce.
+    * __uzivatel__ - textový řetězec nebo null.
+  * obsah _$data_ v obchodě:
+    * __produkty__ a __kos__ - pole s klíči __id, nazev, cena, obrazek__ a v koši ještě __ks__.    
   
 
 ### 2.1 úkol - vytvoření šablony s využitím Twigu
