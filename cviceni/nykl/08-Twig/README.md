@@ -35,7 +35,12 @@
     * __nadpis__, __text__ a __prihlaseni__ - textové řetězce.
     * __uzivatel__ - textový řetězec nebo null.
   * obsah _$data_ v obchodě:
-    * __produkty__ a __kos__ - pole s klíči __id, nazev, cena, obrazek__ a v koši ještě __ks__.    
+    * __produkty__ a __kos__ - pole s klíči __id, nazev, cena, obrazek__ a v koši ještě __ks__.
+* __Data odesílaná šablonou__:
+  * Přihlášení - tlačítko _name='prihlaseni'_, textový input _name='login'_.
+  * Odhlášení - tlačítko _name='odhlaseni'_.
+  * Vložení do košíku - tlačítko _name='pridat'_, skrytý prvek s ID produktu _name='produkt'_ a počet kusů _name='mnozstvi'_.
+  * Odebrání z košíku - tlačítko _name='odebrat'_ a skrytý prvek s ID produktu _name='produkt'_.
   
 
 ### 2.1 úkol - vytvoření šablony s využitím Twigu
