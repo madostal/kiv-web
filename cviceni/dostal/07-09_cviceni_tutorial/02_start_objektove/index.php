@@ -4,7 +4,10 @@
     // šablona přes twig
     // nacist Twig pres autoloader - pokud nainstalovano pres Composer
     require_once 'vendor/autoload.php';
-    // presun do render
+    $loader = new Twig_Loader_Filesystem('sablony');
+    $twig = new Twig_Environment($loader, array());
+    // presun volani render do Controlleru metody render
+    //echo $twig->render('sablona1.htm', array('obsah' => $obsah));
 
     // include souboru s funkcemi
     include_once("inc/functions.php");
@@ -37,8 +40,8 @@
         $objekt = $page."Controller";
         include("controllers/$objekt.php");
 
-        // vytvorim napr. $homeController
-        $$objekt = new $objekt;
+        // vytvorim napr. $homeController a poslu twig jako zavislost
+        $$objekt = new $objekt($twig);
         $$objekt->indexAction($params); // vypise vystup
     }
 

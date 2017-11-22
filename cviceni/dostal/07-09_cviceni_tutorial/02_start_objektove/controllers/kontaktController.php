@@ -11,7 +11,7 @@ class kontaktController extends baseController{
         //return "Homepage - a: $a, b: $b";
 
         // html si nactu z nejake mini-sablony
-        $html = "Kontakt";
+        $html = "Kontakt ahoj";
         //return $html;
 
         // vypis cele stranky

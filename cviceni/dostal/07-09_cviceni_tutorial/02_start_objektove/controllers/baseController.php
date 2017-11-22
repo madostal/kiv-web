@@ -1,6 +1,12 @@
 <?php
 
 class baseController {
+    private $twig;
+
+    public function __construct($twig)
+    {
+        $this->twig = $twig;
+    }
 
     public function indexAction($params) {
         return "missing indexAction method";
@@ -11,13 +17,11 @@ class baseController {
     }
 
     public function render($obsah, $menu ="") {
-        /*
         // pres twig
-        $loader = new Twig_Loader_Filesystem('sablony');
-        $twig = new Twig_Environment($loader, array());
-        echo $twig->render('sablona1.htm', array('obsah' => $obsah));
-        */
+        echo $this->twig->render('sablona1.htm', array('obsah' => $obsah));
 
+        // pres mini-sablonu, pokud twig nefungje
+        /*
         // minišablona
         echo "<!DOCTYPE html>
         <html>
@@ -34,5 +38,6 @@ class baseController {
 
         echo "
         </body></html>";
+        */
     }
 }
