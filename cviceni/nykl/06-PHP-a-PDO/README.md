@@ -1,7 +1,7 @@
 # 6. cvičení KIV/WEB - PHP a práce s databází (PDO).
 
 * Projděte si prezentaci k tomuto cvičení.
-* Prohlédněte si a zprovozněte dodané soubory - vstupním bodem do aplikace je index.php, kterému se podstrkují indexy stránek pro zobrazení, viz settings.inc.php.
+* Prohlédněte si a zprovozněte dodané soubory - vstupním bodem do aplikace je index.php, kterému se podstrkují indexy do pole stránek dostupných pro zobrazení, viz settings.inc.php.
   * Požadavkem je, aby Vám fungovaly odkazy v menu.
 * Může se hodit - [tutoriál SQL](http://www.w3schools.com/sql/default.asp), zvláště části Select, Insert, Update, Delete.
 * Pozn.: na vypracování následujících úkolů Vám nejspíš nebude stačit čas cvičení. Ve vlastním zájmu si ho dodělejte doma, nebo si alespoň prohlédněte soubory s řešením.
@@ -43,8 +43,10 @@
     
 
 * **Vždy**:
-  * Přihlaste se k databázi https://students.kiv.zcu.cz/phpmyadmin/ (tj. students.kiv.zcu.cz -> PhpMyAdmin).
-    * Přihlašovací údaje Vám poskytne vyučující.
+  * Přihlaste se k databázi
+    * Buďto univerzitní: https://students.kiv.zcu.cz/phpmyadmin/ (tj. students.kiv.zcu.cz -> PhpMyAdmin).
+      * Přihlašovací údaje Vám poskytne vyučující.
+    * Nebo lokální: využitím správce (viz Wamp, Xampp apod.). Uživatel "root" a heslo buď žádné, nebo "root".
   * Importujte vytvořené schéma do dané databáze a ověřte si, že se Vám vše importovalo.
 
 
@@ -52,27 +54,26 @@
 
 * Do souboru settings.inc.php doplňte chybějící informace.
 * V souboru database.class.php vytvořte objekt, který bude spravovat přihlášení uživatele a přístup k databázi (pozn.: v SP by tato funkcionalita měla být rozdělena do dvou tříd).
-  * Vytvořte privátní proměnnou, která bude obsahovat referenci na instanci třídy PDO, a v konstruktoru do dané proměnné uložte aktivní "připojení" k databázi.
-  * Při používání proměnných ze souboru settings-reseni.php nezapomeňte říci, že jsou globální ("slůvko": global).
+  * Vytvořte privátní atribut objektu, který bude obsahovat referenci na instanci třídy PDO, a v konstruktoru do daného atributu uložte aktivní "připojení" k databázi.
 * Doplňte třídu o metodu poskytující všechny informace z tabulky "práva".
 * V souborech user-update.php a user-registration.php vyplňte selectboxy právy získanými z DB tak, aby v daných formulářích šla práva volit.
-  * Práci si můžete ulehčit doplněním metody do zaklad.php
-  * Pozn.: zanedbejte skutečnost, že právo si volí sám uživatel už při registraci a může si zvolit např. právo Administrátor (pro tento příklad je to v pořádku).
+  * Práci si můžete ulehčit vytvořením funkce v database.class.php.
+  * Pozn.: nehleďte na skutečnost, že právo si volí sám uživatel už při registraci a může si zvolit např. právo Administrátor (příklad je pouze demonstrační).
 
 
 ## 3. úkol - registrace a login uživatele
 
 * Doplňte soubor database.class.php o následující funkce (nezapomeňte na session pro právě přihlášeného uživatele):
-  * Porovnání dodaného loginu a hesla uživatele s loginem a heslem uloženým v databázi.
   * Přihlášení uživatele.
   * Odhlášení uživatele.
-  * Ověření přihlášení uživatele, tj. je uživatel přihlášen nebo není.
-  * Vytvoření záznamu o novém uživateli v DB.  
-* Zprovozněte soubor login.php tak, aby fungoval, tj. umožnil přihlásit a odhlásit uživatele (v DB byste měli mít jednoho uživatele pro testování). Nezapomeňte ověřit, že se vložené heslo shoduje s heslem v databázi.
+  * Ověření současného přihlášení uživatele, tj. je uživatel nyní přihlášen nebo není.
+  * Registrace uživatele, tj. vytvoření záznamu o novém uživateli v DB.
+  * Pozn.: hesla by správně měla být v DB uložena šifrovaná, k čemuž lze využít např. algoritmus BCrypt, tj. funkci [password_hash("rasmuslerdorf", PASSWORD_DEFAULT)](http://php.net/manual/en/function.password-hash.php), která ale produkuje 60-ti znakový hash (nutné s tím počítat při návrhu databáze; nyní máme pouze 40 znaků pro heslo).  
+* Zprovozněte soubor login.php tak, aby fungoval, tj. umožnil přihlásit a odhlásit uživatele (v DB byste měli mít alespoň jednoho uživatele pro testování). Nezapomeňte ověřit, že se vložené heslo shoduje s heslem v databázi.
 * Zprovozněte soubor user-registration.php tak, aby fungoval, jak má, tj.:
   * Přihlášený uživatel nemůže dělat nic.
   * Nepřihlášený uživatel se může registrovat, přičemž po úspěšné registraci je automaticky i přihlášen.
-    * Pozor: login musí být unikátní, tj. pokud ho nekotrolujete v DB (např. vlastnost Unique), tak musíte "někde" zde.
+    * Pozor: login musí být unikátní, tj. pokud ho nekotrolujete v DB (např. vlastnost Unique), tak musíte zde.
 
 
 ## 4. úkol - změna údajů uživatele
@@ -102,8 +103,8 @@
 
 
 
-* Prohlédněte si přiložené řešení příkladu (možná Vám rozšíří obzor). 
-* Pokud naleznete nějakou chybu nebo myslíte, že něco lze vyřešit lépe, tak se mi prosím přihlaste - rád uvidím lepší řešení.
+* Prohlédněte si přiložené řešení příkladu. 
+* Pokud naleznete nějakou chybu nebo myslíte, že něco lze vyřešit lépe, tak se mi, prosím, přihlaste - rád uvidím lepší řešení.
 
 
 :+1:

@@ -1,6 +1,13 @@
 # 4. cvičení KIV/WEB - Bootstrap a základy PHP.
 
 
+* Na students.kiv.zcu.cz je globální zakázán výpis chyb v PHP. Pokud si je chcete zobrazit, napište do hlavičky PHP následující kód:
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+* Více informací: [error_reporting](http://php.net/manual/en/function.error-reporting.php).
+
+
 ## 1. úkol - (opakování) Bootstrap Grid System
 
 * Doplňte soubor bootstrap.html tak, aby při změně šířky prohlížeče vypadal jeho obsah tak, jak ukazují obrázky 1-4.png. Pozn.: kaskádový styl neupravujte, ale využijte [Grid System Bootstrapu](http://www.w3schools.com/bootstrap/bootstrap_grid_system.asp).

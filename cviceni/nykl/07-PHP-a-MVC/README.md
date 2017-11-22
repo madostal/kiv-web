@@ -32,8 +32,8 @@
 
 * V souboru mvc-database-install.sql nahraďte všechny výskyty "nyklm" za Váš orion login.
   * Získáte tak dvě tabulky, které jako prefix budou mít Váš orion login (původně: nyklm_mvc_introductions a nyklm_mvc_users).
-* Importujte daný soubor do Vaší MySQL databáze (nebo do databáze na studets.kiv.zcu.cz).
-* Pozn.: pokud se Vám při čtení z databáze nebude správně zobrazovat česká diakritika, tak před každým čtením z DB použijte následující dotaz:
+* Importujte daný soubor do Vaší MySQL databáze (nebo do databáze na students.kiv.zcu.cz).
+* Pozn.: pokud se Vám při čtení z databáze nebude správně zobrazovat česká diakritika, tak před čtením z DB použijte následující dotaz (např. v konstruktoru příslušného objektu):
   * $q = "SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";        
 
 
@@ -64,6 +64,9 @@
   * obsahuje metodu pro získání dat všech uživatelů (DB: orion_mvc_users).
   * obsahuje metodu pro smazání konkrétního uživatele (DB: orion_mvc_users).
 
+* DSN string pro inicializaci připojení k DB prostřednictvím PDO.
+  * "mysql:host=$host;dbname=$dbname"
+
 
 ## 3. úkol - vytvoření pohledů
 
@@ -90,6 +93,13 @@
 * Pokud vyvíjíte na svém PC, tak zkuste .htaccess nasadit tak, aby Vám hezké URL adresy fungovaly (možných řešení je vícero, viz popisy na internetu).
   * Pozn.: měli byste zajistit, aby Vám fungovaly jak klasické URL adresy, tak i hezké URL adresy současně. URL adresa tedy může vypadat např. localhost/con-index.php?web=uvod nebo localhost/uvod/ (popř. localhost/uvod.html), ale výsledek musí být stejný, tj. zobrazení stránky s úvodem.
   * Pozn.2: Nejspíš budete muset upravit i con-index.php - může se hodit: $url=$_SERVER['REQUEST_URI'];    
+
+
+## 5. úkol - prohlédněte si oba způsoby řešení
+
+* V každém ze způsobů řešení je ukázán jiný způsob práce s šablonou.
+  * 07-PHP-a-MVC-reseni.zip - obsahuje kompletně vypracovaný příklad, přičemž šablona je řešena jako třída s metodami pro výpis hlavičky, patičky a konkrétního obsahu.
+  * 07-PHP-a-MVC-reseni_ukazka-jine-prace-s-sablonou.zip - obsahuje pouze výpis úvodní stránky, ale šablona je řešena jako samostatný soubor, který lze "samostatně" testovat (pozn.: pokud by šablona využívala např. Twig, tak její tvůrce nemusí znát PHP).
 
 
 :+1:
