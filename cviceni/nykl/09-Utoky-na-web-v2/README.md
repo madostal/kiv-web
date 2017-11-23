@@ -66,6 +66,7 @@
 
 ## PROSBA CVIČÍCÍHO
 
+* Prosím vás, abyste dané útoky nikde nepoužívali. V případě jich použití nenese cvičící ani nikdo ze ZČU zodpovědnost za vaše činy. Děkuji, MN.
 
 
 
