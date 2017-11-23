@@ -2,8 +2,6 @@
 
 * Tato verze vychází z 1. verze a popisuje pouze sofistikovanější způsob SQL Injection.
   * V řešení příkladu jsou uvedeny pouze útoky, přičemž obrana proti nim je stejná jako v 1. verzi.
-
-
 * Projděte si prezentaci k tomuto cvičení.
 * Může se hodit - [Tutoriál SQL](http://www.w3schools.com/sql/default.asp).
 
@@ -14,7 +12,7 @@
 * Vytvoření databáze:
   * Pokud používáte databázi na students.kiv.zcu.cz, tak v souboru _+db_install.sql_ nahraďte všechny výskyty slova "username" za Váš orion login.
   * PhpMyAdmin si nechte otevřený pro pozdější použití.
-* Zprovozněte zbytek aplikace
+* Zprovozněte zbytek aplikace.
   * V souboru _settings.inc.php_ bude nejspíš potřeba upravit přihlašovací údaje k databázi a názvy tabulek.
 * Pokud se Vám nebude na webu správně zobrazovat čeština, tak to aktuálně nevadí (nejspíš se jedná o konfliktní nastavení databáze).
 * Pozn.: příliš se nezaobírejte strukturou aplikace. Jde spíše o ukázku nevhodné implementace webu, ale pro naše účely je dostatečná.
@@ -33,8 +31,8 @@
   * Výsledkem by mělo být, že doména zůstane správná, ale obsah webu bude nahrazen za falešný obsah.
   * Pokuste se propašovat kód do stránky tak, aby se vykonal okamžitě po načtení stránky. (Rada: [JS Onload Event](http://www.w3schools.com/jsref/event_onload.asp))
   * Pozn.: na internetu lze nalézt návody, jak získat obsah IFRAME. Pokud bychom jím nahradili obsah aktuální stránky, tak v mnoha případech získáme identický vzhled vložené stránky. Nicméně moderní internetové prohlížeče by toto neměly dovolit.
-* Pokuste se odeslat na soubor _prijem.php_ Cookies dané stránky.
-* Odstraňte z databáze Vaše útoky, aby Vám nevadily v dalších úkolech (zvláště úkol pro "Zkušené").
+* Pokuste se odeslat na soubor _prijem.php_ všechna Cookies dané stránky.
+* Odstraňte z databáze své útoky, aby Vám nevadily v dalších úkolech (zvláště úkol pro "zkušené").
 
 
 ## 2. úkol - SQL Injection útok
@@ -45,8 +43,8 @@
   * Otestujte web na zranitelnost vůči SQL Injection.
   * Zjistěte, který typ komentářů používá DB napadené stránky.
   * Zjistěte, kolik sloupců má tabulka, ze které povedete svůj útok.
-  * Otestujte, zda funguje dotaz UNION na sloučení vícera tabulek (víme, že aktuální má 3 sloupce).
-  * Zjistěte verzi PHP.
+  * Otestujte, zda funguje dotaz UNION na sloučení vícera tabulek se stejným počtem sloupců (počet sloupců aktuální tabulky už známe).
+  * Zjistěte verzi MySQL.
   * Zjistěte názvy tabulek napadané DB.
   * Zjistěte názvy sloupců v tabulce s uživateli.
   * Zjistěte login a heslo administrátora.
@@ -54,7 +52,7 @@
   * Přihlaste se do aplikace jako administrátor.
   
 
-## 3. úkol - ošetřete stránku před útoky typu XSS a SQL injection
+## 3. úkol - ošetřete stránku před útoky typu XSS a SQL Injection
 
 * Viz 1. verze tohoto cvičení.
 
@@ -68,7 +66,6 @@
 
 ## PROSBA CVIČÍCÍHO
 
-* Prosím vás, abyste dané útoky nikde nepoužívali. V případě jich použití nenese cvičící ani nikdo ze ZČU zodpovědnost za vaše chování. Děkuji, MN.
 
 
 
