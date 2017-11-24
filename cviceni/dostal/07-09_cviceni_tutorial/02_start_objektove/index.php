@@ -25,7 +25,12 @@
     $pages = array();
     $pages["home"] = "Homepage";
     $pages["kontakt"] = "Kontakt";
+    $pages["error"] = "Error 404";
 
+    // pokud stranka neni povolena, vrat 404 controller
+    if (!array_key_exists($page, $pages)) {
+        $page = "error";
+    }
 
     // include stranky s obsahem
     if (array_key_exists($page, $pages)) {

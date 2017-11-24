@@ -3,6 +3,10 @@
 class baseController {
     private $twig;
 
+    /**
+     * baseController constructor.
+     * @param $twig Twig_Environment
+     */
     public function __construct($twig)
     {
         $this->twig = $twig;

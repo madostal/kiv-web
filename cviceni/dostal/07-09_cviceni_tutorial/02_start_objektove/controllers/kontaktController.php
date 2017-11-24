@@ -3,6 +3,7 @@
 class kontaktController extends baseController{
 
     /**
+     * @param $params array - vstupní parametry
      * @return string - output html
      */
     public function indexAction($params) {
