@@ -60,13 +60,13 @@ Plán:
 
 
 
-### 4. Konzultace - prosinec - bude upřesněn
+### 4. Konzultace - prosinec - Po 11.12. od 16:30 (UC 329)
 
 Plán:
 - odevzdávání SP za bonusové body - silně doporučuji
 
 
-### Volitelná konzultace - prosinec - bude upřesněn
+### Volitelná konzultace - prosinec - zrušeno 
 
 - tato konzultace se uskuteční pouze v případě zájmu min. 3 studentů, kteří svůj zájem
 předem potvrdí emailem.
