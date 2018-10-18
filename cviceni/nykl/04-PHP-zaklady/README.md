@@ -1,7 +1,7 @@
 # 4. cvičení KIV/WEB - Bootstrap a základy PHP.
 
 
-* Na students.kiv.zcu.cz je globální zakázán výpis chyb v PHP. Pokud si je chcete zobrazit, napište do hlavičky PHP následující kód:
+* Na students.kiv.zcu.cz je globálně zakázán výpis chyb PHP. Pokud si je chcete zobrazit, vložte do hlavičky PHP souboru následující kód:
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -47,7 +47,7 @@
 
 * V souboru funkce.php vytvořte 3 funkce, které vypíší odlišné pozdravy (např. funkce a, c, n, které vypíší "ahoj", "čau", "nazdar").
 * V souboru form.php vytvořte nový selekt box s názvem "pozdrav", který bude umožňovat volbu názvu daných funkcí (tj. např. a, c, n).
-* V souboru vystup.php nebo funkce.php doplňte funkcionalitu, která na základě vstupu ze selekt boxu zavolá odpovídající funkci s pozdravem ze souboru funkce.php. Využijte volání funkce uložené v proměnné. Pozor: toto v praxi nikdy nedělejte (web je pak velmi snadno napadnutelný hackery), zde jde pouze o ukázkový příklad.
+* V souboru vystup.php nebo funkce.php doplňte funkcionalitu, která na základě vstupu ze selekt boxu zavolá odpovídající funkci s pozdravem ze souboru funkce.php. Využijte volání funkce uložené v proměnné. Pozor: toto v praxi ideálně nedělejte, zde jde pouze o ukázkový příklad.
 
 ### 3. část
 
