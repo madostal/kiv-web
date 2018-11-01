@@ -1,22 +1,23 @@
 <?php
-// soubor obsahujici zakladni nastaveni
-
-global $db_server, $db_name, $db_user, $db_pass;
-global $web_pagesExtension, $web_pages;
+////////////// Soubor obsahujici zakladni nastaveni /////////////
 
 // databaze
-    $db_server = "";
-    $db_name = "";
-    $db_user = "";
-    $db_pass = "";
-    
+    define("DB_SERVER","");
+    define("DB_NAME","");
+    define("DB_USER","");
+    define("DB_PASS","");
+
 
 // stranky webu (ostatni nebudou dostupne)
-    $web_pagesExtension = ".php";
-    $web_pages[0] = "login";
-    $web_pages[1] = "user-registration";
-    $web_pages[2] = "user-update";
-    $web_pages[3] = "user-management";
+    $phpExtension = ".php"; // pripona
 
+    define("WEB_PAGES", [
+        'log' => "login".$phpExtension,
+        'reg' => "user-registration".$phpExtension,
+        'upd' => "user-update".$phpExtension,
+        'mng' => "user-management".$phpExtension
+    ]);
+
+    define("WEB_PAGE_DEFAULT_KEY", 'log');
 
 ?>

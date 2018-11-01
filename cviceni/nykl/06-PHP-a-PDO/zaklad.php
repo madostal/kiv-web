@@ -21,10 +21,10 @@ function head($title=""){
     <body>
         <h1><?php echo $title; ?></h1>
         <nav>Menu: 
-            <a href="index.php?page=0">Login/Logout</a> |
-            <a href="index.php?page=1">Registrace</a> |
-            <a href="index.php?page=2">Sprava osobních údajů</a> |
-            <a href="index.php?page=3">Sprava uživatelů</a>
+            <a href="index.php?page=log">Login/Logout</a> |
+            <a href="index.php?page=reg">Registrace</a> |
+            <a href="index.php?page=upd">Sprava osobních údajů</a> |
+            <a href="index.php?page=mng">Sprava uživatelů</a>
         </nav>
         <div>
 <?php 
