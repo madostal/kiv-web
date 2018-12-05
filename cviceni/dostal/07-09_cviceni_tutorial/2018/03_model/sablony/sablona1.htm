@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <h1>Start šablony</h1>
+
+    {% for page_key, page_title in pages %}
+        <a href="index.php?page={{ page_key }}">{{ page_title }}</a><br/>
+    {% endfor %}
+
+    <br/><br/>
+
+    {{ obsah | raw }}
+
+    <div>Patička</div>
+
+</body></html>
