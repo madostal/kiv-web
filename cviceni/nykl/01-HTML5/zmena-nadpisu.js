@@ -1,9 +1,16 @@
+//////////// Prvni nadpis H2 bude nahrazen minimalistickou animaci ///////////
 
+//// globalni promenne
+// aktualni pocet znaku animace
 var pocet=0;
-var elem = document.getElementsByTagName("h2")[0]; // prvni H2 element
-elem.innerHTML = " "; // obsah elementu
+// ziskam vsechny elementy H2 a beru z nich prvni
+var elem = document.getElementsByTagName("h2")[0];
+// vymazu elementu obsah
+elem.innerHTML = " ";
 
-// funkce pro zmenu nadpisu
+/**
+ * Funkce pro zmenu nadpisu
+ */
 function pridej(){
     pocet++;
     if(pocet==10){
