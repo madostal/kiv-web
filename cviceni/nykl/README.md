@@ -10,5 +10,4 @@
 
 
 
-Michal Nykl, Září 2019,
-Západočeská univerzita v Plzni, Katedra informatiky a výpočetní techniky.
+Michal Nykl, Září 2019, Západočeská univerzita v Plzni, Katedra informatiky a výpočetní techniky.
