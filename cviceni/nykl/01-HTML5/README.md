@@ -37,8 +37,8 @@ Pozn.: pokud ovládáte některou z předchozích verzí HTML, např. HTML 4 či
 * Oblasti, které byste měli v HTML tutoriálu alespoň vidět:
     * **Introduction** (volitelně).
     * **Elements**, **Attributes** (attr. width a height - vědět o nich, ale v SP namísto jich použít styly).
-    * **Headings**, **Paragraphs** (vědět o P a znát BR, HR, PRE), **Formatting** (tagy je dobré znát, ale formátování je často lepší dělat přes styly, viz 2.cvičení; Znát B, I, U.), **Quotations** (jen o nich vědět).
-    * **File Paths**, **Links**, **Images** (jen začátek; styly ignorovat) a **Image Map** (dobré o nich vědět), **Iframes**.
+    * **Headings**, **Paragraphs** (znát P, BR, HR, PRE), **Formatting** (tagy je dobré znát, ale formátování je často lepší dělat přes styly, viz 2.cvičení; Znát B, I, U.), **Quotations** (jen o nich vědět).
+    * **File Paths** (nutné), **Links**, **Images** (jen začátek; styly ignorovat) a **Image Map** (dobré o nich vědět), **Iframes**.
     * **Tables** (styly lze ignorovat), **Lists** (znát OL, UL a LI).
     * **Head** (důležité), **Computercode** (znát PRE a vědět o KBD).
     * **Entities** a **Symbols** (vědět o nich a umět je použít), **Charset** (vědět o nich, ale ideálně používat UTF-8), **URL Encode** (dobré pochopit).
