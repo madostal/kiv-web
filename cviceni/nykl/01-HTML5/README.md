@@ -14,7 +14,7 @@ Pozn.: pokud ovládáte některou z předchozích verzí HTML, např. HTML 4 či
 * V první a druhé větě vyberte libovolnou dvojici slov a uzavřete je mezi tagy SPAN.
 * Za věty přidejte na novou řádku dvouúrovňový seznam, kde první úroveň bude číslovaná s položkami *Univerzita* a *Zpravodajství*. Oboum položkám doplňte nečíslovanou druhou úroveň, vždy s alespoň dvěma odkazy na libovolné webové stránky, např.: www.zcu.cz a www.kiv.zcu.cz pod první položku a pod druhou http://info.zcu.cz a www.zcu.cz/cs/University/Media/index.html. Alespoň jednomu odkazu přidejte titulek pro najetí myši.
 * Do druhého oddílu vložte opět dva oddíly, přičemž do prvního z nich vložte dva odstavce (P) libovolného textu (např. opět oněch 5 vět) a do druhého vložte libovolný obrázek (např. [http://home.zcu.cz/~nyklm/grafika/logo2.jpg](http://home.zcu.cz/~nyklm/grafika/logo2.jpg)).
-* Obrázku nastavte titulek zobrazitelný při najetí myší na obrázek a alternativní text, který se zobrazí, když obrázek nebude nalezen.
+* Obrázku nastavte titulek zobrazitelný při najetí myší na obrázek a alternativní text, který se zobrazí, když obrázek nebude nalezen, nebo bude přečten slepému uživateli čtečkou webu.
 * Obrázek obklopte libovolným textem.
 * Prohlédněte si vytvořený web.
 * Změňte soubor s kaskádovým stylem na styl-2.css - změní se vzhled stránky.
@@ -46,6 +46,11 @@ Pozn.: pokud ovládáte některou z předchozích verzí HTML, např. HTML 4 či
     * Ostatní lze nyní vynechat (formuláře si zkusíme na 2.cvičení).   
 
 :+1:
+
+## Vystupy cvičení
+* Student by měl znát všechny (základní) HTML elemety, které slouží pro výpis informací (tj. neinteragují s uživatelem; formuláře probereme na 2.cvičení) a umožňují správné zobrazení HTML stránky ve webovém prohlížeči, viz 3. úkol.
+* Student by měl být schopen vytvořit statickou HTML stránku s odkazy (interními i externími), obrázky, tabulkami, víceúrovňovými seznamy, multimédii atd., která je HTML validní.
+* Student by měl vědět, jak správně nastavit znakovou sadu HTML stránky (znát UTF-8 a Windows-1250 = CP-1250) a jak vypsat speciální znaky, např. &lt;, &gt;, &amp;, &euro; apod.   
 
 ### Poznámky
 * Příklad můžete stáhnout v ZIP archivu.
