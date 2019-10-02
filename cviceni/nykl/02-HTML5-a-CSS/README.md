@@ -1,90 +1,129 @@
-# 2. cvičení KIV/WEB - webová stránka s HTML 5 a CSS
+# 2. cvičení KIV/WEB - formulář v HTML 5 a základy CSS
 
 ## 1. úkol - formulář v HTML 5
 
-* Vytvořte česky psanou stránku s kódováním UTF-8. 
-* Vyplňte hlavičku stránky libovolnými daty.
-* Vytvořte formulář s následujícími vstupy:
-  * Příslušné typy INPUT elementu
-    * Login (name=login), E-mail (name=mail), Heslo (name=heslo) - musí být zadáno.
-    * Pohlaví (Žena/Muž) (name=pohlavi) - využijte typ "radio" a názvy vložte do LABEL.
-    * Datum narození (name=narozeni) - pozn.: kalendář zobrazí jen některé prohlížeče, např. Chrome.
+* Prohlédněte si soubor formular.html.
+* Do obsaženého formuláře doplňte následující vstupní elementy:
+  * Všechny elementy mají připraveny LABELy, které určují jejich ID.
+  * Elementy INPUT:
+    * Login (name=login), E-mail (name=mail), Heslo (name=heslo) - všechny musejí být zadány, jinak nelze formulář odeslat.
+    * Pohlaví (Žena/Muž) (name=pohlavi) - využijte typ "radio"; Zkuste si odstranit příslušné elementy LABEL.
+    * Datum narození (name=narozeni) - pozn.: klikatelný kalendář zobrazí jen některé prohlížeče, např. Firefox či Chrome.
     * Oblíbená barva (name=barva).
     * Nahrání fotografie (name=foto) - lze zvolit více souborů, ale pouze obrázky (accept="image/*").
     * Výška v cm (name=vyska) - využijte typ "number" (min=50, max=250, step=10, value=170).
-    * Počet dětí (name=deti) - využijte typ "range", nastavte min/max a výsledek nechte zobrazit v [OUTPUT](https://www.w3schools.com/tags/tag_output.asp).
-  * Příslušné typy SELECT elementu
+    * Počet dětí (name=deti) - využijte typ "range" a nastavte min/max; Vybranou hodnotu zobrazte v elementu [OUTPUT](https://www.w3schools.com/tags/tag_output.asp).
+  * Elementy SELECT:
     * Auto (name=auto) - využijte OPTGROUP a auta rozdělte na Švédská (Volvo, Saab) a Německá (Mercedes, Audi). Defaultně bude vybrán Mercedes. Zvolit lze pouze jedno auto.
-    * Domácí zvíře (name=zvire[]) - vyplňte 5 libovolných zvířat, viditelné nechte 3 položky seznamu a uživateli nechte možnost zvolit více zvířat.
-  * INPUT element s DATALISTem
-    * Oblíbená stanice (name=stanice) - vytvořte DATALIST s pěti stanicemi (audio/tv/cokoliv) a přiřaďte ho k danému INPUT elementu.
+    * Domácí zvíře (name=zvire[]) - doplňte volby pro 5 libovolných zvířat, viditelné nechte 4 položky seznamu, uživateli nechte možnost zvolit více zvířat současně a dvě zvířata vyberte defaultně.
+  * INPUT element s DATALISTem:
+    * Oblíbené stanice (name=stanice; name=stanice_2) - obě položky pro výběr nejoblíbenějších stanic využívají připravený DATALIST (pozn.: datalist volby nabízí, ale nevynucuje).
     * Nastavte elementu atribut PLACEHOLDER.
-  * TEXTAREA element
+  * TEXTAREA element:
     * O mě (name=ome) - textová oblast přes 4 řádky a 30 sloupců.
-  * Doplňte tlačítka (INPUT) pro smazání a odeslání formuláře.
-  * Doplňte tlačítko (BUTTON) pro vypsání alertu s textem "Hello Word" (JS: onclick="alert('Hello Word')" ).
-* Do vlastní složky na Students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php.
-  * Alternativně lze využití: http://students.kiv.zcu.cz/~nyklm/+studenti-kiv-web/02-formular-zobrazeni.php .
-  * Pozn.: raději jako alternativu využijte předchozí URL a vlastní soubor si zkuste, pokud Vám zbyde čas.
-* Do hlavičky formuláře doplňte metodu odeslání (method, get/post), URL adresu souboru formular-zobrazeni.php (action) a informaci, že se má výsledek zobrazit na nové záložce/stránce (target="blank").
+  * Dodatečné atributy:
+    * Zkuste některému vstupnímu prvku nastavit AUTOFOCUS (po načtení stránky) a využít TABINDEX (stisky TABu).
+    * Nastavte elementům PLACEHOLDER.
+  * Tlačítka:
+    * Doplňte tlačítko INPUT pro odeslání formuláře.
+    * Doplňte tlačítko BUTTON pro vymazání formuláře a část jeho textu vypište tučně.
+    * Doplňte tlačítko (INPUT/BUTTON) pro vypsání JavaScriptového alertu s textem "Hello Word"; Kód alertu: onclick="alert('Hello Word')".
+* Do vlastní složky na students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php.
+  * **Alternativně** lze využití: http://students.kiv.zcu.cz/~nyklm/+studenti-kiv-web/formular-zobrazeni.php 
+  * Pozn.: raději jako alternativu využijte předchozí URL a nahrávní a použití vlastního souboru si zkuste, pokud Vám zbyde čas.
+* Do hlavičky formuláře doplňte metodu odeslání formuláře (method=get/post), URL adresu souboru formular-zobrazeni.php (action) a informaci, že se má načtená stránka zobrazit na nové záložce/okně (target="_blank").
 * Odešlete formulář s GET a s POST a všimněte si změny URL adresy v případě GET.
-* Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování (pozn.: “lang” [http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ).
-* Zkuste některému vstupnímu prvku nastavit AUTOFOCUS (po načtení stránky) a využít TABINDEX (stisky TABu).
-* Prohlédněte si URL adresu při odeslání metodou GET a zkuste v ní něco změnit.
+  * Prohlédněte si URL adresu při odeslání metodou GET a zkuste v ní něco změnit.
+* Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování.
+* Prohlédněte si PHP skript v souboru formular-zobrazeni.php.
 
 
 ## 2. úkol - základy CSS
 
-* Využijte stránku konference.html a doplňte do ní odkaz na externí CSS, který si sami vytvoříte. Název např. styl.css.
-* Veškeré změny budete nadále provádět pouze ve svém CSS souboru.
-* Prohlédněte si HTML dané stránky a dále nové [sémantické elementy v HTML 5](http://www.w3schools.com/html/html5_semantic_elements.asp).
-* Pozadí celé stránky nastavte libovolný přeliv barev (např.: linear-gradient(red,orange,yellow,green,blue,brown); ).
-* Celý obsah stránky je v elementu s id="obal". 
-  * přiřaďte tomuto elementu šířku 600px. 
-  * zarovnejte ho na střed stránky s horním a dolním odsazením 10px (vnější odsazení - margin:10px auto;)
+* Využijte stránku konference.html a doplňte do ní odkaz na soubor s kaskádovými styly, který si sami vytvoříte (např. styl.css).
+  * Veškeré určování vzhledu stránky budete nadále provádět pouze ve svém CSS souboru.
+* Prohlédněte si HTML dané stránky ([sémantické elementy v HTML 5](http://www.w3schools.com/html/html5_semantic_elements.asp)).
+* Celé stráce nastavte na pozadí libovolný přeliv barev (např.: linear-gradient(red,orange,yellow,green,blue,brown);).
+* Obsah stránky je v elementu s id="obal":
+  * nastavte mu šířku 600px,
+  * zarovnejte ho na střed stránky s horním a dolním vnějším odsazením 10px (margin:10px auto;),
   * a nastavte mu bílé pozadí s 50% průhledností (rgba(255,255,255,0.5)).
-* Hlavičce stránky nastavte velikost písma xx-large, zarovnání na střed, barvu písma darkred a vnitřní horní i dolní odsazení na 10px (padding).
-* Navigaci nastavte:
-  * tečkovaný hnědý spodní okraj, široký 2px (border-bottom:2px dotted brown).
-  * vnitřní odsazení 15px.
+* Hlavičce stránky nastavte:
+  * velikost písma xx-large, 
+  * zarovnání na střed, 
+  * barvu písma darkred 
+  * a vnitřní horní i dolní odsazení na 10px (padding).
+* Celému hlavnímu menu nastavte:
+  * spodní okraj, který bude tečkovaný, hnědý a široký 2px (border-bottom:2px dotted brown)
+  * a vnitřní odsazení 15px.
 * Odkazům v navigaci (bez najetí myši) nastavte: 
-  * vnější odsazení 3px
-  * vnitřní odsazení 5px shora a zdola a 20px ze stran.
-  * modrý 1px rámeček.
-  * barvu pozadí na světle modrou.
-  * font sans-serif.
-  * tloušťku textu bolder.
-  * odstraňte dekoraci textu (text-decoration: none;).
-* Odkazy v navigaci, pokud na ně najedu myší:
-  * barva pozadí černá a barva textu bílá.
-  * text podtržený.
-* Všem prvkům s třídou chyba nastavte:
-  * tmavě červené písmo i rámeček (tloušťka 2px).
-  * zaoblené rohy rámečku (border-radius: 20px;).
-  * vnitřní i vnější odsazení 20px.
-* Text hlavního nadpisu zarovnejte na střed stránky.
+  * vnější odsazení 3px,
+  * vnitřní odsazení 5px shora a zdola a 20px ze stran,
+  * modrý 1px rámeček,
+  * barvu pozadí světle modrou (lightblue),
+  * font sans-serif,
+  * tloušťku textu bolder,
+  * dobu trvání přechodu při změně pozadí 1s a při změně barvy písma 8s (transition),
+  * a text, který není podtržený (text-decoration: none;).
+* Odkazům v navigaci, pokud se na nich nachází kurzor myši, nastavte:
+  * černou barvu pozadí a bílou barvu textu,
+  * a text výrazněte podtržením.
+* Všem alertům (třídy alert-error a alert-warning) nastavte:
+  * tloušťku rámečku (tloušťka 2px),
+  * zaoblené rohy rámečku (border-radius: 20px;),
+  * a vnitřní i vnější odsazení 20px.
+  * Třída alert-error bude mít tmavěčervené písmo  i rámeček.
+  * Třída alert-warning bude mít černé písmo a zlatý rámeček.
+* Text hlavního nadpisu (h1) zarovnejte na střed stránky.
 * Novinkám (id=novinky) nastavte:
-  * šířku 110px.
-  * boční vnější i vnitřní odsazení 10px.
-  * tmavě zelený 2px okroj se zaoblenými rohy (20px).
-  * obtékání zprava (float:right).
+  * šířku 110px,
+  * boční vnější i vnitřní odsazení 10px,
+  * tmavě zelený 2px okraj se zaoblenými rohy (20px),
+  * a přichycení k pravé straně, tj. obtékání textem zleva (float:right).
 * Článkům (element Article) nastavte:
-  * vnější odsazení 20px.
-  * šířku 420px.
-  * zarovnání textu do bloku.
+  * vnější odsazení 20px,
+  * šířku 420px,
+  * text zarovnejte do bloku
+  * a rozdělte do dvou textových sloupců.
+* Prvnímu písmenu v prvním odstavci (element P) v elementu Article nastavte:
+  * dvojnásobnou velikost textu
+  * a velká písmena.
 * Při najetí myši na odstavec (element P) mu nastavte:
   * černou barvu pozadí a bílý text.
-  * vnitřní odsazení 5px.
+* Při najetí myši na odstavec nastavte jeho odkazům zlatou barvu textu.
+* Při najetí myši na odstavec a na jeho odkaz nastavte odkazu barvu textu na zlatou.
+* Tabulce nastavte:
+  * šířku 100%,
+  * barvu prvního řádku na oranžovou,
+  * barvu sudých řádků na antiquewhite,
+  * barvu lichých řádků na burlywood
+  * a barvu řádků (vyjma prvního) při najetí myši na světle modrou.
+* Elementům s atributem title v elementu Article nastavte dolní šedé tečkované podtržení.
+* Odkazům v elementu Article:
+  * pokud odkazy začínají HTTPS, tak před ně doplňte libovolný znak z mapy znaků a nastavte mu červenou barvu.
+  * pokud jsou odkazy z domény CZ, tak za ně doplňte libovolný znak z mapy znaků a nastavte mu žlutou barvu.
 * Patičce nastavte:
-  * zarovnání textu na střed.
-  * bílý text.
+  * zarovnání textu na střed,
+  * a bílý text.
+* Nápovědě nastavte:
+  * fixovanou pozici 10px od spodního a pravého okraje okna,
+  * šířku 100px a výšku 50px,
+  * nějakou barvu pozadí a textu,
+  * a text na střed buňky (pozn.: zde je více možností řešení, viz internet).
 
 
-## 3. úkol - audio a video v HTML 5
+## Úkoly na doma
 
-* Prohlédněte si zdrojový kód souboru audiovideo-ukazka.html
-* Nastavte audiu vypnutý zvuk a automatické přehrávání v nekonečné smyčce.
-* Ostatní pokusy si nechte na doma.
+* Projděte si následující oblasti v tutoriálu k CSS na www.w3schools.com/css/. 
+Opět je cílem hlavně vědět, co lze s CSS provádět a kde nalézt odpovídající informace.
+* Oblasti:
+  * [CSS Selectors](https://www.w3schools.com/cssref/css_selectors.asp), CSS How to, CSS Units. 
+  * CSS Colors, CSS Backgrounds, CSS Borders.
+  * CSS Margin nebo CSS Padding, CSS Box Model.
+  * CSS Text, CSS Fonts, CSS Links, CSS Lists.
+  * CSS Position, CSS Overflow.
+  * Volitelně oblasti z části CSS Avanced, např. CSS Shadows, CSS Animations, CSS Tooltips apod.       
+  * Volitelně cokoliv dalšího.
 
 
 :+1:

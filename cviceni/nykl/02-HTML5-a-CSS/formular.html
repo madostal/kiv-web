@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="První pokusná stránka s formulářem v HTML 5.">
+    <meta name="keywords" content="první stránka, kiv-web, 2. cvičení">
+    <meta name="author" content="Xavier Example">
+    <title>Registrační formulář</title>
+    <style>
+        .is-required {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registrační formulář</h1>
+
+    <form action="http://127.0.0.1:8000/+EasyPhpLocalhost/formular-zobrazeni.php" method="GET"
+          target="_blank" accept-charset="UTF-8" autocomplete="on"
+    >
+        <!-- Osobni udaje uzivatele -->
+        <fieldset>
+            <legend>Osobní údaje</legend>
+            <br>
+
+            <label for="lb_login">
+                Login<sup>*</sup>:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_mail">
+                E-mail<sup>*</sup>:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_heslo">
+                Heslo<sup>*</sup>:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <div class="is-required">
+                * Musí být zadáno.
+            </div>
+            <br><br>
+
+            <div>
+                Pohlaví:
+                <label for="lb_muz">
+                    <!-- doplnit -->
+                    Muž
+                </label>
+                <label for="lb_zena">
+                    <!-- doplnit -->
+                    Žena
+                </label>
+            </div>
+            <br>
+
+            <label for="lb_narozeni">
+                Datum narození:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_barva">
+                Oblíbená barva:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_soubor">
+                Nahrát fotografie:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_vyska">
+                Výška v cm:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_deti">
+                Počet dětí:
+                <!-- doplnit -->
+                =
+                <!-- doplnit -->
+            </label><br><br>
+
+        </fieldset>
+        <br>
+        <!-- KONEC: Osobni udaje uzivatele -->
+
+        <!-- Vlastnictvi uzivatele -->
+        <fieldset>
+            <legend>Vlastnictví</legend>
+            <br>
+
+            <label for="lb_auto">
+                Typ automobilu:
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_zvire">
+                Domácí zvíře (s CTRL zvolte více položek):<br>
+                <!-- doplnit -->
+            </label><br><br>
+
+        </fieldset>
+        <br>
+        <!-- KONEC: Vlastnictvi uzivatele -->
+
+        <!-- Dodatecne informace -->
+        <fieldset>
+            <legend>Ostatní</legend>
+            <br>
+
+            <!-- Datovy list se stanicemi -->
+            <datalist id="stanice-data">
+                <option value="Televize Nova">Nova</option>
+                <option value="Televize Prima">Prima</option>
+                <option value="Televize Prima Cool">Prima</option>
+                <option value="Televize ČT 1">ČT 1</option>
+                <option value="Televize ČT 2">ČT 2</option>
+                <option value="Radio F1">F1</option>
+                <option value="Radio Faktor">Faktor</option>
+                <option value="Radio Český rozhlas">Český rozhlas</option>
+                <option value="Radio Radiožurnál">Radiožurnál</option>
+                <option value="Radio Svobodná Evropa">Svobodná Evropa</option>
+            </datalist>
+            <!-- KONEC: Datovy list se stanicemi -->
+
+            <label for="lb_stanice">
+                Nejoblíbenější stanice:<br>
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_stanice_2">
+                2. nejoblíbenější stanice:<br>
+                <!-- doplnit -->
+            </label><br><br>
+
+            <label for="lb_o_me">
+                Dodatečné informace:<br>
+                <!-- doplnit -->
+            </label><br><br>
+
+        </fieldset>
+        <br>
+        <!-- KONEC: Dodatecne informace -->
+
+        <!-- Tlacitka formulare -->
+
+        <!-- doplnit -->
+
+        <!-- KONEC: Tlacitka formulare -->
+
+    </form>
+
+    <!-- napoveda -->
+    <br>
+    <a href="http://www.w3schools.com/html/html_forms.asp" target="_blank">Tutoriál</a><br>
+    <b>Parametry atributu TYPE elementu INPUT:</b> button, checkbox, color, date , datetime , datetime-local , email , file,
+    hidden, image, month , number , password, radio, range , reset, search, submit, tel, text, time , url, week.
+    <br>
+
+</body>
+</html>
