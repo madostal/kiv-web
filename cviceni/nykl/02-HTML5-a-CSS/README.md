@@ -30,7 +30,7 @@
     * Doplňte tlačítko (INPUT/BUTTON) pro vypsání JavaScriptového alertu s textem "Hello Word"; Kód alertu: onclick="alert('Hello Word')".
 * Do vlastní složky na students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php.
   * **Alternativně** lze využití: http://students.kiv.zcu.cz/~nyklm/+studenti-kiv-web/formular-zobrazeni.php 
-  * Pozn.: raději jako alternativu využijte předchozí URL a nahrávní a použití vlastního souboru si zkuste, pokud Vám zbyde čas.
+  * Pozn.: raději jako alternativu využijte předchozí URL a nahrání a použití vlastního souboru si zkuste, pokud Vám zbyde čas.
 * Do hlavičky formuláře doplňte metodu odeslání formuláře (method=get/post), URL adresu souboru formular-zobrazeni.php (action) a informaci, že se má načtená stránka zobrazit na nové záložce/okně (target="_blank").
 * Odešlete formulář s GET a s POST a všimněte si změny URL adresy v případě GET.
   * Prohlédněte si URL adresu při odeslání metodou GET a zkuste v ní něco změnit.
@@ -43,7 +43,7 @@
 * Využijte stránku konference.html a doplňte do ní odkaz na soubor s kaskádovými styly, který si sami vytvoříte (např. styl.css).
   * Veškeré určování vzhledu stránky budete nadále provádět pouze ve svém CSS souboru.
 * Prohlédněte si HTML dané stránky ([sémantické elementy v HTML 5](http://www.w3schools.com/html/html5_semantic_elements.asp)).
-* Celé stráce nastavte na pozadí libovolný přeliv barev (např.: linear-gradient(red,orange,yellow,green,blue,brown);).
+* Celé stránce nastavte na pozadí libovolný přeliv barev (např.: linear-gradient(red,orange,yellow,green,blue,brown);).
 * Obsah stránky je v elementu s id="obal":
   * nastavte mu šířku 600px,
   * zarovnejte ho na střed stránky s horním a dolním vnějším odsazením 10px (margin:10px auto;),
@@ -72,7 +72,7 @@
   * tloušťku rámečku (tloušťka 2px),
   * zaoblené rohy rámečku (border-radius: 20px;),
   * a vnitřní i vnější odsazení 20px.
-  * Třída alert-error bude mít tmavěčervené písmo  i rámeček.
+  * Třída alert-error bude mít tmavě červené písmo  i rámeček.
   * Třída alert-warning bude mít černé písmo a zlatý rámeček.
 * Text hlavního nadpisu (h1) zarovnejte na střed stránky.
 * Novinkám (id=novinky) nastavte:
@@ -105,12 +105,14 @@
 * Patičce nastavte:
   * zarovnání textu na střed,
   * a bílý text.
+* Patička obsahuje SPAN se třídou "info", který by defaultně neměl být zobrazen a při najetí myši na patičku by se měl zobrazit jako blokový element, tj. na novém řádku.
 * Nápovědě nastavte:
   * fixovanou pozici 10px od spodního a pravého okraje okna,
   * šířku 100px a výšku 50px,
   * nějakou barvu pozadí a textu,
   * a text na střed buňky (pozn.: zde je více možností řešení, viz internet).
-
+* Novinky obsahují dvojice slov v elementech SPAN. Určete jim barvu pozadí tak, aby každý třetí měl stejnou barvu, tj. stejné barvy budou mít dvojice v pořadí [1.,4.,7.,..], [2.,5.,8.,..], [3.,6.,9.,..]. Barvy mohou být např. yellow, greenyellow, lightsalmon (span:nth-child(3n+1)).
+    
 
 ## Úkoly na doma
 
@@ -127,6 +129,13 @@ Opět je cílem hlavně vědět, co lze s CSS provádět a kde nalézt odpovída
 
 
 :+1:
+
+
+## Výstupy cvičení
+* Student by měl znát všechny základní CSS selektory (např. element, id, třída apod.), pseudo-selektory (např. :hover, ::before apod.) a atributy (např. barva a zarovnání textu apod.).
+* Student by měl vědět o existenci "konkretizujících" selektorů (např. s &gt;, +, ~) a pokročilých vlastností/atributů CSS (např. stíny, animace) a měl by vědět, kde k nim nalézt informace.  
+* Student by měl být schopen použít CSS na konkrétní HTML stránku.
+* Student nemusí rozumnět "responzivitě" - budou obsahem následujícího 3. cvičení.
 
 
 ### Poznámky
