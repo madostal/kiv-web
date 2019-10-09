@@ -1,0 +1,158 @@
+/***** Ukazka selektoru kaskadnich stylu *****/
+
+/* zvyrazneni okraje stranky */
+.okraj {
+    border: 1px solid black;
+}
+
+/* vsechny div a p v #selektory */
+#selektory, #selektory div, #selektory p {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+/** zkuste nasledujici **/
+/* primi potomek */
+#s1 > p {
+    /* background-color: brown; */
+}
+/* primi sourozenec (nasledovnik) */
+#s1 + p {
+    /* background-color: blue; */
+}
+/* vsichni sourozenci (nasledovnici) */
+#s1 ~ p {
+    /* background-color: aqua; */
+}
+
+
+/* vlozi jako prvni do #selektory */
+#selektory::before {
+    content: "Selektory:";
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px;
+}
+
+
+/** vyber/oznaceni textu - neni aplikovano na potomky **/
+/* specialne pro FireFox */
+#selektory::-moz-selection {
+    background: yellowgreen;
+}
+/* obecne - v IE/Edge funguje */
+#selektory::selection {
+    background: yellowgreen;
+}
+
+
+/** menu **/
+nav {
+    border: 1px solid red;
+    text-align: center;
+    margin: 10px 0px;
+}
+/* odkaz */
+a {
+    padding: 10px;
+    background-color: brown;
+    color: white;
+    /* zobrazeni vice bloku v radce */
+    display: inline-block;
+}
+/* odkaz, na kterem se nachazi mys */
+a:hover {
+    background-color: blue;
+}
+/* odkaz, ktery byl v minulosti jiz navstiven */
+a:visited {
+    background-color: black;
+}
+/* odkaz pri stisku tlacitka mysi */
+a:active {
+    background-color: coral;
+    color: black;
+}
+
+
+/** odsazeni a pretekani **/
+#obal {
+    border: 5px solid black;
+}
+#odsazeni {
+    border: 10px solid blue; /* změní rozměr elementu */
+    outline: brown dashed thick; /* nezmění rozměr elementu */
+    margin: 10px 50px; /* vnější odsazení */
+    padding: 1em 2em; /* vnitřní odsazení dle velikosti řádky */
+}
+#pretekani {
+    border: 1px solid black;
+    background-color: yellow;
+    max-width: 600px; /* max sirka (1) */
+    min-width: 400px; /* min sirka (2) */
+    margin: 0px auto; /* "na stred" (3) */
+    min-height: 3em; /* min vyska (a) */
+    max-height: 10em; /* max vyska (b) */
+    overflow: hidden; /* zkuste scroll a odstranit */
+}
+
+
+/* pozicovani */
+#top-prvek {
+    position: relative;
+}
+#relativni {
+    position: relative;
+    left: 50px;
+    top: -10px;
+}
+#absolutni {
+    position: absolute;
+    left: 50px;
+    top: -10px;
+}
+#fix {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    background-color: lightblue;
+}
+
+
+/** obtekani prvnku **/
+#obtekani {
+    overflow: auto;
+}
+/* zkuste smazat spolu s #neobtecu */
+#prave-obtekani {
+    height: 100px;
+    margin: 5px;
+    /* bude vlevo a text obtece vpravo */
+    float: left;
+}
+/* nebude obtekat */
+#neobtecu {
+    clear: left;
+}
+
+
+/** tabulka **/
+table, th, td {
+    border: 1px solid black;
+    background-color: white
+}
+table {
+    background-color: orange;
+}
+thead {
+    color: green;
+}
+tbody {
+    color: blue;
+}
+tfoot {
+    color: red;
+}
