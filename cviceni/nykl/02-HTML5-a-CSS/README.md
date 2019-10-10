@@ -112,6 +112,7 @@
   * nějakou barvu pozadí a textu,
   * a text na střed buňky (pozn.: zde je více možností řešení, viz internet).
 * Novinky obsahují dvojice slov v elementech SPAN. Určete jim barvu pozadí tak, aby každý třetí měl stejnou barvu, tj. stejné barvy budou mít dvojice v pořadí [1.,4.,7.,..], [2.,5.,8.,..], [3.,6.,9.,..]. Barvy mohou být např. yellow, greenyellow, lightsalmon (span:nth-child(3n+1)).
+* Na konci stránky je jedno políčko formuláře. Zajistěte, aby vyplněné políčko bylo tmavě zelené a mělo bílý text, ale nevyplněné mělo defaultní vzhled (:not(:placeholder-shown)).
     
 
 ## Úkoly na doma
@@ -135,7 +136,7 @@ Opět je cílem hlavně vědět, co lze s CSS provádět a kde nalézt odpovída
 * Student by měl znát všechny základní CSS selektory (např. element, id, třída apod.), pseudo-selektory (např. :hover, ::before apod.) a atributy (např. barva a zarovnání textu apod.).
 * Student by měl vědět o existenci "konkretizujících" selektorů (např. s &gt;, +, ~) a pokročilých vlastností/atributů CSS (např. stíny, animace) a měl by vědět, kde k nim nalézt informace.  
 * Student by měl být schopen použít CSS na konkrétní HTML stránku.
-* Student nemusí rozumnět "responzivitě" - budou obsahem následujícího 3. cvičení.
+* Student nemusí rozumnět "responzivitě" - bude obsahem následujícího 3. cvičení.
 
 
 ### Poznámky
