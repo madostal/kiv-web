@@ -43,7 +43,7 @@
 * Pro práci využijte soubor bootstrap.html:
   * Zkontrolujte, že obsahuje správně připojený Bootstrap, jQuery a font Awesome (je ukázáno, jak využít jejich verze z CDN či jejich lokální uložení).
     * Pozn.: CSS je připojováno v hlavičce, JS na konci stránky.
-  * Můžete si zkusit práci s nástrojem Composer pro právu balíčků/knihoven, který umožňuje rychlou inicializaci projektu a alespoň základní ohlídání kompatibility jedlotlivých knihoven.
+  * Můžete si zkusit práci s nástrojem Composer pro právu balíčků/knihoven, který umožňuje rychlou inicializaci projektu a alespoň základní ohlídání kompatibility jednotlivých knihoven.
     * Seznam požadovaných knihoven je uveden v souboru composer.json.
     * Instalaci spustíte z příkazové řádky: php composer.phar install
     * Pro aktualizaci knihoven: php composer.phar update
@@ -65,7 +65,7 @@
     * do obou tlačítek umístěte libovolnou ikonu (např. externí link a lupu).
   * Článek, 1. část:
     * Bude v jednom řádku a její obsah bude přes všech 12 sloupců a zarovnaný do bloku.
-    * Tabulka bude responzivní, malá, ohraničená, s odlišenými sudými/lichými řádky a při najetí myši se budou jednotlivé řádky zvýraznovat.
+    * Tabulka bude responzivní, malá, ohraničená, s odlišenými sudými/lichými řádky a při najetí myši se budou jednotlivé řádky zvýrazňovat.
     * Hlavička tabulky bude tmavá s centrovaným písmem a poslední řádek tabulky bude červený.
     * Tlačítka v posledním sloupci tabulky budou malá a modrá a svou funkcionalitu rozšíří na celý řádek (a mohou být centrována).
   * Článek, 2. část:
@@ -81,42 +81,41 @@
 * Nad patičku doplňte libovolný [carousel](https://www.w3schools.com/bootstrap4/bootstrap_carousel.asp).  
     
 
+## Úkoly na doma
 
-
-## Úkoly na doma (TODO)
-
-* Prohlédněte si [tutoriál na Bootstrap](https://www.w3schools.com/bootstrap4/) a zkuste si, co uznáte za vhodné.
-* Velmi důležité:
-  * BS Grid System
-  * BS Stacked/Horizontal - chápat rozdíl mezi .container a .container-fluid
-  * BS Grid Examples - zvláště části "mixed".
-* Větší pozornost věnujte částem:
-  * BS Grid Basic
-  * BS Typography
-  * BS Alerts
-  * BS Buttons a BS Buttons groups (všimněte si části, kde jsou použity v elementy A, tj. odkazy)
-  * BS Glyphicon
-  * BS Dropdowns
-  * BS Collapse
-  * BS Navbar - zvláště část Collapsing The Navigation Bar.
-  * BS Inputs
-  * BS Media Objects
-  * BS Carousel (s textem)
-  * BS Tooltip
-  * BS Scrollspy
-  * BS Affix
-* Prohlédnout:
-  * BS Templates - při najetí myši na okénka/obrázky se ukáže rozložení sloupců.
-  * jednotlivé ukázky Templates.
-* Z Bootstrap CSS Ref postačí pouze následující:
-  * CSS Helpers - část s .visible-*-* a .hiden-*
-  * CSS Images
-  * Glyphicons - užitečné.
-
-
+* Prohlédněte si [tutoriál Bootstrapu](https://www.w3schools.com/bootstrap4/) a zkuste si, co uznáte za vhodné.
+* Je dobré pochopit způsob tvorby responzivního designu v Bootstrapu (oblast Bootstrap 4 Grid):
+  * BS4 Grid System (vysvětlení sloupcového layoutu), zvláště části Grid classes a Grid system rules.
+    * Důležité je chápat rozdíl mezi třídami .container a .container-fluid. 
+  * BS4 Stacked/Horizontal, BS4 Grid Examples - dobré vidět a pochopit.
+* Dále doporučuji projít si následující stránky tutoriálu:
+  * BS4 Typography, BS4 Utilities (způsoby defaultního vykreslení elementů a defaultní barvičky; stačí prohlédnout)
+  * BS4 Alerts, BS4 Buttons a BS4 Buttons groups (dobré znát).
+  * BS4 Badges, BS4 Progress Bars (stačí prohlédnout).
+  * BS4 Tables (dobré znát).
+  * BS4 Navs, BS4 Navbars (dobré umět použít, zvláště *Collapsing The Navigation Bar*).
+  * BS4 Dropdowns, BS4 Collapse (stačí prohlédnout).
+  * BS4 Forms, BS4 Inputs, BS4 Inputs Groups, BS4 Custom Forms (stačí prohlédnout).
+  * BS4 Carousel, BS4 Modal, BS4 Tooltip, BS4 Popover (dobré umět použít). 
+  * BS4 Filters (jen prohlédnout; využívá jQuery).
+* Další příklady a ukázky lze nalézt na oficiální stránce Bootstrapu, tj. [GetBootstrap.com](https://getbootstrap.com/docs/4.3/components/alerts/).
+  * Pro inspiraci si lze prohlédnou připravené šablony webů na [StartBootstrap.com](https://startbootstrap.com/templates/). Pozor, v samostatné práci musíte vytvořit vlastní design webu, ale tyto šablony můžete použít pro inspiraci (což je zvláště dobré pro programátory bez grafického citu - v praxi šablonu vezmete a upravíte k obrazu svému). 
+* Jako alternativu Bootstrapu lze využít např. [W3.CSS](https://www.w3schools.com/w3css/default.asp).
+* **Ikony** - dostupných fontů s ikonami, které lze na webu zdarma použít, existuje větší množství, např. [Awesome v4 - snažší užití](https://fontawesome.com/v4.7.0/icons/), [Awesome v5](https://fontawesome.com/), [Captain Icon](https://mariodelvalle.github.io/CaptainIconWeb/), [Octicons](https://octicons.github.com/), [Typicons](https://www.s-ings.com/typicons/), [Material Design Icons](https://materialdesignicons.com/), [Flaticon](https://www.flaticon.com/) a další.
+  * Pro začátek doporučuji zkusit si použít [Awesome v4](https://fontawesome.com/v4.7.0/icons/) včetně jejich uložení k vlastní stránce, tj. bez CDN.
+    * Podívejte se na [příklady užití](https://fontawesome.com/v4.7.0/examples/), zvláště na Animated Icons a Stacked Icons.
 
 
 :+1:
+
+
+## Výstupy cvičení
+* Student by měl vědět, co je znamená responzivní design (webu), a měl by umět vytvořit "sloupcový responzivní design".
+* Student by měl vědět, že existují CSS frameworky, jako např. Bootstrap, a měl by být schopen je použít. 
+* Student by měl vědět, že existují fonty s ikonami, jako např. Font Awesome, a měl by být schopen je použít.
+* **Semestrální práce** - student by nyní měl být schopen navrhnout si vlastní šablonu (HTML + CSS + Fonty), kterou využije v semestrální práci.
+  * Je dobré udělat si úvodní stránku webu, včetně menu apod., a alespoň jednu obsahovou stránku, včetně seznamu a tabulky. Pozn.: doporučuji udělat si, protože nyní (nejspíš) máte čas si s šablonou trochu hrát a nemáte (zatím) hlavu zamotánu o Twig či PHP.
+  * Vytvořenou šablonu následně použijete ve své samostatné práci (bez ohledu na to, zda použijete či nepoužijete Twig).  
 
 
 ### Poznámky
