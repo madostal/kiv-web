@@ -110,7 +110,7 @@
 
 
 ## Výstupy cvičení
-* Student by měl vědět, co je znamená responzivní design (webu), a měl by umět vytvořit "sloupcový responzivní design".
+* Student by měl vědět, co znamená, když se řekne: "responzivní design (webu)", a měl by umět vytvořit "sloupcový responzivní design".
 * Student by měl vědět, že existují CSS frameworky, jako např. Bootstrap, a měl by být schopen je použít. 
 * Student by měl vědět, že existují fonty s ikonami, jako např. Font Awesome, a měl by být schopen je použít.
 * **Semestrální práce** - student by nyní měl být schopen navrhnout si vlastní šablonu (HTML + CSS + Fonty), kterou využije v semestrální práci.
