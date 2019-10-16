@@ -1,7 +1,8 @@
-<!doctype html>
-<?php 
-    // načtení souboru s funkcemi
+<?php
+    // pripojeni souboru s funkcemi
+
 ?>
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,17 +11,21 @@
     <body>
         <h1>Výstup formuláře</h1>
     
-        <div><strong>Post:</strong> <br>
-<?php
-    // pokud je, vypíše přijaté pole do tabulky
-?>
+        <div>
+            <strong>Post:</strong> <br>
+            <?php
+                // zpracovani prijatych dat + vypis pole do tabulky
+
+            ?>
         </div>
         <br>
         
-        <div><strong>Get:</strong> <br>
-<?php
-    // pokud je, vypíše přijaté pole do tabulky
-?>
+        <div>
+            <strong>Get:</strong> <br>
+            <?php
+                // zpracovani prijatych dat + vypis pole do tabulky
+
+            ?>
         </div>
         
     </body>
