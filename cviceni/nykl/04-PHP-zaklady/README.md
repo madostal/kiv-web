@@ -1,9 +1,9 @@
 # 4. cvičení KIV/WEB - Bootstrap a základy PHP.
 
 * Na **students.kiv.zcu.cz** je globálně zakázán výpis chyb PHP. Pokud si je chcete zobrazit (doporučuji), tak vložte do hlavičky PHP souboru následující kód:
-    **ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL)**;
+    <br>**ini_set('display_errors', 1)**;
+    <br>**ini_set('display_startup_errors', 1)**;
+    <br>**error_reporting(E_ALL)**;
 * Více informací: [error_reporting](http://php.net/manual/en/function.error-reporting.php).
 
 
@@ -64,8 +64,8 @@
   * Ověřte správnou funkcionalitu.
   * Na pole si zkuste použít funkce print_r() a var_dump(), které lze případně vypsat v elementu &lt;pre&gt;.
 * V souboru funkce.php vytvořte funkci pro uložení HTML tabulky, kterou jste získali v předešlém kroku, do HTML souboru. 
-  * Soubor bude mít název "rok-mesic-den_hodina-minuty-sekundy.html" a bude ukládán do adresáře "vystup". Kontrolujte také existenci adresáře "vystup" a pokud neexistuje, tak ho vytvořte. Pozn.: použijte funkci pro získání aktuálního datumu date("Y-m-d_H-i-s").
-  * Danou funkcionalitu doplňte do funkce, která zpracovává data odeslaného formuláře, a to tak, aby při neprázdném vstupu uložila tento vstup do souboru ve formě HTML tabulky.
+  * Soubor bude mít název "rok-mesic-den_hodina-minuty-sekundy.html" a bude ukládán do adresáře "vystup". Kontrolujte také existenci adresáře "vystup" a pokud neexistuje, tak ho vytvořte. Pozn.: použijte funkci pro získání aktuálního datumu date("Y-m-d_H-i-s"), viz [parametry funkce date](https://www.php.net/manual/en/function.date.php).
+  * Danou funkcionalitu doplňte do funkce, která zpracovává data odeslaného formuláře, a to tak, aby při neprázdném vstupu uložila tento vstup do souboru ve formě HTML tabulky (pozn.: po otevření souboru by se měla v prohlížeči zobrazit příslušná tabulka).
     
 ### 3. část - Práce s proměnnými a funkcemi (2/2)
 
@@ -82,15 +82,30 @@
   * Pokud neexistuje adresář DATA, tak ho vytvořte.
   * Každý soubor na serveru zpracujte:
     * Vypište (zvlášť) jméno, příponu a velikost souboru.
-    * Přeneste soubor na server tak, aby byl zachován jeho původní název (pozn.: pokud je server provozován na Windows, tak překonvertujte string z kódování "UTF-8" (dáno webem) na "WINDOWS-1250" (popř. jiné číslo, dle Vašeho lokálního prostředí)).
+    * Přeneste soubor na server tak, aby byl zachován jeho původní název (pozn.: pokud je server provozován na Windows, tak překonvertujte string z kódování "UTF-8" (dáno webem) na "WINDOWS-1250" (popř. jiné číslo, dle Vašeho lokálního prostředí), viz funkce **iconv**).
   * Doplňte danou funkcionalitu do funkce, která zpracovává data formuláře. 
    
 
 ## Úkoly na doma
-TODO ...
+
+* Doporučuji podívat se alespoň na následující stránky [PHP tutoriálu na W3Schools](https://www.w3schools.com/php/default.asp):
+  * PHP Variables (pochopit *global*, větět o *static*), PHP Data Types.
+  * PHP Strings, PHP Numbers, PHP Constants.
+  * PHP Functions (zvláště části *PHP is a Loosely Typed Language* a *PHP Return Type Declarations*, ale pozor, vyžadují PHP v.7 nebo vyšší (na students.kiv.zcu.cz je nyní PHP v.7.0)).
+  * PHP Arrays, PHP Sorting Arrays.
+  * Část *PHP Forms* - postačí jen PHP Form URL/E-mail.
+  * Část *PHP Advances* - PHP Date and Time, PHP File Open/Read, PHP File Create/Write, PHP File Upload.
+    * Může se hodit - PHP Filters, PHP Filters Advances.
+  * Někdy se mohou hodit pokročilé funkce z části *PHP Reference*:
+    * PHP Array, PHP Directory, PHP Filter, PHP Mail, PHP Math, PHP String. 
 
 ## Výstupy cvičení
-TODO ...
+
+* Student by měl vědět, jak do HTML zakomponovat PHP.
+* Student by měl vědět, jak na lokálním počítači zprovoznit prostředí, které mu umožní vyvíjet a spouštět PHP skripty.
+* Student by měl znát a umět použít základní programové konstrukce PHP, tj. proměnné, pole, větvení, cykly, funkce, práci se soubory, formuláři, datumy apod. (pozn.: objekty, sessions, cookies, databáze a ochrana proti kyber-útokům budou předmětem dalších cvičení). 
+* Student by měl být schopen s použitím PHP vytvořit jednoduchou webovou aplikaci s několika webovými stránkami (bez OOP).
+ 
 
 :+1:
 
