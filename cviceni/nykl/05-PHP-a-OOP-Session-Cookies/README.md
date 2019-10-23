@@ -11,7 +11,7 @@
   * Příklad vychází z příkladu na OOP v předmětu KIV/UUR - děkuji Richardovi Lipkovi.
   * Příklad je pouze doplněn o počítání instancí jednotlivých tvarů, což v UML není znázorněno, viz další popis.
   
-![OOP diagram tříd]("OOP-zadani/oop_class_diagram.png") 
+![OOP diagram tříd](OOP-zadani/oop_class_diagram.png) 
 
 * Prohlédněte si soubor **OOP.php**, který spouští celou aplikaci (zkuste si ho spustit).
   * Všimněte si, jakým způsobem jsou zde načítány třídy jednotlivých tvarů.
