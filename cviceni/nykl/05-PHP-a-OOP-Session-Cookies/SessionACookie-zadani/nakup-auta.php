@@ -1,7 +1,7 @@
 <?php
-    // nacteni souboru s funkcemi
+    // nacteni souboru s funkcemi loginu (prace se session)
 
-    // prace s cookies
+    // nacteni souboru pro praci s cookie
 
 ?>
 <!doctype html>

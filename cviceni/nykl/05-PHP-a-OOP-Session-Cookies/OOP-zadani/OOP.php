@@ -34,11 +34,13 @@ $areas = [];
 //$areas[] = new CRectangle("Obdélník-A",6,5, "blue", 10, 5);
 //$areas[] = new CSquare("Čtverec-B",6,5, "blue", 5);
 //$areas[] = new CRectangle("Obdélník-B",6,5, "blue", 5, 2);
+// lze, funguje a nechlasi chybu
+//$areas[] = new CCircle("Kruh-A",6,5, 6);
 
 // projdu ctyruhelniky a volam jejich metodu pro vykresleni a pro vypis plochy
 foreach ($areas as $area) {
     $area->draw();
-    echo "- area: ".$area->getArea();
+    echo "- area: ".$area->getArea()." m<sup>2</sup>";
     echo "<br>";
 }
 

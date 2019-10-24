@@ -2,8 +2,9 @@
 
 * Nejprve si projděte prezentaci k tomuto cvičení.
 * Pokud Vám PhpStorm neumožňuje definovat datové typy parametrů funkcí, tak je to nejspíš proto, 
-že má nastavenu verzi PHP nižší, než 7.0
-  * Zvolit: File --&gt; Settings --&gt; Languages &amp; Frameworks --&gt; PHP --&gt; PHP language level --&gt; zvolit alespoň v.7.0 
+že má nastavenu verzi PHP nižší, než 7.0.
+  * Zvolit: File --&gt; Settings --&gt; Languages &amp; Frameworks --&gt; PHP --&gt; PHP language level --&gt; zvolit alespoň v.7.0
+  * Pozor, toto se týká pouze PHPStormu a ne serveru, který by také měl používat PHP verze alespoň 7.0. 
 
 ## 1. úkol - Základy objektově orientovaného programování (OOP) v PHP
 
@@ -20,7 +21,7 @@
   * Vaším cílem je implementovat jednotlivé objekty dle přiloženého UML diagramu a správnou funkcionalitu aplikace
     testovat odstraněním komentářů příslušným řádkům v souboru OOP.php.
 
-### 1. úkol - Postup řešení
+### Postup řešení
 * Implementujte rozhraní **IDrawable**, které pouze stanovuje, 
   že má existovat veřejná metoda *draw()* pro vykreslení příslušného tvaru.
 * Implementujte abstraktní třídu **AGeometricShape**, která implementuje IDrawable 
@@ -53,7 +54,7 @@
 * Cílem úkolu je použít Session pro správu přihlášení uživatele 
 a Cookie pro uchování jím navolených voleb v jeho webovém prohlížeči. 
 
-### 1. část 2. úkolu - Správa přihlášení uživatele (Session)
+### 1. část - Správa přihlášení uživatele (Session)
 
 * Vaším cílem je vytvořit funkční správu přihlašování uživatele na web, která umožní jeho přihlášení, 
 kontrolu, zda je uživatel přihlášen, a odhlášení.
@@ -76,7 +77,7 @@ Přihlášený uživatel může také vidět informace o svém přihlášení.
   * Při zavření prohlížeče by se sessions mely (automaticky) vymazat a uživatel tedy bude automaticky odhlášen.
 
 
-### 2. část 2. úkolu - Uchování dat uživatele (Cookie)
+### 2. část - Uchování dat uživatele (Cookie)
 
 * Vaším cílem je umožnit uživateli ukládat data do cookie ve svém prohlížeči
 a opětovně zobrazovat např. při další návštěvě webu. 
@@ -87,16 +88,23 @@ a opětovně zobrazovat např. při další návštěvě webu.
   * Vytvořte třídu pro ukládání, načítání a mazání informací o zvoleném automobilu do/z cookies.
 * Zakomponujte výše zmíněné do souboru nakup-auta.php
   * Pokud uživatel odešle formulář, tak se příslušné informace uloží do cookies
-  a na stránce, v části "Vybraný automobil", se vypíše informace o automobilu - za každé kolo vytvořte jeden čtverec (např. 50x50px) se zvolenou barvou pozadí.
+  a na stránce, v části "Vybraný automobil", se vypíše informace o automobilu - za každé kolo vytvořte jeden kruh (např. 50x50px) se zvolenou barvou pozadí.
   * Pokud uživatel zvolí smazání dat, tak vymažte hodnoty uložené v cookie.
 * Otestujte vytvořenou funkcionality.
   * Informace by měly zůstat uchovány i po zavření a znovu spuštění prohlížeče (pozn.: to, že se zobrazí pouze přihlášenému uživateli, už bylo zprovozněno v 1. části úkolu).
+  * Podívejte se do vývojářské konzole ve webovém prohlížeči (obvykle F12) do záložky s úložišti
+  a zkontrolujte hodnoty v cookies.
 
 
 ## Úkoly na doma
-TODO ...
-
-
+* Prezentace ke cvičení obsahuje některé speciality, které je dobré si prohlédnout.
+* Doporučuji podívat se alespoň na následující stránky [PHP tutoriálu na W3Schools](https://www.w3schools.com/php/default.asp):
+  * PHP Inheritance, PHP Constants, PHP Abstract Classes, PHP Traits (jen o nich vědět), PHP Static Method.
+    * Pokud se v OOP "topíte", tak doporučuji projít si celou oblast PHP OOP od začátku.
+  * PHP Cookies, PHP Sessions.
+  * PHP Superglobals (vědět o $_SERVER a $_REQUEST).
+  
+  
 ## Výstupy cvičení
 * Student by měl umět používat v PHP objektový přístup, tj. chápat význam třídy, abstraktní třídy a rozhraní a umět je používat.
 * Student by měl vědět, k čemu slouží Session a Cookie a měl by je umět v PHP kódu používat.
@@ -104,9 +112,8 @@ TODO ...
 * **Semestrální práce** student by nyní měl být chopen připravit si objekty 
 pro práci se Session a Cookie a objekt pro správu přihlášení uživatele (zatím bez databáze).
   * Ve správě přihlášení uživatele si připravte funkci pro přihlášení uživatele, 
-  která nyní může kontrolovat zadaná data vůči napevno uloženým proměnným (login a heslo). 
+  která nyní může kontrolovat zadaná data vůči napevno uloženým konstantám (login a heslo). 
   V budoucnu tuto funkci pouze rozšíříte o kontrolu zadaných dat vůči databázi.
-
 
 
 :+1:

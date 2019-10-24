@@ -1,4 +1,6 @@
 <?php
+    // nacteni souboru s funkcemi loginu (prace se session)
+
 
 ?>
 <!doctype html>
@@ -11,10 +13,9 @@
         <h1>Úvodní stránka</h1>
 <?php
 
-
    // zpracovani odeslanych formularu
         
-    
+
    ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////        
 ?>
         <form method="POST">
