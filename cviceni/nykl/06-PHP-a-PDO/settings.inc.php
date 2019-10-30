@@ -1,23 +1,35 @@
 <?php
-////////////// Soubor obsahujici zakladni nastaveni /////////////
+///////////////////////////////////////////////////////
+////////////// Zakladni nastaveni webu ////////////////
+///////////////////////////////////////////////////////
 
-// databaze
+////// nastaveni pristupu k databazi ///////
+
+    // prihlasovaci udaje k databazi
     define("DB_SERVER","");
     define("DB_NAME","");
     define("DB_USER","");
     define("DB_PASS","");
 
+    // definice konkretnich nazvu tabulek
+    define("TABLE_UZIVATEL","");
+    define("TABLE_PRAVO","");
 
-// stranky webu (ostatni nebudou dostupne)
-    $phpExtension = ".php"; // pripona
 
+///// vsechny stranky webu ////////
+
+    // pripona souboru
+    $phpExtension = ".inc.php";
+
+    // dostupne stranky webu
     define("WEB_PAGES", [
-        'log' => "login".$phpExtension,
-        'reg' => "user-registration".$phpExtension,
-        'upd' => "user-update".$phpExtension,
-        'mng' => "user-management".$phpExtension
+        'login' => "user-login".$phpExtension,
+        'registrace' => "user-registration".$phpExtension,
+        'uprava' => "user-update".$phpExtension,
+        'management' => "user-management".$phpExtension
     ]);
 
-    define("WEB_PAGE_DEFAULT_KEY", 'log');
+    // defaultni/vychozi stranka webu
+    define("WEB_PAGE_DEFAULT_KEY", 'login');
 
 ?>

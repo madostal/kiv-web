@@ -1,22 +1,23 @@
-<?php 
-    // nacteni hlavicky stranky
-    include("zaklad.php");
-    head("Registrace nového uživatele");
-?>
-
-
-<?php 
-    // načtení souboru s funkcemi
-
-?>
-
 <?php
-   // zpracovani odeslanych formularu
-        
+///////////////////////////////////////////////////////////////////
+////////////// Stranka pro registraci uzivatele ////////////////
+///////////////////////////////////////////////////////////////////
+
+    // nacteni souboru s funkcemi
+
+
+    // nacteni hlavicky stranky
+    require_once("ZakladHTML.class.php");
+    ZakladHTML::createHeader("Registrace nového uživatele");
+
+
+    // zpracovani odeslanych formularu
+
     
-   ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////        
+    ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////
+
 ?>
-        <b>Registrační formulář</b>
+        <h2>Registrační formulář</h2>
         <form action="" method="POST" oninput="x.value=(pas1.value==pas2.value)?'OK':'Nestejná hesla'">
             <table>
                 <tr><td>Login:</td><td><input type="text" name="login" required></td></tr>
@@ -28,28 +29,30 @@
                 <tr><td>Právo:</td>
                     <td>
                         <select name="pravo">
-                            <option value=""></option>
-                        </select>    
+                            <option value=''></option>
+
+                        </select>
                     </td>
                 </tr>
             </table>
-            
+
             <input type="submit" name="potvrzeni" value="Registrovat">
         </form>
 
 <?php
-   ///////////// KONEC: PRO NEPRIHLASENE UZIVATELE ///////////////
-        
-   ///////////// PRO PRIHLASENE UZIVATELE ///////////////                
-?>
-        <b>Přihlášený uživatel se nemůže znovu registrovat.</b>
-        
-<?php
-   ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////                
-?>
+    ///////////// KONEC: PRO NEPRIHLASENE UZIVATELE ///////////////
 
+    ///////////// PRO PRIHLASENE UZIVATELE ///////////////
+?>
+    <div>
+        <b>Přihlášený uživatel se nemůže znovu registrovat.</b>
+    </div>
 <?php
+
+    ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////
+
+
     // paticka
-    foot();
+    ZakladHTML::createFooter();
 ?>
              

@@ -1,8 +1,11 @@
-<?php 
-// stranka s funkci rozcestniku
+<?php
+//////////////////////////////////////////////////////////////
+////////////// Vstupni bod cele webove aplikace ////////////////
+////////////// - stranka s funkci rozcestniku   ////////////////
+//////////////////////////////////////////////////////////////
 
 // nactu zakladni nastaveni
-include("settings.inc.php");
+require_once("settings.inc.php");
 
 // mam spravnou hodnotu na vstupu nebo nastavim default
 if(isset($_GET["page"]) && array_key_exists($_GET["page"], WEB_PAGES)){
