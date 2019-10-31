@@ -17,6 +17,7 @@
 
 ![ERA model databáze](_ERA_model_databaze.png)
   
+  
 * Protože tento úkol se přímo netýká PHP, tak ho lze vyřešit více způsoby:
   * Kompletní návrh databáze, tj. návrh celého schématu databáze např. v MySQL Workbench. (nejnáročnější)
   * Úprava souboru pro MySQL Workbench.
@@ -66,8 +67,7 @@
   * Vytvořte privátní atribut objektu, který bude obsahovat referenci na instanci třídy PDO pro přístup k databázi, a v konstruktoru ho inicializujte.
     * Pokud z databáze není správně čten text v kódování UTF-8, tak pod inicializaci doplňte následující kód: *$this->???->exec("set names utf8")*;
   * Vytvořte obecnou funkci pro **select**, která umožní získat jak všechny řádky databázové tabulky, tak i jen jeden konkrétní řádek tabulky.
-    * Následně z dané funkce extrahujte funkci pro vykonání dotazu v databázi 
-    a funkci pro získání výsledků dotazu jakožto pole (pozn.: budou se vám hodit dále)
+    * Následně z dané funkce extrahujte funkci pro vykonání dotazu v databázi (pozn.: bude se vám hodit dále)
   * Vytvořte funkci, která z databáze přečte všechny uživatele řazené dle jejich ID,
     a ve stránce se správou uživatelů (soubor *user-management*) všechny uživatele vypište.
 
@@ -112,57 +112,31 @@
     * Správa osobních údajů umožňuje upravit údaje právě přihlášeného uživatele.
     * Správa uživatelů je dostupná pouze Adminům a SuperAdminům.  
 
----
----
----
+
+## TODO - Úkoly na doma
+* Doporučuji podívat se alespoň na následující stránky [MySQL Database tutoriálu na W3Schools](https://www.w3schools.com/php/php_mysql_intro.asp):
+  * Všímejte si částí s návodem na PDO !!
+  * MySQL Connect, MySQL Insert Data, MySQL Get Last ID.
+  * MySQL ... 
+  * ... 
+* Pokud neznáte SQL, tak doporučuji projít si alespoň následující stránky z [SQL tutoriálu na W3Schools](https://www.w3schools.com/sql/default.asp): 
+  * SQL Select, SQL Insert Into, SQL Updata, SQL Delete. 
+  * SQL Where, SQL And-Or-Not, SQL Order By, SQL Like, SQL In.
+  * SQL Create Table, SQL Alter Table, SQL Drop Table.
+  
+  
+## TODO - Výstupy cvičení
+* Student by měl umět připojit PHP aplikaci k databázi, např. využitím PDO.
+* Student by měl umět použít databázové CRUD operace, tj. vytváření, čtení, úpravu a mazání řádek tabulky.
+---   
+
+* TODO  **Semestrální práce** student by nyní měl být chopen připravit si objekty 
+pro práci se Session a Cookie a objekt pro správu přihlášení uživatele (zatím bez databáze).
+  * Ve správě přihlášení uživatele si připravte funkci pro přihlášení uživatele, 
+  která nyní může kontrolovat zadaná data vůči napevno uloženým konstantám (login a heslo). 
+  V budoucnu tuto funkci pouze rozšíříte o kontrolu zadaných dat vůči databázi.
 
 
-
-
-## OLD - 3. úkol - registrace a login uživatele
-
-* Doplňte soubor database.class.php o následující funkce (nezapomeňte na session pro právě přihlášeného uživatele):
-  * Přihlášení uživatele.
-  * Odhlášení uživatele.
-  * Ověření současného přihlášení uživatele, tj. je uživatel nyní přihlášen nebo není.
-  * Registrace uživatele, tj. vytvoření záznamu o novém uživateli v DB.
-    
-* Zprovozněte soubor login.php tak, aby fungoval, tj. umožnil přihlásit a odhlásit uživatele (v DB byste měli mít alespoň jednoho uživatele pro testování). Nezapomeňte ověřit, že se vložené heslo shoduje s heslem v databázi.
-* Zprovozněte soubor user-registration.php tak, aby fungoval, jak má, tj.:
-  * Přihlášený uživatel nemůže dělat nic.
-  * Nepřihlášený uživatel se může registrovat, přičemž po úspěšné registraci je automaticky i přihlášen.
-    * Pozor: login musí být unikátní, tj. pokud ho nekotrolujete v DB (např. vlastnost Unique), tak musíte zde.
-
-
-## OLD - 4. úkol - změna údajů uživatele
-
-* Doplňte soubor database.class.php o následující funkce:
-  * Získání všech informací o uživateli, včetně jeho práva.
-  * Změna dat uživatele (update).
-* Zprovozněte soubor user-update.php tak, aby fungoval, jak má, tj.:
-  * Nepřihlášený uživatel nevidí formulář.
-  * Přihlášený uživatel vidí formulář vyplněný jeho údaji a může je libovolně měnit.
-    * Před změnou by mělo být ověřeno, že uživatel vložil správně původní heslo.
-    * Pokud nejsou zadána nová hesla, tak zůstává heslo staré.
-   
-   
-## OLD - 5. úkol - správa uživatelů
-
-* Doplňte soubor database.class.php o následující funkce:
-  * Získání informací o všech uživatelích.
-  * Mazání konkrétního uživatele.
-* Zprovozněte soubor user-management.php tak, aby fungoval, jak má, tj.:
-  * Nepřihlášenému uživateli zobrazil, že je stránka jen pro přihlášené.
-  * Přihlášenému uživateli, který nemá právo Administrátor, zobrazil, že stránka je dostupná jen administrátorům.
-  * Administrátorovi zobrazil tabulku s výpisem uživatelů.
-    * V tabulce nebude zobrazen aktuálně přihlášený uživatel (aby nemohl smazat sám sebe).
-    * U každého uživatele bude funkční tlačítko "smazat uživatele", které daného uživatele odstraní z DB.
-
-
-
-
-* Prohlédněte si přiložené řešení příkladu. 
-* Pokud naleznete nějakou chybu nebo myslíte, že něco lze vyřešit lépe, tak se mi, prosím, přihlaste - rád uvidím lepší řešení.
 
 * Může se hodit - [tutoriál SQL](http://www.w3schools.com/sql/default.asp), zvláště části Select, Insert, Update, Delete.
 
