@@ -4,10 +4,9 @@
 //////////////////////////////////////////////////////////////
 
 /**
- * Trida spravujici databazi.
+ * Vlastni trida spravujici databazi.
  */
 class MyDatabase {
 
 }
-
 ?>

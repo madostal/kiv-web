@@ -10,10 +10,8 @@
     require_once("ZakladHTML.class.php");
     ZakladHTML::createHeader("Registrace nového uživatele");
 
-
     // zpracovani odeslanych formularu
 
-    
     ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////
 
 ?>
@@ -30,7 +28,10 @@
                     <td>
                         <select name="pravo">
                             <option value=''></option>
+                            <?php
+                                // ziskam vsechna prava
 
+                            ?>
                         </select>
                     </td>
                 </tr>
@@ -38,19 +39,17 @@
 
             <input type="submit" name="potvrzeni" value="Registrovat">
         </form>
-
 <?php
     ///////////// KONEC: PRO NEPRIHLASENE UZIVATELE ///////////////
 
     ///////////// PRO PRIHLASENE UZIVATELE ///////////////
 ?>
-    <div>
-        <b>Přihlášený uživatel se nemůže znovu registrovat.</b>
-    </div>
+        <div>
+            <b>Přihlášený uživatel se nemůže znovu registrovat.</b>
+        </div>
 <?php
 
     ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////
-
 
     // paticka
     ZakladHTML::createFooter();

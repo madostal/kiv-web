@@ -5,20 +5,24 @@
 
     // nacteni souboru s funkcemi
 
+
     // nacteni hlavicky stranky
     include("ZakladHTML.class.php");
     ZakladHTML::createHeader("Úprava osobních údajů uživatele");
 
+
     ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////
 
 ?>
-    <div>
-        <b>Osobní údaje mohou měnit pouze přihlášení uživatelé.</b>
-    </div>
+        <div>
+            <b>Osobní údaje mohou měnit pouze přihlášení uživatelé.</b>
+        </div>
 <?php
     ///////////// KONEC: PRO NEPRIHLASENE UZIVATELE ///////////////
 
     ///////////// PRO PRIHLASENE UZIVATELE ///////////////
+
+        // zpracovani odeslanych formularu
 
 ?>
         <h2>Osobní údaje</h2>
@@ -27,7 +31,6 @@
         >
             <input type="hidden" name="id_uzivatel" value="<?php  ?>">
             <table>
-                <tr><td>Současné heslo:</td><td><input type="password" name="heslo_puvodni" required></td></tr>
                 <tr><td>Login:</td><td><?php  ?></td></tr>
                 <tr><td>Heslo 1:</td><td><input type="password" name="heslo" id="pas1"></td></tr>
                 <tr><td>Heslo 2:</td><td><input type="password" name="heslo2" id="pas2"></td></tr>
@@ -38,19 +41,21 @@
                     <td>
                         <select name="pravo">
                             <option value=''></option>
+                            <?php
+                            // ziskam vsechna prava
 
+                            ?>
                         </select>
                     </td>
                 </tr>
+                <tr><td>Současné heslo:</td><td><input type="password" name="heslo_puvodni" required></td></tr>
             </table>
 
             <input type="submit" name="potvrzeni" value="Upravit osobní údaje">
         </form>
-
 <?php
 
     ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////
-
 
     // paticka
     ZakladHTML::createFooter();

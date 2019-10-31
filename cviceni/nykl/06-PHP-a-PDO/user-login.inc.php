@@ -10,6 +10,7 @@
     include("ZakladHTML.class.php");
     ZakladHTML::createHeader("Přihlášení a odhlášení uživatele");
 
+
     // zpracovani odeslanych formularu
 
 
@@ -26,13 +27,11 @@
             <input type="hidden" name="action" value="login">
             <input type="submit" name="potvrzeni" value="Přihlásit">
         </form>
-
 <?php
     ///////////// KONEC: PRO NEPRIHLASENE UZIVATELE ///////////////
 
 
-
-    ///////////// PRO PRIHLASENE UZIVATELE //////////////
+    ///////////// PRO PRIHLASENE UZIVATELE /////////////
 
 ?>
         <h2>Přihlášený uživatel</h2>
@@ -48,13 +47,9 @@
             <input type="hidden" name="action" value="logout">
             <input type="submit" name="potvrzeni" value="Odhlásit">
         </form>
-
-
-
 <?php
 
     ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////
-
 
     // paticka
     ZakladHTML::createFooter();

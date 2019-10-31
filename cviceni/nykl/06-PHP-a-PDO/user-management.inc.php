@@ -11,36 +11,34 @@
     ZakladHTML::createHeader("Správa uživatelů");
 
 
-
     ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////
 
 ?>
-    <div>
-        <b>Tato strána je dostupná pouze přihlášeným uživatelům.</b>
-    </div>
+        <div>
+            <b>Tato strána je dostupná pouze přihlášeným uživatelům.</b>
+        </div>
 <?php
     ///////////// KONEC: PRO NEPRIHLASENE UZIVATELE ///////////////
 
     ///////////// PRO PRIHLASENE UZIVATELE BEZ PRAVA ADMIN ///////////////
 ?>
-    <div>
-        <b>Správu uživatelů mohou provádět pouze uživatelé s právem Administrátor.</b>
-    </div>
+        <div>
+            <b>Správu uživatelů mohou provádět pouze uživatelé s právem Administrátor.</b>
+        </div>
 <?php
     ///////////// KONEC: PRO PRIHLASENE UZIVATELE BEZ PRAVA ADMIN ///////////////
 
     ///////////// PRO PRIHLASENE UZIVATELE S PRAVEM ADMIN ///////////////
 
-    // zpracovani odeslanych formularu
-
-
-    // ziskam data vsech uzivatelu
+        // zpracovani odeslanych formularu
 
 ?>
         <h2>Seznam uživatelů</h2>
         <table border="1">
             <tr><th>ID</th><th>Login</th><th>Jméno</th><th>E-mail</th><th>Právo</th><th>Akce</th></tr>
+            <?php
 
+            ?>
         </table>
 <?php
     /* // akce by mela obsahovat formular s tlacitkem:
