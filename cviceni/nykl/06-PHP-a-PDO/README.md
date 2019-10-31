@@ -16,8 +16,7 @@
 * ERA model databáze:
 
 ![ERA model databáze](_ERA_model_databaze.png)
-  
-  
+    
 * Protože tento úkol se přímo netýká PHP, tak ho lze vyřešit více způsoby:
   * Kompletní návrh databáze, tj. návrh celého schématu databáze např. v MySQL Workbench. (nejnáročnější)
   * Úprava souboru pro MySQL Workbench.
