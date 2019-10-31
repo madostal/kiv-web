@@ -129,7 +129,7 @@
 * **Semestrální práce** - student by nyní měl být chopen:
   * připravit si třídu pro práci s databází.
   * dokončit si třídy spravující přihlášení uživatele.
-  * přípravit si téměř všechny funkce pro práci s databází, tj. ty, které využije v SP.
+  * připravit si téměř všechny funkce pro práci s databází, tj. ty, které využije v SP.
     * Pozor, na příštím cvičení si ještě ukážeme MVC architekturu, tj. třívrstvou architekturu, 
     která odděluje aplikační logiku od práce s daty a od šablon pro vypsání výsledků.   
   
