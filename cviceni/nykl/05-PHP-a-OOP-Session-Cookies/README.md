@@ -109,7 +109,7 @@ a opětovně zobrazovat např. při další návštěvě webu.
 * Student by měl umět používat v PHP objektový přístup, tj. chápat význam třídy, abstraktní třídy a rozhraní a umět je používat.
 * Student by měl vědět, k čemu slouží Session a Cookie a měl by je umět v PHP kódu používat.
   * Student by měl znát také jejich dobu platnosti.
-* **Semestrální práce** student by nyní měl být chopen připravit si objekty 
+* **Semestrální práce** - student by nyní měl být chopen připravit si třídy 
 pro práci se Session a Cookie a objekt pro správu přihlášení uživatele (zatím bez databáze).
   * Ve správě přihlášení uživatele si připravte funkci pro přihlášení uživatele, 
   která nyní může kontrolovat zadaná data vůči napevno uloženým konstantám (login a heslo). 
