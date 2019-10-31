@@ -11,7 +11,7 @@
   a konfiguraci souborů jednotlivých stránek webu.
 
 
-## 1. úkol - Návrh schému databáze a import databáze
+## 1. úkol - Návrh schématu databáze a import databáze
 
 * ERA model databáze:
 
@@ -113,33 +113,27 @@
     * Správa uživatelů je dostupná pouze Adminům a SuperAdminům.  
 
 
-## TODO - Úkoly na doma
+## Úkoly na doma
 * Doporučuji podívat se alespoň na následující stránky [MySQL Database tutoriálu na W3Schools](https://www.w3schools.com/php/php_mysql_intro.asp):
   * Všímejte si částí s návodem na PDO !!
   * MySQL Connect, MySQL Insert Data, MySQL Get Last ID.
-  * MySQL ... 
-  * ... 
-* Pokud neznáte SQL, tak doporučuji projít si alespoň následující stránky z [SQL tutoriálu na W3Schools](https://www.w3schools.com/sql/default.asp): 
-  * SQL Select, SQL Insert Into, SQL Updata, SQL Delete. 
-  * SQL Where, SQL And-Or-Not, SQL Order By, SQL Like, SQL In.
-  * SQL Create Table, SQL Alter Table, SQL Drop Table.
+  * MySQL Select Data, MySQL Delete Data, MySQL Update Data, MySQL Limit Data (pozn.: nemusí fungovat ve všech databázových systémech).
+* Pokud neznáte jazyk SQL, tak doporučuji projít si alespoň následující stránky z [SQL tutoriálu na W3Schools](https://www.w3schools.com/sql/default.asp): 
+  * CRUD operace - SQL Select, SQL Insert Into, SQL Updata, SQL Delete. 
+  * Podmínky a řazení - SQL Where, SQL And-Or-Not, SQL Like, SQL In, SQL Order By.
+  * Práce s tabulkou - SQL Create Table, SQL Alter Table, SQL Drop Table.
   
   
-## TODO - Výstupy cvičení
+## Výstupy cvičení
 * Student by měl umět připojit PHP aplikaci k databázi, např. využitím PDO.
 * Student by měl umět použít databázové CRUD operace, tj. vytváření, čtení, úpravu a mazání řádek tabulky.
----   
-
-* TODO  **Semestrální práce** student by nyní měl být chopen připravit si objekty 
-pro práci se Session a Cookie a objekt pro správu přihlášení uživatele (zatím bez databáze).
-  * Ve správě přihlášení uživatele si připravte funkci pro přihlášení uživatele, 
-  která nyní může kontrolovat zadaná data vůči napevno uloženým konstantám (login a heslo). 
-  V budoucnu tuto funkci pouze rozšíříte o kontrolu zadaných dat vůči databázi.
-
-
-
-* Může se hodit - [tutoriál SQL](http://www.w3schools.com/sql/default.asp), zvláště části Select, Insert, Update, Delete.
-
+* **Semestrální práce** - student by nyní měl být chopen:
+  * připravit si třídu pro práci s databází.
+  * dokončit si třídy spravující přihlášení uživatele.
+  * přípravit si téměř všechny funkce pro práci s databází, tj. ty, které využije v SP.
+    * Pozor, na příštím cvičení si ještě ukážeme MVC architekturu, tj. třívrstvou architekturu, 
+    která odděluje aplikační logiku od práce s daty a od šablon pro vypsání výsledků.   
+  
 
 :+1:
 
