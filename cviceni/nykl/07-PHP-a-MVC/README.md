@@ -99,7 +99,8 @@
   * Lze nastavit chování pro tzv. hezké URL adresy:
     * Klasická URL adresa: www.pokus.cz/?stranka=uvod&clanek=12
     * Hezká URL adresa např.: www.pokus.cz/uvod/12/
-  * Pozn.: na students.kiv.zcu.cz vám pravděpodobně nebudou hezké URL adresy fungovat, protože váš prostor na dané doméně začíná až za students.kiv.zcu.cz/~orionlogin/ 
+  * Pozn.: na students.kiv.zcu.cz vám pravděpodobně nebudou hezké URL adresy fungovat, protože váš prostor na dané doméně začíná až za students.kiv.zcu.cz/~orionlogin/
+  * Ukázka viz soubor *ukazka.htaccess*. 
 
 
 ## Úkoly na doma
