@@ -13,7 +13,7 @@ $tplData['title'] = "Úvodní stránka (TPL)";
 $tplData['stories'] = [
     array("id_introduction" => 1, "date" => "2016-11-01 10:53:00", "author" => "A.B.", "title" => "Nadpis", "text" => "abcd")
 ];
-define("DIRECTORY_VIEWS", "../views");
+define("DIRECTORY_VIEWS", "../Views");
 const WEB_PAGES = array(
     "uvod" => array("title" => "Úvodní stránka (TPL)")
 );

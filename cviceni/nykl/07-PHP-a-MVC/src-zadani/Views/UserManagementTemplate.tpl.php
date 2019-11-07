@@ -15,7 +15,7 @@ $tplData['users'] = [
           "login" => "frnoha", "password" => "Tajne*Heslo", "email" => "fr.noha@ukazka.zcu.cz", "web" => "www.zcu.cz")
 ];
 $tplData['delete'] = "Úspěšné mazání.";
-define("DIRECTORY_VIEWS", "../views");
+define("DIRECTORY_VIEWS", "../Views");
 const WEB_PAGES = array(
     "uvod" => array("title" => "Sprava uživatelů (TPL)")
 );
