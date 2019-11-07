@@ -9,6 +9,7 @@
   * Stránky požadovaného webu:
     * Úvod stránka - na úhledné stránce zobrazuje seznam pohádek (získán z DB: *orionlogin_mvc_introduction*), včetně autora a data vložení. Ukázka viz soubor *mvc-uvod.png*.
     * Správa uživatelů - na úhledné stránce vypisuje všechny uživatele, přičemž jednotlivé uživatele umožňuje mazat. Ukázka viz soubor *mvc-sprava-uzivatelu.png*.
+  * Ukázka MVC architektury:
   ![Příklad MVC v PHP](_images/php-a-mvc-priklad-var1_2.png)
 * Vrstva ovladačů (Controllers) - bude obsahovat 3 soubory (*index.php*, *IntroductionController.class.php*, *UserManagementController.class.php*).
   * "Rozcestník" - jediný vstupní bod do aplikace (*index.php*):
