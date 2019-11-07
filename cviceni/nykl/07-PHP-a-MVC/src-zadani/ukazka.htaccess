@@ -1,0 +1,25 @@
+
+############ Vstupni soubor v danem adresari, pokud zadny jiny neni zvolen ############
+# defaultne jsou to index.php a index.html
+# DirectoryIndex rozcestnik.php
+
+############ Povoleni uprav URL ############
+RewriteEngine on
+
+############ Pokud chci presmerovavat ############
+# RewriteRule co_presmerovat /kam_presmerovat [L,QSA] 
+
+############ Pokud chci z adresy bez www udelat adresu s www ############
+# RewriteCond %{HTTP_HOST} ^muj_web\.cz [nc]
+# RewriteRule (.*) http://www.muj_web.cz/$1 [R=301,L]
+
+############ Hezke URL adresy (var.1) - vyzaduje zpracování v PHP kodu ############
+# RewriteRule ^(.*)/$ /con-index.php [L,QSA] 
+
+############ Hezke URL adresy (var.2) - prevadi casti puvodni URL do GET parametru ############
+# zdroj: http://www.samuraj-cz.com/clanek/pekne-adresy-aneb-cool-uri-aneb-apache-mod-rewrite/
+# RewriteRule ^clanky/strana([0-9]*)/?$ /clanky.php?page=$1 [L,QSA]
+
+############ Vlastni chybove stranky ############
+# ErrorDocument 403 /myErrorPage.php
+# ErrorDocument 404 /myErrorPage.php
