@@ -1,7 +1,9 @@
-<?php 
+<?php
+    // Sablona v PHP s primim vypisem
+
     // v teto promenne budou ulozena data pro sablonu
     // jedna se o pole, ktere se ziska z index.php
-    global $data;
+    global $tplData;
     // nasledujici kod je totozny s kodem ze souboru sablona.class.php,
     // pouze byla odstranena trida a funkce,
     // tj. pri include se primo vypisuje HTML.
@@ -10,7 +12,7 @@
 <html lang="cs">
     <head>
         <meta charset="utf-8">
-        <title><?php echo $data["nadpis"]; ?></title>
+        <title><?php echo $tplData["nadpis"]; ?></title>
         <style>
             body { background-color:lightblue; }
             #obal { background-color:white; width:600px; margin:0 auto; padding:20px; }
@@ -19,20 +21,24 @@
             .text { text-align: justify; }
             #paticka { text-align: center; padding: 5px; background-color: darkgray; margin-top: 10px;}
             img { width: 70px; }
+            .obchod tr:nth-of-type(even):not(:first-child)  { background-color: antiquewhite; }
+            .obchod tr:nth-of-type(odd):not(:first-child) { background-color: burlywood; }
+            .kosik tr:nth-of-type(even):not(:first-child)  { background-color: gold; }
+            .kosik tr:nth-of-type(odd):not(:first-child) { background-color: lightblue; }
         </style>
     </head>
     <body>
         <div id="obal">
-            <h1><?php echo $data["nadpis"]; ?></h1>
+            <h1><?php echo $tplData["nadpis"]; ?></h1>
             <?php
-                ////// zprava pro uzivatele //////////////
-                if(isset($data["prihlaseni"]) && $data["prihlaseni"]!=""){
-                     echo "<div id='vypis'>$data[prihlaseni]</div>";
+                //////  Zprava pro uzivatele  //////////////
+                if(isset($tplData["prihlaseni"]) && $tplData["prihlaseni"]!=""){
+                     echo "<div id='vypis'>$tplData[prihlaseni]</div>";
                 }
-                /////////////////////////////////////////
+                //////  KONEC: Zprava pro uzivatele  //////////////
                                          
-                //////// prihlaseni/odhlaseni uzivatele ////////
-                if(!isset($data["uzivatel"])){ // uzivatel neprihlasen - zobrazim prihlaseni
+                ////////  Prihlaseni/odhlaseni uzivatele  ////////
+                if(!isset($tplData["uzivatel"])){ // uzivatel neprihlasen - zobrazim prihlaseni
             ?>
                     <form action="#" method="post">
                         <fieldset>
@@ -47,7 +53,7 @@
                     <form action="#" method="post">
                         <fieldset>
                             <legend>Uživatel</legend>
-                                <b>Přihlášen uživatel: <?php echo $data["uzivatel"] ?></b>
+                                <b>Přihlášen uživatel: <?php echo $tplData["uzivatel"] ?></b>
                                 <input type="submit" name="odhlaseni" value="Odhlásit"><br>
                                 <a href='index.php?web=obchod'>Do obchodu</a>
                                 <a href='index.php'>Na úvodní stránku</a>
@@ -56,16 +62,16 @@
             <?php     
                 }
                 echo "<br>";
-                ////////////////////////////////////////////////
+                ////////  KONEC: Prihlaseni/odhlaseni uzivatele  ////////
                 
-                //////// vypsani nakupniho kosiku ////////
-                if(isset($data["uzivatel"])){
-                    if(isset($data["kos"])){
+                ////////  Vypsani nakupniho kosiku  ////////
+                if(isset($tplData["uzivatel"])){
+                    if(isset($tplData["kos"])){
                         echo "<h2>Nákupní košík</h2>";
-                        echo "<table border='1'>";
+                        echo "<table class='kosik' border='1'>";
                         echo    "<tr><th>Název</th><th>Cena</th><th>Obr.</th><th>Množství</th><th>Akce</th></tr>";
                         // projdu produkty v kosiku
-                        foreach($data["kos"] as $p){                     
+                        foreach($tplData["kos"] as $p){                     
             ?> 
                             <form action="index.php?web=obchod" method="post">
                                 <tr>
@@ -90,15 +96,15 @@
                         echo "</table>";
                     }
                 }
-                /////////////////////////////////////////                                    
+                ////////  KONEC: Vypsani nakupniho kosiku  ////////
 
-                //////// vyspani produktu v obchode ////////
-                if(isset($data["uzivatel"])){
-                    if(isset($data["produkty"])){
+                ////////  Vypsani produktu v obchode  ////////
+                if(isset($tplData["uzivatel"])){
+                    if(isset($tplData["produkty"])){
                         echo "<h2>Produkty v obchodě</h2>";
-                        echo "<table border='1'>";
+                        echo "<table class='obchod' border='1'>";
                         echo    "<tr><th>Název</th><th>Cena</th><th>Obr.</th><th>Volba</th><th>Akce</th></tr>";
-                        foreach($data["produkty"] as $p){                     
+                        foreach($tplData["produkty"] as $p){                     
             ?> 
                             <form action="index.php?web=obchod" method="post">
                                 <tr>
@@ -124,10 +130,10 @@
                         echo "</table>";
                     }
                 }
-                ////////////////////////////////////////
+                ////////  KONEC: Vypsani produktu v obchode  ////////
             ?>
             <div class="text">
-                <?php echo $data["text"]; ?>
+                <?php echo $tplData["text"]; ?>
             </div>
             <div id="paticka">
                 &copy; 2016

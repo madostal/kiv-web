@@ -1,14 +1,20 @@
 <?php
 
 /**
-*   Aby nemusela byt pouzita databaze, tak je vyuzit tento nahradni soubor.
-*   Do souboru nepotrebujete zasahovat.
-*/
-class Nahradni_DB{
-    
+ *  Aby nemusela byt pouzita databaze, tak je vyuzit tento nahradni soubor.
+ *  Do souboru nepotrebujete zasahovat.
+ *  Predpoklada se, ze je spustena Session.
+ */
+class NahradniDB{
+
+    /** @var array $produkty  Produkty obchodu. */
     private $produkty;
-    
+
+    /**
+     * Inicializace dat.
+     */
     public function __construct(){
+        // data obchodu
         $p[] = array( "Televizor", "5530", "");
         $p[] = array( "Lednička", "7800", "");
         $p[] = array( "Sporák", "8000", "");
@@ -18,6 +24,7 @@ class Nahradni_DB{
         $p[] = array( "Holící strojek", "1200", "");
         $p[] = array( "Zastřihávač", "900", "");
         $i=0;
+        // nactu je do asociativniho pole (nahrazuje databazi)
         foreach($p as $pp){
             $nacteno[$i] = array('id'=>$i, 'nazev'=>$pp[0], 'cena'=>$pp[1], 'obrazek'=>$pp[2]);
             $i++;
@@ -27,7 +34,7 @@ class Nahradni_DB{
     
     /**
      *  Vrati dostupne produkty obchodu.
-     *  @return array Produkty obchodu.
+     *  @return array   Produkty obchodu.
      */
     public function nactiProdukty(){
         return $this->produkty;
@@ -35,8 +42,8 @@ class Nahradni_DB{
     
     /**
      *  Zaradi produkt do kosiku.
-     *  @param integer $idProduktu  ID produktu.
-     *  @param integer $pocet       Pocet kusu daneho produktu.
+     *  @param int $idProduktu      ID produktu.
+     *  @param int $pocet           Pocet kusu daneho produktu.
      *  @param string $uzivatel     Jmeno aktualniho uzivatele.
      */
     public function doKosiku($idProduktu, $pocet, $uzivatel){
@@ -45,7 +52,7 @@ class Nahradni_DB{
     
     /**
      *  Z kosiku daneho uzivatele odstrani dany produkt.
-     *  @param integer $idProduktu  ID produktu.
+     *  @param int $idProduktu      ID produktu.
      *  @param string $uzivatel     Jmeno aktualniho uzivatele.
      */
     public function zKosiku($idProduktu, $uzivatel){
@@ -74,9 +81,7 @@ class Nahradni_DB{
             return null;
         }
     }
-    
-    
-}
 
+}
 
 ?>

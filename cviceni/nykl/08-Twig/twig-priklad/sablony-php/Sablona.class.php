@@ -1,9 +1,11 @@
 <?php
-// sablona
-class Sablona{
+/**
+ * Sablona v PHP.
+ */
+class Sablona {
     
     /**
-    *   Zobrazi sablonu.
+    *   Zobrazi sablonu vcetne dodanych dat.
     *   @param array $data Data pro vypsani v sablone.
     */
     public static function zobraz($data){
@@ -23,19 +25,23 @@ class Sablona{
             .text { text-align: justify; }
             #paticka { text-align: center; padding: 5px; background-color: darkgray; margin-top: 10px;}
             img { width: 70px; }
+            .obchod tr:nth-of-type(even):not(:first-child)  { background-color: antiquewhite; }
+            .obchod tr:nth-of-type(odd):not(:first-child) { background-color: burlywood; }
+            .kosik tr:nth-of-type(even):not(:first-child)  { background-color: gold; }
+            .kosik tr:nth-of-type(odd):not(:first-child) { background-color: lightblue; }
         </style>
     </head>
     <body>
         <div id="obal">
             <h1><?php echo $data["nadpis"]; ?></h1>
             <?php
-                ////// zprava pro uzivatele //////////////
+                //////  Zprava pro uzivatele  //////////////
                 if(isset($data["prihlaseni"]) && $data["prihlaseni"]!=""){
                      echo "<div id='vypis'>$data[prihlaseni]</div>";
                 }
-                /////////////////////////////////////////
+                //////  KONEC: Zprava pro uzivatele  //////////////
                                          
-                //////// prihlaseni/odhlaseni uzivatele ////////
+                ////////  Prihlaseni/odhlaseni uzivatele  ////////
                 if(!isset($data["uzivatel"])){ // uzivatel neprihlasen - zobrazim prihlaseni
             ?>
                     <form action="#" method="post">
@@ -60,13 +66,13 @@ class Sablona{
             <?php     
                 }
                 echo "<br>";
-                ////////////////////////////////////////////////
+                ////////  KONEC: Prihlaseni/odhlaseni uzivatele  ////////
                 
-                //////// vypsani nakupniho kosiku ////////
+                ////////  Vypsani nakupniho kosiku  ////////
                 if(isset($data["uzivatel"])){
                     if(isset($data["kos"])){
                         echo "<h2>Nákupní košík</h2>";
-                        echo "<table border='1'>";
+                        echo "<table class='kosik' border='1'>";
                         echo    "<tr><th>Název</th><th>Cena</th><th>Obr.</th><th>Množství</th><th>Akce</th></tr>";
                         // projdu produkty v kosiku
                         foreach($data["kos"] as $p){                     
@@ -94,13 +100,13 @@ class Sablona{
                         echo "</table>";
                     }
                 }
-                /////////////////////////////////////////                                    
+                ////////  KONEC: Vypsani nakupniho kosiku  ////////
 
-                //////// vyspani produktu v obchode ////////
+                ////////  Vypsani produktu v obchode  ////////
                 if(isset($data["uzivatel"])){
                     if(isset($data["produkty"])){
                         echo "<h2>Produkty v obchodě</h2>";
-                        echo "<table border='1'>";
+                        echo "<table class='obchod' border='1'>";
                         echo    "<tr><th>Název</th><th>Cena</th><th>Obr.</th><th>Volba</th><th>Akce</th></tr>";
                         foreach($data["produkty"] as $p){                     
             ?> 
@@ -128,7 +134,7 @@ class Sablona{
                         echo "</table>";
                     }
                 }
-                ////////////////////////////////////////
+                ////////  KONEC: Vypsani produktu v obchode  ////////
             ?>
             <div class="text">
                 <?php echo $data["text"]; ?>

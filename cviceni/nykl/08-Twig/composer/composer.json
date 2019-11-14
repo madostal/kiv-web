@@ -1,0 +1,12 @@
+{
+    "description": "Ukázka composeru.",
+    "require": {
+        "twig/twig" : ">=1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.1"
+        },
+        "sort-packages": true
+    }
+}

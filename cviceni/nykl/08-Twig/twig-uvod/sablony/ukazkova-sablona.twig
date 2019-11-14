@@ -1,0 +1,72 @@
+{# Ukazkova sablona pro Twig #}
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>Ukázka práce s Twig</title>
+    <style>
+        div {padding-bottom:20px; border-bottom:1px solid blue; margin-bottom:20px; }
+        body {background-color:rgb(250,240,250);}
+        td {text-align:center;}
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>
+            {# filtr TITLE prevede prvni pismena slov na velka a ostatni na mala #}
+            {{ nadpis | title }}
+        </h1>
+    </div>
+
+    <div>
+        <b>Obsah stránky s HTML:</b><br>
+        {{ obsah | raw }}
+    </div>
+
+    <div>
+        <b>Obsah stránky bez HTML:</b><br>
+        {{ obsah | striptags }}
+    </div>
+
+    <div>
+        <b>Obsah stránky se zobrazeným HTML:</b><br>
+        {# escape byva defaultne, jinak lze pouzit |e #}
+        {{ obsah | e }}
+    </div>
+
+    <div>
+        <b>Uživatelé:</b><br>
+        {# pruchod pole vcetne klice a casti ELSE, pokud je pole prazdne #}
+        {% for key, user in uzivatele %}
+            {# prevod na velka pismena #}
+            {{key+1}}: <b>{{ user.prijmeni | upper }}</b>, {{ user.jmeno }}<br>
+        {% else %}
+            Nebyl nalezen žádný uživatel.
+        {% endfor %}
+    </div>
+
+    <div>
+        <b>Tabulka ovoce:</b><br>
+        <table border="1">
+            {# beru ovoce po trech kusech a pripadne nenaplnene vyplnim s --- #}
+            {% for radek in ovoce|batch(3, '---') %}
+                <tr>
+                    {# prochazim trojici #}
+                    {% for kus in radek %}
+                        <td>{{ kus }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <b>Vypis ovoce do řádku:</b><br>
+
+        {# TODO - doplnit #}
+
+    </div>
+
+</body>
+</html>

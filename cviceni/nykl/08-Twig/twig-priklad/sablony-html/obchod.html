@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>Výběr zboží</title>
+    <style>
+        body { background-color:lightblue; }
+        #obal { background-color:white; width:600px; margin:0 auto; padding:20px; }
+        h1 { background-color: blue; color: white; text-align: center; }
+        #vypis { border: 1px solid darkred; text-align: center; }
+        .text { text-align: justify; }
+        .center { text-align: center; }
+        #paticka { text-align: center; padding: 5px; background-color: darkgray; margin-top: 10px;}
+        img { width: 70px; }
+    </style>
+</head>
+<body>
+<div id="obal">
+    <h1>Výběr zboží</h1>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Uživatel</legend>
+            <b>Přihlášen uživatel: Test</b>
+            <input type="submit" name="odhlaseni" value="Odhlásit"><br>
+            <a href='index.php?web=obchod'>Do obchodu</a>
+            <a href='index.php'>Na úvodní stránku</a>
+        </fieldset>
+    </form>
+    <br>
+
+    <h2>Nákupní košík</h2>
+    <table border='1'>
+        <tr><th>Název</th><th>Cena</th><th>Obr.</th><th>Množství</th><th>Akce</th></tr>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:gold">
+                <td>SPORÁK</td>
+                <td>8000&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>4&nbsp;ks</td>
+                <td>
+                    <input type="hidden" name="produkt" value="2">
+                    <input type="submit" name="odebrat" value="Odeber">
+                </td>
+            </tr>
+        </form>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:lightblue">
+                <td>VYSAVAČ</td>
+                <td>3200&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>6&nbsp;ks</td>
+                <td>
+                    <input type="hidden" name="produkt" value="5">
+                    <input type="submit" name="odebrat" value="Odeber">
+                </td>
+            </tr>
+        </form>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:gold">
+                <td>TELEVIZOR</td>
+                <td>5530&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>7&nbsp;ks</td>
+                <td>
+                    <input type="hidden" name="produkt" value="0">
+                    <input type="submit" name="odebrat" value="Odeber">
+                </td>
+            </tr>
+        </form>
+    </table>
+
+    <h2>Produkty v obchodě</h2>
+    <table border='1'>
+        <tr><th>Název</th><th>Cena</th><th>Obr.</th><th>Volba</th><th>Akce</th></tr>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:burlywood" >
+                <td>LEDNIČKA</td>
+                <td>7800&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>
+                    <input type="hidden" name="produkt" value="1">
+                    <input type="number" name="mnozstvi" value="1" min="0" max="10" step="1">
+                </td>
+                <td>
+                    <input type="submit" name="pridat" value="Přidej do košíku">
+                </td>
+            </tr>
+        </form>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:antiquewhite" >
+                <td>ŽEHLIČKA</td>
+                <td>700&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>
+                    <input type="hidden" name="produkt" value="4">
+                    <input type="number" name="mnozstvi" value="1" min="0" max="10" step="1">
+                </td>
+                <td>
+                    <input type="submit" name="pridat" value="Přidej do košíku">
+                </td>
+            </tr>
+        </form>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:burlywood" >
+                <td>VYSAVAČ</td>
+                <td>3200&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>
+                    <input type="hidden" name="produkt" value="5">
+                    <input type="number" name="mnozstvi" value="1" min="0" max="10" step="1">
+                </td>
+                <td>
+                    <input type="submit" name="pridat" value="Přidej do košíku">
+                </td>
+            </tr>
+        </form>
+        <form action="index.php?web=obchod" method="post">
+            <tr style="background-color:burlywood" >
+                <td>ZASTŘIHÁVAČ</td>
+                <td>900&nbsp;kč</td>
+                <td><img src='obr/produkt.jpg'></td>
+                <td>
+                    <input type="hidden" name="produkt" value="7">
+                    <input type="number" name="mnozstvi" value="1" min="0" max="10" step="1">
+                </td>
+                <td>
+                    <input type="submit" name="pridat" value="Přidej do košíku">
+                </td>
+            </tr>
+        </form>
+    </table>
+
+    <div class="text">
+        Produkty lze objednat v maximálním množství 10ks.<br>
+    </div>
+
+    <div id="paticka">
+        &copy; 2019
+    </div>
+</div>
+</body>
+</html>

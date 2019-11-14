@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>Úvodní stránka</title>
+    <style>
+        body { background-color:lightblue; }
+        #obal { background-color:white; width:600px; margin:0 auto; padding:20px; }
+        h1 { background-color: blue; color: white; text-align: center; }
+        #vypis { border: 1px solid darkred; text-align: center; }
+        .text { text-align: justify; }
+        .center { text-align: center; }
+        #paticka { text-align: center; padding: 5px; background-color: darkgray; margin-top: 10px;}
+        img { width: 70px; }
+        .obchod tr:nth-of-type(even):not(:first-child)  { background-color: antiquewhite; }
+        .obchod tr:nth-of-type(odd):not(:first-child) { background-color: burlywood; }
+        .kosik tr:nth-of-type(even):not(:first-child)  { background-color: gold; }
+        .kosik tr:nth-of-type(odd):not(:first-child) { background-color: lightblue; }
+    </style>
+</head>
+<body>
+<div id="obal">
+    <h1>Úvodní stránka</h1>
+
+    <div id='vypis'>Proběhlo odhlášení uživatele.</div>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Přihlášení uživatele</legend>
+            Login: <input type="text" name="login" maxlength="30">
+            <input type="submit" name="prihlaseni" value="Přihlásit">
+        </fieldset>
+    </form>
+    <br>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Uživatel</legend>
+            <b>Přihlášen uživatel: Test</b>
+            <input type="submit" name="odhlaseni" value="Odhlásit"><br>
+            <a href="index.php?web=obchod">Do obchodu</a>
+            <a href="index.php">Na úvodní stránku</a>
+        </fieldset>
+    </form>
+
+    <div class="text">
+        Aenean id metus id velit ullamcorper pulvinar. Pellentesque sapien. Maecenas lorem.
+        In convallis. Etiam commodo dui eget wisi. Pellentesque pretium lectus id turpis.
+        Curabitur sagittis hendrerit ante. Vestibulum fermentum tortor id mi. Etiam posuere lacus quis dolor.
+    </div>
+
+    <div id="paticka">
+        &copy; 2019
+    </div>
+</div>
+</body>
+</html>
