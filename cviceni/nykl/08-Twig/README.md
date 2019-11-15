@@ -50,7 +50,7 @@ Zbytek aplikace ponechte pokud možno beze změny.
   * Odebrání produktu z košíku - tlačítko _name='odebrat'_ a skrytý prvek _name='produkt'_ s ID produktu.
 
 
-### část 2.0 - Průzkum PHP šablon
+### 2.0 úkol - Průzkum PHP šablon
 
 * Zprovozněte aplikaci a prohlédněte si šablony v PHP, tj. adresář **sablony-php** 
 a příslušné funkce *renderInPhpTemplate* (používá šablonu zapsanou jako PHP třídu) 
