@@ -91,7 +91,7 @@ např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze 
 * Cílem je vytvořit výpis pro správu přihlášení uživatele (včetně formulářů pro jeho přihlášení a odhlášení).
   * Přihlášený uživatel také vidí menu.
 * Šablona se správou přihlášení, např. soubor **prihlaseni.twig**:
-  * Pokud promenna *prihlaseni* obsahuje neprázdný text, 
+  * Pokud proměnná *prihlaseni* obsahuje neprázdný text, 
   tak ho vypište do DIV elementu s *id=vypis* - slouží pro různé hlášky uživateli.
   * Vypište formulář, který přihlášenému uživateli poskytne odhlášení a nepřihlášenému uživateli přihlášení.
     * Uživatel se přihlašuje pouze jménem/loginem, přičemž na server musejí být metodou POST 
@@ -122,7 +122,7 @@ např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze 
 
 * Cílem je připravit si základ šablony pro obchod.
   * Nyní nebude vypisovat kompletní tabulky s produkty obchodu a nákupním košíkem,
-protože jejich výpis zajištíme až následně s využitím maker.
+protože jejich výpis zajistíme až následně s využitím maker.
 * Šablona pro stránku s obchodem, např. soubor **stranka-obchod.twig**:
   * Dědí od základní šablony (soubor *sablona-zaklad.twig*).
   * Přepište blok *vlastniText*:
@@ -145,22 +145,22 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
 * Šablona s makry, např. soubor **makra.twig**:
   * Vytvořte obecné makro pro výpis INPUT elementu:
     * Do makra vstupují parametry pro atributy *type*, *name* a *value* 
-    a atribut (např. *other*) pro doplnění libovoné části INPUT elementu
+    a atribut (např. *other*) pro doplnění libovolné části INPUT elementu
     * Defaultní hodnotou atributu *type* je *text*.
     * Atribut *value* využívá escapování znaků.
     * Atribut *other* nemusí být zadán.
   * Vytvořte makro pro výpis řádku tabulky: 
     * Do makra vstupují parametry *typRadku*, *produkt* a *barvaRadku*.
     * Atribut *typRadku* může nabývat hodnot např. *kosik* a *obchod*, 
-    které určují jestli bude vypsán řádek košíku, nebo řádek s produkty obchodu.
+    které určují, jestli bude vypsán řádek košíku, nebo řádek s produkty obchodu.
     * Košík i obchod mají stejnou část řádku s výpisem názvu produktu, obrázkem a cenou.
     * Obchod navíc umožňuje zvolit počet produktů a přidat je do košíku.
-    * Koším navíc zobrazuje počet zvolených kusů a umožňuje odebrat produkt z košíku.
+    * Košík navíc zobrazuje počet zvolených kusů a umožňuje odebrat produkt z košíku.
     * *Pozn.: pro vstupní elementy jsme si připravili makro s INPUT elementem.*
 * Příslušná úprava šablony pro stránku s obchodem, soubor **stranka-obchod.twig**:
   * Správně doplňte volání makra pro výpis řádku produktů obchodu a produktů v košíku.
 * Nechte si zobrazit výsledek a ověřte, že vám funguje přidávání a odebírání produktů z košíku.
-  * Nyní byly měly fungovat všechny funkce webu.  
+  * Nyní by měly fungovat všechny funkce webu.  
 
 
 ### 2.6 úkol - Součet obsahu košíku
