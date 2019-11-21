@@ -6,12 +6,15 @@
     ini_set('display_errors',1);
     error_reporting(-1);
 
-    // tajne cookie
-    setcookie("tajne", "tajna hodnota v cookie");
+    // nastavim tajne cookie webu s platnosti 10min
+    // pozor, ze u klienta se projevi az pri pristim nacteni webu
+    setcookie("tajne", "Tajná hodnota v Cookie [".time()."s].", time()+60*10);
 
     /**
-        Vypíše obsah pole do tabulky
-     */  
+     * Pomocna funkce pro rekurzivni vypis obsahy pole do tabulky.
+     * @param array $vstup  Pole, ze kterehu bude tabulka vytvorena.
+     * @return string
+     */
     function vytvorTabulku($vstup){
         $textTabulky = "<table border><tr><td>key</td><td>value</td></tr>";
         foreach($vstup as $key => $value){ // procházím pole
@@ -21,45 +24,57 @@
         return $textTabulky;
     }
     
-/////// ZDE PROVÁDĚT ZMĚNY //////////
-    include("prihlaseni.class.php");
-    $pr = new Prihlaseni;
-    // ziskani objektu s DB (toto je dost nesikovne)
-    include_once("databaze.class.php");
-    $db = new Databaze();
-    
-    $vypis = ""; // kontrolni vypisy
+/////////////////////// Kod spoustejici aplikaci  //////////////////////
 
-    // reaguje na odeslani formularu
+    // pripojim databazi a spravu prihlaseni uzivatele a vytvorim jejich instance
+    require_once("Databaze.class.php");
+    require_once("Prihlaseni.class.php");
+    $db = new Databaze();
+    $pr = new Prihlaseni();
+
+    // promenna pro kontrolni vypisy
+    $vypis = "";
+
+    //// reakce na odeslani formularu
+    // prihlaseni
     if(isset($_POST["prihlaseni"])){
         $vypis .= "Přihlášení: ";
         $vypis .= $pr->prihlasUzivatele($_POST["login"],$_POST["heslo"]);
-    } elseif (isset($_POST["odhlaseni"])) {
+    }
+    // odhlaseni
+    elseif (isset($_POST["odhlaseni"])) {
         $vypis .= "Odhlášení: ";
         $vypis .= $pr->odhlasUzivatele();
-    } elseif (isset($_POST["registrace"])){
+    }
+    // registrace
+    elseif (isset($_POST["registrace"])){
         $vypis .= "Registrace: ";
         $vypis .= $pr->registraceUzivatele($_POST["jmeno"], $_POST["login"], $_POST["heslo"], $_POST["email"]);
-    } elseif (isset($_POST["vlozeni"])){
+    }
+    // vlozeni prispevku
+    elseif (isset($_POST["vlozeni"])){
         $vypis .= "Vložení příspěvku: ";
         $db->vlozPrispevek($_POST["jmeno"],$_POST["text"]);
-    } elseif (isset($_GET["zobraz"])){
+    }
+    // zobrazeni prispevku
+    elseif (isset($_GET["zobraz"])){
         $prispevek = $db->vratPrispevek($_GET["prispevek"]);
     }
 
     // je uzivatel prihlasen ?
     $uzivatel = $pr->kontrolaPrihlaseni();
 
-    // ziskam prispevky
+    // ziskam vsechny prispevky
     $prispevky = $db->vratPrispevky();
-    
+
+////////////////////// KONEC: Kod spoustejici aplikaci  //////////////////////
+
 ?>
 <!doctype html>
-    <html>
-
+<html>
     <head>
         <meta charset="utf-8">
-        <title>Test útoků</title>
+        <title>Ukázka nezabezpečeného webu</title>
         <style>
             body {
                 background: linear-gradient(blue, lightblue, blue);
@@ -85,14 +100,22 @@
     <body>
         <div id="obal">
             <header>
-                <h1>Ukázka přihlášení a&nbsp;registrace</h1>
+                <h1>Ukázka nezabezpečeného webu</h1>
             </header>
             <article>
+                <pre>
+                    <?php
+                        // pomocny vypis - info o provedeni akce
+                        echo (isset($vypis)) ? $vypis."<br>" : "";
+                        // pomocny vypis - info o parametrech URL
+                        echo (isset($_GET["vstup"])) ? "GET:".$_GET["vstup"] : ""; // pokud je, tak vypise
+                    ?>
+                </pre>
+
                 <?php
-                    echo (isset($vypis)) ? $vypis."<br>" : ""; // pomocny vypis
-                    echo (isset($_GET["vstup"])) ? "GET:".$_GET["vstup"] : ""; // pokud je, tak vypise
                     // je uzivatel prihlasen?
-                    if(!isset($uzivatel)){ // uzivatel neprihlasen = login
+                    if(!isset($uzivatel)){
+                        // uzivatel neprihlasen
                 ?>
                         <!-- FORM - prihlaseni -->
                         <form action="" method="post">
@@ -103,8 +126,11 @@
                                 <input type="submit" name="prihlaseni" value="Přihlásit">
                             </fieldset>
                         </form>
-                        <hr>
+
+
                         <!-- FORM - registrace -->
+                        <!-- nyni neni potreba, tak je skryta
+                        <hr>
                         <form action="" method="post">
                             <fieldset>
                                 <legend>Registrace uživatele</legend>
@@ -118,7 +144,10 @@
                             </fieldset>
                         </form>
                         <hr>
-                        <h2>Návštěvní kniha</h2>
+                        -->
+
+
+                        <h2>Návštěvní kniha (pro XSS)</h2>
                         <?php
                             // vypis vsech prispevku + volby do selectboxu
                             $options = "";
@@ -132,6 +161,7 @@
                                 $options .= "<option value='$p[idkniha]'>$p[idkniha]</option>";
                             }
                         ?>
+
                         <!-- FORM - prispevek do knihy -->
                         <h3>Vložte příspěvek do návštěvní knihy</h3>
                         <form action="" method="post">
@@ -142,8 +172,10 @@
                                 <input type="submit" name="vlozeni" value="Odeslat příspěvek">
                             </fieldset>
                         </form>
+
+
+                        <h2>Zobrazení zvoleného příspěvku (pro SQL Injection)</h2>
                         <!-- FORM - zobraz jeden prispevek -->
-                        <h2>Zobrazení zvoleného příspěvku</h2>
                         <form action="" method="get">
                             <fieldset>
                                 <legend>Výběr příspěvku</legend>
@@ -157,17 +189,17 @@
                             <?php
                                 // je zvolen prispevek pro vypsani?
                                 if(isset($prispevek) && count($prispevek)>0){
+                                    echo "<h3>Zvolený příspěvek s ID:".$prispevek[0]["idkniha"]."</h3>";
                                     echo "<b>Autor: ".$prispevek[0]["clovek"]."</b><br>".$prispevek[0]["text"];
                                 }
                             ?>
-
                         </p>
 
-
                 <?php
-                    } else { // uzivatel neprihlasen
+                    } else {
+                        // uzivatel je prihlasen
                         echo "Přihlášen uživatel:<br>";
-                        echo vytvorTabulku($uzivatel);
+                        echo vytvorTabulku($uzivatel[0]) ."<hr>";
                 ?>
                         <form action="" method="post">
                             <fieldset>
@@ -177,7 +209,7 @@
                         </form>
                         <h2>Text pro přihlášené uživatele</h2>
                         <p>
-                            Dlouhý nesmyslný text.
+                            Dlouhý nesmyslný text pro přihlášeného uživatele.
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam sit amet magna in magna gravida vehicula. Vivamus luctus egestas leo. Aenean id metus id velit ullamcorper pulvinar. Pellentesque sapien. Maecenas lorem. In convallis. Etiam commodo dui eget wisi. Pellentesque pretium lectus id turpis. Curabitur sagittis hendrerit ante. Vestibulum fermentum tortor id mi. Etiam posuere lacus quis dolor. In enim a arcu imperdiet malesuada. Nullam at arcu a est sollicitudin euismod. Vivamus porttitor turpis ac leo.
                             Phasellus et lorem id felis nonummy placerat. Maecenas libero. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Maecenas lorem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Quisque porta. Nullam dapibus fermentum ipsum. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis.
                             Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Aliquam erat volutpat. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Duis condimentum augue id magna semper rutrum. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Pellentesque arcu. In dapibus augue non sapien. Etiam posuere lacus quis dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer malesuada. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Pellentesque pretium lectus id turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris elementum mauris vitae tortor.
@@ -188,5 +220,4 @@
             </article>
         </div>
     </body>
-
-    </html>
+</html>

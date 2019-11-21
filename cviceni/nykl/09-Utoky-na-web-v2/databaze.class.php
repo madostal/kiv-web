@@ -1,30 +1,38 @@
-<?php 
+<?php
 
+/**
+ * Trida pro spravu databaze.
+ */
 class Databaze{
-    private $db; // objekt databaze
 
-    /// predpripraveny dotaz
+    /** @var PDO $db  Instance PDO pro praci s databazi. */
+    private $db;
+
+    /// ukazka predpripraveneho dotazu
     /*
     $dotaz = "INSERT INTO ".TABLE_UZIVATELE." (jmeno, login, heslo, email) VALUES (?,?,?,?);";
     $vystup = $this->db->prepare($dotaz);
     $jm = htmlspecialchars($jm);
     $vystup->execute(array($jm, $log, $pas, $mail));
     */
-    
+
+    /**
+     * Inicilalizace pripojeni k databazi.
+     */
     public function __construct(){
         // nacteni nastaveni
-        include_once("settings.inc.php");
-        // vytvoreni PDO objektu pro praci s DB
+        require_once("settings.inc.php");
+        // vytvoreni instance PDO  pro praci s DB
         $this->db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
-        // osetrim kodovani
+        // vynuceni kodovani UTF-8
         $q = "SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
         $this->db->query($q);
     }
 
     /**
      * Nalezne uzivatele s danym loginem a heslem a vrati je.
-     * @param $log
-     * @param $pas
+     * @param string $log   Login.
+     * @param string $pas   Heslo.
      * @return array
      */
     public function vratUzivatele($log, $pas){
@@ -40,11 +48,11 @@ class Databaze{
     }
 
     /**
-     * Registruje daneho uzivatele.
-     * @param $jm
-     * @param $log
-     * @param $pas
-     * @param $mail
+     * Registruje noveho uzivatele (kombinace jmeno.
+     * @param string $jm    Jmeno.
+     * @param string $log   Login.
+     * @param string $pas   Heslo.
+     * @param string $mail  E-mail.
      */
     public function registrujUzivatele($jm, $log, $pas, $mail){
         // zjistim, zda ho uz nemam v DB
@@ -64,7 +72,7 @@ class Databaze{
     }
 
     /**
-     * Vypise vsechny prispevky. (nema vstupni parametry, neni co osetrit)
+     * Vypise vsechny prispevky. (nema vstupni parametry, tj. neni co osetrit)
      * @return array
      */
     public function vratPrispevky(){
@@ -75,7 +83,11 @@ class Databaze{
         return $vystup->fetchAll();
     }
 
-
+    /**
+     * Nalezne prispevek dle jeho ID.
+     * @param int|string $id    ID prispevku, ktery ma byt vracen.
+     * @return array
+     */
     public function vratPrispevek($id){
         // ziskam vysledek dotazu klasicky
         $vystup = $this->db->query("SELECT * FROM ".TABLE_KNIHA." WHERE idkniha=$id;");
@@ -85,9 +97,9 @@ class Databaze{
     }
 
     /**
-     * Vlozi jeden prispevek.
-     * @param $uzivatel
-     * @param $text
+     * Vlozi jeden prispevek do navstevni knihy.
+     * @param string $uzivatel  Uzivatel odesilajici prispevek.
+     * @param string $text      Text prispevku.
      */
     public function vlozPrispevek($uzivatel, $text){
         // ziskat vysledek dotazu klasicky
