@@ -39,9 +39,9 @@ class Databaze{
         // ziskam vysledek dotazu klasicky
         $vystup = $this->db->query("SELECT * FROM ".TABLE_UZIVATELE." WHERE login='$log' AND heslo='$pas';");
         
-        /////// START: osetreni SQL Injection ////////////
+        /////// START: Osetreni SQL Injection ////////////
         //** Doplňte **//
-        /////// KONEC: osetreni SQL Injection ///
+        /////// KONEC: Osetreni SQL Injection ///
         
         // vsechny radky do pole a to vratim
         return $pole = $vystup->fetchAll();
@@ -64,9 +64,9 @@ class Databaze{
             $dotaz = "INSERT INTO ".TABLE_UZIVATELE." (jmeno, login, heslo, email) VALUES ('$jm', '$log', '$pas', '$mail');";
             $this->db->query($dotaz);
 
-            /////// START: osetreni SQL Injection ////////////
+            /////// START: Osetreni SQL Injection ////////////
             //** Doplňte **//
-            /////// KONEC: osetreni SQL Injection ///
+            /////// KONEC: Osetreni SQL Injection ///
         }
         // pokud uzivatel nevytvoren, tak nic nedelam
     }
@@ -92,6 +92,10 @@ class Databaze{
         // ziskam vysledek dotazu klasicky
         $vystup = $this->db->query("SELECT * FROM ".TABLE_KNIHA." WHERE idkniha=$id;");
 
+        /////// START: Osetreni SQL Injection ////////////
+        //** Doplňte **//
+        /////// KONEC: Osetreni SQL Injection ///
+        
         // vsechny radky do pole a to vratim
         return $vystup->fetchAll();
     }
@@ -104,6 +108,10 @@ class Databaze{
     public function vlozPrispevek($uzivatel, $text){
         // ziskat vysledek dotazu klasicky
         $this->db->query("INSERT INTO ".TABLE_KNIHA." (clovek, text) VALUES ('$uzivatel', '$text');");
+
+        /////// START: Osetreni SQL Injection ////////////
+        //** Doplňte **//
+        /////// KONEC: Osetreni SQL Injection ///
     }
     
 }

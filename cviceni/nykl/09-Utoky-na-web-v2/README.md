@@ -12,7 +12,7 @@
   * PhpMyAdmin si nechte otevřený pro pozdější použití (mazání úspěšných útoků).
 * Zprovoznění aplikace:
   * V souboru _settings.inc.php_ bude nejspíš potřeba upravit přihlašovací údaje k databázi a názvy tabulek.
-* Pozn.: příliš se nezaobírejte strukturou aplikace - jedná se spíše o ukázku nevhodné implementace webu, který si "zaslouží být napadnut".
+* Pozn.: příliš se nezaobírejte strukturou aplikace - jedná se spíše o ukázku nevhodné implementace webu.
 
 
 ## 1. úkol - Cross-Site Scripting (XSS) útok
@@ -24,7 +24,8 @@
 * Využijte vstupní prvky Návštěvní knihy a podsuňte webu XSS útokem svou "reklamu":
   * Reklama by se měla trvale zobrazovat v pravém dolním rohu okna prohlížeče, mít pozadí a nápis "Moje reklama".
   * [+] Upravte útočný kód tak, aby při kliknutí myši přesměroval uživatele na zcela jinou stránku, např. www.zcu.cz.
-  * [++] Upravte útočný kód tak, aby při najetí myši na reklamu vyskočila hláška (JavaScript Alert) s nápisem "Útok". Pozn.: hlavním problémem nejspíš bude správné použití uvozovek.
+  * [++] Upravte útočný kód tak, aby při najetí myši na reklamu vyskočila hláška (JavaScript Alert) s nápisem "Útok". 
+  Pozn.: hlavním problémem nejspíš bude správné použití uvozovek či apostrofů.
 * Vytvořte útočný kód, který útočníkovi odešle všechna Cookie uživatele prostřednictvím parametrů URL adresy:
   * Pro příjem dat, jakožto útočník, použijte soubor _hacker-prijem.php_ (prohlédněte si ho), který parametry URL adresy
    ukládá do souboru cookie.txt. 
@@ -33,10 +34,14 @@
 ### 1.1 úkol - Pro "zkušené" studenty  
   
 * Vytvořte útočný kód, který pomyslně nahradí obsah aktuální stránky obsahem stránky např. http://kiv.zcu.cz:
-  * Pozn.: lze využít např. IFRAME, kterým nahradíte celý obsah elementu BODY. Může se vám hodit získat velikost obsahu v okně prohlížeče, viz JS: *window.innerHeight-25*.
+  * Pozn.: lze využít např. IFRAME, kterým nahradíte celý obsah elementu BODY. 
+  Může se vám hodit získat velikost obsahu v okně prohlížeče, viz JS: *window.innerHeight-25*.
   * Výsledkem by mělo být, že doména zůstane správná, ale obsah webu bude nahrazen za falešný obsah.
-  * Zajistěte, aby se útočný kód vykonal okamžitě po načtení stránky. (Rada: [JS Onload Event](http://www.w3schools.com/jsref/event_onload.asp))
-  * *Pozn.: na internetu lze nalézt návody, jak lze získat obsah IFRAME. Pokud bychom jím nahradili obsah aktuální stránky, tak uživatel by neměl zaznamenat žádný problém. Nicméně moderní internetové prohlížeče by toto neměly dovolit.*
+  * Zajistěte, aby se útočný kód vykonal okamžitě po načtení stránky. 
+  (Rada: [JS Onload Event](http://www.w3schools.com/jsref/event_onload.asp))
+  * *Pozn.: na internetu lze nalézt návody, jak lze získat obsah IFRAME. 
+  Pokud bychom jím nahradili obsah aktuální stránky, tak uživatel by měl vidět pouze útočnou stránku 
+  a neměl by zaznamenat žádný problém. Nicméně moderní internetové prohlížeče by toto neměly dovolit.*
 * Odstraňte z databáze své útoky, aby vám nevadily v dalších úkolech.
 
 
@@ -58,19 +63,20 @@
   * Zjistěte, kolik sloupců má tabulka, jejíž data jsou vypisována při zobrazení zvoleného příspěvku.
   * Otestujte, zda v databázi funguje dotaz UNION, který slouží pro sloučení dat 
   z vícera tabulek se stejným počtem sloupců (počet sloupců aktuální tabulky už známe).
-  * Zjistěte verzi typ databáze a její verzi.
+  * Zjistěte typ databáze a její verzi.
   * Zjistěte názvy uživatelských tabulek napadané databáze.
   * Zjistěte názvy sloupců v tabulce s daty uživatelů.
   * Zjistěte login a heslo administrátora.
     * Předpokládejme, že jste si nejprve prošli tabulku s právy uživatelů 
     a zjistili, že právo administrátora má ID=1.
-  * Přihlaste se do aplikace jako administrátor, tj. *"převezměte vládu na daným webem"*.
+  * Přihlašte se do aplikace jako administrátor, tj. *"převezměte vládu nad daným webem"*.
   
 
-### 2.1. úkol - Ošetřete stránku před útoky typu XSS a SQL Injection
+### 2.1. úkol - Ošetřete stránku před útoky typu SQL Injection
 
 * Ošetřete všechny databázové dotazy tak, aby neumožňovaly provedení útoku typu SQL Injection.
-  * Použijte předpřipravené dotazy např. využitím PDO. 
+  * Použijte předpřipravené dotazy např. využitím PDO.
+  * Zkuste bindovat proměnné do SQL dotazu předáním reference do paměti i předáním hodnoty.
 
 
 ## 3. úkol - Ukázka dvou reálných útoků, které se dostaly na mé weby
@@ -87,7 +93,7 @@
   * Pěkná ukázka útoku na server. 
   * Nevím, jak se mi tento kód dostal na web, protože web neobsahuje vůbec žádné vstupy uživatele a pouze vypisuje statický obsah.
 * Útok 02 
-  * Ukázkový soubor index-utok.php je souborem spouštějícím Drupa
+  * Ukázkový soubor index-utok.php je souborem spouštějícím redakční systém Drupa.
   * Spíše ukázka sofistikovaného ukrytí útočného kódu do PHP.
   
 ### 3.1 - [dobrovolně] Bonusové body ke zkoušce
@@ -98,8 +104,11 @@ co daný kód dělá, získá **5 bodů** k samostatné práci.
 
 ## Úkoly na doma
 
-* Doporučuji prohlédnout si následující texty: [SQL Injection - úvod](https://www.owasp.org/index.php/SQL_Injection), [Testing for SQL Injection](https://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG-INPVAL-005)), [SQL Injection Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet).
-  * Různé další typy útoků: [Types of application security attacks](https://www.owasp.org/index.php/Category:Attack).
+* Doporučuji prohlédnout si následující texty: 
+[SQL Injection - úvod](https://www.owasp.org/index.php/SQL_Injection), 
+[Testing for SQL Injection](https://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG-INPVAL-005)), 
+[SQL Injection Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet).
+  * Popis různých dalších typů útoků: [Types of application security attacks](https://www.owasp.org/index.php/Category:Attack).
 * Na W3Schools doporučuji prohlédnout si: 
   [Validace formulářů](https://www.w3schools.com/php/php_form_validation.asp) a
   [Předpřipravené dotazy](https://www.w3schools.com/php/php_mysql_prepared_statements.asp).
@@ -110,6 +119,8 @@ co daný kód dělá, získá **5 bodů** k samostatné práci.
 * Student ví, co znamenají útoky typu XSS (cross-site scripting) a SQL Injection.
   * Student umí využít zranitelnosti webové stránky pro tyto dva typy útoků.
   * Student umí ošetřit vstupy webové stránky tak, aby na ní tyto útoky nemohly být provedeny.
+* Student rozumí rozdílu mezi "bindováním" parametrů funkcemi *bindParam()* (tj. předání reference do paměti) 
+a *bindValue()* (tj. předání hodnoty). 
 * Student ví, jaký je rozdíl mezi útoky typu DOS a DDOS.
 * **Semestrální práce** - student by nyní měl být schopen ošetřit vstupy své webové stránky 
 proti útokům typu XSS a SQL Injection.    
