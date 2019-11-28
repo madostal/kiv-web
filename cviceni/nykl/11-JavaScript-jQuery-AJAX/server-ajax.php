@@ -1,15 +1,28 @@
 <?php
+///////////////////////////////////////////////////////////////////////////
+///////////  PHP reagujici na AJAX volani              ////////////////////
+///////////  Secte 2 cisla v POST/GET a soucet vrati   ////////////////////
+///////////////////////////////////////////////////////////////////////////
 
-$result = ""; // vystup
+// promenna pro slozeni vystupniho textu
+$result = "";
 
-if(isset($_POST["vstup-1"]) && isset($_POST["vstup-2"]) ){
-    $suma = $_POST["vstup-1"]+$_POST["vstup-2"];
-    $result .= $suma . " (AJAX)";
+// mam v POST nebo GET pozadovana data?
+if(isset($_REQUEST["vstup_a"]) && isset($_REQUEST["vstup_b"])){
+    // mam data - sectu je
+    $suma = floatval($_REQUEST["vstup_a"]) + floatval($_REQUEST["vstup_b"]);
+    // bude ve vystupu
+    $result .= $suma;
 } else {
-    $result .= "NEMAM VSTUP (AJAX)";
+    // nemam data - vypisu chybu
+    $result .= "NEMAM VSTUPNI DATA";
 }
 
+// z ukazkovych duvodu vynutim cekani [s]
+$tmpNum = mt_rand(1,5);
+sleep($tmpNum);
 
+// vypsani vysledku do stranky
 echo $result;
 
 ?>
