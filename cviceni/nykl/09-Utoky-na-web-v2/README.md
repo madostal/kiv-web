@@ -136,4 +136,4 @@ proti útokům typu XSS a SQL Injection.
 
 * V případě použití těchto ukázek jinde, než na stránce příslušné k dnešnímu cvičení, nenese cvičící ani nikdo ze ZČU odpovědnost za vaše činy.
 * Příklad můžete stáhnout v ZIP archivu.
-* ZIP archiv s řešením vyžaduje heslo :bug:
+* ZIP archiv s řešením vyžaduje heslo :frog:
