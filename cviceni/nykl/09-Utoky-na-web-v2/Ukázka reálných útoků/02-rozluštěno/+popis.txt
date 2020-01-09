@@ -1,0 +1,27 @@
+Přibližný postup rozluštění útoku
+---------------------------------
+
+1) Začínáme se souborem "0 - index-utok.php"
+- ručně odřádkujeme jednotlivé bloky kódu.
+- názvy základních proměnných, tj. prvních 10 (respektive 12), byly přejmenovány na smysluplnější názvy a nahrazeny i ve zbytku kódu. Např. $beginHash, $krishnaism8858.
+- výsledek viz soubor "1 - malware-php.php".
+
+2) Začínáme se souborem "1 - malware-php.php"
+- provádíme deobfuskaci - využívání různých on-line nástrojů, např. https://malwaredecoder.com, který provede 4 průchody.
+- provádíme i jen na části kódu.
+- informace, např. viz http://jonhburn2.freehostia.com/decode/
+- výsledek viz soubor "2 - deobfuskace_2.php".
+
+3) Začínáme se souborem "2 - deobfuskace_2.php"
+- pokud chceme vidět, co je vkládáno, tak nalezneme text připomínající kódování base64.
+- výsledek viz soubor "3 - hash text - base64.txt".
+
+4) Začínáme se souborem "3 - hash text - base64.txt"
+- dekódujeme text v base64, výsledek viz soubor "4 - original text - cinstina.txt".
+- použijeme translator a přeložíme čínštinu do češtiny, výsledek viz soubor "5 - translated text - prelozeno.txt".
+
+Pozn.: kód byl šifrován využitím nástroje PHPLockit!
+
+Za rozšifrování děkuji studentce 2.ročníku, Anetě K. (2019).
+
+ 

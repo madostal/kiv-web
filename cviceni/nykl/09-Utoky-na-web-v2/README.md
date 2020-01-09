@@ -95,11 +95,14 @@
 * Útok 02 
   * Ukázkový soubor index-utok.php je souborem spouštějícím redakční systém Drupa.
   * Spíše ukázka sofistikovaného ukrytí útočného kódu do PHP.
+  * **Útok 02-rozluštěno**
+    * Obsahuje výsledky některých kroků vedoucích k rozluštění útoku.
+    * Základní popis útoku je uveden v souboru +popis.txt.
+    * Za rozluštění děkuji studentce 2. ročníku, Anetě K. (2019).
   
 ### 3.1 - [dobrovolně] Bonusové body ke zkoušce
 
-* Ten, kdo první získá alespoň čitelný kód útoku 02 a ideálně se pokusí určit, 
-co daný kód dělá, získá **5 bodů** k samostatné práci.
+* Ten, kdo první uvede (podrobný) postup, jak rozluštit útok 02, získá **5 bodů** k samostatné práci.
 
 
 ## Úkoly na doma
