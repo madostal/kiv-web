@@ -28,12 +28,13 @@
     * Doplňte tlačítko INPUT pro odeslání formuláře.
     * Doplňte tlačítko BUTTON pro vymazání formuláře a část jeho textu vypište tučně.
     * Doplňte tlačítko (INPUT/BUTTON) pro vypsání JavaScriptového alertu s textem "Hello Word"; Kód alertu: onclick="alert('Hello Word')".
-* Do vlastní složky na students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php.
+* Do vlastní složky na students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php a zobrazte si ho.
   * **Alternativně** lze využití: http://students.kiv.zcu.cz/~nyklm/+studenti-kiv-web/formular-zobrazeni.php 
   * Pozn.: raději jako alternativu využijte předchozí URL a nahrání a použití vlastního souboru si zkuste, pokud Vám zbyde čas.
-* Do hlavičky formuláře doplňte metodu odeslání formuláře (method=get/post), URL adresu souboru formular-zobrazeni.php (action) a informaci, že se má načtená stránka zobrazit na nové záložce/okně (target="_blank").
+* Do hlavičky formuláře doplňte metodu odeslání formuláře (method=get/post), URL adresu souboru formular-zobrazeni.php (action), kam bude formulář odeslán, dále informaci, že se má při odeslání stránka zobrazit v novém okně/záložce (target="_blank"), a přidejte informaci, že je odesílán soubor (atribut enctype="multipart/form-data").
 * Odešlete formulář s GET a s POST a všimněte si změny URL adresy v případě GET.
   * Prohlédněte si URL adresu při odeslání metodou GET a zkuste v ní něco změnit.
+  * Soubor bude odeslán pouze metodou POST, prostřednictvím metody GET je zaslán pouze název souboru.
 * Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování.
 * Prohlédněte si PHP skript v souboru formular-zobrazeni.php.
 
@@ -133,6 +134,7 @@ Opět je cílem hlavně vědět, co lze s CSS provádět a kde nalézt odpovída
 
 
 ## Výstupy cvičení
+* Student by měl být schopen vytvořit HTML formulář se vstupními prvky, které svým typem odpovídají charakteru příslušných vstupních dat (např. heslo, volba seznamu apod.).
 * Student by měl znát všechny základní CSS selektory (např. element, id, třída apod.), pseudo-selektory (např. :hover, ::before apod.) a atributy (např. barva a zarovnání textu apod.).
 * Student by měl vědět o existenci "konkretizujících" selektorů (např. s &gt;, +, ~) a pokročilých vlastností/atributů CSS (např. stíny, animace) a měl by vědět, kde k nim nalézt informace.  
 * Student by měl být schopen použít CSS na konkrétní HTML stránku.
