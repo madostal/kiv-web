@@ -1,5 +1,5 @@
 <?php 
-//////////// Testovaci PHP skript pro overeni spravne funkcnosti serveru /////////////
+//////////// Testovaci PHP skript pro overeni funkcnosti serveru /////////////
 
 // vypis pozdravu
 echo "!! Hello word !!<br><br>";
