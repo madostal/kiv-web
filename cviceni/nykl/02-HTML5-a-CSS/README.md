@@ -1,5 +1,7 @@
 # 2. cvičení KIV/WEB - formulář v HTML 5 a základy CSS
 
+* Doporučené tutoriály: www.w3schools.com/html/ a www.w3schools.com/css/
+
 ## 1. úkol - formulář v HTML 5
 
 * Prohlédněte si soubor formular.html.
@@ -27,7 +29,7 @@
   * Tlačítka:
     * Doplňte tlačítko INPUT pro odeslání formuláře.
     * Doplňte tlačítko BUTTON pro vymazání formuláře a část jeho textu vypište tučně.
-    * Doplňte tlačítko (INPUT/BUTTON) pro vypsání JavaScriptového alertu s textem "Hello Word"; Kód alertu: onclick="alert('Hello Word')".
+    * Doplňte tlačítko (INPUT/BUTTON) pro vypsání JavaScriptového alertu s textem "Hello World"; Kód alertu: onclick="alert('Hello World')".
 * Do vlastní složky na students.kiv.zcu.cz nahrajte soubor formular-zobrazeni.php a zobrazte si ho.
   * **Alternativně** lze využití: http://students.kiv.zcu.cz/~nyklm/+studenti-kiv-web/formular-zobrazeni.php 
   * Pozn.: raději jako alternativu využijte předchozí URL a nahrání a použití vlastního souboru si zkuste, pokud Vám zbyde čas.
