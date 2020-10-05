@@ -3,13 +3,13 @@
 
 ## 0. úkol - opakování (pokročilé selektory)
 
-* Soubory ukazka-css.html a ukazka-css.css slouží k mírnému zopakování pokročilých selektorů kaskádních stylů, např. jak selektovat přímé potomky či sourozence (tj. prvky na stejné úrovni) apod.
+* Soubory ukazka-css.html a ukazka-css.css slouží k mírnému zopakování pokročilých selektorů kaskádových stylů, např. jak selektovat přímé potomky či sourozence (tj. prvky na stejné úrovni) apod.
 * Soubor vznikl v předešlých letech a něco zajímavého také obsahuje, ale po předchozím cvičení byste již měli být se znalostí CSS trochu dále.
   
 
-## 1. úkol - CSS a responzivní design
+## 1. úkol - CSS a vlastní responzivní design
 
-* Použijte soubor responzivni.html, který využívá základní kaskádní styl definovaný v souboru responzivni-zakladni-vzhled.css (můžete si prohlédnout), který v podstatě jen doplňuje "barvičky".
+* Použijte soubor responzivni.html, který využívá základní kaskádový styl definovaný v souboru responzivni-zakladni-vzhled.css (můžete si prohlédnout), který v podstatě jen doplňuje "barvičky".
 * Vytvořte vlastní soubor se stylem, který budete dále upravovat a který bude zajišťovat responzivitu stránky, a použijte ho v souboru responzivni.html.
 * Doplňte soubor responzivni.html o definici viewportu.
 * Doplňte vlastní styl, který zajistí responzivitu webové stránky tak, jak je ukázáno na přiložených obrázcích. Podrobněji:
