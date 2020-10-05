@@ -94,7 +94,7 @@
 * Při najetí myši na odstavec (element P) mu nastavte:
   * černou barvu pozadí a bílý text.
 * Při najetí myši na odstavec nastavte jeho odkazům zlatou barvu textu.
-* Při najetí myši na odstavec a na jeho odkaz nastavte odkazu barvu textu na zlatou.
+* Při najetí myši na odstavec a na jeho odkaz nastavte odkazu barvu textu na greenyellow.
 * Tabulce nastavte:
   * šířku 100%,
   * barvu prvního řádku na oranžovou,
