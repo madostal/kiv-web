@@ -1,8 +1,9 @@
 {
-    "description": "Ukázka composeru.",
+    "description": "Composer ukázka.",
     "require": {
         "components/jquery" : ">=3.0",
+        "components/font-awesome": "4.7.0",
         "twbs/bootstrap" : ">=4.1",
-        "components/font-awesome": "4.7.0"
+        "alexandermatveev/popper-bundle": ">=1.0"
     }
 }

@@ -44,10 +44,19 @@
   * Zkontrolujte, že obsahuje správně připojený Bootstrap, jQuery a font Awesome (je ukázáno, jak využít jejich verze z CDN či jejich lokální uložení).
     * Pozn.: CSS je připojováno v hlavičce, JS na konci stránky.
   * Můžete si zkusit práci s nástrojem Composer pro právu balíčků/knihoven, který umožňuje rychlou inicializaci projektu a alespoň základní ohlídání kompatibility jednotlivých knihoven.
+    * Composer vyžaduje PHP (může být použit wamp, xampp nebo easyphp apod.). Knihovna viz [GetComposer](https://getcomposer.org). Lze spustit jen jako PHP skript (skript composer.phar musí být správně odkázán), nebo lze nainstalovat.
     * Seznam požadovaných knihoven je uveden v souboru composer.json.
-    * Instalaci spustíte z příkazové řádky: php composer.phar install
+    * Instalaci zvolených knihoven dle souboru composer.json spustíte z příkazové řádky: php composer.phar install
+      * Pokud by instalace vyžadovala více paměti, než je PHP defaultně přiděleno, tak lze využít: php -d memory_limit=-1 composer.phar install
     * Pro aktualizaci knihoven: php composer.phar update
-    * Je zřejmé, že Composer vyžaduje běžící PHP.
+    * Všimněte si, souboru autoloader.php, který vznikl v adresáři vendor. Tímto souborem lze do PHP skriptu automaticky připojit všechny instalované PHP knihovny, což lze využít např. při instalaci Twigu  (pozor, jQuery, Bootstrap ani Font Awesome se netýkají PHP, tj. do HTML si je musíte připojit sami).
+    * Pokud používáte správu verzí (např. GIT), tak je vhodné vyloučit adresář *vendor* z repozitáře (není potřeba, bude vždy vytvořen composerem).
+  * Můžete si zkusit práci s nástrojem NMP, který bývá pro správu balíčků při vývoji front-endu využíván častěji (vyžaduje instalaci; není vázán na PHP).
+   * Instalace NPM je spojena s instalací Node.js, viz [npmjs.com](https://www.npmjs.com/get-npm). 
+   * Seznam požadovaných knihoven je uveden v souboru package.json.
+   * Instalaci zvolených knihoven dle souboru package.json spustíte z příkazové řádky: npm install
+     * Update: npm update
+   * Vytvořený adresář *node_modules* je vhodné vyloučit ze správy verzí vlastního projektu.         
 * Hlavička stránky:
   * Vložte hlavičku do kontejneru
   * a odstavci v hlavičce nastavte zelený (success) tučný text.
@@ -103,7 +112,7 @@
 * Jako alternativu Bootstrapu lze využít např. [W3.CSS](https://www.w3schools.com/w3css/default.asp).
 * **Ikony** - dostupných fontů s ikonami, které lze na webu zdarma použít, existuje větší množství, např. [Awesome v4 - snažší užití](https://fontawesome.com/v4.7.0/icons/), [Awesome v5](https://fontawesome.com/), [Captain Icon](https://mariodelvalle.github.io/CaptainIconWeb/), [Octicons](https://octicons.github.com/), [Typicons](https://www.s-ings.com/typicons/), [Material Design Icons](https://materialdesignicons.com/), [Flaticon](https://www.flaticon.com/) a další.
   * Pro začátek doporučuji zkusit si použít [Awesome v4](https://fontawesome.com/v4.7.0/icons/) včetně jejich uložení k vlastní stránce, tj. bez CDN.
-    * Podívejte se na [příklady užití](https://fontawesome.com/v4.7.0/examples/), zvláště na Animated Icons a Stacked Icons.
+  * Podívejte se na jejich [příklady užití](https://fontawesome.com/v4.7.0/examples/), zvláště na Animated Icons a Stacked Icons.
 
 
 :+1:
@@ -114,7 +123,7 @@
 * Student by měl vědět, že existují CSS frameworky, jako např. Bootstrap, a měl by být schopen je použít. 
 * Student by měl vědět, že existují fonty s ikonami, jako např. Font Awesome, a měl by být schopen je použít.
 * **Semestrální práce** - student by nyní měl být schopen navrhnout si vlastní šablonu (HTML + CSS + Fonty), kterou využije v semestrální práci.
-  * Je dobré udělat si úvodní stránku webu, včetně menu apod., a alespoň jednu obsahovou stránku, včetně seznamu a tabulky. Pozn.: doporučuji udělat si, protože nyní (nejspíš) máte čas si s šablonou trochu hrát a nemáte (zatím) hlavu zamotánu o Twig či PHP.
+  * Je dobré udělat si úvodní stránku webu, včetně menu apod., formulář pro vytvoření uživatele a alespoň jednu obsahovou stránku, včetně seznamu a tabulky. Pozn.: doporučuji udělat si, protože nyní (nejspíš) máte čas si s šablonou trochu hrát a nemáte (zatím) hlavu zamotánu o Twig či PHP.
   * Vytvořenou šablonu následně použijete ve své samostatné práci (bez ohledu na to, zda použijete či nepoužijete Twig).  
 
 
