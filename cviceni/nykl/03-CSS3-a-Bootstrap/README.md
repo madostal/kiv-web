@@ -52,10 +52,10 @@
     * Všimněte si, souboru autoloader.php, který vznikl v adresáři vendor. Tímto souborem lze do PHP skriptu automaticky připojit všechny instalované PHP knihovny, což lze využít např. při instalaci Twigu  (pozor, jQuery, Bootstrap ani Font Awesome se netýkají PHP, tj. do HTML si je musíte připojit sami).
     * Pokud používáte správu verzí (např. GIT), tak je vhodné vyloučit adresář *vendor* z repozitáře (není potřeba, bude vždy vytvořen composerem).
   * Můžete si zkusit práci s nástrojem NMP, který bývá pro správu balíčků při vývoji front-endu využíván častěji (vyžaduje instalaci; není vázán na PHP).
-   * Instalace NPM je spojena s instalací Node.js, viz [npmjs.com](https://www.npmjs.com/get-npm). 
-   * Seznam požadovaných knihoven je uveden v souboru package.json.
-   * Instalaci zvolených knihoven dle souboru package.json spustíte z příkazové řádky: npm install
-     * Update: npm update
+    * Instalace NPM je spojena s instalací Node.js, viz [npmjs.com](https://www.npmjs.com/get-npm). 
+    * Seznam požadovaných knihoven je uveden v souboru package.json.
+    * Instalaci zvolených knihoven dle souboru package.json spustíte z příkazové řádky: npm install
+      * Update: npm update
    * Vytvořený adresář *node_modules* je vhodné vyloučit ze správy verzí vlastního projektu.         
 * Hlavička stránky:
   * Vložte hlavičku do kontejneru
