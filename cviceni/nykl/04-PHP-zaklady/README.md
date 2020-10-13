@@ -69,7 +69,7 @@
     
 ### 3. část - Práce s proměnnými a funkcemi (2/2)
 
-* Prohlédněte si HTML elementu formuláře (soubor form.php) pro volbu pozdravu (jeho hodnoty by vám měly něco připomínat).
+* Prohlédněte si HTML element formuláře (soubor form.php) pro volbu pozdravu (jeho hodnoty by vám měly něco připomínat).
 * Doplňte funkci, která v souboru funkce.php vypisuje data formuláře, o výpis příslušného pozdravu:
   * Vytvořte novou funkci jen pro výpis pozdravu a připojte si do ní globální proměnné (global $alfa, $beta, $gama).
   * Na základě hodnoty v poli (pole["pozdrav"]) zavolejte funkci v příslušné proměnné.
@@ -84,7 +84,15 @@
     * Vypište (zvlášť) jméno, příponu a velikost souboru.
     * Přeneste soubor na server tak, aby byl zachován jeho původní název (pozn.: pokud je server provozován na Windows, tak překonvertujte string z kódování "UTF-8" (dáno webem) na "WINDOWS-1250" (popř. jiné číslo, dle Vašeho lokálního prostředí), viz funkce **iconv**).
   * Doplňte danou funkcionalitu do funkce, která zpracovává data formuláře. 
-   
+
+### 5. část - Odeslání e-mailu
+
+* V souboru funkce.php vytvořte funkci, pro odeslání HTML e-mailu na jednu konkrétní e-mailovou adresu.
+* Volání funkce doplňte do funkce vytvářející soubor s HTML tabulkou tak, aby soubor byl odeslán emailem.
+* Ověřte, že byl e-mail odeslán
+  * Doporučuji využít některý nástroj pro odchytávání vlastních e-mailů na localhostu, např. [MailHog](https://github.com/mailhog/MailHog/releases/v1.0.0).
+    * Nemusí se instalovat, pouze se spustí a následně běží na http://localhost:8025
+    * Do php.ini je nutné nastavit port pro odchytávání e-mailu: *smtp_port = 1025*, popř. *SMTP = localhost*. 
 
 ## Úkoly na doma
 
@@ -103,8 +111,9 @@
 
 * Student by měl vědět, jak do HTML zakomponovat PHP.
 * Student by měl vědět, jak na lokálním počítači zprovoznit prostředí, které mu umožní vyvíjet a spouštět PHP skripty.
-* Student by měl znát a umět použít základní programové konstrukce PHP, tj. proměnné, pole, větvení, cykly, funkce, práci se soubory, formuláři, datumy apod. (pozn.: objekty, sessions, cookies, databáze a ochrana proti kyber-útokům budou předmětem dalších cvičení). 
-* Student by měl být schopen s použitím PHP vytvořit jednoduchou webovou aplikaci s několika webovými stránkami (bez OOP).
+* Student by měl znát a umět použít základní programové konstrukce PHP, tj. proměnné, pole, větvení, cykly, funkce, práci se soubory, formuláři, datumy apod. (pozn.: objekty, sessions, cookies, databáze a ochrana proti kyber-útokům budou předmětem dalších cvičení).
+* Student by měl umět odeslat e-mail využitím PHP a měl by umět manuálně odeslání e-mailu ověřit, tj. využít některý nástroj pro odchytávání vlastních e-mailů. 
+* Student by měl být schopen s použitím PHP vytvořit jednoduchou webovou aplikaci s několika webovými stránkami (zatím bez využití OOP).
  
 
 :+1:
