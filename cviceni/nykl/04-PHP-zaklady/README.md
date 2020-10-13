@@ -87,7 +87,8 @@
 
 ### 5. část - Odeslání e-mailu
 
-* V souboru funkce.php vytvořte funkci, pro odeslání HTML e-mailu na jednu konkrétní e-mailovou adresu.
+* V souboru funkce.php vytvořte funkci, pro odeslání HTML e-mailu.
+  * Parametry funkce budou HTML text a e-mailová adresa příjemce, která bude mít defaulní hodnotu.
 * Volání funkce doplňte do funkce vytvářející soubor s HTML tabulkou tak, aby soubor byl odeslán emailem.
 * Ověřte, že byl e-mail odeslán
   * Doporučuji využít některý nástroj pro odchytávání vlastních e-mailů na localhostu, např. [MailHog](https://github.com/mailhog/MailHog/releases/v1.0.0).
