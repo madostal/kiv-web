@@ -1,6 +1,7 @@
 <?php
     // nacteni souboru s funkcemi loginu (prace se session)
 
+    // zpracovani odeslanych formularu
 
 ?>
 <!doctype html>
@@ -12,11 +13,8 @@
     <body>
         <h1>Úvodní stránka</h1>
 <?php
-
-   // zpracovani odeslanych formularu
-        
-
    ///////////// PRO NEPRIHLASENE UZIVATELE ///////////////        
+
 ?>
         <form method="POST">
             <fieldset>
@@ -51,9 +49,9 @@
         </form>
 
 <?php
-   ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////                
+
+   ///////////// KONEC: PRO PRIHLASENE UZIVATELE ///////////////
 ?>
     
     </body>
 </html>
-             

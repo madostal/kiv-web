@@ -3,6 +3,8 @@
 
     // nacteni souboru pro praci s cookie
 
+    // zpracovani odeslanych formularu
+
 ?>
 <!doctype html>
 <html lang="cs">
@@ -80,4 +82,3 @@
     
     </body>
 </html>
-             
