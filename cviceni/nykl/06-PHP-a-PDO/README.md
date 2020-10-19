@@ -107,8 +107,9 @@
     * V ukázkovém řešení je správa přihlášení uživatele součástí třídy MyDatabase,
     ale v samostatné práci by měla být ve vlastní třídě.
     * Pozn.: hesla by správně měla být v DB uložena šifrovaná, k čemuž lze využít 
-    např. algoritmus BCrypt, tj. funkci [password_hash("heslo", PASSWORD_BCRYPT)](http://php.net/manual/en/function.password-hash.php), 
-    která ale produkuje 60-ti znakový hash (nutné s tím počítat při návrhu databáze).
+    např. algoritmus BCrypt, tj. funkci [password_hash($password, PASSWORD_BCRYPT)](http://php.net/manual/en/function.password-hash.php) 
+    pro šifrování a funkci [password_verify($password, $hash)](https://www.php.net/manual/en/function.password-verify.php) pro porovnání zadaného a šifrovaného hesla. 
+    Pozn.: PASSWORD_BCRYPT produkuje 60-ti znakový hash (nutné s tím počítat při návrhu databáze).
   * Zakomponujte ověření přihlášení uživatele do všech stránek vytvořeného webu.
     * Registrovat se smí jen nepřihlášený uživatel.
     * Správa osobních údajů umožňuje upravit údaje právě přihlášeného uživatele.
