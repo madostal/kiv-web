@@ -18,7 +18,7 @@ class ZakladHTML {
         <html lang="cs">
             <head>
                 <meta charset="utf-8">
-                <title><?php echo $title; ?></title>
+                <title><?= $title ?></title>
                 <style>
                     body { background-color: orange; }
                     h1 { text-align: center; }
@@ -29,7 +29,7 @@ class ZakladHTML {
             </head>
             <body>
                 <div class="content">
-                    <h1><?php echo $title; ?></h1>
+                    <h1><?= $title ?></h1>
                     <nav>Menu:
                         <a href="index.php?page=login">Login/Logout</a> |
                         <a href="index.php?page=registrace">Registrace</a> |
@@ -48,7 +48,7 @@ class ZakladHTML {
                     </div>
                 </div>
                 <footer>
-                    &copy; <?php date("Y-m-d") ?> KIV/WEB
+                    &copy; <?= date("Y-m-d") ?> KIV/WEB
                 </footer>
             </body>
         </html>
