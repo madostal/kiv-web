@@ -26,21 +26,31 @@ define("TABLE_USER", "");
 //// Dostupne stranky webu ////
 
 /** Adresar kontroleru. */
-const DIRECTORY_CONTROLLERS = "Controllers";
+const DIRECTORY_CONTROLLERS = "app\Controllers";
 /** Adresar modelu. */
-const DIRECTORY_MODELS = "Models";
+const DIRECTORY_MODELS = "app\Models";
 /** Adresar sablon */
-const DIRECTORY_VIEWS = "Views";
-
-/** Dostupne webove stranky. */
-const WEB_PAGES = array(
-    "uvod" => array("file_name" => "IntroductionController.class.php",
-                    "class_name" => "IntroductionController",
-                    "title" => "Úvodní stránka"),
-    // TODO - doplnit spravu uzivatelu
-);
+const DIRECTORY_VIEWS = "app\Views";
 
 /** Klic defaultni webove stranky. */
 const DEFAULT_WEB_PAGE_KEY = "uvod";
+
+/** Dostupne webove stranky. */
+const WEB_PAGES = array(
+    //// Uvodni stranka ////
+    "uvod" => array(
+        "title" => "Úvodní stránka",
+
+        //// kontroler
+        "file_name" => "IntroductionController.class.php",
+        "class_name" => "IntroductionController",
+    ),
+    //// KONEC: Uvodni stranka ////
+
+    //// Sprava uzivatelu ////
+    // TODO - doplnit spravu uzivatelu
+
+    //// KONEC: Sprava uzivatelu ////
+);
 
 ?>

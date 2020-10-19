@@ -7,6 +7,7 @@
 // -> lze testovat bez zbytku aplikace.
 // -> pri vyuziti Twigu se sablona obejde bez PHP.
 
+////// Po zakomponovani do zbytku aplikace bude tato cast odstranena/zakomentovana  //////
 //// UKAZKA: Uvod bude vypisovat informace z tabulky, ktera ma nasledujici sloupce:
 // id, date, author, title, text
 $tplData['title'] = "Úvodní stránka (TPL)";
@@ -17,7 +18,7 @@ define("DIRECTORY_VIEWS", "../Views");
 const WEB_PAGES = array(
     "uvod" => array("title" => "Úvodní stránka (TPL)")
 );
-
+////// KONEC: Po zakomponovani do zbytku aplikace bude tato cast odstranena/zakomentovana  //////
 
 //// TODO - vypis sablony
 // urceni globalnich promennych, se kterymi sablona pracuje
