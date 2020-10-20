@@ -15,6 +15,6 @@ if(isset($_GET["page"]) && array_key_exists($_GET["page"], WEB_PAGES)){
 }
 
 // vypisu zvolenou stranku
-include(WEB_PAGES[$pageId]);
+require_once(WEB_PAGES[$pageId]);
 
 ?>

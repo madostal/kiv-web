@@ -7,7 +7,7 @@
 
 
     // nacteni hlavicky stranky
-    include("ZakladHTML.class.php");
+    require_once("ZakladHTML.class.php");
     ZakladHTML::createHeader("Přihlášení a odhlášení uživatele");
 
 
@@ -54,4 +54,3 @@
     // paticka
     ZakladHTML::createFooter();
 ?>
-             
