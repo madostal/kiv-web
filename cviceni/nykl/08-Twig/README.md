@@ -57,7 +57,7 @@ a příslušné funkce *renderInPhpTemplate* (používá šablonu zapsanou jako 
 a *renderInPhpTemplateWithWrapper* (používá Output Buffer a šablonu využívající globální proměnnou) v souboru *index.php*.
   * Protože Output Buffer jsme viděli již v předešlém cvičení, tak by vám funkce obou typů PHP šablon měla být zřejmá.
 * *Pozn.: používat formulář tak, jak je ukázáno v šablonách, není HTML validní, 
-proto by bylo lepší použít např. Bootstrap (či jen CSS) a celou tabulku si vytvářit samostatně 
+proto by bylo lepší použít např. Bootstrap (či jen CSS) a celou tabulku si vytvořit samostatně 
 např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze intuitivnější a funguje také.*  
   
 
@@ -81,9 +81,8 @@ např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze 
     * Do každého z těchto bloků napište libovolný informativní text.
 * Nechte si zobrazit výsledek, abyste viděli, že vám základ funguje.
   * V souboru *index.php* tedy nyní s využitím Twigu vypište šablonu *sablona-zaklad.twig*.
-    * Připojte si rozšíření pro funkci *dump()*, která je ekvivalentem PHP funkce *var_dump()*, 
-    viz [návod na zprovoznění funkce dump()](https://twig.symfony.com/doc/2.x/functions/dump.html),
-    a může vám pomoci s řešením problémů. 
+    * Připojte si rozšíření pro funkci *dump()*, která je ekvivalentem PHP funkce *var_dump()* a může vám pomoci s řešením problémů, 
+    viz [návod na zprovoznění funkce dump()](https://twig.symfony.com/doc/2.x/functions/dump.html). 
 
 
 ### 2.2 úkol - Vytvoření části s informacemi o přihlášení uživatele a příslušnými formuláři
@@ -158,7 +157,7 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
     * Košík navíc zobrazuje počet zvolených kusů a umožňuje odebrat produkt z košíku.
     * *Pozn.: pro vstupní elementy jsme si připravili makro s INPUT elementem.*
 * Příslušná úprava šablony pro stránku s obchodem, soubor **stranka-obchod.twig**:
-  * Správně doplňte volání makra pro výpis řádku produktů obchodu a produktů v košíku.
+  * Správně doplňte volání makra pro výpis řádků s produkty obchodu a s produkty v košíku.
 * Nechte si zobrazit výsledek a ověřte, že vám funguje přidávání a odebírání produktů z košíku.
   * Nyní by měly fungovat všechny funkce webu.  
 
@@ -168,8 +167,8 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
 * Cílem je doplnit šablonu s výpisem obchodu o výpis součtu ceny nákupního košíku.
 * Zkuste samostatně:
    * Stačí sčítat násobky ceny a počtu kusů. 
-   * Popř. si lze vyzkoušet formátování měn funkcí *format_currency*, ale vyžaduje PHP verze alespoň 7.1.3
-   (na *students.kiv.zcu.cz* je v současnosti verze 7.0).
+   * Popř. si lze vyzkoušet formátování měn funkcí *format_currency*, ale vyžaduje PHP verze alespoň 7.1.3. 
+   Stačí zkusit si vypsat součet cen jako eura. Parametrem je 3-písmenná zkratka měny dle [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217). 
 
 
 ## 3. úkol - Práce s řešením příkladu
@@ -199,7 +198,7 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
 * Student by měl umět nastavit prostředí Twigu (*Environment*):
   * Umět zapnout debug a umožnit použití funkce [dump()](https://twig.symfony.com/doc/2.x/functions/dump.html).
   * Umět zapnout cache pro šablony Twigu.
-* Student by měl umět zapnout/přidat rozšíření Twigu (např. [format_currency](https://twig.symfony.com/doc/2.x/filters/format_currency.html)).
+* Student by mohl umět zapnout/přidat rozšíření Twigu (např. [format_currency](https://twig.symfony.com/doc/2.x/filters/format_currency.html)).
 
 
 :+1:
