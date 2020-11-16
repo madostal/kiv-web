@@ -86,7 +86,7 @@ tj. vždy je čtverec a v jeho rozích jsou vykresleny další čtverce, a to a�
     * Do canvasu kreslete průhlednou barvou, aby bylo vydět případné překrytí.
     * Zkuste si jako poměr nastavit 1:2 a 1:(1,618), tj. [zlatý řez](https://cs.wikipedia.org/wiki/Zlat%C3%BD_%C5%99ez) (nebo [trochu jinde, trochu zajímavěji](https://www.youtube.com/watch?v=DIrvM1gcnPU)).
      
-![Ukázka požadovaného obrázku](canvas-kyticka.png)
+![Ukázka požadovaného obrázku](canvas-kyticka.png){ max-width=200px; }
 
 
 ## Úkoly na doma
