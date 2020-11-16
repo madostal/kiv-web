@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style>
+        label { display: inline-block; margin: 5px; }
+        /*
+         * Pozor: nasledujici CSS nezmeni velikost canvasu, ale provede jeho zoom.
+         * Nasledne se tedy muze stat, ze ctverec je vykreslen jako obdelnik (pokud je jinak zoomovana jeho vyska a sirka).
+         * Velikost samotneho canvasu urcuji pouze atributy width a height primo v elementu canvas.
+         */
+        /* canvas { width: 200px; height: 200px; } */
+    </style>
+</head>
+<body>
+<div id="control">
+    <form autocomplete="off" onchange="paintInit()">
+        <label for="square_level">
+            Level čtverců:<br>
+            <input type="number" min="0" max="1000" id="square_level" value="2">
+        </label>
+        <label for="square_size">
+            Velikost hrany prvního čtverce [px]:<br>
+            <input type="number" min="0" max="1000" id="square_size" value="100">
+        </label>
+        <label for="square_ratio">
+            Poměr zvětšování hrany 1:? :<br>
+            <input type="number" min="0.05" step="0.05" max="3" id="square_ratio" value="2">
+        </label>
+        <br>
+        <label for="canvas_width">
+            Šířka canvasu [px]:<br>
+            <input type="number" min="0" max="10000" id="canvas_width" value="500">
+        </label>
+        <label for="canvas_height">
+            Výška canvasu [px]:<br>
+            <input type="number" min="0" max="10000" id="canvas_height" value="500">
+        </label>
+        <button type="button" onclick="paintInit()">Vykreslit obrázek</button>
+    </form>
+</div>
+
+<div>
+    <canvas id="my_canvas" width="500" height="300" style="border: 2px solid gray;"></canvas>
+</div>
+
+<table id="histogram" border="1" style="display: inline-block"></table>
+
+<script>
+
+    // ziskani HTML elementu
+    var sqLevelElem = document.getElementById("square_level");
+    var sqSizeElem = document.getElementById("square_size");
+    var sqRatioElem = document.getElementById("square_ratio");
+    var cvWidthElem = document.getElementById("canvas_width");
+    var cvHeightElem = document.getElementById("canvas_height");
+    var canvasElem = document.getElementById("my_canvas");
+
+    // ziskam obsah canvasu, do ktereho lze kreslit
+    var canvas = canvasElem.getContext("2d");
+
+    // vytvoreni promennych v globalnim kontextu
+    var sqSize = null;
+    var sqLevel = null;
+    var sqRation = null;
+    var cvWidth = null;
+    var cvHeight = null;
+
+    // vykresleni okamzite po nacteni stranky
+    paintInit();
+
+
+    /**
+     * Inicializace vykresleni.
+     */
+    function paintInit(){
+        // ziskam soucasne nastaveni
+        sqSize = Number(sqSizeElem.value);
+        sqLevel = Number(sqLevelElem.value);
+        sqRation = Number(sqRatioElem.value);
+        cvWidth = Number(cvWidthElem.value);
+        cvHeight = Number(cvHeightElem.value);
+
+        // nastavim canvasu rozmery
+        canvasElem.width = cvWidth;
+        canvasElem.height = cvHeight;
+        //console.log(canvasElem.width, canvasElem.height);
+
+        // vymazu canvas v plne sirce
+        canvas.clearRect(0, 0, canvasElem.width, canvasElem.height);
+        // urcim barvu vyplne pri kresleni
+        canvas.fillStyle = "rgba(60,102,255,0.5)";
+        // vykresleni ctverce 100x100 px, napr. pro overeni spravnych rozmeru canvasu pri zoomu
+        //-->// canvas.fillRect(10, 10, 100, 100);
+
+        // urceni vychoziho bodu pro kresleni prvniho ctverce - zacinam od leveho horniho rohu
+        var initX = canvasElem.width/2 - sqSize/2;
+        var initY = canvasElem.height/2 - sqSize/2;
+
+        // spusteni vykresleni
+        paintSquare("", initX, initY, sqSize, 0);
+
+        // vypocet histogramu
+        createHistogram();
+    }
+
+    /**
+     * Rekurzivni vykresleni ctvercu.
+     * @param startType string  Typ ci pozice ctverce - tl, tr, bl, br (tj. bottom right).
+     * @param startX integer    Pocatek X (levy horni roh vykreslovaneho ctverce).
+     * @param startY integer    Pocatek Y (levy horni roh vykreslovaneho ctverce).
+     * @param size float        Delka hrany ctverce.
+     * @param level integer     Level/poradi vykresleni pro ukonceni rekurze.
+     */
+    function paintSquare(startType, startX, startY, size, level){
+
+        // TODO - doplnte vykresleni
+
+    }
+
+    /**
+     * Vypocet histogramu z alfa hodnot barev jednotlivych pixelu canvasu.
+     */
+    function createHistogram(){
+
+        // TODO - doplnte vypocet a vypis
+
+        // ziska barvu jednoho pixelu (postupne prochazeni je pomale)
+        canvas.getImageData(x, y, 1, 1).data;
+        // ziska barvy vsech pixelu v oblasti 10x10 px
+        canvas.getImageData(x, y, 10, 10).data;
+
+    }
+
+</script>
+
+</body>
+</html>

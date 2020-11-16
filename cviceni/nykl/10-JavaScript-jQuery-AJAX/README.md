@@ -1,6 +1,6 @@
 # 11. cvičení KIV/WEB - JavaScript, jQuery a AJAX
 
-* Pro každý úkol budete potřebovat jednu kopii souboru zakladni-stranka.html beze změn.
+* Pro každý úkol, vyjma canvasu, budete potřebovat jednu kopii souboru zakladni-stranka.html beze změn.
   * Doporučuji vždy zkopírovat soubor a doplnit si příponu (JS, jQuery, AJAX).
 * Pro testování/výpisy JavaScriptu využijte konzoli prohlížeče (F12 - nástroje pro vývojáře).
 * JavaScripty je dobré načítat na konci HTML souboru, aby nebylo zdržováno vykreslování stránky.
@@ -75,6 +75,18 @@ a přijatý výsledek zobrazí v elementu *vystupniElement*.
   a výsledek zobrazí v posledním sloupci tabulky (pozn.: nad smyslem zde nepřemýšlejte).
     * Protože PHP skript obsahuje náhodnou dobu zpoždění vrácení výsledku, 
     tak byste měli vidět, jak jsou čísla do tabulky průběžně doplňována.
+
+
+## 4. Úkol - Canvas (pouze pro zájemce)
+
+* Použijte soubor **canvas.html**.
+* Doplňte funkci pro rekurzivní vykreslení kytičky dle zadaných parametrů do canvasu, viz následující obrázek,
+tj. vždy je čtverec a v jeho rozích jsou vykresleny další čtverce, a to až do požadované úrovně.
+* Dolňte funkci pro vypsání histogramu "průhlednoti" barvy pro jednotlivé pixely canvasu.
+    * Do canvasu kreslete průhlednou barvou, aby bylo vydět případné překrytí.
+    * Zkuste si jako poměr nastavit 1:2 a 1:(1,618), tj. [zlatý řez](https://cs.wikipedia.org/wiki/Zlat%C3%BD_%C5%99ez) (nebo [trochu jinde, trochu zajímavěji](https://www.youtube.com/watch?v=DIrvM1gcnPU)).
+     
+![Ukázka požadovaného obrázku](canvas-kyticka.png)
 
 
 ## Úkoly na doma
