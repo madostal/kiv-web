@@ -1,6 +1,6 @@
 # 11. cvičení KIV/WEB - JavaScript, jQuery a AJAX
 
-* Pro každý úkol, vyjma canvasu, budete potřebovat jednu kopii souboru zakladni-stranka.html beze změn.
+* Pro 1.-3. úkol budete vždy potřebovat jednu kopii souboru zakladni-stranka.html beze změn.
   * Doporučuji vždy zkopírovat soubor a doplnit si příponu (JS, jQuery, AJAX).
 * Pro testování/výpisy JavaScriptu využijte konzoli prohlížeče (F12 - nástroje pro vývojáře).
 * JavaScripty je dobré načítat na konci HTML souboru, aby nebylo zdržováno vykreslování stránky.
@@ -42,7 +42,7 @@ a přidejte tuto funkci k danému obrázku jako reakci na klik myši. Obrázky m
   a z nich funkcí *.not()* odfiltrujte ty, které mají třídu *ma-titulek*. 
   * Pro číslování odkazů použijte funkci *.each(index,element)*.
   * Pro zvýraznění můžete odkazům nastavit třídu *barva*.
-* Hlavnímu nadpisu v reakci na klik přiřaďte funkci, která skryje/odkryje všechny obrázky (použijte funkci *.toggle()*).
+* Hlavnímu nadpisu v reakci na klik myši přiřaďte funkci, která skryje/odkryje všechny obrázky (použijte funkci *.toggle()*).
 * Při změně hodnoty ve vstupním poli s **id="muj_vstup_a"** zobrazte alert s novou hodnotou:
   * Použijte událost *onChange* a funkci *alert()*.
   * Zkušenější se mohou pokusit zobrazit i předchozí hodnotu:
@@ -65,7 +65,7 @@ a zajistěte, aby slova střídala barvu pozadí "pink", "yellow" a "plum".
 která metodou POST na server na stránku *server-ajax.php* odešle (tj. AJAX)  *vstupA* a *vstupB* v parametrech **vstup_a** a **vstup_b** 
 a přijatý výsledek zobrazí v elementu *vystupniElement*.
   * Vytvořte (další) funkci, která vezme hodnoty ze vstupních polí s **id="muj_vstup_a"** a **id="muj_vstup_b"** 
-  a element s **id="vysledek"** a zavolá s nimi předchozí funkci pro AJAX. Cílem je použít AJAX pro sečtení hodnot *A* a *B*.
+  a element s **id="vysledek"** a zavolá s nimi funkci s AJAXem. Cílem je použít AJAX pro sečtení hodnot *A* a *B*.
   * Ošetřete chybové stavy AJAXu výpisem alertu
     * Správnost ošetření chybových stavů ověříte např. zadáním chybné URL adresy.
 * [+] Doplňte na spodek stránky tlačítko s následující funkcí:
@@ -73,29 +73,30 @@ a přijatý výsledek zobrazí v elementu *vystupniElement*.
   * současně pro každý řádek vezme ID a délku příslušného textu (*druh*), 
   připravenou funkcí je nechá AJAXem na serveru sečíst
   a výsledek zobrazí v posledním sloupci tabulky (pozn.: nad smyslem zde nepřemýšlejte).
-    * Protože PHP skript obsahuje náhodnou dobu zpoždění vrácení výsledku, 
+    * Protože PHP skript obsahuje náhodnou dobu zpoždění vypsání výsledku, 
     tak byste měli vidět, jak jsou čísla do tabulky průběžně doplňována.
 
 
-## 4. Úkol - Canvas (pouze pro zájemce)
+## 4. Úkol - Canvas (pouze pro zájemce; pro zábavu)
 
 * Použijte soubor **canvas.html**.
 * Doplňte funkci pro rekurzivní vykreslení kytičky dle zadaných parametrů do canvasu, viz následující obrázek,
-tj. vždy je čtverec a v jeho rozích jsou vykresleny další čtverce, a to až do požadované úrovně.
+tj. vždy je čtverec a v jeho rozích jsou vykresleny další čtverce, a to až do požadované úrovně. 
+V každé úrovni se čtverce zmenší dle zadaného poměru.
+    * Zkuste si jako poměr nastavit 1:**2** a 1:(**1,618**), tj. [zlatý řez](https://cs.wikipedia.org/wiki/Zlat%C3%BD_%C5%99ez) (nebo [trochu jinde, trochu zajímavěji](https://www.youtube.com/watch?v=DIrvM1gcnPU)).
 * Dolňte funkci pro vypsání histogramu "průhlednoti" barvy pro jednotlivé pixely canvasu.
-    * Do canvasu kreslete průhlednou barvou, aby bylo vydět případné překrytí.
-    * Zkuste si jako poměr nastavit 1:2 a 1:(1,618), tj. [zlatý řez](https://cs.wikipedia.org/wiki/Zlat%C3%BD_%C5%99ez) (nebo [trochu jinde, trochu zajímavěji](https://www.youtube.com/watch?v=DIrvM1gcnPU)).
+    * Do canvasu kreslete průhlednou barvou, aby bylo vidět případné překrytí.
 
 <img src="canvas-kyticka.png" width="200px" title="Ukázka požadovaného obrázku">     
 
 
 ## Úkoly na doma
 
-* Podívejte se na strukturu datových formátů [CSV (*Comma-Separated Values*)](https://www.w3schools.in/python-tutorial/data-processing-and-encoding/#Defining_CSV_Files), 
+* Podívejte se na strukturu datových formátů [CSV (*Comma-Separated Values*)](https://www.w3schools.in/python-tutorial/data-processing-and-encoding/#Defining_CSV_Files),
 [JSON (*JavaScript Object Notation*)](https://www.w3schools.com/whatis/whatis_json.asp) 
 a popř. [XML (*Extensible Markup Language*)](https://www.w3schools.com/whatis/whatis_xml.asp).
   * Pozn.: V CSV je lepší jako oddělovač použít středník, protože je v textech méně častý než čárka.
-* Projděte si informace týkající se [HTML DOM (Document Object Model)](https://www.w3schools.com/whatis/whatis_htmldom.asp).
+* Projděte si informace týkající se [HTML DOM (*Document Object Model*)](https://www.w3schools.com/whatis/whatis_htmldom.asp).
 * Projděte si následující [stránky manuálu JS na W3Schools](https://www.w3schools.com/js/):
   * JS Where To (kam psát JS), JS Syntax, JS Comparisons (== vs. ===).
   * JS Data Types, JS Objects, JS Events.
@@ -110,14 +111,14 @@ a popř. [XML (*Extensible Markup Language*)](https://www.w3schools.com/whatis/w
 
 ## Výstupy cvičení
 
-* Student by měl vědět, jakými způsoby lze do HTML vložit/přidat JavaScript.
+* Student by měl vědět, jakými způsoby lze do HTML doplnit vlastní JavaScript.
 * Student by měl být schopen psát v JavaScriptu jednoduché algoritmy.
-* Student by měl vědět, jak do HTML přidat jQuery knihovnu 
+* Student by měl vědět, jak do HTML přidat jQuery knihovnu, 
 a měl by být schopen využít ji pro psaní jednoduchých algoritmů.
 * Student by měl vědět, co je HTML DOM a měl by ho být schopen procházet a upravovat 
 využitím JavaScriptu anebo jQuery.
   * Student ví, jak selektovat prvky z DOM (tj. selektory jQuery vs. funkce JavaScriptu).
-* Student by měl vědět, co je AJAX a měl by být chopen ho vytvořit a používat 
+* Student by měl vědět, co je AJAX a měl by být schopen ho vytvořit a používat 
 (buď prostřednictvím čistého JavaScriptu, anebo prostřednictvím jQuery).
 * **Semestrální práce:** 
   * Student by nyní měl být schopen doplnit svou semestrální práci o JavaScript/jQuery a AJAX
