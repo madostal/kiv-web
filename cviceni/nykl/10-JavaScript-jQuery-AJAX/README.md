@@ -97,6 +97,7 @@ V každé úrovni se čtverce zmenší dle zadaného poměru.
 a popř. [XML (*Extensible Markup Language*)](https://www.w3schools.com/whatis/whatis_xml.asp).
   * Pozn.: V CSV je lepší jako oddělovač použít středník, protože je v textech méně častý než čárka.
 * Projděte si informace týkající se [HTML DOM (*Document Object Model*)](https://www.w3schools.com/whatis/whatis_htmldom.asp).
+  * Podívejte se na funkci JavaScriptu [document.querySelectorAll()](https://www.w3schools.com/jsref/met_document_queryselectorall.asp).
 * Projděte si následující [stránky manuálu JS na W3Schools](https://www.w3schools.com/js/):
   * JS Where To (kam psát JS), JS Syntax, JS Comparisons (== vs. ===).
   * JS Data Types, JS Objects, JS Events.
