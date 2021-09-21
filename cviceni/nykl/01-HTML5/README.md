@@ -32,7 +32,7 @@ Pozn.: pokud ovládáte některou z předchozích verzí HTML, např. HTML 4 či
 ## 3. úkol “na doma” (nutné pro začátečníky) - seznámení se s dostupnými HTML elementy
 
 * Na příštím cvičení byste již měli být seznámeni se základními elementy, které HTML 5 poskytuje. Proto doporučuji, a to zvláště těm, kteří nemají s HTML příliš zkušeností, abyste se podívali na web www.w3schools.com/html/ a prošli si v daném tutoriálu následující oblasti (ukázky lze vždy spustit, což je nejnázornější).
-    * Pozn.: části týkající se stylů (element nebo atribut STYLE) můžete zatím ignorovat, protože budou obsahem 2.cvičení. Taktéž nyní není potřeba zaobírat se případnými JavaScriptovými kódy (JS probereme později, ale je dobré vědět, že daný tutoriál je obsahuje také, což můžete využít v budoucnosti).
+    * Pozn.: části týkající se stylů (element nebo atribut STYLE) a formulářů můžete zatím ignorovat, protože budou obsahem 2.cvičení. Taktéž nyní není potřeba zaobírat se případnými JavaScriptovými kódy (JS probereme později, ale je dobré vědět, že daný tutoriál je obsahuje také, což můžete využít v budoucnosti).
 * Oblasti, které byste měli v HTML tutoriálu vidět a případně si zkusit:
     * **Introduction** (volitelně).
     * **Elements**, **Attributes** (attr. width a height - vědět o nich, ale v SP místo nich použít styly).
@@ -46,9 +46,9 @@ Pozn.: pokud ovládáte některou z předchozích verzí HTML, např. HTML 4 či
 
 :+1:
 
-## Vystupy cvičení
+## Výstupy cvičení
 * Student by měl znát všechny (základní) HTML elemety, které slouží pro výpis informací a umožňují správné zobrazení HTML stránky ve webovém prohlížeči, viz 3. úkol. (Pozn.: formuláře probereme na 2.cvičení)
-* Student by měl být schopen vytvořit statickou HTML stránku s interními i externími odkazy, obrázky, tabulkami, víceúrovňovými seznamy, multimédii atd., přičemž dná stránka je HTML validní, což student umí ověřit. (Pozn.: jak upravit vzhled stránky probereme na 3.cvičení)
+* Student by měl být schopen vytvořit statickou HTML stránku s interními i externími odkazy, obrázky, tabulkami, víceúrovňovými seznamy, multimédii atd., přičemž daná stránka je HTML validní, což student umí ověřit. (Pozn.: jak upravit vzhled stránky probereme na 3.cvičení)
 * Student by měl vědět, jak správně nastavit znakovou sadu HTML stránky (znát UTF-8 a Windows-1250 = CP-1250) a jak vypsat speciální znaky, např. &lt;, &gt;, &amp;, &euro; apod.   
 
 ### Poznámky
