@@ -14,23 +14,23 @@
 * Doplňte soubor responzivni.html o definici viewportu.
 * Doplňte vlastní styl, který zajistí responzivitu webové stránky tak, jak je ukázáno na přiložených obrázcích. Podrobněji:
   * Prohlédněte si, jaké třídy sloupců (.my-col-*) jsou v souboru responzivni.html použity.
-  * Základní nastavení (obr. 1 - základní nastavení.png):
+  * Základní nastavení (obr. *1 - základní nastavení.png*):
     * Nastavte správný box-sizing všem elementům na stránce,
     * všem řádkům (.row) nastavte ukončení obtékání, tj. použijte ::after s obsahem vykresleným jako blokový element,
-    * všem sloupcům (.my-col-*) nastavte obtékání vlevo, vnitřní odsazení 15px a šířku 100%,
+    * všem sloupcům (.my-col-*) nastavte "obtékání"/přichycení vlevo, vnitřní odsazení 15px a šířku 100%,
     * nastavte barvu pozadí stránky na "coral".
-  * Mobilní telefon (obrazovka alespoň 576px; obr. 2 - mobilní telefon.png):
+  * Mobilní telefon (obrazovka alespoň 576px; obr. *2 - mobilní telefon.png*):
     * Nastavte barvu pozadí stránky na "white",
     * nastavte správně šířky všech sloupců malé obrazovky (.my-col-sm-*), viz prezentace.
     * Pozn.: prohlížeč Opera umožňuje mít nejmenší šířku okna 512px, tj. pro ověření změny vzhledu lze využít vývojářské nástroje.
-  * Tablet (obrazovka alespoň 768px; obr. 3 - tablet.png):
-    * Barvu pozadí stránky nastavte na "antiquewhite".
+  * Tablet (obrazovka alespoň 768px; obr. *3 - tablet.png*):
+    * Barvu pozadí stránky nastavte na "antiquewhite",
     * nastavte správně šířky všech sloupců střední obrazovky (.my-col-md-*).      
-  * Osobní počítač  (obrazovka alespoň 768px; obr. 4 - osobní počítač.png):
-    * Barvu pozadí stránky nastavte na "aquamarine".
+  * Osobní počítač  (obrazovka alespoň 992px; obr. *4 - osobní počítač.png*):
+    * Barvu pozadí stránky nastavte na "aquamarine",
     * nastavte správně šířky všech sloupců velké obrazovky (.my-col-lg-*).   
-* Doplňte pokusný styl, který při šířce obrazovky mezi 900px a 1100px změní pozadí hlavičky a patičky na "orange" (obr. 5 - pokusný styl.png).     
-* Doplňte styl, který se uplatní při tisku stránky a zajistí (obr. 6 - tisk.png):
+* Doplňte pokusný styl, který při šířce obrazovky mezi 900px a 1100px změní pozadí hlavičky a patičky na "orange" (obr. *5 - pokusný styl.png*).     
+* Doplňte styl, který se uplatní při tisku stránky a zajistí (obr. *6 - tisk.png*):
   * Skrytí hlavního menu,
   * doplnění blokového výpisu "* Verze pro tisk *" před hlavičku a za patičku stránky,
   * nastavte správně šířky všech sloupců na tištěné stránce (.my-col-print-*).  
@@ -41,28 +41,28 @@
 
 * Lze využít tutoriály na [W3Schools](https://www.w3schools.com/bootstrap4/default.asp) nebo [GetBootstrap](https://getbootstrap.com) a [Font Awesome v4.7](https://fontawesome.com/v4.7.0/icons/).
 * Pro práci využijte soubor bootstrap.html:
-  * Zkontrolujte, že obsahuje správně připojený Bootstrap, jQuery a font Awesome (je ukázáno, jak využít jejich verze z CDN či jejich lokální uložení).
+  * Zkontrolujte, že obsahuje správně připojený Bootstrap, (jQuery) a font Awesome (je ukázáno, jak využít jejich verze z CDN či jejich lokální uložení).
     * Pozn.: CSS je připojováno v hlavičce, JS na konci stránky.
   * Můžete si zkusit práci s nástrojem Composer pro právu balíčků/knihoven, který umožňuje rychlou inicializaci projektu a alespoň základní ohlídání kompatibility jednotlivých knihoven.
-    * Composer vyžaduje PHP (může být použit wamp, xampp nebo easyphp apod.). Knihovna viz [GetComposer](https://getcomposer.org). Lze spustit jen jako PHP skript (skript composer.phar musí být správně odkázán), nebo lze nainstalovat.
-    * Seznam požadovaných knihoven je uveden v souboru composer.json.
-    * Instalaci zvolených knihoven dle souboru composer.json spustíte z příkazové řádky: php composer.phar install
-      * Pokud by instalace vyžadovala více paměti, než je PHP defaultně přiděleno, tak lze využít: php -d memory_limit=-1 composer.phar install
-    * Pro aktualizaci knihoven: php composer.phar update
-    * Všimněte si, souboru autoloader.php, který vznikl v adresáři vendor. Tímto souborem lze do PHP skriptu automaticky připojit všechny instalované PHP knihovny, což lze využít např. při instalaci Twigu  (pozor, jQuery, Bootstrap ani Font Awesome se netýkají PHP, tj. do HTML si je musíte připojit sami).
+    * Composer vyžaduje PHP (může být použit Wamp, Xampp nebo Easyphp apod.). Knihovna viz [GetComposer](https://getcomposer.org). Lze spustit jen jako PHP skript (skript composer.phar musí být správně odkázán), nebo ho lze nainstalovat.
+    * Seznam námi požadovaných knihoven projektu je uveden v souboru *composer.json*.
+    * Instalaci zvolených knihoven dle souboru *composer.json* spustíte z příkazové řádky: *php composer.phar install*
+      * Pokud by instalace vyžadovala více paměti, než je PHP defaultně přiděleno, tak lze využít: *php -d memory_limit=-1 composer.phar install*
+    * Pro aktualizaci knihoven: *php composer.phar update*
+    * Všimněte si souboru *autoloader.php*, který vznikl v adresáři *vendor*. Tímto souborem lze do PHP skriptu automaticky připojit všechny instalované PHP knihovny, což lze využít např. při instalaci Twigu  (pozor, jQuery, Bootstrap ani font Awesome se netýkají PHP, tj. do HTML si je musíte připojit sami).
     * Pokud používáte správu verzí (např. GIT), tak je vhodné vyloučit adresář *vendor* z repozitáře (není potřeba, bude vždy vytvořen composerem).
-  * Můžete si zkusit práci s nástrojem NMP, který bývá pro správu balíčků při vývoji front-endu využíván častěji (vyžaduje instalaci; není vázán na PHP).
+  * Můžete si zkusit práci s nástrojem NMP, který bývá využíván pro správu balíčků pro front-end (vyžaduje instalaci; není vázán na PHP).
     * Instalace NPM je spojena s instalací Node.js, viz [npmjs.com](https://www.npmjs.com/get-npm). 
-    * Seznam požadovaných knihoven je uveden v souboru package.json.
-    * Instalaci zvolených knihoven dle souboru package.json spustíte z příkazové řádky: npm install
-      * Update: npm update
+    * Seznam požadovaných knihoven je uveden v souboru *package.json*.
+    * Instalaci zvolených knihoven dle souboru *package.json* spustíte z příkazové řádky: *npm install*
+      * Update knihoven: *npm update*
    * Vytvořený adresář *node_modules* je vhodné vyloučit ze správy verzí vlastního projektu.         
 * Hlavička stránky:
   * Vložte hlavičku do kontejneru
   * a odstavci v hlavičce nastavte zelený (success) tučný text.
 * Doplňte hlavní menu:
   * Vyjděte ze základního menu, které je ukázáno v tutoriálu v sekci [BS4 Navbar](https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp),
-  * doplňte do menu položku s rozbalovacím seznamem,
+  * doplňte do menu položku s rozbalovacím seznamem (dropdown),
   * při rolování stránky ukotvěte menu k vršku stránky,
   * doplňte do menu kontejner, aby text menu byl "ve stránce",
   * před nadpis v hlavním menu umístěte libovolnou ikonu (např. hvězdu).
