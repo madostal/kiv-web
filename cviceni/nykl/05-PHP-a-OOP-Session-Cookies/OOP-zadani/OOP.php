@@ -1,6 +1,6 @@
 <?php
 
-// pripojim vsechny objekty, tj. soubory zacinajici na C
+// pripojim vsechny tridy, tj. soubory zacinajici na C
 foreach (glob("C*.php") as $obj){
     require_once $obj;
     echo "Připojuji $obj<br>";
