@@ -2,9 +2,10 @@
 
 * Nejprve si projděte prezentaci k tomuto cvičení.
 * Pokud Vám PhpStorm neumožňuje definovat datové typy parametrů funkcí a návratových hodnot, tak je to nejspíš proto, 
-že má nastavenu verzi PHP nižší než 7.0.
-  * Zvolit: File --&gt; Settings --&gt; Languages &amp; Frameworks --&gt; PHP --&gt; PHP language level --&gt; zvolit alespoň v.7.0
-  * Pozor, toto se týká pouze PHPStormu a ne serveru, který by také měl používat PHP verze alespoň 7.0. Zjištění příkazem: *php -v* 
+že má nastavenu verzi PHP nižší než 7.0. Viditelnost konstatních atributů třídy lze určovat od PHP **v.7.1**.
+  * Varianta A: V PhpStormu lze zjistit a změnit verzi PHP ve spodní liště (dole vpravo). Zvolte alespoň v.7.1. 
+  * Varianta B: Zvolit z menu File --&gt; Settings --&gt; Languages &amp; Frameworks --&gt; PHP --&gt; PHP language level --&gt; zvolit alespoň v.7.1
+  * Pozor, toto se týká pouze PHPStormu a ne serveru, který by také měl používat PHP verze alespoň 7.1. Zjištění příkazem: *php -v* 
 
 ## 1. úkol - Základy objektově orientovaného programování (OOP) v PHP
 
