@@ -31,28 +31,28 @@ a přidejte tuto funkci k danému obrázku jako reakci na klik myši. Obrázky m
 
 * Kde to lze, tak využijte jQuery namísto JavaScriptu - usnadní vám práci. Části kódu lze přejmout z prvního úkolu.
 * Načtěte knihovnu [jQuery](https://jquery.com):
-  * Buďto si ji stáhněte ručně nebo s využitím Composeru (či jiného nástroje),
+  * Buďto si ji stáhněte ručně nebo s využitím Composeru, NPM (či jiného nástroje),
   * Nebo využijte externí zdroj, např. CDN *https://code.jquery.com/jquery-3.4.1.js*
 * Vytvořte funkci, která sečte hodnoty ze vstupních polí s **id="muj_vstup_a"** a **id="muj_vstup_b"**
   a výsledek zobrazí v elementu s **id="vysledek"**. 
   Funkci po načtení stránky přiřaďte příslušnému tlačítku.
 * Po načtení stránky změňte hlavní nadpis stránky na *"Stránka s jQuery"* a přiřaďte mu třídu *barva*.
 * Očíslujte odkazy, které mají v atributu *href* hodnotu *http://kiv.zcu.cz* a současně nemají třídu *ma-titulek*:
-  * Odkazy se správnou hodnotou v atributu *href* získejte přímo selektorem 
-  a z nich funkcí *.not()* odfiltrujte ty, které mají třídu *ma-titulek*. 
-  * Pro číslování odkazů použijte funkci *.each(index,element)*.
-  * Pro zvýraznění můžete odkazům nastavit třídu *barva*.
+  * Požadované odkazy získáte využitím selektoru, nebo lze získat všechny odkazy 
+  a použít funkce *.filter()* (se selektorem pro *href*) a *.not()* (se selektorem pro třídu *ma-titulek*).
+  * Pro číslování odkazů použijte funkci *.each()*.
+  * Pro zvýraznění můžete odkazům nastavit třídu *barva* funkcí *.addClass()* aplikovanou na celé pole odkazů.
 * Hlavnímu nadpisu v reakci na klik myši přiřaďte funkci, která skryje/odkryje všechny obrázky (použijte funkci *.toggle()*).
 * Při změně hodnoty ve vstupním poli s **id="muj_vstup_a"** zobrazte alert s novou hodnotou:
   * Použijte událost *onChange* a funkci *alert()*.
   * Zkušenější se mohou pokusit zobrazit i předchozí hodnotu:
     * Při načtení dokumentu a při každé změně hodnoty si ji musíte někam uložit, např. do vlastního atributu.
-* Všem lichým řádkům tabulky přiřaďte třídu *barva* a nastavte barvu pozadí na *pink*.
-* [+] Prvnímu textovému odstavci odstraňte současné HTML elementy, všechna jeho slova uzavřete do samostatných SPAN elementů 
+* Všem sudým řádkům tabulky (pseudotřída *even*) přiřaďte třídu *barva* a nastavte barvu pozadí na *pink*.
+* [+] Prvnímu textovému odstavci odstraňte současné HTML elementy, všechna jeho slova uzavřete do samostatných *SPAN* elementů 
 a zajistěte, aby slova střídala barvu pozadí "pink", "yellow" a "plum".
   * Nejprve si získejte text, rozdělte ho dle mezer a všechna slova vraťte zpět do odstavce, 
-  jen každé bude uvnitř vlastního SPAN elementu.
-  * Selektujte SPAN elementy prvního odstavce s omezením na (3n), (3n+1) a (3n+2) a nastavte jim příslušné barvy pozadí. 
+  jen každé bude uvnitř vlastního *SPAN* elementu.
+  * Selektujte *SPAN* elementy prvního odstavce s omezením na (3n), (3n+1) a (3n+2) a nastavte jim příslušné barvy pozadí. 
   
   
 ## 3. Úkol - AJAX (Asynchronní JavaScript a XML)
@@ -80,7 +80,7 @@ a přijatý výsledek zobrazí v elementu *vystupniElement*.
 ## 4. Úkol - Canvas (pouze pro zájemce; pro zábavu)
 
 * Použijte soubor **canvas.html**.
-* Doplňte funkci pro rekurzivní vykreslení kytičky dle zadaných parametrů do canvasu, viz následující obrázek,
+* Doplňte funkci pro rekurzivní vykreslení "kytičky" dle zadaných parametrů do canvasu, viz následující obrázek,
 tj. vždy je čtverec a v jeho rozích jsou vykresleny další čtverce, a to až do požadované úrovně. 
 V každé úrovni se čtverce zmenší dle zadaného poměru.
     * Zkuste si jako poměr nastavit 1:**2** a 1:(**1,618**), tj. [zlatý řez](https://cs.wikipedia.org/wiki/Zlat%C3%BD_%C5%99ez) (nebo [trochu jinde, trochu zajímavěji](https://www.youtube.com/watch?v=DIrvM1gcnPU)).
@@ -118,11 +118,11 @@ a popř. [XML (*Extensible Markup Language*)](https://www.w3schools.com/whatis/w
 a měl by být schopen využít ji pro psaní jednoduchých algoritmů.
 * Student by měl vědět, co je HTML DOM a měl by ho být schopen procházet a upravovat 
 využitím JavaScriptu anebo jQuery.
-  * Student ví, jak selektovat prvky z DOM (tj. selektory jQuery vs. funkce JavaScriptu).
+  * Student ví, jak selektovat prvky z DOM (tj. CSS selektory vs. funkce JavaScriptu).
 * Student by měl vědět, co je AJAX a měl by být schopen ho vytvořit a používat 
 (buď prostřednictvím čistého JavaScriptu, anebo prostřednictvím jQuery).
 * **Semestrální práce:** 
-  * Student by nyní měl být schopen doplnit svou semestrální práci o JavaScript/jQuery a AJAX
+  * Student by nyní měl být schopen doplnit svou semestrální práci o JavaScript/jQuery a AJAX.
     * Hodnoceno bonusovými body.
   * Student by nyní měl mít všechny potřebné znalosti pro kompletní vypracování samostatné práce.
 
