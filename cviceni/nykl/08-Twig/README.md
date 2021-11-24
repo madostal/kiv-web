@@ -53,20 +53,21 @@ Zbytek aplikace ponechte pokud možno beze změny.
 ### 2.0 úkol - Průzkum PHP šablon
 
 * Zprovozněte aplikaci a prohlédněte si šablony v PHP, tj. adresář **sablony-php** 
-a příslušné funkce *renderInPhpTemplate* (používá šablonu zapsanou jako PHP třídu) 
-a *renderInPhpTemplateWithWrapper* (používá Output Buffer a šablonu využívající globální proměnnou) v souboru *index.php*.
-  * Protože Output Buffer jsme viděli již v předešlém cvičení, tak by vám funkce obou typů PHP šablon měla být zřejmá.
-* *Pozn.: používat formulář tak, jak je ukázáno v šablonách, není HTML validní, 
-proto by bylo lepší použít např. Bootstrap (či jen CSS) a celou tabulku si vytvořit samostatně 
-např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze intuitivnější a funguje také.*  
-  
+a v souboru *index.php* funkce *renderInPhpTemplate* (používá šablonu zapsanou jako PHP třídu) 
+a *renderInPhpTemplateWithWrapper* (používá Output Buffer a globální proměnnou s daty pro šablonu).
+  * Protože Output Buffer jsme viděli již v předešlém cvičení s MVC, 
+    tak by Vám funkcionalita obou typů PHP šablon měla být zřejmá.
+* Poznámka: používat formulář tak, jak je ukázáno v šablonách, tj. jako obalový element řádku tabulky, 
+není HTML validní (byť to funguje), proto lze:
+  * buď vytvořit tabulku z DIV či FORM elementů a stylovat ji jako tabulku (CSS nebo Bootstrap),
+  * nebo dát celou tabulku do jednoho formuláře a tlačítky předávat ID produktů.
 
 ### 2.1 úkol - Vytvoření základní šablony s využitím Twigu
 
 * Cílem je s využitím Twigu vypsat obsah původní šablony.
   * Pozor: v souboru *index.php* jsou data polem *$tplData*, 
   ale ve Twig šabloně jsou klíče z tohoto pole názvy proměnných 
-  (např. v PHP je **$tplData['uzivatel']**, ale v šabloně je jen **uzivatel**);
+  (např. v PHP je ***$tplData['uzivatel']***, ale v šabloně je jen ***uzivatel***);
   * Do nové šablony kopírujte z HTML šablon, co uznáte za vhodné.
 * Základní soubor šablon s HTML hlavičkami a základem obsahu:
   * Vytvořte např. soubor **sablona-zaklad.twig**.
@@ -87,12 +88,12 @@ např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze 
 
 ### 2.2 úkol - Vytvoření části s informacemi o přihlášení uživatele a příslušnými formuláři
 
-* Cílem je vytvořit výpis pro správu přihlášení uživatele (včetně formulářů pro jeho přihlášení a odhlášení).
+* Cílem je vytvořit šablonu pro správu přihlášení uživatele (včetně formulářů pro jeho přihlášení a odhlášení).
   * Přihlášený uživatel také vidí menu.
-* Šablona se správou přihlášení, např. soubor **prihlaseni.twig**:
+* Šablona se správou přihlášení uživatele, např. soubor **prihlaseni.twig**:
   * Pokud proměnná *prihlaseni* obsahuje neprázdný text, 
   tak ho vypište do DIV elementu s *id=vypis* - slouží pro různé hlášky uživateli.
-  * Vypište formulář, který přihlášenému uživateli poskytne odhlášení a nepřihlášenému uživateli přihlášení.
+  * Vytvořte část šablony, která nepřihlášenému uživateli zobrazí formulář pro přihlášení a přihlášenému uživateli formulář pro odhlášení.
     * Uživatel se přihlašuje pouze jménem/loginem, přičemž na server musejí být metodou POST 
     odeslány parametry _name='prihlaseni'_ a _name='login'_.
     * Odhlášení uživatele je prováděno odesláním parametru _name='odhlaseni'_. 
@@ -100,7 +101,7 @@ např. z DIV elementů. Nicméně pro potřeby našeho příkladu je tato verze 
     s příslušným parametrem *web*, který může nabývat hodnot *uvod* a *obchod* 
     (tj. *index.php?web=obchod* a jen *index.php* nebo *index.php?web=uvod*).
 * Příslušná úprava základní šablony (soubor **sablona-zaklad.twig**):
-  * Vymaže obsah bloku pro přihlášení uživatele a includujte v něm šablonu *prihlaseni.twig* pro správu přihlášení uživatele.
+  * Vymažte obsah bloku pro přihlášení uživatele a includujte v něm šablonu *prihlaseni.twig* pro správu přihlášení uživatele.
 * Nechte si zobrazit výsledek a ověřte, že vám přihlášení a odhlášení funguje.
 
 
@@ -126,7 +127,7 @@ protože jejich výpis zajistíme až následně s využitím maker.
   * Dědí od základní šablony (soubor *sablona-zaklad.twig*).
   * Přepište blok *vlastniText*:
       * Pokud existuje text, tak ho vypište do B elementu s třídou *center*.
-  * Přepisuje blok *produktyObchodu*:
+  * Přepište blok *produktyObchodu*:
     * Pokud existuje uživatel i produkty, tak vypište název "Produkty v obchodě" a tabulku s hlavičkou pro výpis produktů.
       * Produkty nyní vypište pouze názvem do jednoho sloupce tabulky - výpis řádek tabulky zajistíme makrem.
   * Přepište blok *nakupniKosik*:
@@ -141,7 +142,7 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
 ### 2.5 úkol - Vytvoření souboru s makry
 
 * Cílem je znovupoužitelné části šablon přesunout do maker a ta volat z příslušných míst užití.
-* Šablona s makry, např. soubor **makra.twig**:
+* Makra pro šablony, např. soubor **makra.twig**:
   * Vytvořte obecné makro pro výpis INPUT elementu:
     * Do makra vstupují parametry pro atributy *type*, *name* a *value* 
     a atribut (např. *other*) pro doplnění libovolné části INPUT elementu
@@ -151,7 +152,7 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
   * Vytvořte makro pro výpis řádku tabulky: 
     * Do makra vstupují parametry *typRadku*, *produkt* a *barvaRadku*.
     * Atribut *typRadku* může nabývat hodnot např. *kosik* a *obchod*, 
-    které určují, jestli bude vypsán řádek košíku, nebo řádek s produkty obchodu.
+    které určují, jestli bude vypsán řádek s produkty košíku, nebo řádek s produkty obchodu.
     * Košík i obchod mají stejnou část řádku s výpisem názvu produktu, obrázkem a cenou.
     * Obchod navíc umožňuje zvolit počet produktů a přidat je do košíku.
     * Košík navíc zobrazuje počet zvolených kusů a umožňuje odebrat produkt z košíku.
@@ -167,38 +168,43 @@ Košík nyní nejspíš neuvidíte, protože nemáme vytvořena tlačítka pro p
 * Cílem je doplnit šablonu s výpisem obchodu o výpis součtu ceny nákupního košíku.
 * Zkuste samostatně:
    * Stačí sčítat násobky ceny a počtu kusů. 
-   * Popř. si lze vyzkoušet formátování měn funkcí *format_currency*, ale vyžaduje PHP verze alespoň 7.1.3. 
-   Stačí zkusit si vypsat součet cen jako eura. Parametrem je 3-písmenná zkratka měny dle [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217). 
+   * Popř. si lze vyzkoušet formátování měn funkcí [*format_currency*](https://twig.symfony.com/doc/2.x/filters/format_currency.html), 
+     ale vyžaduje PHP verze alespoň 7.1.3 a instalaci komponenty *twig/intl-extra* (využít Composer). 
+     Stačí zkusit si vypsat součet cen jako eura. Parametrem je 3-písmenná zkratka měny dle [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217). 
 
 
 ## 3. úkol - Práce s řešením příkladu
 
-* Stáhněte si soubor s řešením příkladu a podívejte se na možné varianty implementování šablony v Twigu.
-  * Porovnejte si šablony *Sablona.class.php*, *Sablona.tpl.php* a *cela-sablona-v-jednom-souboru.twig*.
-  * Porovnejte si způsoby načítání Twig v1 a Twig v2.
+* Stáhněte si soubor s řešením příkladu a podívejte se na možné varianty implementování šablony.
+  * Porovnejte šablony *Sablona.class.php*, *Sablona.tpl.php* a *cela-sablona-v-jednom-souboru.twig*.
+  * Porovnejte způsoby načítání Twig v1 a Twig v2.
   * Zkuste si, co uznáte za vhodné.
 
 
 ## Úkoly na doma
 
 * Doporučuji podívat se na následující přehledovou stránku manuálu Twigu: [Twig for Template Designers](https://twig.symfony.com/doc/2.x/templates.html).
-* Je dobré chápat, jakým způsobem v šablonách fungují [proměnné](https://twig.symfony.com/doc/2.x/templates.html#variables),
-  [bloky](http://twig.sensiolabs.org/doc/functions/block.html) a [makra](http://twig.sensiolabs.org/doc/tags/macro.html).
+* Je dobré chápat, jakým způsobem v šablonách fungují 
+  [proměnné](https://twig.symfony.com/doc/2.x/templates.html#variables),
+  [bloky](https://twig.symfony.com/doc/2.x/templates.html#template-inheritance) 
+  a [makra](https://twig.symfony.com/doc/2.x/tags/macro.html).
 * Dopučuji podívat se alespoň na některé funkcionality Twigu, jejichž výčet následuje: 
-  * [Tagy](http://twig.sensiolabs.org/doc/tags/index.html) (v podstatě příkazy jazyka) - apply, autoescape, block, deprecated, do, embed, extends, filter, flush, for, from, if, import, include, macro, sandbox, set, spaceless, use, verbatim, with.
-  * [Filtry](http://twig.sensiolabs.org/doc/filters/index.html) (pro úpravu výpisů) - abs, batch, capitalize, column, convert_encoding, country_name, currency_name, currency_symbol, data_uri, date, date_modify, default, escape, filter, first, format, format_currency, format_date, format_datetime, format_number, format_time, html_to_markdown, inline_css, inky_to_html, join, json_encode, keys, language_name, last, length, locale_name, lower, map, markdown_to_html, merge, nl2br, number_format, raw, reduce, replace, reverse, round, slice, sort, spaceless, split, striptags, timezone_name, title, trim, upper, url_encode.
-  * [Funkce](http://twig.sensiolabs.org/doc/functions/index.html) (pro speciální akce) - attribute, block, constant, cycle, date, dump, html_classes, include, max, min, parent, random, range, source, country_timezones, template_from_string.
+  * [Tagy](https://twig.symfony.com/doc/2.x/tags/index.html) (v podstatě příkazy jazyka) - apply, autoescape, block, deprecated, do, embed, extends, filter, flush, for, from, if, import, include, macro, sandbox, set, spaceless, use, verbatim, with.
+  * [Filtry](https://twig.symfony.com/doc/2.x/filters/index.html) (pro úpravu výpisů) - abs, batch, capitalize, column, convert_encoding, country_name, currency_name, currency_symbol, data_uri, date, date_modify, default, escape, filter, first, format, format_currency, format_date, format_datetime, format_number, format_time, html_to_markdown, inline_css, inky_to_html, join, json_encode, keys, language_name, last, length, locale_name, lower, map, markdown_to_html, merge, nl2br, number_format, raw, reduce, replace, reverse, round, slice, sort, spaceless, split, striptags, timezone_name, title, trim, upper, url_encode.
+  * [Funkce](https://twig.symfony.com/doc/2.x/functions/index.html) (pro speciální akce) - attribute, block, constant, cycle, date, dump, html_classes, include, max, min, parent, random, range, source, country_timezones, template_from_string.
    
 
 ## Výstupy cvičení
 
-* Student by měl vědět, jak ve své aplikaci použít Twig.
-* Student by měl umět používat základní konstrukce Twigu (výpisy, cykly, větvení, přiřazování hodnot, makra, bloky, include vs. import apod.) a příslušné typy závorek {{..}}, {%..%}, {#..#}.
-  * Student by měl znát základní filtry (date, default, length, lower, raw, sort, striptags, trim, upper) a mít představu, k čemu slouží další filtry.      
+* Student by měl vědět, jak v PHP aplikaci použít Twig.
+* Student by měl umět používat základní konstrukce Twigu (tj. *výpisy, cykly, větvení, přiřazování hodnot, makra, bloky, include vs. import* apod.)
+  a příslušné typy závorek {{...}}, {%...%}, {#...#}.
+  * Student by měl znát základní filtry (tj. *date, default, length, lower, raw, sort, striptags, trim, upper*) a mít představu, k čemu slouží další filtry.      
 * Student by měl umět nastavit prostředí Twigu (*Environment*):
   * Umět zapnout debug a umožnit použití funkce [dump()](https://twig.symfony.com/doc/2.x/functions/dump.html).
   * Umět zapnout cache pro šablony Twigu.
-* Student by mohl umět zapnout/přidat rozšíření Twigu (např. [format_currency](https://twig.symfony.com/doc/2.x/filters/format_currency.html)).
+* Student by měl vědět, že některá rozšíření Twigu vyžadují instalaci, 
+  a měl by je umět zapnout/přidat (např. [format_currency](https://twig.symfony.com/doc/2.x/filters/format_currency.html)).
 
 
 :+1:
