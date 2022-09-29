@@ -4,6 +4,9 @@
 ///////////  Secte 2 cisla v POST/GET a soucet vrati   ////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
+// pozor: povolim pristup z libovolne domeny - Cross-origin Resource Sharing (CORS)
+header('Access-Control-Allow-Origin: *');
+
 // promenna pro slozeni vystupniho textu
 $result = "";
 
