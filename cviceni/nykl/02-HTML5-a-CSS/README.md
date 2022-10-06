@@ -37,12 +37,12 @@
 * Odešlete formulář s GET a s POST a všimněte si změny URL adresy v případě GET.
   * Prohlédněte si URL adresu při odeslání metodou GET a zkuste v ní něco změnit.
   * Soubor bude odeslán pouze metodou POST, prostřednictvím metody GET je zaslán pouze název souboru.
-* Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování.
-* Prohlédněte si PHP skript v souboru formular-zobrazeni.php.
 * Zkuste si následující hrátku se znakovou sadou odesílaných dat formuláře: 
   * Formuláři odeberte atribut *accept-charset* a stránce nastavte znakovou sadu na *Windows-1250*, tj. ```<meta charset="windows-1250">```.
   * Odešlete z formuláře písmeno *Ř*, načež na serveru se výpis pokazí, protože vypisuje vstup do stránky s *UTF-8*.
   * Doplňte formuláři atribut ```accept-charset="UTF-8"``` a znovu odešlete formulář s písmenem *Ř*. Nyní bude výpis na serveru správný, protože formulář se sice nachází na stránce se znakovou sadou *Windows-1250*, ale jeho data jsou na server odesílána se znakovou sadou *UTF-8*.
+* Použijte na stránku [validátor HTML](https://validator.w3.org/) a opravte případné chyby a varování.
+* Prohlédněte si PHP skript v souboru formular-zobrazeni.php.
 
 
 ## 2. úkol - základy CSS
