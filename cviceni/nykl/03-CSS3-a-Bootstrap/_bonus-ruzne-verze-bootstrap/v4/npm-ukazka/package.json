@@ -1,0 +1,19 @@
+{
+  "name": "ukazka_npm",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Ukázka instalace knihoven prostřednictvím NPM.",
+  "license": "private",
+  "author": {
+    "name": "Michal Nykl",
+    "url": "https://github.com/madostal/kiv-web/tree/master/cviceni/nykl/03-CSS3-a-Bootstrap"
+  },
+  "dependencies": {
+    "jquery": "3.3.1",
+    "font-awesome": "4.7.0",
+    "bootstrap": "^4.4.1",
+    "popper.js": "^1.16.0",
+    "ckeditor": "^4.12.1"
+  },
+  "devDependencies": {}
+}

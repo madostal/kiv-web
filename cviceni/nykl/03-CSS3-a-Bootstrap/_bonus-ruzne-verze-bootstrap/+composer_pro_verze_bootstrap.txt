@@ -1,0 +1,73 @@
+--------------------------------------------------------------------
+------  BOOTSTRAP V.4  ---------------------------------------------
+--------------------------------------------------------------------
+Composer a Booststrap 4 (vyžaduje externě jQuery a Popper):
+{
+    "description": "Composer ukázka.",
+    "require": {
+        "components/jquery" : ">=3.0",
+        "components/font-awesome": "4.7.0",
+        "twbs/bootstrap" : ">=4.1, <5.0",
+        "alexandermatveev/popper-bundle": ">=1.0"
+    }
+}
+
+<link rel="stylesheet" href="composer-ukazka/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="composer-ukazka/vendor/components/font-awesome/css/font-awesome.min.css">
+
+<script src="composer-ukazka/vendor/components/jquery/jquery.min.js"></script>
+<script src="composer-ukazka/vendor/alexandermatveev/popper-bundle/AlexanderMatveev/PopperBundle/Resources/public/popper.min.js"></script>
+<script src="composer-ukazka/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+--------------------------------------------------------------------
+NPM a Bootstrap 4:
+{
+  "dependencies": {
+    "jquery": "3.3.1",
+    "font-awesome": "4.7.0",
+    "bootstrap": "^4.4.1",
+    "popper.js": "^1.16.0",
+    "ckeditor": "^4.12.1"
+  }
+}
+
+<link rel="stylesheet" href="npm-ukazka/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="npm-ukazka/node_modules/font-awesome/css/font-awesome.min.css">
+
+<script src="npm-ukazka/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="npm-ukazka/node_modules/popper.js/dist/popper.min.js"></script>
+<script src="npm-ukazka/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+--------------------------------------------------------------------
+------  BOOTSTRAP V.5  ---------------------------------------------
+--------------------------------------------------------------------
+Composer a Boostrap 5:
+{
+    "description": "Composer ukázka.",
+    "require": {
+        "components/font-awesome": "4.7.0",
+        "twbs/bootstrap" : ">=5.0"
+    }
+}
+
+<link rel="stylesheet" href="composer-ukazka/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="composer-ukazka/vendor/components/font-awesome/css/font-awesome.min.css">
+
+<script src="composer-ukazka/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+--------------------------------------------------------------------
+NPM a Bootstrap 5:
+{
+  "dependencies": {
+    "font-awesome": "4.7.0",
+    "bootstrap": "^5.0.0"
+  }
+}
+
+<link rel="stylesheet" href="npm-ukazka/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="npm-ukazka/node_modules/font-awesome/css/font-awesome.min.css">
+
+<script src="npm-ukazka/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+--------------------------------------------------------------------

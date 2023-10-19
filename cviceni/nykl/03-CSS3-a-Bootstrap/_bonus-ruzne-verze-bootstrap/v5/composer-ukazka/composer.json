@@ -1,0 +1,7 @@
+{
+    "description": "Composer ukázka.",
+    "require": {
+        "components/font-awesome": "4.7.0",
+        "twbs/bootstrap" : ">=5.0"
+    }
+}
