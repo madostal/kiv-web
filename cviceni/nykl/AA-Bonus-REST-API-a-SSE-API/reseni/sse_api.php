@@ -38,7 +38,7 @@ if($method == "GET"){
     if($endpoint == ENDPOINT_UDALOST){
         // id posledni odeslane udalosti
         // (aby se neposilalo vicekrat totez, ale pri reconnect bude posledni poslana znovu)
-        $lastSendID = -1;
+        $lastSentID = -1;
 
         // provedu inicializaci SSE komunikace
         sseInit();
@@ -55,12 +55,12 @@ if($method == "GET"){
             $stmt->execute();
             $udalosti = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // mam udalost a ma vetsi ID, nez lastSendID?
-            if (isset($udalosti[0]['id']) && $udalosti[0]['id'] > $lastSendID) {
+            // mam udalost a ma vetsi ID, nez lastSentID?
+            if (isset($udalosti[0]['id']) && $udalosti[0]['id'] > $lastSentID) {
                 // odeslu pouze danou udalost
                 sseSendData($udalosti[0], RESPONSE_TYPE::JSON);
-                // ulozim si jeji ID jako lastSendID
-                $lastSendID = $udalosti[0]['id'];
+                // ulozim si jeji ID jako lastSentID
+                $lastSentID = $udalosti[0]['id'];
             }
 
             // spani na kratkou dobu (1s) pro ulehceni zateze CPU
@@ -89,7 +89,7 @@ if($method == "GET"){
         // inicilizuju SSE spojeni
         sseInit();
 
-        // odeslu specialni event sever_time s casem pripojeni
+        //// odeslu specialni event sever_time s casem pripojeni
         // formatovani datumu dle typu klienta
         $tmpStrDT = (new DateTime())->format($selectedDTFormat);
         // odeslani eventu s daty
