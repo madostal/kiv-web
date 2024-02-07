@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SSE API a REST API</title>
+</head>
+<body>
+<h1>Ukázka kombinace SSE API a REST API</h1>
+
+<b>Poslední událost</b>
+&nbsp;&nbsp;&nbsp; debug:
+<button type="button" onclick="stopEventSourceForSSEListeningForUdalost()">Stop</button>
+<button type="button" onclick="initEventSourceForSSEListeningForUdalost()">Restart</button>
+<br>
+<div style="display: inline-block; background-color: pink; border: 1px solid black; border-radius: 5px; padding: 5px; margin-right: 10px; vertical-align: top;">
+    <input type="hidden" id="udalost_id" value="-1" autocomplete="off">
+    <div id="udalost_text">-- Nenačtena --</div>
+    <div id="udalost_datum" style="font-size: small;"></div>
+</div>
+<div style="display: inline-block; padding: 3px; background-color: lightgray">
+    <input id="new_udalost_text" type="text"><br>
+    <input id="new_udalost_barva" type="color" value="#FFFF00">
+    <button type="button" onclick="postUdalost()">Odeslat</button>
+</div>
+<hr style="margin-top: 20px; margin-bottom: 10px;">
+
+<!-- zde budou vypisovany polozky -->
+<b>Záznamy</b>
+<span id="zaznamy_connection_indicator" style="display: inline-block; background-color: pink; border: 1px solid black; padding: 3px; font-weight: bold;">
+    ---
+</span>
+&nbsp;&nbsp;&nbsp; debug:
+<button type="button" onclick="stopEventSourceForSSEListeningForZaznamy()">SSE Stop</button>
+<button type="button" onclick="initEventSourceForSSEListeningForZaznamy()">SSE Restart</button>
+<button type="button" onclick="getAllItemsFromRestApi()">Aktualizace z REST API</button>
+<br>
+<div id="items" style="margin-top: 5px;"></div>
+
+
+<!-- Skripty -->
+<div>
+
+    <!-- Zakladni konfigurace -->
+    <script>
+        // TODO - nastavit spravne URL
+        // URL adresa pro SSE API
+        const sseApiUrl = 'http://localhost/++Brackets-kiv-web/AA-Bonus-REST-API-a-SSE-API/reseni/sse_api.php';
+        // SSE endpointy
+        const sseEndpointUdalost = "udalost";
+        const sseEndpointZaznam = "zaznam";
+
+        // URL adresa pro REST API - primo endpoint udalost a zaznam
+        const restApiURL = "http://localhost/++Brackets-kiv-web/AA-Bonus-REST-API-a-SSE-API/reseni/obecne_rest_api/";
+        const restApiUrlEndpointUdalost = restApiURL + 'udalost/';
+        const restApiUrlEndpointZaznam = restApiURL + 'zaznam/';
+
+        /////////////////////////////////////
+        // EventSource pro SSE - kvuli tlacitkum
+        let eventSourceUdalosti = null;
+        let eventSourceZaznamy = null;
+
+        /////////////////////////////////////
+
+        /** Inicializace az po nacteni stranky. */
+        window.onload = async function (event){
+
+            // ZAZNAMY - (synchronni) cekani na odpoved REST API
+            await getAllItemsFromRestApi();
+
+            // TODO -- studenti - doplni obsah obou funkci
+
+            // UDALOSTI - inicializace naslouchani SSE API
+            initEventSourceForSSEListeningForUdalost();
+
+            // ZAZNAMY - inicializace naslouchani SSE API
+            initEventSourceForSSEListeningForZaznamy();
+
+        };
+
+    </script>
+    <!-- KONEC: Zakladni konfigurace -->
+
+    <!-- SSE API Posledni udalost -->
+    <script>
+        /**
+         * Inicializace naslouchani SSE API, cast s posledni udalosti.
+         * Dokumentace EventSource: https://html.spec.whatwg.org/multipage/server-sent-events.html
+         */
+        function initEventSourceForSSEListeningForUdalost() {
+            // je EventSource podporovan prohlizecem?
+            if (typeof (EventSource) !== "undefined") {
+                // ziskani elementu z GUI
+                const elemUdalostId = document.getElementById('udalost_id');
+                const elemUdalostText = document.getElementById('udalost_text');
+                const elemUdalostDatum = document.getElementById('udalost_datum');
+
+                // slozim URL pro SSE cast Udalost
+                let usedURL = sseApiUrl + "/" + sseEndpointUdalost + "/";
+                console.log("UDALOST - URL", usedURL);
+
+                // TODO - doplnte inicializaci EventSource s obsluhami:
+                //      - source.onopen = function (event) {...}
+                //      - source.onopen a source.onerror - jen vypisy do konzole.
+                //      - source.onmessage ziska z event.data data, ktera poslalo SSE API, tj. JSON,
+                //        a upravi dle nich vykreslenou udalost v GUI.
+                //      - aby bylo mozne ukoncit naslouchani, uloze EventSource do eventSourceUdalosti.
+
+                // TODO - studenti cely spodek
+
+                // zahajim naslouchani na dane URL
+                const source = new EventSource(usedURL);
+                // ulozim si pro ovladani z vnejsku
+                eventSourceUdalosti = source;
+
+                /** Zahajeni spojeni. */
+                source.onopen = function (event) {
+                    console.log('UDALOST - Connection opened');
+                };
+
+                /** Prijmuti dat (zaslanych klasicky jako message, tj. bez uvedeneho eventu). */
+                source.onmessage = function (event) {
+                    const responseData = JSON.parse(event.data);
+                    console.log('UDALOST - Received message:', responseData);
+                    // mam v datech ID a lisi se od posledniho vykresleneho?
+                    if (responseData.hasOwnProperty('id')
+                        && responseData['id'] != idElem.value
+                    ) {
+                        // upravim GUI dle prijatych dat
+                        elemUdalostText.innerHTML = responseData['text'];
+                        elemUdalostDatum.innerHTML = responseData['datum'];
+                        elemUdalostId.value = responseData['id'];
+                        elemUdalostId.parentElement.style.backgroundColor = responseData['barva'];
+                    }
+                };
+
+                /** Chyba spojeni (napr. server ukoncil vysilani; interne zahaji cekani na reconnect). */
+                source.onerror = function (event) {
+                    console.error('UDALOST - Error occurred:', event);
+                };
+
+            } else {
+                console.log("UDALOST - EventSource pro SSE API neni podporovan.");
+            }
+        }
+
+        /**
+         * Ukonci naslouchani udalosti.
+         */
+        function stopEventSourceForSSEListeningForUdalost(){
+            eventSourceUdalosti.close();
+            console.log("UDALOST - STOP");
+        }
+
+    </script>
+    <!-- KONEC: SSE API Posledni udalost -->
+
+    <!-- SSE API Aktualizace zaznamu -->
+    <script>
+
+        // cas posledniho cteni ze serveru
+        let lastCheckTime = null;
+        // klic s casem posledni aktualizace
+        const lastCheckTimeKey = 'last_check';
+        // vlastni cas pro reconnect [ms]
+        // debug: 6000, deploy: 3000
+        const reconnectTime = 3000;
+
+        // pripadny timeout ze setTimeout() pro vlastni opetovne pripojeni
+        let myReconnectTimeout = null;
+
+        /////////////////////////////////////////////////////////////////////////////
+        //////////////  Prace se SSE API  /////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
+
+
+        /**
+         * Inicializace naslouchani SSE API pro aktualizaci zaznamu.
+         * Dokumentace EventSource: https://html.spec.whatwg.org/multipage/server-sent-events.html
+         */
+        function initEventSourceForSSEListeningForZaznamy() {
+            // je EventSource podporovan prohlizecem?
+            if (typeof (EventSource) !== "undefined") {
+
+                // slozim zaklad URL
+                let currentURL = sseApiUrl +"/"+ sseEndpointZaznam +"/";
+
+                // Pri vlastnim obslouzeni reconnect lze posilat last_check v URL v GET parametru.
+                // (EventSource sam o sobe pri reconnect neupravuje URL, ani neposila COOKIES).
+                // TODO - Pozn.: neprisel jsem na jinou moznost, jak udrzet stav na serveru, nez pripadne vyuzitim databaze.
+
+                // mam cas posledniho cteni z API?
+                if(lastCheckTime != null){
+                    // mam - doplnim URL o prispusny GET parametr
+                    const sParams = {[lastCheckTimeKey]: lastCheckTime};
+                    const urlParams = (new URLSearchParams(sParams)).toString();
+                    currentURL += "?" + urlParams;
+                }
+                console.log("ZAZNAMY - URL", currentURL);
+
+                // zahajim naslouchani na dane URL
+                const source = new EventSource(currentURL);
+                // ulozim si pro ovladani z vnejsku
+                eventSourceZaznamy = source;
+
+                /** Zahajeni spojeni. */
+                source.onopen = function (event) {
+                    console.log('ZAZNAMY - Connection opened');
+                    elemZaznamyConnectionIndicator.style.backgroundColor = "#91ff81";
+                };
+
+                /** Prijmuti dat (zaslanych klasicky jako message, tj. bez uvedeneho eventu). */
+                source.onmessage = function (event) {
+                    const responseData = JSON.parse(event.data);
+                    console.log('ZAZNAMY - Received message:', responseData);
+
+                    // jsou dostupna data zaznamu?
+                    if(responseData.hasOwnProperty('items') && responseData["items"].length > 0){
+                        // vykreslim zaznamy do GUI
+                        actualizeHTMLElements(responseData["items"]);
+                    }
+
+                    // pokud je v datech datetime, tak ho ulozim jako posledni pouzity
+                    if(responseData.hasOwnProperty('datetime')){
+                        lastCheckTime = responseData['datetime'];
+                    }
+                };
+
+                /** Chyba spojeni (napr. server ukoncil vysilani; interne zahaji cekani na reconnect). */
+                source.onerror = function (event) {
+                    console.error('ZAZNAMY - Error occurred:', event);
+                    elemZaznamyConnectionIndicator.style.backgroundColor = "#ff9898";
+
+                    //// vlastni obsluha reconnect - pouzije novou URL
+                    // ukoncim soucasny EventSource
+                    source.close();
+                    // po danem case provedu opetovnou inicializaci EventSource
+                    myReconnectTimeout = setTimeout(initEventSourceForSSEListeningForZaznamy, reconnectTime);
+                };
+
+                /** Vlastni listener pro specialni event "server_time" zaslany ze serveru. */
+                source.addEventListener('server_time', function (event) {
+                    // vypisu cas pripojeni
+                    console.log('ZAZNAMY - Event server_time: ', event.data);
+                    elemZaznamyConnectionIndicator.innerHTML = event.data;
+                });
+
+            } else {
+                console.log("EventSource pro SSE API neni podporovan.");
+            }
+        }
+
+        /**
+         * Ukonci naslouchani zaznamu.
+         */
+        function stopEventSourceForSSEListeningForZaznamy(){
+            // ukoncim naslouchani
+            eventSourceZaznamy.close();
+            // vypnu pripadny vlastni timeout pro reconnect
+            if(myReconnectTimeout != null){
+                clearTimeout(myReconnectTimeout);
+            }
+            console.log("ZAZNAMY - STOP");
+        }
+
+        /////////////////////////////////////////////////////////////////////////////
+        //////////////  KONEC: Prace se SSE API  /////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
+
+    </script>
+    <!-- KONEC: SSE API Aktualizace zaznamu -->
+
+    <!-- Prace s REST API -->
+    <script>
+
+        /**
+         * Nacte vsechny zaznamy vyuzitim REST API.
+         * @return {Promise<any>}  Prislib zpracovani odpovedi.
+         */
+        function getAllItemsFromRestApi() {
+            // vykonani HTTP GET metody s danou URL
+            return fetch(restApiUrlEndpointZaznam)
+                // nejprve zpracuju odpoved a extrahuju data z JSON
+                .then(response => processResponse(response))
+                // zpracuju data
+                .then(data => {
+                    console.log("REST API zaznam data:", data);
+                    // jsou dostupne zaznamy?
+                    if(data.hasOwnProperty('items') && data["items"].length > 0){
+                        // mam zaznamy - zde kompletne prepisu GUI, tj. nejprve pripadne zaznamy odstranim
+                        document.getElementById("items").innerHTML = "";
+                        // vykreslim zaznamy do GUI
+                        actualizeHTMLElements(data["items"]);
+
+                        // extrahuju a ulozim pro SSE datum nejnovejsi upravy ze zaznamu
+                        lastCheckTime = extractLatestDatumUpravyFromItems(data["items"]);
+                        // vypisu cas posledniho zaznamu
+                        elemZaznamyConnectionIndicator.style.backgroundColor = "#cdcfff";
+                        elemZaznamyConnectionIndicator.innerHTML = lastCheckTime;
+                    }
+                })
+                // pokud nastane chyba
+                .catch(error => console.error('Fetch error:', error));
+        }
+
+        /**
+         * Provede vlozeni nove udalosti v REST API.
+         * @return {Promise<Response | void>}
+         */
+        function postUdalost() {
+            const newUdalostText = document.getElementById("new_udalost_text").value.trim();
+            const newUdalostBarva = document.getElementById("new_udalost_barva").value;
+            if(newUdalostText.length > 0){
+                // data pro odeslani
+                const requestData = {
+                    text: newUdalostText,
+                    barva: newUdalostBarva
+                };
+
+                // odeslu do REST API
+                return sendIntoRestAPI(restApiUrlEndpointUdalost, "POST", requestData);
+            } else {
+                alert("Zadejte text události.");
+            }
+        }
+
+        /**
+         * Provede upravu mnozstvi v RET API.
+         * @param pkValue
+         * @param mnozstvi
+         * @return {Promise<Response | void>}
+         */
+        function putItemMnozstviChange(pkValue, mnozstvi) {
+            // data pro odeslani
+            const requestData = {
+                mnozstvi: mnozstvi,
+            };
+
+            // slozim URL, napr.: zaznam/2/mnozstvi/
+            const currentUrl = restApiUrlEndpointZaznam + pkValue + "/mnozstvi/";
+
+            // odeslu do REST API
+            return sendIntoRestAPI(currentUrl, "PUT", requestData);
+        }
+
+        /**
+         * Metodou PUT odesle data do REST API na dane URL.
+         * @param {string} url          URL pro PUT pozadavek.
+         * @param {string} method       HTTP metoda.
+         * @param {array} requestData   Data pro PUT pozadavek.
+         * @return {Promise<Response | void>}
+         */
+        function sendIntoRestAPI(url, method, requestData) {
+            console.log(method, "URL", url);
+
+            // konfigurace pozadavku do REST API
+            const requestOptions = {
+                method: method,
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(requestData),
+            };
+
+            // volani REST API
+            return fetch(url, requestOptions)
+                // nejprve zpracuju odpoved a extrahuju data z JSON
+                .then(response => processResponse(response))
+                // zpracuju data
+                .then(data => {
+                    console.log(data);
+                    // pokud je status odpovedi 1, tak zmena probehla
+                    if(data["state"] == 1){
+                        console.log("Upravena provedena.");
+                    } else {
+                        alert("Uprava se nezdarila.");
+                    }
+                })
+                // pokud nastane chyba
+                .catch(error => console.error('Fetch error:', error));
+        }
+
+        /**
+         * Zpracuje Response od serveru.
+         * @param {Response} response      Response objekt.
+         * @return {any}                   Objekt zikany z JSON odpovedi.
+         */
+        function processResponse(response){
+            // je response 200 OK?
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            // parsuju JSON data z odpovedi
+            return response.json();
+        }
+
+        /**
+         * Z pole zaznamu ziska nejnovejsi datum upravy.
+         * @param items             Pole zaznamu.
+         * @return {string|null}    Nejnovejsi datum, nebo null.
+         */
+        function extractLatestDatumUpravyFromItems(items){
+            // mam zaznamy ?
+            let allDT = [];
+            if(items.length > 0){
+                // projdu je a vytaham datumy upravy
+                items.forEach(function (item){
+                    if(item.hasOwnProperty("datum_upravy")){
+                        allDT.push(item["datum_upravy"]);
+                    }
+                })
+                // seradim abecedne - format je RRRR-MM-DD
+                allDT.sort();
+            }
+            // vratim posledni, tj. nejvetsi = nejnovejsi, nebo null
+            return ((allDT.length > 0) ? allDT[allDT.length-1] : null);
+        }
+
+    </script>
+    <!-- KONEC: Prace s REST API -->
+
+    <!-- Upravy GUI -->
+    <script>
+        /**
+         * Zajisti aktualizaci vsech zaznamu v GUI dle seznamu zaznamu.
+         * Neexistujici zaznamy budou doplneny.
+         * @param {array} itemsList  Seznam zaznamu.
+         */
+        function actualizeHTMLElements(itemsList){
+            console.log("GUI zaznamy list", itemsList);
+            // jsou dostupne zaznamy?
+            if(itemsList.length > 0){
+                // projdu polozky a vypisu je jako HTML do stranky
+                itemsList.forEach(item => actualizeZaznamHTMLElement(item));
+            }
+        }
+
+        // prefix pro ID elementu dle ID zaznamu
+        const zaznamIdPrefix = "zaznam_id_";
+
+        /**
+         * Aktualizace HTML elementu pro zaznam v GUI.
+         * Pokud tam neni, tak bude vytvoren.
+         * @param zaznamData
+         */
+        function actualizeZaznamHTMLElement(zaznamData){
+            // slozim ID pro element daneho zaznamDatau
+            const myId = zaznamIdPrefix + zaznamData['id'];
+
+            // mam jiz dany element vykresleny v GUI?
+            let zaznamElement;
+            if(document.getElementById(myId) != null){
+                // pouziju element z GUI
+                zaznamElement = document.getElementById(myId);
+            } else {
+                // pouziju sablonu pro element
+                // ziskam sablonu elementu
+                const elemTemplate = document.getElementById("template").getElementsByClassName("zaznam_element")[0];
+                // klonuju element
+                zaznamElement = elemTemplate.cloneNode(true);
+                // nastavim mu ID
+                zaznamElement.id = myId;
+                // dam element do GUI
+                document.getElementById("items").append(zaznamElement);
+            }
+
+            // upravim hodnoty v elementu dle dat
+            for(tmpAttrInd in zaznamData){
+                const tmpAttrElem = zaznamElement.getElementsByClassName("data_"+tmpAttrInd);
+                if(tmpAttrElem.length > 0){
+                    tmpAttrElem[0].innerHTML = zaznamData[tmpAttrInd];
+                }
+                // console.log(tmpAttrInd);
+            }
+            // specialne pro hidden input upravim ID
+            zaznamElement.getElementsByClassName("data_zaznam_id")[0].value = zaznamData['id'];
+            //console.log(zaznamElement)
+
+            // Pozn.: nasledne lze seradit elementy v GUI apod.
+        }
+
+        //// TODO ..........
+        function setZaznamyConnectionIndicator(){
+
+            const elemZaznamyConnectionIndicator = document.getElementById("zaznamy_connection_indicator");
+
+           
+
+        }
+
+        /**
+         * Zpracuje odeslani formulare, ktery u zaznamu zajistuje plus a minus u hodnoty mnozstvi.
+         * @param form      Element odesilaneho formulare
+         * @param event
+         */
+        function processFormMnozstviOnSubmit(form, event){
+            console.log(event);
+            // ziskam odeslana data formulare
+            const formData = new FormData(form);
+            console.log("Form data", formData);
+            // vytahnu z dat ID zaznamu
+            const zaznamId = formData.get("zaznam_id");
+
+            // ziskam hodnotu z odesilaciho tlacitka
+            const action = event.submitter.value;
+            console.log("Submitter", action);
+            // budu pridavat nebo ubirat 1 - defaultne "plus"
+            let mnozstvi = (action === "minus") ? -1 : 1;
+
+            // provedu aktualizaci pres REST API
+            putItemMnozstviChange(zaznamId, mnozstvi);
+
+            // ukoncim odesilani formulare
+            event.preventDefault();
+        }
+    </script>
+    <!-- KONEC: Upravy GUI -->
+
+</div>
+<!-- KONEC: Skripty -->
+
+
+<!-- Sablona pro vypsani zaznamu -->
+<div id="template" style="display: none">
+    <div class="zaznam_element" style="display: inline-block; border: 1px solid gray; margin: 2px; padding: 2px;">
+        <div style="display: inline-block; padding: 2px;">
+            ID: <b class="data_id"></b><br>
+            Název: <b class="data_nazev"></b><br>
+            Poloha: <b class="data_poloha"></b><br>
+            HW: <b class="data_uc_hw_zarizeni"></b><br>
+            Množství: <b class="data_mnozstvi"></b><br>
+            Je smazaný: <b class="data_je_smazany"></b><br>
+            Datum úpravy:<br><b class="data_datum_upravy"></b><br>
+            <!-- tlacitka pro REST API plus a minus -->
+            <form onsubmit="processFormMnozstviOnSubmit(this, event);">
+                <input type="hidden" class="data_zaznam_id" name="zaznam_id" value="">
+                <button type='submit' name='action' value='plus'>+</button>
+                <button type='submit' name='action' value='minus'>-</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<!-- KONEC: Sablona pro vypsani zaznamu -->
+
+<!-- Napoveda -->
+<div>
+    <button onclick="let np = document.getElementById('napoveda'); if(np.style.display=='none'){np.style.display='block'}else{np.style.display='none'}">Nápověda</button>
+    <div id="napoveda" style="display: none; padding: 10px; background-color: lightcyan">
+        <h3>Nápověda</h3>
+        <h4>Poslední událost</h4>
+        - Při spuštění stránky se inicializuje JS EventSource posluchač SSE,
+        který ze serveru přijímá poslední událost.<br>
+        - Vložení události je prostřednictvím REST API.<br>
+        <br>
+
+        <h4>Záznamy</h4>
+        - Při spuštění stránky:<br>
+        --- Prostřednictvím REST API načte všechny záznamy a uloží pro SSE posledního datum úpravy záznamů. Proto SSE následně jako první změnu dat získá právě daný záznam.
+        Pozn.: REST API nevrací záznamy označené jako smazané.<br>
+        --- Následně se inicializuje JS EventSource posluchač SSE,
+        který ze serveru přijímá už jen změny záznamů. Pozn.: SSE API vrací i změny smazaných záznamů (pro případné odstranění z GUI).<br>
+        - URL pro SSE umožňuje nastavit minimální čas změn záznamů, tj. starší změny záznamů nebudou odesílány.<br>
+        - Kdykoliv je navázáno nové SSE spojení, tak je aktualizován čas vypsaný u záznamů. Červená barva indikuje chybu spojení (např. server přestal vysílat).<br>
+        - Úprava množství u daného záznamu je prostřednictvím REST API.<br>
+
+    </div>
+</div>
+<!-- KONEC: Napoveda -->
+
+</body>
+</html>

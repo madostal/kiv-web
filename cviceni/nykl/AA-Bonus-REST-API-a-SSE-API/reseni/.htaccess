@@ -1,0 +1,38 @@
+
+# povoleni linku
+Options +FollowSymlinks
+# povoleni presmerovani
+RewriteEngine On
+
+# zakazani presmerovani pro soubor index.php
+RewriteRule ^index.php - [L]
+
+# pokud existuje dany soubor nebo dany adresar, tak se presmerovani neprovede
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# v ramci soucasneho adresare jeste chceme, aby bylo pouzito rest_api nebo sse_api
+# napr. URL: localhost/aktualni_priklad/rest_api/zaznam/
+
+# TODO - postupne povolit pozadovane URL pro presmerovani
+# TODO - upravit pro studenty !!!
+
+################################################
+# REST API
+
+# (klasicke) REST API
+RewriteRule ^rest_api/(.*)$ /++Brackets-kiv-web/AA-Bonus-REST-API-a-SSE-API/reseni/rest_api.php [QSA,L]
+
+# obecne REST API
+RewriteRule ^obecne_rest_api/(.*)$ /++Brackets-kiv-web/AA-Bonus-REST-API-a-SSE-API/reseni/obecne_rest_api.php [QSA,L]
+
+################################################
+# SSE API
+
+# POZOR: Toto funguje pro Android, ale nefunguje pro JS EventSource !!
+# EventSource nespolupracuje s presmerovanim v .htaccess !!
+RewriteRule ^sse_api/(.*)$ /++Brackets-kiv-web/AA-Bonus-REST-API-a-SSE-API/reseni/sse_api.php [QSA,L]
+
+################################################
+# ukazka pro students.kiv.zcu.cz
+#RewriteRule ^rest_api/(.*)$ /~orion_login/+test_rest_api/rest_api/index.php [QSA,L]

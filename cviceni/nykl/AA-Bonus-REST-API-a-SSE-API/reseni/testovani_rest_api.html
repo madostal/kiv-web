@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testovani REST API</title>
+    <style>
+        * { box-sizing: border-box; }
+        .full-width { width: 100%; }
+        .row::after { content: ""; display: block; clear: both; }
+    </style>
+</head>
+<body style="padding: 10px;">
+
+<h1>Testování REST API</h1>
+
+<!-- Vstupy pro testovani -->
+<label for="api_url" style="display: block;">
+    <b>REST API URL:</b><br>
+    <i style="color: gray">např. http://localhost/+MOJE_WEBY/++REST_API_zaklad/CORS_problem/rest_api.php </i><br>
+    <i style="color: gray">např. http://localhost/+MOJE_WEBY/++REST_API_zaklad/REST_API_php_vlastni/obecne_rest_api/rest_api/ </i><br>
+    <input type="text" id="api_url" class="full-width" autocomplete="on">
+</label>
+<br>
+<div class="row">
+    <label for="api_endpoint" style="float:left; width: 22%; padding: 10px; padding-left: 0px;">
+        <b>REST API Endpoint:</b><br>
+        <i style="color: gray">např. zaznam, uzivatel</i><br>
+        <input type="text" id="api_endpoint" class="full-width" autocomplete="on">
+    </label>
+    <label for="pk_attr" style="float:left; width: 22%; padding: 10px;">
+        <b>Atribut s PK:</b><br>
+        <i style="color: gray">např. id, unique_code</i><br>
+        <input type="text" id="pk_attr" class="full-width" autocomplete="on">
+    </label>
+    <label for="list_attr" style="float:left; width: 22%; padding: 10px;">
+        <b>Atribut se seznamem:</b><br>
+        <i style="color: gray">např. items, zaznamy</i><br>
+        <input type="text" id="list_attr" class="full-width" autocomplete="on">
+    </label>
+    <label for="remove_attrs" style="float:left; width: 34%; padding: 10px; padding-right: 0px;">
+        <b>Atributy pro vynechání z dat (odděleny čárkou):</b><br>
+        <i style="color: gray">např. datum_upravy</i><br>
+        <input type="text" id="remove_attrs" class="full-width" autocomplete="on">
+    </label>
+</div>
+<br>
+
+<!-- Tlacitka pro provedeni akci -->
+<div style="float: left; width: 50%; display: inline-block; padding: 10px;">
+    <b>Provádění akcí v REST API</b><br>
+    <button onclick="testGET()">GET</button>
+    <button onclick="testPOST()">POST</button>
+    <button onclick="testPUT()">PUT</button>
+    <button onclick="testDELETE()">DELETE</button>
+    <br><br>
+    <button onclick="komplexniTest()" id="btn_komplexni_test">Komplexní test</button>
+</div>
+<!-- JSON data nactena nebo posilana na server -->
+<div style="width: 50%; padding: 10px; display: inline-block;">
+    <b>JSON data odesílaná do REST API (pro POST a PUT)</b><br>
+    <textarea id="data_input" autocomplete="off" class="full-width" style="min-height: 100px; overflow: scroll; border: 1px solid orange;"></textarea>
+</div>
+<br>
+
+<!-- Vystup z testovani -->
+<div>
+    <b>Výstupy z testování:</b><br>
+    <textarea id="test_output" readonly autocomplete="off"
+              class="full-width" style="height:200px; min-height: 150px; max-width: 100%; overflow: scroll; border: 1px solid orange; padding: 10px;"
+    ></textarea>
+    <br>
+    <!-- Vymazani vystupu -->
+    <button type="button" onclick="document.getElementById('test_output').value=''">Vymazat výstup</button>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script>
+
+    // ziskam elementy se vstupy
+    const inputURL = document.getElementById("api_url");
+    const inputEndpoint = document.getElementById("api_endpoint");
+    const inputPKAttr = document.getElementById("pk_attr");
+    const inputListAttr = document.getElementById("list_attr");
+    const inputRemoveAttrs = document.getElementById("remove_attrs");
+    // ziskam element s JSON daty
+    const inputDataElem = document.getElementById("data_input");
+    // ziskam element pro vypis logu
+    const outputElem = document.getElementById("test_output");
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  Vstupy a vystupy  /////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    // vypsani hlavicky do vystupu
+    const hash = "#";
+
+    /**
+     * Vypsani textove hlavicky do vystupu.
+     * @param {string} text     Text pro vypis do hlavicky.
+     */
+    function printTextInHead(text){
+        // pouzivam japonsky format: 2023/11/22 14:30:45
+        const strDT = (new Date).toLocaleString('ja-JP');
+        // vypis:
+        // ##### 2023/11/8 17:20:56 ####################
+        // ##### POST ##################################
+        outputElem.value += "\n"+ hash.repeat(5) +" "+ strDT +" "+ hash.repeat(40) +"\n"
+                            + hash.repeat(5) +" "+ text +" "+ hash.repeat(50) +"\n";
+    }
+
+    /**
+     * Slozi URL a endpoint ze vstupnich poli.
+     * @return {string}  URL
+     */
+    function getURL(){
+        // nactu texty ze vstupu
+        let tmpUrl = inputURL.value.trim();
+        let tmpEndpoint = inputEndpoint.value.trim();
+        // nemam oboje - vypisu chyby
+        if(tmpUrl.length == 0){
+            printLog("*ERROR: URL nezadána!");
+        }
+        if(tmpEndpoint.length == 0){
+            printLog("*WARNING: Endpoint nezadán.");
+        }
+        // slozim a vratim
+        tmpUrl += tmpEndpoint;
+        printLog("[URL] "+ tmpUrl);
+        return tmpUrl;
+    }
+
+    /**
+     * Nacte data z daneho HTML input elementu a vypise info.
+     * @param inputElem                 Vstupni input element.
+     * @param {string} description      Popis do vypisu.
+     * @param {boolean} asError         Bude vypano jako ERROR nebo jako WARNING. (def.=false)
+     * @return {string|boolean}         Nacteny string nebo false.
+     */
+    function loadDataInputAsString(inputElem, description, asError = false){
+        // nactu text ze vstupu
+        const strData = inputElem.value.trim();
+
+        // pokud nemam data k odeslani, tak koncim
+        if(strData.length > 0){
+            // mam data
+            printLog("["+ description +"] "+ strData);
+        } else {
+            // nemam data
+            const tmp = (asError) ? "ERROR" : "WARNING";
+            printLog("*"+ tmp +" nezadáno ["+ description +"].");
+            return false;
+        }
+        return strData;
+    }
+
+    /**
+     * Vypise log do GUI i konzole.
+     * @param {string} txt          Text pro vypsani.
+     * @param {string} stringData   Textova data pro vypsani pouze v GUI.
+     * @param consoleData           Data pro vypsani pouze v konzoli. (def.="console_not_used").
+     */
+    function printLog(txt, stringData="", consoleData = "console_not_used"){
+        outputElem.value += txt +" "+ stringData +"\n";
+        if(consoleData == "console_not_used") {
+            console.log(txt);
+        } else {
+            console.log(txt, consoleData);
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  KONEC: Vstupy a vystupy  /////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  Funkce AJAX pro komunikaci se serverem  ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    /** @const httJSONHeader  Vsechny pozadavky posilaji do REST API JSON nebo nic. */
+    const httpJSONHeaders = {'Content-Type': 'application/json'};
+
+
+    /**
+     * Vykona/inicilizuje AJAX volani serveru a zpracovani odpovedi.
+     * Obecna funkce.
+     * @param {string} url              Kompletni URL.
+     * @param {string} currentMethod    Zvolena metoda (GET, POST, PUT, DELETE).
+     * @param {string} data             Data pro odeslani (dle hlavicky pozadavku jako string). (def.=null)
+     * @return {Promise<void>}          Promise se zpracovanim odpovedi serveru.
+     */
+    function performFetch(url, currentMethod, data = null) {
+        // zakladni nastaveni pozadavku - metoda a hlavidky
+        let requestInit = {method: currentMethod, headers: httpJSONHeaders}
+
+        // pokud jsou data, tak je pridam
+        if(data != null){
+            // data jsou odesilana v BODY pozadavku
+            requestInit.body = data
+        }
+
+        // volani REST API - provedeni prostrednictvim JS Fetch API
+        return fetch(url, requestInit)
+            // zpracovani odpovedi
+            .then(response => processResponseObject(response, currentMethod))
+            // zpracovani dat nactenych z JSON odpovedi
+            // nyni pouze vypsani, ale lze s daty dale pracovat
+            .then(data => printResponseData(data, currentMethod))
+            // zpracovani pripadne chyby
+            .catch(error => printRequestError(error, currentMethod));
+    }
+
+    /////// Obecne funkce pro zpracovani odpovedi serveru ////////
+
+    /**
+     * Zpracuje odpoved serveru.
+     * @param {Response} response   Odpoved serveru.
+     * @param {string} strMethod    Vypis nazvu HTTP metody. (def.="XXX")
+     * @return {Promise<any>}       Prislib poskytnuti tela odpovedi, tj. objektu parsovanemu z JSON.
+     */
+    function processResponseObject(response, strMethod="XXX") {
+        printLog("["+ strMethod +" status]", response.status+" "+response.statusText, response);
+        return response.json()
+    }
+
+    /** HACK: Posledni ulozene ID vracene z databaze. */
+    let lastInsertID = -1;
+
+    /**
+     * Vypise data a pokud je v datech last_insert_id,
+     * tak ho ulozi do lastInsertID.
+     * @param {object} data         Data pro vypsani.
+     * @param {string} strMethod    Vypis nazvu HTTP metody. (def.="XXX")
+     */
+    function printResponseData(data, strMethod="XXX"){
+        const strData = JSON.stringify(data);
+        printLog('['+ strMethod +' response]', strData, data);
+        // pokud je v datech lastInsertID, tak si ho ulozim. (pouzito pouze pro odpovedi na POST)
+        if(data.hasOwnProperty("last_insert_id")){
+            lastInsertID = data.last_insert_id;
+            printLog('[Last insert ID] '+ lastInsertID)
+        }
+        // data dam do vstupu - prepisu ho
+        inputDataElem.value = strData;
+    }
+
+    /**
+     * Vypise chybu pozadavku vzniklou pri volani REST API.
+     * @param error                 Vypisovana chyba.
+     * @param {string} strMethod    Vypis nazvu HTTP metody.
+     */
+    function printRequestError(error, strMethod){
+        // pouze vypis
+        printLog('['+ strMethod +' Request Error] '+ error + "\n");
+        // lze vypsat jako console.error()
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Vykona jeden pozadavek v REST API.
+     * @param currentMethod     Metoda (GET, POST, PUT, DELETE).
+     * @param data              Data pro odeslani.
+     * @return {Promise<void>}
+     */
+    function doOneActionInRestAPI(currentMethod, data = null){
+        // ziskam URL
+        const apiUrl = getURL();
+
+        // inicializuju AJAX
+        return performFetch(apiUrl, currentMethod, data)
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  KONEC: Funkce AJAX pro komunikaci se serverem  ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  Akce pro manualni testovani  ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    /** Test GET request. */
+    function testGET() {
+        // vypisu info
+        printTextInHead("GET");
+        // vykonani akce
+        doOneActionInRestAPI("GET");
+        console.log("Zahájena komunikace s REST API.");
+    }
+
+    /** Test POST request. */
+    async function testPOST() {
+        // vypisu info
+        printTextInHead("POST");
+        // nactu data ze vstupu
+        const strData = loadDataInputAsString(inputDataElem, "DATA", true);
+        // pokud nemam data k odeslani, tak koncim
+        if(strData === false){
+            printLog("* ERROR nemám data k odeslání","\n");
+            return;
+        }
+        // vykonani akce synchronne s cekanim na vykonani
+        // pokud bychom nasledne chteli zpracovat napr. last_insert_id
+        await doOneActionInRestAPI("POST", strData);
+    }
+
+    /** Test PUT request. */
+    function testPUT() {
+        // vypisu info
+        printTextInHead("POST");
+        // nactu data ze vstupu
+        const strData = loadDataInputAsString(inputDataElem, "DATA", true);
+        // pokud nemam data k odeslani, tak koncim
+        if(strData === false){
+            return;
+        }
+        // vykonani akce
+        doOneActionInRestAPI("PUT", strData)
+    }
+
+    /** Test DELETE request. */
+    function testDELETE() {
+        // vypisu info
+        printTextInHead("DELETE");
+        // vykonani akce
+        doOneActionInRestAPI("DELETE");
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  KONEC: Akce pro manualni testovani  ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  Automaticke komplexni testovani  ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Funkce Sleep pro cekani nejaky pocet [ms]. Volat jako "await sleep()". (tj. ceka na vykonani asynchronni funkce)
+     * @param {int} ms
+     * @return {Promise<unknown>}
+     */
+    const mySleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    /**
+     * Asynchronni metoda pro vykonani komplexniho testu REST API s jednim endpointem.
+     * @return {Promise<void>}
+     */
+    async function komplexniTest(){
+
+        // jako ##DEBUG_NAZEV## jsou oznaceny casti, ktere jsou pouze pro debug a mohou/(mely by) byt zakomentovany
+        // pozn.: vyuziva atribut "nazev", coz je vyssi znalost konkretniho API
+
+        // spani je vzdy stejne [ms]
+        const sleepTime = 5000;
+        // element tlacitka (pro zakazani stisku pri provadeni testu)
+        const btnKomplexniTest = document.getElementById("btn_komplexni_test");
+        // zakazu tlacitko
+        btnKomplexniTest.setAttribute("disabled", true);
+
+        ///// ziskani dat
+        // nazev atributu primarniho klice
+        const pkAttr = loadDataInputAsString(inputPKAttr, "PK Attr", true);
+        // pod kterym attr jsou ulozeny vracene zaznamy z REST API - obvykle items nebo zaznamy
+        const apiItemsAttr = loadDataInputAsString(inputListAttr,"List Attr",true);
+        // nazvy atributu pro odstraneni z dat
+        const removeAttrsString = loadDataInputAsString(inputRemoveAttrs, "Remove Attrs", false);
+        outputElem.value += "\n";
+
+        // pokud neni pkAttr, tak koncim
+        if(pkAttr === false){
+            return;
+        }
+
+        // extrahuju zakladni endpoint
+        const endpoint = inputEndpoint.value.split("/")[0];
+        // upravim zadane URL aby neobsahovalo PK, tj. ponecham jen prvni cast pred lomitkem
+        inputEndpoint.value = endpoint;
+
+        // mam zadany atributy pro vynechani z odesilanych dat?
+        let removeAttrs = false;
+        if(removeAttrsString !== false) {
+            // atributy parsuju dle "," a trim()
+            removeAttrs = removeAttrsString.split(',').map(value => value.trim());
+        }
+
+
+        /////////////////////////////////////////////////////
+        // Validni READ-ALL - nacteni vsech zaznamu
+        printLog("\n"+ "*".repeat(10) + " [VALID] Načtení všech záznamů.");
+
+        // sync. akce
+        await doOneActionInRestAPI("GET");
+
+        //// z nactenych zaznamu extrahuju hodnotu PK prvniho zaznamu
+        // ziskam nactena data
+        let tmpData = JSON.parse(inputDataElem.value);
+        // (negovano) mam v datech atribut se seznam polozek, je v nem neprazdne pole
+        // ma posledni polozka atribut s PK?
+        if(!tmpData.hasOwnProperty(apiItemsAttr) || tmpData[apiItemsAttr].length == 0
+            || !tmpData[apiItemsAttr][0].hasOwnProperty(pkAttr)
+        ){
+            // nemam hodnotu PK pro pokracovani - koncim
+            printLog("*ERROR z načtených dat nebyla extrahovana hodnota PK.");
+            return;
+        }
+
+        // ziskam hodnotu PK
+        let testPK = tmpData[apiItemsAttr][0][pkAttr];
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+        // doplneno nasledujici //
+
+
+        /////////////////////////////////////////////////////
+        // Nevalidni READ-ONE - nacteni jednoho zaznamu
+        printLog("\n"+ "*".repeat(10) + " [INVAL] Načtení neexistujícího záznamu.");
+
+        // pouziju PK -1
+        inputEndpoint.value = endpoint +"/-1";
+        // sync. akce
+        await doOneActionInRestAPI("GET");
+        // chvili cekam
+        await mySleep(sleepTime);
+
+        /////////////////////////////////////////////////////
+        // Validni READ-ONE - nacteni jednoho zaznamu
+        printLog("\n"+ "*".repeat(10) + " [VALID] Načtení jednoho záznamu.");
+
+        // dle PK prvniho nacteneho zaznamu (upravim v GUI)
+        inputEndpoint.value = endpoint +"/"+ testPK;
+        // sync. akce
+        await doOneActionInRestAPI("GET");
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////
+        // pomocna priprava dat
+
+        // nactu data zaznamu
+        let firstZaznam = JSON.parse(inputDataElem.value);
+
+        // odstranim sloupec s primarnim klicem?
+        if(firstZaznam.hasOwnProperty(pkAttr)){
+            delete firstZaznam[pkAttr];
+        }
+
+        // mam odstranit nektere dalsi atributy?
+        if(removeAttrs !== false && removeAttrs.length > 0){
+            removeAttrs.forEach(function (tmpAttr){
+                if(firstZaznam.hasOwnProperty(tmpAttr)){
+                    delete firstZaznam[tmpAttr];
+                }
+            });
+        }
+
+
+        /////////////////////////////////////////////////////
+        // Nevalidni INSERT-ONE
+
+        //// vlozeni jednoho zaznamu
+        printLog("\n"+ "*".repeat(10) + " [INVAL] Vložení špatného záznamu.");
+
+        // vytvorim kopii dat zaznamu a vytvorim v ni atributy, ktere nejsou v DB, tj. nepujde na serveru ulozit
+        let copiedData = { ...firstZaznam };
+        copiedData["nesmyslny-atribut"] = "text";
+        // console.log(copiedData)
+        // vypis
+        printLog("[DATA]", JSON.stringify(copiedData), copiedData);
+
+        // URL je jen endpoint
+        inputEndpoint.value = endpoint;
+        // sync. akce
+        await doOneActionInRestAPI("POST", JSON.stringify(copiedData));
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Validni INSERT-ONE - vlozeni jednoho zaznamu
+        printLog("\n"+ "*".repeat(10) + " [VALID] Vložení jednoho záznamu.");
+
+        // vytvorim kopii dat zaznamu
+        copiedData = { ...firstZaznam };
+        // upravim nazev
+        copiedData["nazev"] = "Testovaci "+ (new Date()).toLocaleString()
+        // vypis
+        printLog("[DATA]", JSON.stringify(copiedData), copiedData);
+
+        // URL je jen endpoint
+        inputEndpoint.value = endpoint;
+        // sync. akce
+        await doOneActionInRestAPI("POST", JSON.stringify(copiedData));
+        // vypisu vytvorene ID
+        printLog("[Last insert ID] "+ lastInsertID, "\n");
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Nevalidni UPDATE-ONE (spatna URL)
+        printLog("\n"+ "*".repeat(10) + " [INVAL] Úprava špatného záznamu. (špatná URL)");
+
+        // vytvorim kopii dat zaznamu a vytvorim v ni atributy, ktere nejsou v DB, tj. nepujde na serveru ulozit
+        copiedData = { ...firstZaznam };
+        copiedData["nazev"] = "Spatne ID/URL";
+        // vypis
+        printLog("[DATA]", JSON.stringify(copiedData), copiedData);
+
+        // URL je endpoint + ID
+        inputEndpoint.value = endpoint +"/-1";
+        // sync. akce
+        await doOneActionInRestAPI("PUT", JSON.stringify(copiedData));
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Nevalidni UPDATE-ONE (spatna Data)
+        printLog("\n"+ "*".repeat(10) + " [INVAL] Úprava špatného záznamu. (špatná Data)");
+
+        // vytvorim kopii dat zaznamu a vytvorim v ni atributy, ktere nejsou v DB, tj. nepujde na serveru ulozit
+        copiedData = { ...firstZaznam };
+        copiedData["nesmyslny-atribut"] = "text";
+        copiedData["nazev"] = "Spatna data";
+        // vypis
+        printLog("[DATA]", JSON.stringify(copiedData), copiedData);
+
+        // URL je endpoint + ID
+        inputEndpoint.value = endpoint +"/"+ lastInsertID;
+        // sync. akce
+        await doOneActionInRestAPI("PUT", JSON.stringify(copiedData));
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Validni UPDATE-ONE
+        printLog("\n"+ "*".repeat(10) + " [VALID] Úprava jednoho záznamu.");
+
+        // vytvorim kopii dat zaznamu a vytvorim v ni atributy, ktere nejsou v DB, tj. nepujde na serveru ulozit
+        copiedData = { ...firstZaznam };
+        // upravim nazev
+        copiedData["nazev"] = "Nazev po uprave";
+        // vypis
+        printLog("[DATA]", JSON.stringify(copiedData), copiedData);
+
+        // URL je endpoint + ID
+        inputEndpoint.value = endpoint +"/"+ lastInsertID;
+        // sync. akce
+        await doOneActionInRestAPI("PUT", JSON.stringify(copiedData));
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Nevalidni DELETE-ONE
+        printLog("\n"+ "*".repeat(10) + " [INVAL] Špatné smazání jednoho záznamu.");
+
+        // URL je endpoint + ID
+        inputEndpoint.value = endpoint +"/-1";
+        // sync. akce
+        await doOneActionInRestAPI("DELETE");
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Validni DELETE-ONE
+        printLog("\n"+ "*".repeat(10) + " [VALID] Smazání jednoho záznamu.");
+
+        // URL je endpoint + ID
+        inputEndpoint.value = endpoint +"/"+ lastInsertID;
+        // sync. akce
+        await doOneActionInRestAPI("DELETE");
+
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        /////////////////////////////////////////////////////
+        // Nevalidni READ-ONE - nacteni jednoho zaznamu
+        printLog("\n"+ "*".repeat(10) + " [INVAL] Načtení smazaného záznamu.");
+
+        // URL je endpoint + ID
+        inputEndpoint.value = endpoint +"/"+ lastInsertID;
+        // sync. akce
+        await doOneActionInRestAPI("GET");
+        // chvili cekam
+        await mySleep(sleepTime);
+
+
+        ////////////////////////////////////////////////////////////////////
+
+        // povolim tlacitko
+        btnKomplexniTest.removeAttribute("disabled");
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////  KONEC: Automaticke komplexni testovani  ///////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+</script>
+
+</body>
+</html>
