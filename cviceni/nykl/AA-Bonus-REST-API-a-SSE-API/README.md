@@ -1,7 +1,31 @@
 # TODO - nyni pouze pracovni poznamky !!
-# pouze KOPIE řešení pro zálohu
+
+Hotovo:
+.htaccess - upravit v reseni
+index.php
+MyDatabase.class.php
+base_function.inc.php
+rest_api.php
+testovani_rest_api.html
+obecne_rest_api.php (je pouze v reseni)
+demo_sse.php (kompletni vedle zadani a reseni)
+demo_sse.html (kompletni vedle zadani a reseni)
+sse_api.php (i v zadani bude kompletni)
+testovani_sse_api.html
+
+Text Hotovo:
+0 - komplet.
+1 - komplet.
+2 - komplet.
+3 - komplet.
+4 - komplet (max přečíst).
+
+Úkoly:
+* možná celé přečíst a zkontrolovat překlepy.
+* doplnit Úkoly na doma.
 
 
+-----
 
 
 # AA. cvičení KIV/WEB - REST API a SSE API.
@@ -32,7 +56,7 @@ Další obsah souboru *settings.inc.php* bude popsán později.
 
 **ERA model databáze včetně výchozích dat:**
 
-![ERA model databáze](zadani/database/database.png)
+![ERA model databáze](database/database.png)
 
 
 ## 1. úkol - REST API v PHP
@@ -294,14 +318,6 @@ s metodou GET vypisující informace o REST API.
 
 
 
-
-
-
-////////////////////////////////////////////////
-TODO - vršek komplet pokračovat dal....
-
-
-
 ## 4. úkol - Kombinace SSE API a REST API
 
 SSE API (*Server-Sent Events*) je další formou API, 
@@ -309,13 +325,17 @@ které využívá protokol HTTP a má vlastní specifikaci.
 Lze říci, že SSE je mezikrokem mezi klasickou komunikací, 
 při které server na jeden požadavek vrací jednu odpověď, 
 a *websockets*, které udržují stálé spojení mezi klientem a serverem (HW náročné).
-Při SSE klient naváže klasickou HTTP komunikaci, 
-ale server mu následně zasílá změny dat, aniž by komunikaci ukončoval 
-(kontrola a odeslání dat je ve smyčce).
-Vykonání na serveru může skončit vyčerpáním maximální doby běhu skryptu, 
+Při SSE klient naváže klasickou HTTP komunikaci 
+a server mu následně zasílá změny dat, aniž by komunikaci ukončil 
+(vyhledání a odeslání nových dat je v cyklu).
+Vykonání na serveru může skončit vyčerpáním maximální doby běhu skryptu 
+(v *php.ini* hodnota *max_execution_time*; defaultě 30s), 
 přičemž klient by se měl postarat o opětovné připojení.
 
-### 4.1 úkol - SSE odesílání dat klientovi (*část Server*)
+* Prohlédněte si ukázku SSE v adresáři *demo_sse* a spusťte si jí souborem *demo_sse.html*. 
+
+
+### 4.1 úkol - *(část Server)* SSE odesílání dat klientovi
 
 Základní PHP funkce pro odesílání dat klientovi využitím SSE jsou v souboru *base_functions.inc.php*:
 * Prohlédněte si funkci *sseInit()*, která nastavuje HTTP hlavičky 
@@ -332,10 +352,10 @@ Tato informace je vypsána na řádku začínajícím *retry:* a končícím *\n
   * Defaultně jsou data vypisována jako tzv. *message* event,
   který nemusí být uváděn, ale data lze poslat i pod libovolným vlastním eventem, 
   pokud je vypsán bezprostředně před řádkem s daty 
-  jako řádek začínající *event:* a končící *\n*, např.:
+  jako řádek začínající *event:* a končící *\n*, např.:<br>
 <code>
-<br>event: vlastni_nazev_eventu \n
-<br>data: {'items':[]} \n\n
+event: vlastni_nazev_eventu \n <br>
+data: {'items':[]} \n\n
 </code>
   * Před odeslání dat doplňte test, zda je zvolen jiný event než "message", 
   viz *$eventType*, a pokud ano, 
@@ -354,21 +374,21 @@ Vykonání skryptu ukončí až vypršením maximální doby běhu PHP skriptu
 * Endpoint *udalost* poskytne poslední záznam z databázové tabulky *udalost*
 a následně soustavně kontroluje, zda nepřibyl nový záznam. 
 A pokud záznam přibyl, tak ho odešle klientovi.
-* Endpoint *zaznam* poskytuje záznamy:
+* Endpoint *zaznam* poskytuje záznamy, které byly upraveny:
   * Odešle aktuální DateTime 
   jako data vlastního SSE eventu *server_time*.
   * Zkontroluje, jestli v GET parametrech URL adresy není přítomen
   parametr *last_check* s datem, od kterého chceme záznamy vyhledávat.
-  Pokud není, tak bude použita defaultní hodnota.
-  * Soustavne kontroluje záznamy v databázi a pokud mají *datum_upravy >= last_check*,
-  tak:
+  Pokud není, tak bude použita defaultní hodnota (zvoleno 2022-01-01 00:00).
+  * Soustavně z databáze získává záznamy, které mají *datum_upravy >= last_check*,
+  a provádí následující:
     * Formátuje u záznamů datum úpravy do zvoleného tvaru.
-    * Ukládá záznamy do dat pod atribut *items*.
-    * Přidává do dat atribut *datetime* s hodnotou DateTime před čtením z databáze.
-    * Odesílá data klientovi.
+    * Ukládá záznamy do objektu dat pod atribut *items*.
+    * Přidává do objektu dat atribut *datetime* s hodnotou DateTime před čtením z databáze.
+    * Odesílá objekt s daty klientovi.
 
 
-### 4.2 úkol - Automatická aktualizace poslední události na zobrazené stránce (*část Klient*)
+### 4.2 úkol - *(část Klient)* Automatická aktualizace poslední události na zobrazené stránce
 
 Klientská část aplikace v souboru *testovani_sse_api.html* 
 v tomto případě nevyužívá PHP 
@@ -390,8 +410,8 @@ a umožňuje úpravu jejich množství:
   * Pro aktualizaci záznamů je využito SSE API, přičemž
   nejprve jsou žádány pouze záznamy s datem úpravy 
   větším či rovným *lastCheckTime* z předchozího kroku.
-  Nicméně data se záznamy ze SSE API obsahují navíc atribut
-  *datetime* s DateTime před čtením z databáze, jehož hodnotou
+  Data se záznamy získaná ze SSE API obsahují navíc atribut
+  *datetime* s hodnotou DateTime před čtením z databáze, jehož hodnotou
   je *lastCheckTime* průběžně aktualizován. 
   Využit bude při opětovném navázání spojení se SSE API po jeho výpadku. 
   * Všimněte si, že REST API neposkytuje záznamy označené jako
@@ -420,12 +440,14 @@ a dokončete v něm zmíněnou funkcionalitu.
     a inicializaci naslouchání SSE API pro
     aktualizaci poslední události a vykreslených záznamů.
   * Skript **Úpravy GUI**:
-    * Funkce *actualizeHTMLElements(itemsList)* a *actualizeZaznamHTMLElement(zaznamData)* 
+    * Funkce *actualizeZaznamyHTMLElements(itemsList)* a *actualizeZaznamHTMLElement(zaznamData)* 
     na základě seznamu záznamů aktualizují jejich seznam zobrazený v GUI.
     Pro vytvoření záznamu v GUI je duplikována HTML šablona záznamu.
     * Funkce *processFormMnozstviOnSubmit(form, event)*
     zajišťuje zpracování formuláře u zobrazeného záznamu
     a odeslání příslušného požadavku na změnu množství do REST API.
+    * Funkce *setZaznamyConnectionIndicator(text,bgColor)*
+    slouží pro indikaci stavu komunikace se SSE pro aktualizaci záznamů. 
   * Skript **Práce s REST API**:
     * Funkce *getAllItemsFromRestApi()* obsahuje iniciliazaci komunikace s REST API
     a zpracování získaného seznamu záznamů.<br>
@@ -439,35 +461,95 @@ a dokončete v něm zmíněnou funkcionalitu.
     * Funkce *putItemMnozstviChange(pkValue, mnozstvi)* odešle do REST API
     požadavek na úpravu množství konkrétního záznamu o zadanou hodnotu.<br>
     Metoda ***PUT***, endpoint ***zaznam*** s PK konkrétního záznamu.
-  * Ověřte funkčnost volání REST API v GUI v části *Záznamy*. 
-    * Tlačítkem *Aktualizace z REST API* získejte vizualizované záznamy.
+  * Ověřte funkčnost volání REST API v GUI v části *Záznamy*.
+    * Doplňte správné URL adresy do konstant *sseApiUrl* a *restApiURL* 
+    ve skriptu *settings.inc.php* s konfigurací.
+    * Na stránce tlačítkem *Aktualizace z REST API* získejte vizualizované záznamy.
     Zvolte několikrát libovolné tlačítko pro změnu množství 
     a znovu záznamy aktualizujte, aby se změny zobrazily.
-* Dopl//te správné URL adresy do konstant *sseApiUrl* a *restApiURL* ve skriptu s konfigurací.
-* Prohlédněte si a dokončete skripty pro inicializaci SSE komunikace.
-  * Skript **SSE API Poslední událost** - 
-    Dokončete funkci *initEventSourceForSSEListeningForUdalost()*,
+  
+
+* Dokončete skripty pro inicializaci SSE komunikace.
+  * Skript **SSE API Poslední událost**:  
+    * Dokončete funkci *initEventSourceForSSEListeningForUdalost()*,
     která využije JS třídu *EventSource* a inicializuje naslouchání
-    SSE API pro získání a aktualizaci události v GUI.
+    SSE API pro získání události a její aktualizaci v GUI.
     * Zahájení spojení a chybu komunikace pouze vypište do konzole 
     (události *source.onopen* a *source.onerror*).
     * V události *source.onmessage* zpracujte JSON s daty získanými ze SSE API
-    (uložena v *event.data*) a upravte událost v GUI.<br>
+    (uložena v *event.data*). Pokud ID přijaté události není shodné
+    s ID události vykreslené v GUI, tak událost v GUI aktualizujte.<br>
     <code>source.onmessage = function (event) {...}</code>
-    * Ověřte v GUI, že kompletně funguje část s posledním záznamem.
-  * Skript **SSE API Aktualizace zaznamu** -
-    Dokončete funkci *initEventSourceForSSEListeningForZaznamy()*
-    která 
+    * Ověřte v GUI, že kompletně funguje část s poslední událostí.
+    * Uděláte-li výpisy do konzole v *onopen* a *onerror*, 
+    tak můžete vidět, 
+    že po chybě SSE spojení (vypsaný error) je opětovné připojení navázáno až po čase,
+    který server zaslal při inicializaci SSE na řádku začínajícím *retry*, 
+    např. "retry: 5000 \n\n", tj. 5s.
+  * Skript **SSE API Aktualizace záznamů**:
+    * Dokončete funkci *initEventSourceForSSEListeningForZaznamy()*,
+    která využitím JS *EventSource* zajišťuje aktualizaci záznamů v GUI.
+    * V tomto případě nebude EventSource zajišťovat opětovné připojení k serveru,
+    ale při chybě komunikace provedeme připojení samostatně
+    s novou URL adresou (obsahující aktualizovaný GET parametr *last_check*).
+    Bohužel tím ztrácíme možnost využít "retry", 
+    které je zasílané ze serveru při inicializaci SSE 
+    (v současnosti není možnost, jak jeho hodnotu z EventSource číst;
+    můžeme ale hodnotu pro "retry" poslat jako data vlastního SSE eventu).
+    * Prohlédněte si funkci *source.addEventListener*, která ukazuje,
+    jak je reagováno na data zaslaná v SSE eventu *server_time*.
+    Výstupem je pouze vypsání získaného času 
+    do elementu indikátoru v GUI (barva jeho pozadí není měněna).
+    * Doplňte reakce na události *source.onopen* a *source.onerror*,
+    které nyní pouze upraví barvu indikátoru v GUI 
+    (např. open "#91ff81",error "#ff9898"; text bude null).
+    * V události *source.onmessage* zpracujte data přijatá ze SSE API.
+    Pokud obsahují atribut *items*, 
+    tak aktualizujte záznamy v GUI (funkce *actualizeZaznamy..*).
+    Pokud obsahují atribut *datetime*, 
+    tak jeho hodnotu uložte do proměnné *lastCheckTime* 
+    (proměnná, kterou přidáváme do URL).
+    * Do *source.onerror* doplňte vlastní obsluhu opětovného připojení k serveru.
+    Ta nejprve ukončení aktuální spojení *source.close()* a následně
+    inicializuje nový Timeoutu do proměnné *myReconnectTimeout*,
+    který opět zavolá funkci pro inicilizaci SSE po zadaném čase 
+    (konstanta *reconnectTime*).
+    * Abychom zajistili vypnutí naslouchání i při vlastním požadavku 
+    (např. stisk tlačítka v GUI), tak doplňte kód funkce *stopEventSourceForSSEListeningForZaznamy()*,
+    která ukončí příslušný EventSource (funkce *source.close()*) a 
+    příslušný Timeout (funkce *clearTimeout(timeout)*). 
+    * Ověřte v GUI, že kompletně funguje část se seznamem záznamů.
+    Pokud u záznamů změníte tlačítky množství, 
+    tak po krátkém čase by měl být výpis záznamů aktualizován,
+    tj. až SSE API pošle upravené záznamy (zpět) klientovy.
+  * Ověřte kompletní funkce stránky tím, že ji současně otevřete 
+  více oknech prohlížeče - úpravy v jednom okně se budou díky SSE
+  automaticky promítat do ostatních oken.
+
+
+
+# Úkoly na doma
+
+TODO - Dle vlastní iniciativy.
+* .. Zkusit vytvořit SSE klienta v jiném programovacím jazyce. 
+
+
+
+# Výstupy cvičení
+
+* Student by měl vědět, jakým způsobem REST API pro komunikaci s klientem 
+využívá HTTP metody a HTTP statusy.
+* Student by měl umět vytvořit vlastní REST API s CRUD operacemi nad databázovou tabulkou.
+* Student by měl vědět, jak funguje klient v JavaScriptu, který využívá REST API, 
+a měl by být schopen ho implementovat.
+* Student by měl vědět, jaké principy využívá SSE (*Server-Sent Events*) komunikace.
+* Student by měl umět vytvořit vlastní SSE API.
+* Student by měl vědět, jak funguje klient v JavaScriptu, který využívá SSE API,
+a měl by být schopen ho implementovat.
+* Student by měl vědět, jak se vzájemně doplňují REST API a SSE API
+a jak využít jejich kombinaci.
     
   
-    
-  * Skript **SSE API Aktualizace zaznamu**:
-  
-  
-
-
-
---- JS a HTML
 
 
 
@@ -475,37 +557,15 @@ a dokončete v něm zmíněnou funkcionalitu.
 
 
 
-Cílem je 
-
-- odkomentovat s .htaccess
-
-https://www.w3schools.com/html/html5_serversentevents.asp
 
 
+-----
+----
 
+# TODO - Pracovní poznámky
 
------------------------
------------------------
 
 ?? - klient v PHP ???? (asi by to chtělo)
-
-Zadání:
-
-.htaccess - celé
--- odstranit MD;
--- TODO - rozdelit na rest_api a obecne_rest_api
--- Doplnit SSE API ???;
-
-MyDatabase.class.php - celé.
-
-Settings.inc.php - celé - možná bez nastavení pro výpis informací o REST API.
--- TODO - nastavení endpointů obsahuje nevyužité "search_columns".
-
-base_functions.inc.php - celé (popř. dole odstranit pomocné funkce, ale mohou zůstat).
--- Je otázkou, zda neodstranit funkce pro volání REST API.
-
-index.php - ?? aktualni obsah se nehodi, musel by byt jiny.
-
 
 -----------------------------------------
 
@@ -519,13 +579,8 @@ Představa pro videa:
 6) Ukázková stránka s "kompletním" využitím SSE API pro čtení změn a REST API pro provádění změn (změny jen asi názvu).
 
 
-
-
-
-
-
-
 -----------------------------
+????
 
 REST API
 - Využívá HTTP metody požadavků a HTTP statusy odpovědí.

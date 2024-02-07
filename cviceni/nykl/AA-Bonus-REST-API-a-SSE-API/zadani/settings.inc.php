@@ -33,7 +33,7 @@ $urlPartSseAPI = "sse_api.php";
 if($serverName == "localhost" || $serverName == "10.0.2.2"){
     // DEV - pro lokalni vyvoj
     // TODO - spravnou konfiguraci dle localhostu !!
-    $url = "/++Brackets-kiv-web/AA-Bonus-REST-API-a-SSE-API/reseni/";
+    $url = "vlastni_url_adresa";
     $dbSettings = [
         'host' => 'localhost',
         'username' => 'root',

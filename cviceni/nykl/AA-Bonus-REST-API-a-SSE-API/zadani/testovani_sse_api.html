@@ -104,7 +104,6 @@
                 // ulozim si pro ovladani z vnejsku
                 eventSourceUdalosti = source;
 
-
                 // TODO - doplnte inicializaci EventSource s obsluhami:
                 //      - source.onopen = function (event) {...}
                 //      - source.onopen a source.onerror - jen vypisy do konzole.
@@ -112,36 +111,6 @@
                 //        a upravi dle nich vykreslenou udalost v GUI.
                 //      - aby bylo mozne ukoncit naslouchani, uloze EventSource do eventSourceUdalosti.
 
-
-                ////////// Doplneno  ///////////////////////////////
-
-                /** Zahajeni spojeni. */
-                source.onopen = function (event) {
-                    console.log('UDALOST - Connection opened');
-                };
-
-                /** Prijmuti dat (zaslanych klasicky jako message, tj. bez uvedeneho eventu). */
-                source.onmessage = function (event) {
-                    const responseData = JSON.parse(event.data);
-                    console.log('UDALOST - Received message:', responseData);
-                    // mam v datech ID a lisi se od posledniho vykresleneho?
-                    if (responseData.hasOwnProperty('id')
-                        && responseData['id'] != elemUdalostId.value
-                    ) {
-                        // upravim GUI dle prijatych dat
-                        elemUdalostText.innerHTML = responseData['text'];
-                        elemUdalostDatum.innerHTML = responseData['datum'];
-                        elemUdalostId.value = responseData['id'];
-                        elemUdalostId.parentElement.style.backgroundColor = responseData['barva'];
-                    }
-                };
-
-                /** Chyba spojeni (napr. server ukoncil vysilani; interne zahaji cekani na reconnect). */
-                source.onerror = function (event) {
-                    console.error('UDALOST - Error occurred:', event);
-                };
-
-                ////////// KONEC: Doplneno  ///////////////////////////////
 
             } else {
                 console.log("UDALOST - EventSource pro SSE API neni podporovan.");
@@ -176,6 +145,7 @@
         /////////////////////////////////////////////////////////////////////////////
         //////////////  Prace se SSE API  /////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////
+
 
         /**
          * Inicializace naslouchani SSE API pro aktualizaci zaznamu.
@@ -213,46 +183,7 @@
                 //                      - clearTimeout(ttt);
 
 
-                //////// Doplneno /////////////////////////////////////////
 
-                /** Zahajeni spojeni. */
-                source.onopen = function (event) {
-                    console.log('ZAZNAMY - Connection opened');
-                    // indikuju pouze barvou
-                    setZaznamyConnectionIndicator(null, "#91ff81");
-                };
-
-                /** Prijmuti dat (zaslanych klasicky jako message, tj. bez uvedeneho eventu). */
-                source.onmessage = function (event) {
-                    const responseData = JSON.parse(event.data);
-                    console.log('ZAZNAMY - Received message:', responseData);
-
-                    // jsou dostupna data zaznamu?
-                    if(responseData.hasOwnProperty('items') && responseData["items"].length > 0){
-                        // vykreslim zaznamy do GUI
-                        actualizeZaznamyHTMLElements(responseData["items"]);
-                    }
-
-                    // pokud je v datech datetime, tak ho ulozim jako posledni pouzity
-                    if(responseData.hasOwnProperty('datetime')){
-                        lastCheckTime = responseData['datetime'];
-                    }
-                };
-
-                /** Chyba spojeni (napr. server ukoncil vysilani; interne zahaji cekani na reconnect). */
-                source.onerror = function (event) {
-                    console.error('ZAZNAMY - Error occurred:', event);
-                    // indikuju pouze barvou
-                    setZaznamyConnectionIndicator(null, "#ff9898")
-
-                    //// vlastni obsluha reconnect - pouzije novou URL
-                    // ukoncim soucasny EventSource
-                    source.close();
-                    // po danem case provedu opetovnou inicializaci EventSource
-                    myReconnectTimeout = setTimeout(initEventSourceForSSEListeningForZaznamy, reconnectTime);
-                };
-
-                //////// KONEC: Doplneno /////////////////////////////////////////
 
 
                 /** Vlastni listener pro specialni event "server_time" zaslany ze serveru. */
@@ -275,15 +206,6 @@
 
             /// TODO - doplnte ukonceni EventSource a Timeout
 
-            // ukoncim naslouchani
-            if(eventSourceZaznamy != null) {
-                eventSourceZaznamy.close();
-            }
-            // vypnu pripadny vlastni timeout pro reconnect
-            if(myReconnectTimeout != null){
-                clearTimeout(myReconnectTimeout);
-            }
-            console.log("ZAZNAMY - STOP");
         }
 
         /////////////////////////////////////////////////////////////////////////////
