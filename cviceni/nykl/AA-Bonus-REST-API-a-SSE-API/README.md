@@ -1,34 +1,4 @@
-# TODO - nyni pouze pracovni poznamky !!
-
-Hotovo:
-.htaccess - upravit v reseni
-index.php
-MyDatabase.class.php
-base_function.inc.php
-rest_api.php
-testovani_rest_api.html
-obecne_rest_api.php (je pouze v reseni)
-demo_sse.php (kompletni vedle zadani a reseni)
-demo_sse.html (kompletni vedle zadani a reseni)
-sse_api.php (i v zadani bude kompletni)
-testovani_sse_api.html
-
-Text Hotovo:
-0 - komplet.
-1 - komplet.
-2 - komplet.
-3 - komplet.
-4 - komplet (max přečíst).
-
-Úkoly:
-* možná celé přečíst a zkontrolovat překlepy.
-* doplnit Úkoly na doma.
-
-
------
-
-
-# AA. cvičení KIV/WEB - REST API a SSE API.
+# AA. cvičení KIV/WEB - REST API a SSE API
 
 * Projděte si prezentaci k tomuto cvičení.
 * Při vypracovávání se Vám může hodit: 
@@ -40,7 +10,7 @@ Text Hotovo:
 ## 0. úkol - Zprovoznění webové aplikace
 
 Prohlédněte si a zprovozněte následující soubory:
-* Soubor *index.php* je pouze informativní stránkou.
+* Soubor *index.php* je pouze informativní stránkou s odkazy na ostatní soubory.
 * Vstupním bodem do REST API je soubor *rest_api.php*, který zpracovává všechny požadavky.
 * Soubor *.htaccess* zajišťuje např. aby URL adresy od daného adresáře dále,
   které obsahují */rest_api/*, byly přesměrovány na soubor *rest_api.php*.
@@ -50,7 +20,7 @@ Prohlédněte si a zprovozněte následující soubory:
       <br><code>localhost/aktualni_priklad/rest_api.php</code>
     * Následné volání REST API, např.:
       <br><code>localhost/aktualni_priklad/rest_api/test_endpoint/abc/</code>
-* Proveďte instalaci databáze ze souboru a doplňte konfiguraci připojení k databázi a názvů tabulek v souboru *settings.inc.php*.
+* Proveďte instalaci databáze (viz adresář *database*) a doplňte konfiguraci připojení k databázi a názvů tabulek do souboru *settings.inc.php*.
 Další obsah souboru *settings.inc.php* bude popsán později.
 * Prohlédněte si soubor *MyDatabase.class.php*, který obsahuje jednoduché CRUD operace nad zvolenou tabulkou.
 
@@ -59,9 +29,9 @@ Další obsah souboru *settings.inc.php* bude popsán později.
 ![ERA model databáze](database/database.png)
 
 
-## 1. úkol - REST API v PHP
+## 1. úkol - REST API pro jeden endpoint
 
-Cílem je vytvořit jednoduché REST API, které prostřednictvím endpointu
+Cílem je v PHP vytvořit jednoduché REST API, které prostřednictvím endpointu
 *zaznam* poskytne CRUD operace nad tabulkou *zaznam* v databázi serveru.
 
 
@@ -69,19 +39,15 @@ Cílem je vytvořit jednoduché REST API, které prostřednictvím endpointu
 
 * Prohlédněte si soubor *base_functions.inc.php*:
   * Funkcí pro SSE API, ani funkce *getRestAPIInfo()* si zatím všímat nemusíte. 
-  * Naopak si všiměte jak je řešeno CORS (_Cross-Origin Resource Sharing_, více informací např. viz [Handle CORS](https://www.wpeform.io/blog/handle-cors-preflight-php-wordpress/)).
+  * Naopak si všimněte jak je řešeno CORS (_Cross-Origin Resource Sharing_, více informací např. viz [Handle CORS](https://www.wpeform.io/blog/handle-cors-preflight-php-wordpress/)).
     * CORS defaultně zabraňuje volání REST API z libovolných URL adres.
-    * Pozn.: Pokud je REST API používáno na stejné URL, kde běží i klient, tak problém s CORS nenastane.
+    * Pokud je REST API používáno na stejné doméně, kde běží i klient, tak problém s CORS nenastane.
   * Prohlédněte si pomocné funkce na konci souboru. 
-* Doplňte funkce pro parsování URL *getEndpointFromFriendlyURL()* a *getParametersFromFriendlyURL()*.
-  * Využijte _$_SERVER["REQUEST_URI"]_, která vrací např.:
-  <br>
-  <code>
-    napr.: tool/obecne/rest_api/endpoint/123/?a=b,
-  
-    nebo:  tool/obecne/rest_api/endpoint?a=b
-  </code>
-* Doplňte "hlavní funkci REST API" pro odesílání dat uživateli *sendResponse()*.
+* Doplňte kód do funkcí pro parsování URL *getEndpointFromFriendlyURL()* a *getParametersFromFriendlyURL()*.
+  * Využijte *$_SERVER["REQUEST_URI"]*, která vrací:<br>
+  <code>napr.: tool/obecne/rest_api/endpoint/123/?a=b</code><br>
+  <code>nebo:  tool/obecne/rest_api/endpoint?a=b</code>
+* Doplňte "hlavní funkci REST API" *sendResponse()* pro odesílání dat uživateli.
   * Nastavte HTTP hlavičky dle zvoleného typu odesílaných dat,
   vypište HTTP status odpovědi a data ve zvoleném formátu. 
 
@@ -89,7 +55,7 @@ Cílem je vytvořit jednoduché REST API, které prostřednictvím endpointu
 ### 1.2 úkol - REST API s CRUD operacemi nad tabulkou *zaznam*
 
 * Ověřte, že v souboru *.htaccess* jsou URL adresy obsahující */rest_api/* správně přesměrovány na soubor *rest_api.php*.
-* Prohlédněte si soubor *MyDatabase.class.php* s obecnými databázovými CRUD operacemi nad dodanou tabulkou.
+* Prohlédněte si soubor *MyDatabase.class.php* s obecnými databázovými CRUD operacemi nad zvolenou tabulkou.
 * Prohlédněte si soubor *rest_api.php*, tj. jak jsou získány: 
 __metoda__, __endpoint__, __hodnota primárního klíče__ (PK; pokud je v URL)
 a další __parametry z URL__.
@@ -100,13 +66,13 @@ relevantní (chybovou) odpověď s HTTP statusem _"405 Method not allowed"_.
 
 
 * __[GET] čtení záznamů:__
-  * Pokud je součástí URL hodnota PK, tak získejte a vraťte uživateli JSON s odpovídajícím záznamem. (status 200)<br>
+  * Pokud je součástí URL hodnota PK, tak získejte a vraťte uživateli JSON s odpovídajícím záznamem. (status *200 OK*)<br>
     Pokud nebyl záznam nalezen, tak vraťte JSON s chybovou hláškou. (status 404)
   * Pokud není PK uveden v URL, tak získejte a vraťte uživateli JSON se všemi záznamy (nebo prázdným polem) uloženými pod atributem "zaznamy",
-  tj. *{ 'zaznamy': [...]}*. (status 200)
+  tj. *{ 'zaznamy': [...] }*. (status 200)
   * Příklad URL:<br>
   <code>localhost/rest_api/zaznam</code><br>
-  <code>localhost/rest_api/zaznam/123/*</code>
+  <code>localhost/rest_api/zaznam/123/</code>
   * Volitelně můžete povolit GET parametry URL a umožnit filtrování dle nich,<br>
   např.: <br>
   <code>localhost/rest_api/zaznam?uc_hw_zarizeni=hw_a</code>
@@ -125,7 +91,7 @@ relevantní (chybovou) odpověď s HTTP statusem _"405 Method not allowed"_.
   * PK upravovaného záznamu je uveden v URL. 
   * Přijměte JSON odeslaný na server a jeho hodnotami aktualizujte
   příslušný záznam v databázi. (status 200)
-  * JSON chybové hlášky:
+  * Chybové hlášky:
     * Nezadání PK nebo prázdnost dat. (status 406)
     * Neexistence záznamu. (status 404)
     * Uložení se nezdařilo. (status 422)
@@ -135,7 +101,7 @@ relevantní (chybovou) odpověď s HTTP statusem _"405 Method not allowed"_.
 * __[DELETE] smazání jednoho záznamu:__
   * PK mazaného záznamu je uveden v URL.
   * Smažte daný záznam z databáze. (status 200)
-  * JSON chybové hlášky:
+  * Chybové hlášky:
     * Nezadání PK. (status 406)
     * Neexistence záznamu. (status 404)
     * Smazání se nezdařilo. (status 422)
@@ -148,7 +114,7 @@ relevantní (chybovou) odpověď s HTTP statusem _"405 Method not allowed"_.
 Cílem je s využitím JavaScriptu vytvořit nástroj, 
 se kterým bude možné manuálně volat jednotlivé funkce REST API 
 a (pouze) očima ověřovat, že výstupy z REST API dávají smysl,
-tj. že REST API funguje jak má.
+tj. že REST API funguje, jak má.
 
 ### 2.1 úkol - Základní funkce nástroje pro testování REST API
 
@@ -179,8 +145,7 @@ která pouze použije URL ze vstupního elementu a zavolá s ním funkci *perfor
 
 Nyní by na stránce *testovani_rest_api.html* měla tlačítka ___GET___, ___POST___, ___PUT___ a ___DELETE___ 
 plnit svou funkci, tj. na základě hodnot zadaných do GUI volat REST API a zpracovávat jeho odpověď.
-* Proveďte manuální testování vytvořeného REST API:
-  * Vyzkoušejte navržené CRUD operace nad endpointem *zaznam*.
+* Proveďte manuální testování vytvořeného REST API, tj. vyzkoušejte navržené CRUD operace nad endpointem *zaznam*.
 
 
 ### 2.2 (volitelně) Funkce pro komplexní testování CRUD operací nad jedním endpointem REST API
@@ -190,7 +155,7 @@ Funkce slouží pro postupné testování
 správných odpovědí REST API jeho voláním
 s validními i nevalidními daty. 
 
-* Testován bude endpoint *zaznam*, který manuálně zadejte do GUI - 
+* Testovat budeme endpoint *zaznam*, který manuálně zadejte do GUI - 
 v budoucnu lze funkci upravit tak, aby prováděla dané testy nad libovolným endpointem. 
 
 * Všimněte si, že funkce *doOneActionInRestAPI()* (potažmo *performFetch()*)
@@ -203,8 +168,8 @@ která je uložena do proměnné *testPK*, kterou následně využijeme.
 
 
 Doplňte následující testy REST API:
-  * __[GET,INVAL]__ Načtěte data záznamu s PK=-1, tj. /-1
-  * __[GET,VAL]__ Načtěte data záznamu s PK=testPK.
+  * __[GET,INVAL]__ Načtěte data záznamu s PK=-1, tj. URL obsahuje /-1
+  * __[GET,VAL]__ Načtěte data záznamu s PK=*testPK*.
   Uložte si první vrácený záznam do proměnné a odstraňte mu PK, aby mohl být testován POST. 
 
 
@@ -215,14 +180,15 @@ Doplňte následující testy REST API:
 
 
   * __[PUT,INVAL]__ Doplňte kopii prvního záznamu o nevalidní atribut a proveďte PUT. 
-  V URL použijte *lastInsertID*.
+  V URL použijte PK=*lastInsertID*.
   * __[PUT,VAL]__ V kopii prvního záznamu změňte hodnotu atributu *nazev* (PK již neobsahuje) a proveďte PUT.
+  V URL použijte PK=*lastInsertID*.
   * __[PUT,INVAL]__ Opakujte upravení záznamu, ale použijte v URL PK=-1.
 
 
   * __[DELETE,INVAL]__ Použijte DELETE a volejte URL s PK=-1.
-  * __[DELETE,VAL]__ Použijte DELETE a volejte URL s *lastInsertID*.
-  * __[GET,INVAL]__ Ověřte smazání záznamu pokusem o načtení dat smazaného záznamu (*lastInsertID* v URL).
+  * __[DELETE,VAL]__ Použijte DELETE a volejte URL s PK=*lastInsertID*.
+  * __[GET,INVAL]__ Ověřte smazání záznamu pokusem o načtení dat smazaného záznamu (PK=*lastInsertID* v URL).
 
 Nyní by na stránce *testovani_rest_api.html* mělo tlačítko ___Komplexní test___ plnit svou funkci.
 
@@ -232,9 +198,9 @@ Nyní by na stránce *testovani_rest_api.html* mělo tlačítko ___Komplexní te
 
 Cílem je dekomponovat CRUD operace nad zvolenou tabulkou databáze 
 do obecných funkcí REST API 
-a poskytovat je prostřednictvím endpointů a HTTP metod (na základě konfigurace).
+a na základě konfigurace je poskytovat prostřednictvím endpointů a HTTP metod.
 Současně vyvstává požadavek na překrytí některých obecných funkcí 
-pro konkrétní endpoint a metodu (např. čtení a smazání záznamu), 
+pro konkrétní endpoint a metodu (např. smazání záznamu), 
 či na doplnění vlastního endpointu s vlastní funkcionalitou 
 (např. výpis informací o REST API). 
 
@@ -247,27 +213,29 @@ polo-automatizované testování, viz 2. úkol.
 Protože některé funkce REST API jsou shodné pro různé endpointy
 (např. čtení všech dat ze zvolené databázové tabulky), 
 lze odpovídající části REST API zobecnit 
-a řídit konfigurací, která bude provádět mapování *endpoint ==> tabulka*.
-Tato konfigurace je v souboru *settings.inc.php* v konstantě *REST_API_ENDPOINTS_SETTINGS*:
-* Každý záznam konfigurace obsahuje název endpointu a příslušné tabulky v databázi 
+a řídit konfigurací, která bude provádět mapování *endpoint => tabulka*.
+Tato konfigurace je v souboru *settings.inc.php* v konstantě *REST_API_ENDPOINTS_SETTINGS*,
+přičemž každá položka obsahuje:
+* Název endpointu a příslušné tabulky v databázi 
 (pozn.: prefix tabulky je řešen posléze průchodem pole). 
-* Název sloupce primárního klíče dané databázové tabulky (*pk_column*) bývá využit spolu s hodnotou primárního klíče z URL.
+* Název sloupce primárního klíče dané databázové tabulky (*pk_column*),
+který bývá využit spolu s hodnotou primárního klíče z URL.
 * Parametry pro vyhledávání (*search_params*) jsou sloupce tabulky, 
 které lze v metodě GET použít pro filtrování výsledků.
 * Přepínače *GET*, *POST*, *PUT* a *DELETE* povolují či zakazují
 (obecné) obsluhy pro dané HTTP metody nad daným endpointem, 
 např. pokud má obecná část REST API obsluhovat *DELETE* požadavek nad příslušným endpointem, 
-tak musí být *"DELETE"=>true*. 
+tak v jeho konfiguraci musí být *"DELETE"=>true*. 
 
 Využijte konfiguraci v *REST_API_ENDPOINTS_SETTINGS* a implementujte obecné REST API:
   * Vytvořte kopii souboru *rest_api.php* s názvem *obecne_rest_api.php* a úpravy provádějte v ní.
   * Upravte soubor *.htaccess* tak, aby URL obsahující */obecne_rest_api/* byly směrovány na
   soubor *obecne_rest_api.php*. Zkontrolujte i příslušné nastavení v souboru *settings.inc.php*.
   * Proveďte příslušné úpravy v souboru *obecne_rest_api.php*:
-    * V podstatě stačí zobecnit REST API v souboru *rest_api.php* tak,
+    * V podstatě stačí zobecnit REST API ze souboru *rest_api.php* tak,
       aby využívalo danou konfiguraci. 
     * Pokud je z REST API vracen seznam položek, tak bude vždy uložen pod atributem ***items***.
-    * JSON chybové hlášky:
+    * Chybové hlášky:
       * Nepodporovaný endpoint. (status 405)
       * Podporovaný endpoint, ale nepodporovaná metoda. (status 404) 
 
@@ -281,8 +249,8 @@ doplnit vlastní způsob obsloužení.
 Cílem je v souboru *settings.inc.php* v nastavení *REST_API_ENDPOINTS_SETTINGS*
 u endpointu ***zaznam*** přepnout *GET* a *DELETE* do stavu *false* 
 a v souboru *obecne_rest_api.php* implementovat jejich vlastní obsluhu.
-* Obsluhu implementujte před obsluhou pro becné REST API.
-Využijte vhodné části z konfigurace obecného REST API a kopie kódu z obecného REST API 
+* Obsluhu implementujte před obsluhou pro obecné REST API.
+Využijte vhodné části z konfigurace a kopie kódu z obecného REST API.
 * Metoda *DELETE* nebude mazat záznam z databáze, ale pouze u něj nastaví hodnotu
 *je_smazany* na *true* (tj. provede update).
 * Metoda *GET* bude vracet pouze záznamy, které nejsou označeny jako smazané.
@@ -291,11 +259,11 @@ a chceme umožnit filtrování dle sloupců *uc_hw_zarizeni*, *nazev* a *poloha*
 
 Dále doplňte samostatnou obsluhu pro úpravu množství daného záznamu:
 * Metoda: *PUT*.
-* Zpracuje JSON data, která pod atributem *mnozstvi* 
-obsahují hodnotu, o kterou má být množství navýšeno.<br>
-<code>{ "mnozstvi" : -55 }</code>
-* URL za hodnotou primárního klíče pokračuje */mnozstvi/*, příklad (PK=123):<br>
+* URL za hodnotou primárního klíče pokračuje */mnozstvi/*. Příklad URL s PK=123:<br>
 <code>localhost/rest_api/zaznam/123/mnozstvi/</code>
+* Zpracuje JSON data, která pod atributem *mnozstvi* 
+obsahují hodnotu, o kterou má být množství upraveno.<br>
+<code>{ "mnozstvi" : -55 }</code>
 
 
 ### 3.3 úkol - Vlastní endpoint a jeho funkce doplňující obecné REST API
@@ -316,11 +284,13 @@ což nemusí odpovídat konkrétní implementaci (záleží, jak je implementov�
 * Doplňte soubor *obecne_rest_api.php* o endpoint *info* 
 s metodou GET vypisující informace o REST API.
 
+Tímto jsme dokončili příklady týkající se REST API.
+
 
 
 ## 4. úkol - Kombinace SSE API a REST API
 
-SSE API (*Server-Sent Events*) je další formou API, 
+SSE API (*Server-Sent Events*) je další formou webového API, 
 které využívá protokol HTTP a má vlastní specifikaci.
 Lze říci, že SSE je mezikrokem mezi klasickou komunikací, 
 při které server na jeden požadavek vrací jednu odpověď, 
@@ -328,8 +298,8 @@ a *websockets*, které udržují stálé spojení mezi klientem a serverem (HW n
 Při SSE klient naváže klasickou HTTP komunikaci 
 a server mu následně zasílá změny dat, aniž by komunikaci ukončil 
 (vyhledání a odeslání nových dat je v cyklu).
-Vykonání na serveru může skončit vyčerpáním maximální doby běhu skryptu 
-(v *php.ini* hodnota *max_execution_time*; defaultě 30s), 
+Vykonání na serveru může skončit vyčerpáním maximální doby běhu skriptu 
+(v *php.ini* hodnota *max_execution_time*; defaultně 30s), 
 přičemž klient by se měl postarat o opětovné připojení.
 
 * Prohlédněte si ukázku SSE v adresáři *demo_sse* a spusťte si jí souborem *demo_sse.html*. 
@@ -350,13 +320,11 @@ Tato informace je vypsána na řádku začínajícím *retry:* a končícím *\n
     PHP výpis:<br>
     <code>echo "data: {'items':[]} \n\n";</code>
   * Defaultně jsou data vypisována jako tzv. *message* event,
-  který nemusí být uváděn, ale data lze poslat i pod libovolným vlastním eventem, 
+  který nemusí být uváděn. Data ale lze poslat i pod libovolným vlastním eventem, 
   pokud je vypsán bezprostředně před řádkem s daty 
   jako řádek začínající *event:* a končící *\n*, např.:<br>
-<code>
-event: vlastni_nazev_eventu \n <br>
-data: {'items':[]} \n\n
-</code>
+  <code>event: vlastni_nazev_eventu \n </code><br>
+  <code>data: {'items':[]} \n\n </code>
   * Před odeslání dat doplňte test, zda je zvolen jiný event než "message", 
   viz *$eventType*, a pokud ano, 
   tak doplňte příslušný výpis zvoleného eventu. 
@@ -366,13 +334,13 @@ Soubor je v tuto chvíli kompletní, proto si prohlédněte jeho funkcionalitu.
 * Povolena je pouze metoda ***GET*** a endpointy ***udalost*** a ***zaznam*** 
 (resp. konstanty *ENDPOINT_UDALOST* a *ENDPOINT_ZAZNAM*), 
 jinak je vrácena chybová odpověď jako u REST API.
-* Následně oba endpointy využívají nekonečnou smyšku *while(true)*
+* Následně oba endpointy využívají nekonečnou smyčku *while(true)*
 pro soustavnou kontrolu změn v databázi. 
-Vykonání skryptu ukončí až vypršením maximální doby běhu PHP skriptu 
+Vykonání skriptu ukončí až vypršením maximální doby běhu PHP skriptu 
 (*max_execution_time* v *php.ini*, a v PHP nastavení funkcí 
 *set_time_limit()*, pokud na to máme oprávnění). 
 * Endpoint *udalost* poskytne poslední záznam z databázové tabulky *udalost*
-a následně soustavně kontroluje, zda nepřibyl nový záznam. 
+a následně soustavně kontroluje, zda v tabulce nepřibyl nový záznam. 
 A pokud záznam přibyl, tak ho odešle klientovi.
 * Endpoint *zaznam* poskytuje záznamy, které byly upraveny:
   * Odešle aktuální DateTime 
@@ -388,14 +356,14 @@ A pokud záznam přibyl, tak ho odešle klientovi.
     * Odesílá objekt s daty klientovi.
 
 
-### 4.2 úkol - *(část Klient)* Automatická aktualizace poslední události na zobrazené stránce
+### 4.2 úkol - *(část Klient)* Automatická aktualizace poslední události a seznamu záznamů na zobrazené stránce
 
 Klientská část aplikace v souboru *testovani_sse_api.html* 
 v tomto případě nevyužívá PHP 
 pro výpis dat uživateli, ale jedná se o HTML stránku,
 která svá data získává a aktualizuje prostřednictvím JavaScriptu. 
 Ten pro komunikaci s REST API využívá JS *Fetch API* 
-a pro SSE komunikaci JS třídu *EventSource*, 
+a pro komunikaci se SSE API využívá JS třídu *EventSource*, 
 která slouží právě k tomuto účelu. 
 
 Stránka má dvě části:
@@ -410,50 +378,50 @@ a umožňuje úpravu jejich množství:
   * Pro aktualizaci záznamů je využito SSE API, přičemž
   nejprve jsou žádány pouze záznamy s datem úpravy 
   větším či rovným *lastCheckTime* z předchozího kroku.
-  Data se záznamy získaná ze SSE API obsahují navíc atribut
-  *datetime* s hodnotou DateTime před čtením z databáze, jehož hodnotou
-  je *lastCheckTime* průběžně aktualizován. 
-  Využit bude při opětovném navázání spojení se SSE API po jeho výpadku. 
+  Data se záznamy získaná ze SSE API ale navíc obsahují atribut
+  *datetime* s hodnotou DateTime před čtením z databáze,
+  kterým je *lastCheckTime* průběžně aktualizován. 
+  Využit bude při opětovném navazování spojení se SSE API po jeho výpadku. 
   * Všimněte si, že REST API neposkytuje záznamy označené jako
   smazané, ale SSE API tyto záznamy poskytuje, aby je mohl 
   klient odstranit ze svého GUI 
   (to ale nyní implementovat nebudeme).
-  * Změna množství u záznamu odesílá požadovanou úpravu 
+  * Změna množství u záznamu odesílá požadovanou úpravu na server 
   využitím REST API, ale neaktualizuje GUI. 
   To je aktualizováno automaticky využitím SSE API 
   (tj. GUI se upraví, až server pošle záznamy změněné v databázi).
 
 Prohlédněte si soubor *testovani_sse_api.html*
-a dokončete v něm zmíněnou funkcionalitu.
+a dokončete jeho funkcionalitu.
 * Prohlédněte si HTML, které v souboru je:
   * Uprostřed kódu je oblast pro skripty. 
   * Nad skripty je hlavní část GUI. 
   * Pod skripty je HTML šablona pro výpis jednoho záznamu.
   * Zcela dole je stručná nápověda ke stránce.
   * Skripty jsou rozděleny do 5 elementů *&lt;script&gt;*,
-    které oddělují jejich funkce.
+    které (pouze vizuálně) oddělují jejich funkce.
 * Prohlédněte si následující skripty, které jsou kompletní:
   * Skript **Základní konfigurace**:
     * Obsahuje základní konfiguraci.
-    * Po základním načtení stránky spouští JS aplikaci,
+    * Po načtení stránky spouští JS aplikaci,
     tj. získání a vykreslení seznamu záznamů z REST API 
     a inicializaci naslouchání SSE API pro
     aktualizaci poslední události a vykreslených záznamů.
   * Skript **Úpravy GUI**:
     * Funkce *actualizeZaznamyHTMLElements(itemsList)* a *actualizeZaznamHTMLElement(zaznamData)* 
     na základě seznamu záznamů aktualizují jejich seznam zobrazený v GUI.
-    Pro vytvoření záznamu v GUI je duplikována HTML šablona záznamu.
+    Při vytváření záznamů v GUI je kopírována HTML šablona záznamu.
     * Funkce *processFormMnozstviOnSubmit(form, event)*
     zajišťuje zpracování formuláře u zobrazeného záznamu
     a odeslání příslušného požadavku na změnu množství do REST API.
-    * Funkce *setZaznamyConnectionIndicator(text,bgColor)*
+    * Funkce *setZaznamyConnectionIndicator(text, bgColor)*
     slouží pro indikaci stavu komunikace se SSE pro aktualizaci záznamů. 
   * Skript **Práce s REST API**:
-    * Funkce *getAllItemsFromRestApi()* obsahuje iniciliazaci komunikace s REST API
+    * Funkce *getAllItemsFromRestApi()* obsahuje inicializaci komunikace s REST API
     a zpracování získaného seznamu záznamů.<br>
     Metoda ***GET***, endpoint ***zaznam***.
     * Funkce *sendIntoRestAPI(url, method, requestData)* inicilizuje komunikaci s REST API
-    na dané URL adrese a odešle data zvolenou metodou.<br> 
+    na dané URL adrese a odesílá data zvolenou metodou.<br> 
     Metoda ***POST*** nebo ***PUT***.
     * Funkce *postUdalost()* získá z formuláře v GUI text a barvu nové události
     a odešle je do REST API, které událost uloží do databáze s aktuálním DateTime.<br>
@@ -462,7 +430,7 @@ a dokončete v něm zmíněnou funkcionalitu.
     požadavek na úpravu množství konkrétního záznamu o zadanou hodnotu.<br>
     Metoda ***PUT***, endpoint ***zaznam*** s PK konkrétního záznamu.
   * Ověřte funkčnost volání REST API v GUI v části *Záznamy*.
-    * Doplňte správné URL adresy do konstant *sseApiUrl* a *restApiURL* 
+    * Doplňte správné URL adresy do proměnných *$url* 
     ve skriptu *settings.inc.php* s konfigurací.
     * Na stránce tlačítkem *Aktualizace z REST API* získejte vizualizované záznamy.
     Zvolte několikrát libovolné tlačítko pro změnu množství 
@@ -473,7 +441,7 @@ a dokončete v něm zmíněnou funkcionalitu.
   * Skript **SSE API Poslední událost**:  
     * Dokončete funkci *initEventSourceForSSEListeningForUdalost()*,
     která využije JS třídu *EventSource* a inicializuje naslouchání
-    SSE API pro získání události a její aktualizaci v GUI.
+    SSE API pro získávání události a její aktualizaci v GUI.
     * Zahájení spojení a chybu komunikace pouze vypište do konzole 
     (události *source.onopen* a *source.onerror*).
     * V události *source.onmessage* zpracujte JSON s daty získanými ze SSE API
@@ -481,8 +449,7 @@ a dokončete v něm zmíněnou funkcionalitu.
     s ID události vykreslené v GUI, tak událost v GUI aktualizujte.<br>
     <code>source.onmessage = function (event) {...}</code>
     * Ověřte v GUI, že kompletně funguje část s poslední událostí.
-    * Uděláte-li výpisy do konzole v *onopen* a *onerror*, 
-    tak můžete vidět, 
+    * Podívejte se do konzole v prohlížeči, kde je vidět, 
     že po chybě SSE spojení (vypsaný error) je opětovné připojení navázáno až po čase,
     který server zaslal při inicializaci SSE na řádku začínajícím *retry*, 
     např. "retry: 5000 \n\n", tj. 5s.
@@ -502,7 +469,7 @@ a dokončete v něm zmíněnou funkcionalitu.
     do elementu indikátoru v GUI (barva jeho pozadí není měněna).
     * Doplňte reakce na události *source.onopen* a *source.onerror*,
     které nyní pouze upraví barvu indikátoru v GUI 
-    (např. open "#91ff81",error "#ff9898"; text bude null).
+    (např. open "#91ff81", error "#ff9898"; text bude null).
     * V události *source.onmessage* zpracujte data přijatá ze SSE API.
     Pokud obsahují atribut *items*, 
     tak aktualizujte záznamy v GUI (funkce *actualizeZaznamy..*).
@@ -511,8 +478,8 @@ a dokončete v něm zmíněnou funkcionalitu.
     (proměnná, kterou přidáváme do URL).
     * Do *source.onerror* doplňte vlastní obsluhu opětovného připojení k serveru.
     Ta nejprve ukončení aktuální spojení *source.close()* a následně
-    inicializuje nový Timeoutu do proměnné *myReconnectTimeout*,
-    který opět zavolá funkci pro inicilizaci SSE po zadaném čase 
+    inicializuje nový Timeout do proměnné *myReconnectTimeout*,
+    který opět zavolá funkci pro inicializaci SSE po zadaném čase 
     (konstanta *reconnectTime*).
     * Abychom zajistili vypnutí naslouchání i při vlastním požadavku 
     (např. stisk tlačítka v GUI), tak doplňte kód funkce *stopEventSourceForSSEListeningForZaznamy()*,
@@ -528,14 +495,15 @@ a dokončete v něm zmíněnou funkcionalitu.
 
 
 
-# Úkoly na doma
+## Úkoly na doma
 
-TODO - Dle vlastní iniciativy.
-* .. Zkusit vytvořit SSE klienta v jiném programovacím jazyce. 
+Dle vlastní iniciativy můžete:
+* Zkusit vytvořit REST klienta v PHP či v Python.
+* Zkusit vytvořit SSE klienta v jiném programovacím jazyce (např. Android).
 
 
 
-# Výstupy cvičení
+## Výstupy cvičení
 
 * Student by měl vědět, jakým způsobem REST API pro komunikaci s klientem 
 využívá HTTP metody a HTTP statusy.
@@ -548,10 +516,13 @@ a měl by být schopen ho implementovat.
 a měl by být schopen ho implementovat.
 * Student by měl vědět, jak se vzájemně doplňují REST API a SSE API
 a jak využít jejich kombinaci.
-    
-  
 
 
+
+### Poznámky
+
+* Příklad můžete stáhnout v ZIP archivu.
+* Závěrem zvířátko :hatching_chick:
 
 
 

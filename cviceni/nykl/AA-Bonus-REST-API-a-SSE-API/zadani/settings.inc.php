@@ -137,7 +137,7 @@ $tmpApiEndpointsSettings = [
         "pk_column" => "id",
         "search_columns" => ["nazev"],
         // GET bude prepsano vlastni casti REST API
-        "GET" => false, "POST" => true, "PUT" => true, "DELETE" => false,
+        "GET" => true, "POST" => true, "PUT" => true, "DELETE" => true,
     ],
     [
         "endpoint" => ENDPOINT_UDALOST,
