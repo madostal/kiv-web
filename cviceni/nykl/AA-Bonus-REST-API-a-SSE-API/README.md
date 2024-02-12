@@ -21,7 +21,8 @@ Prohlédněte si a zprovozněte následující soubory:
     * Následné volání REST API, např.:
       <br><code>localhost/aktualni_priklad/rest_api/test_endpoint/abc/</code>
 * Proveďte instalaci databáze (viz adresář *database*) a doplňte konfiguraci připojení k databázi a názvů tabulek do souboru *settings.inc.php*.
-Další obsah souboru *settings.inc.php* bude popsán později.
+Další obsah souboru *settings.inc.php* bude popsán později. 
+Pokud by při importu vyvstal problém s cizími klíči, tak import proveďte s volbou "nekontrolovat cizí klíče" či podobnou.
 * Prohlédněte si soubor *MyDatabase.class.php*, který obsahuje jednoduché CRUD operace nad zvolenou tabulkou.
 
 **ERA model databáze včetně výchozích dat:**
