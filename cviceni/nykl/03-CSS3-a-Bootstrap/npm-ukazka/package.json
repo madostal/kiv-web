@@ -9,7 +9,7 @@
     "url": "https://github.com/madostal/kiv-web/tree/master/cviceni/nykl/03-CSS3-a-Bootstrap"
   },
   "dependencies": {
-    "jquery": "3.3.1",
+    "jquery": "3.5.1",
     "font-awesome": "4.7.0",
     "bootstrap": "^4.4.1",
     "popper.js": "^1.16.0",
