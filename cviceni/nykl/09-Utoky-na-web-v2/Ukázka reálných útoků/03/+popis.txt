@@ -1,0 +1,1 @@
+Následující útok je z ModX snippetu, který lze následně volat ze stránek ModX.
