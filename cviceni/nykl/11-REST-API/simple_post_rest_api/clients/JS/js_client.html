@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS klient</title>
+</head>
+<body>
+<h1>JavaScript klient pro Simple POST REST API</h1>
+Výpisy jsou do konsole prohlížeče (F12).<br><br>
+
+Metoda:
+<select id="method" autocomplete="off">
+    <option value="GET">GET</option>
+    <option value="POST" selected>POST</option>
+    <option value="PUT">PUT</option>
+    <option value="DELETE">DELETE</option>
+</select><br>
+
+Akce: <input type="text" id="action" value="save_dht_data" autocomplete="off"><br>
+MAC: <input type="text" id="mac" value="test-mac" autocomplete="off"><br>
+Datetime: <input type="text" id="datetime" autocomplete="off" onload="this.value=..."><br>
+Teplota: <input type="number" id="temperature" value="22" min="-50" max="50" autocomplete="off"> °C<br>
+Vlhkost: <input type="number" id="humidity" value="45" min="0" max="100" autocomplete="off"> %<br>
+
+<button onclick="sendPostRequest()">Odeslat požadavek</button><br>
+
+Odpoveď serveru:
+<pre id="divResponse"></pre>
+
+<script>
+
+    /// !!! URL, kam posilam - nutne upravit, kam se maji pozadavky posilat !!!
+    // nutnem musi byt HTTPS, ale na localhostu nemusi fungovat,
+    // proto je dale v kodu kontrola vypnuta.
+    // const API_URL = "https://localhost/....../simple_post_rest_api/server/rest_api.php";
+
+
+    // element pro vypis odpovedi serveru
+    const divResponse = document.getElementById('divResponse');
+
+    // zobrazim aktualni datum a cas v inputu
+    document.getElementById('datetime').value = new Date().toISOString().slice(0,16);
+
+    /**
+     * Funkce pro odeslani POST pozadavku na REST API.
+     * @returns {Promise<void>}
+     */
+    async function sendPostRequest() {
+        // ziskam hodnoty z inputu
+        let tmpMethod = document.getElementById('method').value;
+        let tmpAction = document.getElementById('action').value;
+        let tmpMac = document.getElementById('mac').value;
+        let tmpDatetime = document.getElementById('datetime').value;
+        let tmpTemperature = document.getElementById('temperature').value;
+        let tmpHumidity = document.getElementById('humidity').value;
+        // slozim data DHT do objektu
+        const tmpDhtData = {
+            temperature: tmpTemperature,
+            humidity: tmpHumidity
+        };
+
+        // slozim data do objektu
+         const data = {
+             action: tmpAction,
+             mac_address: tmpMac,
+             datetime: tmpDatetime,
+             dht_data: tmpDhtData,
+        };
+
+        // odeslu pozadavek s vyuzitim Fetch API
+        try {
+            const response = await fetch(API_URL, {
+                method: tmpMethod,  // 'POST', 'GET', 'PUT', 'DELETE'
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            console.log('Odeslaná data:', data);
+            // console.log('HTTP response:', response);
+            console.log('HTTP status odpovědi:', response.status);
+            // console.log('HTTP hlavičky odpovědi:', response.headers);
+            console.log('Obsah odpovědi:', response.body);
+
+            // pokud odpoved nema HTTP status 200 OK
+            // if (!response.ok) {
+            //     throw new Error('Síťová odpověď nebyla v pořádku');
+            // }
+
+            const responseData = await response.json();
+            console.log('Data odpovědi:', responseData);
+            // alert('Odpověď serveru: ' + JSON.stringify(responseData));
+
+            // zobrazim na strance
+            divResponse.innerText = 'HTTP status: ' + response.status + '\n';
+            divResponse.innerText += 'StatusText: ' + response.statusText + '\n';
+            divResponse.innerText += 'Prijata data: \n' + JSON.stringify(responseData, null, 2);
+
+        } catch (error) {
+            console.error('Došlo k chybě při odesílání požadavku:', error);
+            alert('Chyba: ' + error.message);
+        }
+    }
+</script>
+
+
+</body>
+</html>

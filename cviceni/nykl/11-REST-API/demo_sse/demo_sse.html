@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo SSE</title>
+</head>
+<body>
+
+<h1>Demo SSE</h1>
+
+<button type="button" onclick="stopEventSource()">Stop</button>
+<button type="button" onclick="initEventSource()">Init/Restart</button>
+<br><br>
+<div>
+    Poslední přijatá data:<br>
+    <div id="last_data">- Data nenačtena -</div>
+</div>
+<br>
+<textarea id="server_data" style="width:100%;height:500px;" autocomplete="off"></textarea>
+
+<script>
+    // URL adresa pro SSE API
+    const apiUrl = 'demo_sse.php';
+
+    // zde bude EventSource
+    var source;
+
+    // defaultne spustim naslouchani SSE
+    initEventSource();
+
+
+    /**
+     * Inicializace naslouchani SSE API, cast s posledni udalosti.
+     * Dokumentace EventSource: https://html.spec.whatwg.org/multipage/server-sent-events.html
+     */
+    function initEventSource() {
+        // je EventSource podporovan prohlizecem?
+
+        if (typeof (EventSource) !== "undefined") {
+            // vytvorim spojeni se SSE na serveru
+            source = new EventSource(apiUrl);
+
+            source.onopen = function (event) {
+                const msg = 'Connection opened';
+                console.log(msg, event);
+                document.getElementById("server_data").innerHTML += msg +"\n";
+            };
+
+            source.onmessage = function (event) {
+                //const eventData = JSON.parse(event.data);
+                console.log('Received message:', event);
+                // Do something with the received data
+                document.getElementById("server_data").innerHTML += event.data +"\n";
+                document.getElementById("last_data").innerHTML = event.data;
+            };
+
+            source.onerror = function (event) {
+                console.error('Error occurred:', event);
+                // Handle errors
+                document.getElementById("server_data").innerHTML += "SSE Error\n";
+            };
+        } else {
+            const msg = "EventSource is not supported."
+            console.log(msg);
+            document.getElementById("server_data").innerHTML += msg +"\n";
+        }
+    }
+
+    /**
+     * Ukonci naslouchani SSE.
+     */
+    function stopEventSource(){
+        source.close();
+        const msg = "Connection closed";
+        console.log(msg);
+        document.getElementById("server_data").innerHTML += msg +"\n";
+    }
+
+</script>
+
+</body>
+</html>

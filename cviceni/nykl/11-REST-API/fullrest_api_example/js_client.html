@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS klient</title>
+</head>
+<body>
+<h1>JavaScript klient pro FullREST API example</h1>
+Výpisy jsou do konsole prohlížeče (F12).<br><br>
+
+Metoda:
+<select id="api_method" autocomplete="off">
+    <option value="GET">GET</option>
+    <option value="POST" selected>POST</option>
+    <option value="PUT">PUT</option>
+    <option value="DELETE">DELETE</option>
+</select><br>
+
+URL:<br>
+<input type="text" id="api_url" autocomplete="off" style="width: 100%"><br>
+<br>
+
+Data: <textarea type="text" id="api_data" autocomplete="off" style="width: 100%; height: 150px">
+{
+    "name": "Traktor",
+    "type": "Zemědělská technika"
+    "price": 250000,
+}
+</textarea>
+
+<button onclick="sendPostRequest()">Odeslat požadavek</button><br>
+
+Odpoveď serveru:
+<pre id="divResponse"></pre>
+
+<script>
+
+    /// !!! URL, kam posilam - nutne upravit, kam se maji pozadavky posilat !!!
+    // nutnem musi byt HTTPS, ale na localhostu nemusi fungovat,
+    // proto je dale v kodu kontrola vypnuta.
+    // const API_URL = "https://localhost/....../fullrest_api_example/fullrest_api_without_htaccess.php";
+
+
+    // element pro vypis odpovedi serveru
+    const divResponse = document.getElementById('divResponse');
+
+    // nastavim URL do inputu a pridam ENDPOINT /machine
+    document.getElementById('api_url').value = API_URL +"/machine";
+
+
+    /**
+     * Funkce pro odeslani POST pozadavku na REST API.
+     * @returns {Promise<void>}
+     */
+    async function sendPostRequest() {
+        // ziskam hodnoty z inputu
+        let tmpApiMethod = document.getElementById('api_method').value;
+        let tmpApiUrl = document.getElementById('api_url').value;
+        let tmpApiData = document.getElementById('api_data').value;
+
+        // odeslu pozadavek s vyuzitim Fetch API
+        try {
+            // nastaveni pro JS Fetch API
+            let fetchSettings = {
+                method: tmpApiMethod,  // 'POST', 'GET', 'PUT', 'DELETE'
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }
+            // pokud neni metoda GET, tak pridam data do tela pozadavku
+            if (tmpApiMethod !== 'GET') {
+                // data uz jsou string, jinak prevod na JSON
+                fetchSettings.body = tmpApiData;
+                // fetchSettings.body = JSON.stringify(data)
+            }
+            // provedu pozadavek
+            const response = await fetch(tmpApiUrl, fetchSettings);
+
+            console.log('Odeslaná data:', tmpApiData);
+            // console.log('HTTP response:', response);
+            console.log('HTTP status odpovědi:', response.status);
+            // console.log('HTTP hlavičky odpovědi:', response.headers);
+            console.log('Obsah odpovědi:', response.body);
+
+            // pokud odpoved nema HTTP status 200 OK
+            // if (!response.ok) {
+            //     throw new Error('Síťová odpověď nebyla v pořádku');
+            // }
+
+            const responseData = await response.json();
+            console.log('Data odpovědi:', responseData);
+            // alert('Odpověď serveru: ' + JSON.stringify(responseData));
+
+            // zobrazim na strance
+            divResponse.innerText = 'HTTP status: ' + response.status + '\n';
+            divResponse.innerText += 'StatusText: ' + response.statusText + '\n';
+            divResponse.innerText += 'Prijata data: \n' + JSON.stringify(responseData, null, 2);
+
+        } catch (error) {
+            console.error('Došlo k chybě při odesílání požadavku:', error);
+            alert('Chyba: ' + error.message);
+        }
+    }
+</script>
+
+
+</body>
+</html>

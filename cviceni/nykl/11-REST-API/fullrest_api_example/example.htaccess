@@ -1,0 +1,26 @@
+
+# povoleni linku
+Options +FollowSymlinks
+# povoleni presmerovani
+RewriteEngine On
+
+# zakazani presmerovani pro soubor index.php
+RewriteRule ^index.php - [L]
+
+# zakazani presmerovani pro soubor fullrest_api_bez_htaccess.php
+RewriteRule ^fullrest_api_bez_htaccess.php - [L]
+
+
+# pokud existuje dany soubor nebo dany adresar, tak se presmerovani neprovede
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+################################################
+# REST API
+
+# presmerovani pro REST API - pokud je v URL uvedeno "fullrestapi/",
+# tak se presmeruje na soubor fullrest_api_bez_htaccess.php
+
+# TODO - upravit cestu podle umisteni souboru
+#RewriteRule ^fullrestapi/(.*)$ /../fullrest_api_example/fullrest_api_bez_htaccess.php [L,QSA]
